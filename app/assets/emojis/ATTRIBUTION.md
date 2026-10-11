@@ -51,3 +51,14 @@ instead of an invented one, documented here rather than left unexplained:
 | Viande bovine (beef) | `cut_of_meat.png` | Cut of meat | — |
 | Viande ovine (mutton) | `meat_on_bone.png` | Meat on bone | No separate beef/mutton emoji exist; these two are picked to look visually distinct from each other within the new Meat category, not because either is a literal match |
 | Grenade (pomegranate) | `pomegranate.png` (sourced from Cherries) | Cherries | No pomegranate emoji exists in Fluent Emoji; closest available round, dark-red fruit |
+
+## Poultry and eggs (added 2026-10-12)
+
+Same source and license as above (Microsoft Fluent Emoji, 3D, MIT, fetched
+unmodified from the repository).
+
+| File | Fluent Emoji | Used for |
+|---|---|---|
+| `chicken.png` | Chicken | Live chicken |
+| `poultry_leg.png` | Poultry leg | Slaughtered chicken |
+| `egg.png` | Egg | Beldi eggs and Roumi eggs (shared: no distinct local-egg emoji exists; the two are told apart by name) |
