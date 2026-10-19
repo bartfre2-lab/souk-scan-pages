@@ -11,16 +11,22 @@ def food(name, x, y, size, rotate=0):
     data = base64.b64encode((ROOT / 'assets/products' / f'{name}.png').read_bytes()).decode()
     return f'<image href="data:image/png;base64,{data}" x="{x}" y="{y}" width="{size}" height="{size}" transform="rotate({rotate} {x+size/2} {y+size/2})"/>'
 
+_crate_serial = 0
+
 def crate(x,y,items):
+    global _crate_serial
+    _crate_serial += 1
     s=f'<g transform="translate({x} {y})"><path d="M0 13 5 0h64l6 13v37H0Z" fill="#8b704d"/><path d="M6 3h61v22H6Z" fill="#695a3e"/>'
+    s+=f'<defs><clipPath id="stock-{_crate_serial}" clipPathUnits="userSpaceOnUse"><rect x="4" y="-24" width="67" height="44"/></clipPath></defs><g clip-path="url(#stock-{_crate_serial})">'
     for i,item in enumerate(items):
         s+=food(item,3+i*18, -14 if i%2 else -8,35,i*12-15)
+    s+='</g>'
     s+='<path d="M0 18h75v12H0zm0 16h75v13H0Z" fill="#bfa071"/><path d="M2 17h7v33H2zm64 0h7v33h-7Z" fill="#d2b484"/><g fill="#826c4b"><circle cx="5" cy="22" r="1"/><circle cx="70" cy="22" r="1"/><circle cx="5" cy="42" r="1"/><circle cx="70" cy="42" r="1"/></g></g>'
     return s
 
 configs=[('fruit','#527258','#e1e2bf','الفواكه',['orange','apple','banana'], '#e6d0aa', '#b88058'),('vegetable','#7b8559','#e6e0c2','الخضروات',['tomato','carrot','eggplant'],'#b6bf95','#986f4e'),('meat','#a86d58','#f0d9bf','الجزارة',['cut_of_meat','meat_on_bone'],'#e1d5c1','#b27a58'),('poultry','#bd985a','#f3e4bd','الدواجن',['chicken','egg','poultry_leg'],'#ddc99e','#9b6e4e')]
 for idx,(name,color,light,arabic,items,shirt,skin) in enumerate(configs):
-    s=f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 294"><style>.vendor{{transform-origin:130px 191px;animation:sway 6s ease-in-out infinite;animation-delay:-{idx}s}}@keyframes sway{{50%{{transform:rotate(1.4deg)}}}}@media(prefers-reduced-motion:reduce){{.vendor{{animation:none}}}}</style><defs>
+    s=f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 294"><defs>
     <linearGradient id="wood" x2="0" y2="1"><stop stop-color="#c2a57a"/><stop offset="1" stop-color="#a58a60"/></linearGradient>
     <linearGradient id="roof" x2="0" y2="1"><stop stop-color="{color}"/><stop offset="1" stop-color="{color}" stop-opacity=".88"/></linearGradient>
     <filter id="shadow" x="-20%" width="140%" y="-20%" height="160%"><feGaussianBlur stdDeviation="3"/></filter></defs>
