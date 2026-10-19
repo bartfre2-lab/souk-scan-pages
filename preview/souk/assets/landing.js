@@ -149,6 +149,10 @@ function renderCategory(category, announce = true) {
     card.innerHTML = `<div class="product-crate" aria-hidden="true"><div class="crate-back"></div><div class="crate-produce">${Array.from({ length: 5 }, () => `<img src="./assets/products/${image}.png" alt="" width="78" height="78">`).join("")}</div><div class="crate-front"><span class="crate-stamp">SOUK-SCAN</span></div></div><div class="product-info"><h3>${name}</h3><span lang="ar" dir="rtl">${arabic}</span></div><p class="product-sub">Example range</p><p class="product-price"><strong>${price}</strong><span>MAD / ${unit}</span></p>`;
     fragment.append(card);
   });
+  productGrid.style.setProperty(
+    "--stock-count",
+    Math.min(vendor.products.length, 4),
+  );
   productGrid.replaceChildren(fragment);
   if (announce) animateStock();
   if (announce)
