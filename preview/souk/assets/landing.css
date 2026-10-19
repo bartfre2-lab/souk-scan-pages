@@ -2243,92 +2243,6 @@ h2 {
   }
 }
 
-/* A selected stall opens its price counter in place, keeping the street as the entry. */
-.stall-display {
-  width: min(920px, calc(100vw - 48px));
-  max-height: 88dvh;
-  margin: auto;
-  padding: 22px 28px 28px;
-  border: 1px solid #b9af98;
-  border-radius: 16px;
-  background: var(--cream);
-  color: var(--ink);
-  box-shadow: 0 24px 100px #23342444;
-  overflow-y: auto;
-  overscroll-behavior: contain;
-}
-.stall-display::backdrop {
-  background: #24332788;
-  backdrop-filter: blur(5px);
-}
-.stall-display[open] {
-  animation: counter-arrive 0.32s cubic-bezier(0.2, 0.7, 0.2, 1) both;
-}
-@keyframes counter-arrive {
-  from {
-    opacity: 0;
-    transform: translateY(22px) scale(0.98);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-.counter-close {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  width: 100%;
-  min-height: 44px;
-  background: none;
-  border: 0;
-  border-bottom: 1px solid var(--line);
-  color: var(--green);
-  font:
-    500 12px Inter,
-    sans-serif;
-  cursor: pointer;
-  padding: 0 0 12px;
-  text-align: left;
-}
-.counter-close span:last-child {
-  margin-left: auto;
-  font-size: 25px;
-  line-height: 1;
-}
-.counter-header-art {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  padding-top: 12px;
-}
-.counter-header-art img {
-  width: 90px;
-  height: 102px;
-  object-fit: contain;
-}
-.counter-header-art span {
-  color: var(--green);
-  font-size: 18px;
-}
-.stall-display .product-section {
-  margin-top: 8px;
-  padding-top: 0;
-}
-.stall-display .product-heading h2 {
-  font-size: 30px;
-  line-height: 1.15;
-}
-.stall-display .product-heading {
-  margin-bottom: 18px;
-}
-.stall-display .category-switcher {
-  position: sticky;
-  top: -22px;
-  background: var(--cream);
-  z-index: 5;
-}
 .stall-label {
   justify-content: space-between;
 }
@@ -2403,46 +2317,9 @@ h2 {
   right: 10%;
   bottom: -20%;
 }
-@media (max-width: 760px) {
-  .stall-display {
-    width: 100%;
-    max-width: 100%;
-    max-height: 91dvh;
-    margin: auto 0 0;
-    border-radius: 18px 18px 0 0;
-    padding: 12px 18px 24px;
-  }
-  .stall-display .category-switcher {
-    top: -12px;
-  }
-  .stall-display .product-heading h2 {
-    font-size: 24px;
-  }
-  .stall-display .product-heading {
-    gap: 8px;
-  }
-  .stall-display .sample-badge {
-    font-size: 8px;
-    padding: 7px;
-  }
-  .counter-header-art {
-    padding-top: 6px;
-    gap: 14px;
-  }
-  .counter-header-art img {
-    width: 65px;
-    height: 74px;
-  }
-  .counter-header-art span {
-    font-size: 15px;
-  }
-}
 @media (prefers-reduced-motion: reduce) {
   .hero > *,
   .sun-halo,
-  .stall-display[open] {
-    animation: none;
-  }
   .stall-art {
     transition: none;
   }
@@ -2450,40 +2327,317 @@ h2 {
     transform: none;
   }
 }
-.stall-display .product-crate {
-  height: 125px;
-}
-.stall-display .crate-back {
-  top: 36%;
-  bottom: 10%;
-  height: auto;
-}
-.stall-display .crate-front {
-  top: 59%;
-  bottom: 7%;
-  height: auto;
-}
-.stall-display .crate-stamp {
-  top: 40%;
-  font-size: 5px;
-}
-.stall-display .product-grid {
-  gap: 18px 16px;
-}
-@media (max-width: 760px) {
-  .stall-display .product-crate {
-    height: 110px;
-  }
-  .stall-display .product-info {
-    min-height: 44px;
-  }
-  .stall-display .product-price > strong {
-    font-size: 20px;
-  }
-}
 /* Keep tall icons inside the stock chamber as well as behind the rim. */
 .crate-produce > img {
   height: 82%;
   max-height: 82%;
   object-fit: contain;
+}
+
+/* The souk carousel and its stock share one continuous market display. */
+.market-scroll {
+  overflow: hidden;
+  touch-action: pan-y;
+}
+.market-world {
+  width: 100%;
+  height: 420px;
+  perspective: 1100px;
+}
+.market-backdrop {
+  object-fit: cover;
+  opacity: 0.8;
+}
+.market-welcome {
+  top: 20px;
+  pointer-events: none;
+}
+.market-welcome [lang="ar"] {
+  font-size: 19px;
+}
+.market-welcome > span:last-child {
+  font-size: 11px;
+}
+.stall-row {
+  display: block;
+  inset: 0;
+  perspective: 1100px;
+  --stall-step: clamp(185px, 27vw, 310px);
+}
+.stall {
+  position: absolute;
+  left: 50%;
+  top: 78px;
+  width: 260px;
+  transform: translateX(-50%)
+    translateX(calc(var(--slot, 0) * var(--stall-step)))
+    rotateY(calc(var(--slot, 0) * -8deg)) scale(0.76);
+  transform-origin: 50% 85%;
+  opacity: 0.65;
+  transition:
+    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.5s ease,
+    filter 0.5s ease;
+  will-change: transform;
+}
+.stall.is-active {
+  transform: translateX(-50%) translateX(0) translateY(-6px) rotateY(0)
+    scale(1.08);
+  opacity: 1;
+}
+.stall.is-distant {
+  opacity: 0;
+  pointer-events: none;
+}
+.stall .stall-art,
+.stall:hover .stall-art,
+.stall:focus-visible .stall-art,
+.stall.is-active .stall-art {
+  transform: none;
+}
+.stall .stall-art {
+  filter: saturate(0.65);
+  transition: filter 0.5s ease;
+}
+.stall.is-active .stall-art {
+  filter: saturate(1.08) drop-shadow(0 10px 8px #5b513821);
+}
+.stall:hover .stall-art {
+  filter: saturate(1.08);
+}
+.stall-art img {
+  height: 270px;
+}
+.stall-label {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  font-size: 12px;
+  min-height: 38px;
+  background: #f7f4eee8;
+}
+.stall.is-active .stall-label {
+  box-shadow: 0 3px 12px #344d3020;
+}
+.carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  min-height: 62px;
+  background: linear-gradient(#e5dfcc, #eee8db);
+}
+.carousel-controls button {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid #b8bea6;
+  background: #f7f4eee6;
+  color: var(--green);
+  font-size: 21px;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    transform 0.2s;
+}
+.carousel-controls button:hover {
+  background: #d9e1d0;
+  transform: scale(1.06);
+}
+.carousel-controls button:active {
+  transform: scale(0.95);
+}
+.carousel-caption {
+  min-width: 180px;
+  text-align: center;
+  color: var(--green);
+  font-size: 12px;
+  font-weight: 600;
+}
+.market-frame .product-section {
+  position: relative;
+  padding: 28px 36px 30px;
+  margin: 0;
+  background: var(--cream);
+  border-top: 7px solid #c3a77a;
+  box-shadow: inset 0 2px #a88c5d;
+}
+.market-frame .product-section:before {
+  content: "";
+  position: absolute;
+  top: -7px;
+  left: 0;
+  right: 0;
+  height: 7px;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0,
+    transparent 120px,
+    #a88c5d66 121px,
+    #a88c5d66 122px
+  );
+}
+.market-frame .product-heading {
+  max-width: 960px;
+  margin: 0 auto;
+  align-items: center;
+}
+.market-frame .product-heading h2 {
+  font-size: 30px;
+  line-height: 1.15;
+  margin-top: 5px;
+}
+.market-frame .category-switcher {
+  max-width: 960px;
+  margin: 18px auto 0;
+}
+.market-frame .category-switcher button {
+  min-height: 40px;
+}
+.market-frame .product-grid {
+  max-width: 960px;
+  margin: 20px auto 0;
+  gap: 24px 20px;
+  min-height: 240px;
+}
+.market-frame .product-crate {
+  height: 125px;
+}
+.market-frame .crate-back {
+  top: 36%;
+  bottom: 10%;
+  height: auto;
+}
+.market-frame .crate-front {
+  top: 59%;
+  bottom: 7%;
+  height: auto;
+}
+.market-frame .crate-stamp {
+  top: 40%;
+  font-size: 5px;
+}
+.market-frame .price-note {
+  max-width: 960px;
+  margin: 22px auto 0;
+}
+@media (max-width: 760px) {
+  .market-heading {
+    flex-wrap: wrap;
+    gap: 7px;
+  }
+  .market-world {
+    height: 300px;
+  }
+  .market-welcome {
+    top: 13px;
+  }
+  .market-welcome [lang="ar"] {
+    font-size: 16px;
+  }
+  .market-welcome > span:last-child {
+    font-size: 9px;
+  }
+  .stall-row {
+    --stall-step: clamp(135px, 40vw, 220px);
+  }
+  .stall {
+    width: 176px;
+    top: 60px;
+  }
+  .stall-art img {
+    height: 190px;
+  }
+  .stall-label {
+    font-size: 10px;
+    padding: 7px;
+    min-height: 32px;
+  }
+  .carousel-controls {
+    min-height: 56px;
+    gap: 8px;
+  }
+  .carousel-caption {
+    min-width: 160px;
+    font-size: 11px;
+  }
+  .carousel-controls button {
+    width: 40px;
+    height: 40px;
+  }
+  .market-frame .product-section {
+    padding: 20px 14px 22px;
+  }
+  .market-frame .product-heading h2 {
+    font-size: 24px;
+  }
+  .market-frame .product-heading .eyebrow {
+    font-size: 7px;
+  }
+  .market-frame .sample-badge {
+    font-size: 7px;
+    padding: 6px 8px;
+  }
+  .market-frame .category-switcher {
+    margin-top: 14px;
+  }
+  .market-frame .category-switcher button {
+    font-size: 10px;
+    padding: 7px 9px;
+  }
+  .market-frame .product-grid {
+    gap: 18px 12px;
+    min-height: 420px;
+  }
+  .market-frame .product-crate {
+    height: 105px;
+  }
+  .market-frame .product-info {
+    padding-inline: 4px;
+    min-height: 44px;
+  }
+  .market-frame .product-sub,
+  .market-frame .product-price {
+    margin-inline: 4px;
+  }
+  .market-frame .product-price {
+    gap: 5px;
+  }
+  .market-frame .product-price > strong {
+    font-size: 20px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .stall,
+  .stall .stall-art,
+  .carousel-controls button {
+    transition: none;
+  }
+  .sun-halo {
+    animation: none;
+  }
+}
+
+/* Stable first paint, including the no-JavaScript fallback. */
+.stall:nth-child(1) {
+  --slot: 0;
+}
+.stall:nth-child(2) {
+  --slot: 1;
+}
+.stall:nth-child(3) {
+  --slot: -2;
+}
+.stall:nth-child(4) {
+  --slot: -1;
+}
+.stall-row:not(.is-ready) .stall:nth-child(3) {
+  opacity: 0;
+  pointer-events: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero > *,
+  .sun-halo {
+    animation: none;
+  }
 }
