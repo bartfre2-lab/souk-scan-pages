@@ -1,109 +1,577 @@
 <!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>SOUK-SCAN</title>
-<meta name="description" content="SOUK-SCAN — know the recent local food price before you buy, from real community observations across Morocco's regions." />
-<style>
-  :root {
-    --background: #F9F9F7;
-    --text-primary: #2A2A2A;
-    --accent: #4A6B53;
-    --text-muted: #555555;
-    --border: #E0E0E0;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --background: #17181A;
-      --text-primary: #F0F0EE;
-      --accent: #7FA98A;
-      --text-muted: #B5B5B0;
-      --border: #33352F;
-    }
-  }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    background: var(--background);
-    color: var(--text-primary);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, sans-serif;
-    line-height: 1.6;
-  }
-  main {
-    max-width: 640px;
-    margin: 0 auto;
-    padding: 64px 24px 96px;
-  }
-  h1 {
-    font-size: 2rem;
-    font-weight: 900;
-    letter-spacing: 0.01em;
-    margin: 0 0 8px;
-  }
-  .tagline {
-    font-size: 1.1rem;
-    color: var(--text-muted);
-    margin: 0 0 40px;
-  }
-  h2 {
-    font-size: 1.1rem;
-    font-weight: 700;
-    margin: 36px 0 8px;
-  }
-  p { color: var(--text-muted); margin: 0 0 12px; }
-  a { color: var(--accent); }
-  footer {
-    margin-top: 48px;
-    padding-top: 24px;
-    border-top: 1px solid var(--border);
-    font-size: 0.85rem;
-    color: var(--text-muted);
-  }
-</style>
-</head>
-<body>
-<main>
-  <h1>SOUK-SCAN</h1>
-  <p class="tagline">Know the recent local price before you buy.</p>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f7f4ee" />
+    <title>SOUK-SCAN — A little local knowledge goes a long way.</title>
+    <meta
+      name="description"
+      content="Step into a Moroccan souk. Explore fruit, vegetables, meat and poultry, and discover SOUK-SCAN: community-reported food prices across Morocco. Download for Android or try the web app."
+    />
+    <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
+    <link
+      rel="preload"
+      href="./assets/fonts/inter-400.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link rel="stylesheet" href="./assets/landing.css" />
+    <script src="./assets/landing.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#souk">Skip to the interactive souk</a>
+    <header class="site-header wrap">
+      <a class="brand" href="./" aria-label="SOUK-SCAN home"
+        ><svg viewBox="0 0 36 36" aria-hidden="true">
+          <path d="M5 15V9h6M25 9h6v6M31 25v6h-6M11 31H5v-6" />
+          <path d="M10 21h16M12 21v-6h12v6M14 15v-3h8v3M13 22v5m10-5v5" /></svg
+        ><span
+          >SOUK<span class="brand-dash">—</span>SCAN<span class="brand-sub"
+            >LOCAL KNOWLEDGE. SHARED.</span
+          ></span
+        ></a
+      >
+      <nav aria-label="Main navigation">
+        <a href="#souk">The souk</a><a href="#how-it-works">How it works</a
+        ><a class="nav-app" href="./app/"
+          >Open web app
+          <span aria-hidden="true"
+            ><svg class="icon-arrow" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6 18 18 6M6 6h12v12" /></svg></span
+        ></a>
+      </nav>
+      <a class="button button-small" href="#download"
+        >Get the app
+        <span aria-hidden="true"
+          ><svg class="icon-arrow" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 4v16m-6-6 6 6 6-6" /></svg></span
+      ></a>
+    </header>
+    <main>
+      <section class="hero wrap" aria-labelledby="hero-title">
+        <div class="eyebrow hero-eyebrow">
+          <span class="live-dot"></span> ROOTED IN MOROCCO. POWERED BY PEOPLE.
+        </div>
+        <h1 id="hero-title">
+          The soul of the souk.<br /><em>The price, made clear.</em>
+        </h1>
+        <p class="hero-copy">
+          A little local knowledge goes a long way. Discover what people<br
+            class="desktop-break"
+          />
+          are paying for everyday food, before you head to the market.
+        </p>
+        <div class="hero-actions">
+          <a class="button" href="#souk"
+            >Step into the souk
+            <span aria-hidden="true"
+              ><svg class="icon-arrow" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 4v16m-6-6 6 6 6-6" /></svg></span></a
+          ><a class="text-link" href="#download"
+            >Take it with you
+            <span aria-hidden="true"
+              ><svg class="icon-arrow" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M6 18 18 6M6 6h12v12" /></svg></span
+          ></a>
+        </div>
+        <div class="hero-note">
+          <span lang="ar" dir="rtl">من السوق، للناس</span
+          ><span class="note-line"></span>From the souk. For everyone.
+        </div>
+      </section>
 
-  <p>
-    SOUK-SCAN is a community price-transparency app for Morocco. People
-    report what they actually paid for everyday food items — vegetables
-    and fruits — in their region, and the app turns those reports into a
-    simple estimate: a typical price range for each product, by region.
-  </p>
+      <section id="souk" class="souk-section wrap" aria-labelledby="souk-title">
+        <div class="market-heading">
+          <span class="eyebrow" id="souk-title"
+            >YOUR EVERYDAY MARKET, REIMAGINED</span
+          ><span class="market-instruction"
+            ><span aria-hidden="true"
+              ><svg class="icon-star" viewBox="0 0 32 32" aria-hidden="true">
+                <path d="M16 2v28M2 16h28M6 6l20 20M6 26 26 6" /></svg
+            ></span>
+            Pick a stall. Have a look around.</span
+          >
+        </div>
+        <div class="market-frame">
+          <div
+            class="market-scroll"
+            tabindex="0"
+            aria-label="Interactive Moroccan market. On small screens, scroll sideways to explore all four stalls."
+          >
+            <div class="market-world">
+              <img
+                class="market-backdrop"
+                src="./assets/medina.svg"
+                alt=""
+                width="1240"
+                height="410"
+                fetchpriority="high"
+              />
+              <div class="sun-halo" aria-hidden="true"></div>
+              <svg class="birds" viewBox="0 0 90 30" aria-hidden="true">
+                <path d="M5 20q9-12 18 0m20-13q8-10 16 0m7 15q6-8 12 0" />
+              </svg>
+              <div class="market-welcome" aria-hidden="true">
+                <span lang="ar" dir="rtl">مرحبا بكم في السوق</span
+                ><span>Welcome to your neighbourhood.</span>
+              </div>
+              <div class="stall-row">
+                <button
+                  class="stall is-active"
+                  data-category="fruit"
+                  aria-pressed="true"
+                  aria-controls="stall-products"
+                >
+                  <span class="stall-art"
+                    ><img
+                      src="./assets/stall-fruit.svg"
+                      alt="Fruit vendor at a green-striped Moroccan stall"
+                      width="260"
+                      height="294" /></span
+                  ><span class="stall-label"
+                    ><span>01</span> The fruit seller
+                    <span class="stall-arrow" aria-hidden="true"
+                      ><svg
+                        class="icon-arrow"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path d="M6 18 18 6M6 6h12v12" /></svg></span
+                  ></span>
+                </button>
+                <button
+                  class="stall"
+                  data-category="vegetable"
+                  aria-pressed="false"
+                  aria-controls="stall-products"
+                >
+                  <span class="stall-art"
+                    ><img
+                      src="./assets/stall-vegetable.svg"
+                      alt="Vegetable vendor with crates under an olive-striped awning"
+                      width="260"
+                      height="294" /></span
+                  ><span class="stall-label"
+                    ><span>02</span> The greengrocer
+                    <span class="stall-arrow" aria-hidden="true"
+                      ><svg
+                        class="icon-arrow"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path d="M6 18 18 6M6 6h12v12" /></svg></span
+                  ></span>
+                </button>
+                <button
+                  class="stall"
+                  data-category="meat"
+                  aria-pressed="false"
+                  aria-controls="stall-products"
+                >
+                  <span class="stall-art"
+                    ><img
+                      src="./assets/stall-meat.svg"
+                      alt="Butcher at a terracotta-striped stall"
+                      width="260"
+                      height="294" /></span
+                  ><span class="stall-label"
+                    ><span>03</span> The butcher
+                    <span class="stall-arrow" aria-hidden="true"
+                      ><svg
+                        class="icon-arrow"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path d="M6 18 18 6M6 6h12v12" /></svg></span
+                  ></span>
+                </button>
+                <button
+                  class="stall"
+                  data-category="poultry"
+                  aria-pressed="false"
+                  aria-controls="stall-products"
+                >
+                  <span class="stall-art"
+                    ><img
+                      src="./assets/stall-poultry.svg"
+                      alt="Poultry and egg vendor at a golden-striped stall"
+                      width="260"
+                      height="294" /></span
+                  ><span class="stall-label"
+                    ><span>04</span> Poultry & eggs
+                    <span class="stall-arrow" aria-hidden="true"
+                      ><svg
+                        class="icon-arrow"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path d="M6 18 18 6M6 6h12v12" /></svg></span
+                  ></span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="market-footnote">
+            <span
+              ><span class="live-dot"></span> Four stalls. One shared
+              community.</span
+            ><span class="scroll-hint"
+              >Swipe to explore <span aria-hidden="true">↔</span></span
+            ><span class="desktop-hint"
+              >Made of Morocco
+              <span aria-hidden="true"
+                ><svg class="icon-star" viewBox="0 0 32 32" aria-hidden="true">
+                  <path d="M16 2v28M2 16h28M6 6l20 20M6 26 26 6" /></svg></span
+            ></span>
+          </div>
+        </div>
+        <div
+          class="product-section"
+          id="stall-products"
+          role="region"
+          aria-labelledby="products-title"
+        >
+          <div class="product-heading">
+            <div>
+              <div class="eyebrow" id="vendor-kicker">THE FRUIT SELLER</div>
+              <h2 id="products-title">A little colour in your basket.</h2>
+            </div>
+            <span class="sample-badge">Illustrative prices · MAD</span>
+          </div>
+          <div
+            class="category-switcher"
+            role="group"
+            aria-label="Choose a vendor"
+          >
+            <button data-category="fruit" aria-pressed="true" class="is-active">
+              Fruit</button
+            ><button data-category="vegetable" aria-pressed="false">
+              Vegetables</button
+            ><button data-category="meat" aria-pressed="false">Meat</button
+            ><button data-category="poultry" aria-pressed="false">
+              Poultry & eggs
+            </button>
+          </div>
+          <p
+            id="selection-status"
+            class="sr-only"
+            role="status"
+            aria-live="polite"
+          ></p>
+          <div class="product-grid" id="product-grid"></div>
+          <noscript
+            ><p>
+              Enable JavaScript to browse the interactive stalls, or
+              <a href="./app/">open SOUK-SCAN</a> to explore regional prices.
+            </p></noscript
+          >
+          <div class="price-note">
+            <p>
+              <span aria-hidden="true">ⓘ</span> A taste of the experience. These
+              are sample prices, not live market data.<br
+                class="mobile-break"
+              />
+              Real prices depend on your region and recent community reports.
+            </p>
+            <a class="text-link" href="./app/"
+              >Find prices near you
+              <span aria-hidden="true"
+                ><svg class="icon-arrow" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M6 18 18 6M6 6h12v12" /></svg></span
+            ></a>
+          </div>
+        </div>
+      </section>
 
-  <h2>Why</h2>
-  <p>
-    Food prices vary a lot by region, season, and market — and there's no
-    easy way to know what's a fair price before you're already at the
-    stall. SOUK-SCAN exists to close that gap using real, recent reports
-    from people nearby, not official or fixed pricing.
-  </p>
+      <div class="belief-strip">
+        <div class="wrap">
+          <span>Less guesswork.</span
+          ><span class="strip-star" aria-hidden="true"
+            ><svg class="icon-star" viewBox="0 0 32 32" aria-hidden="true">
+              <path d="M16 2v28M2 16h28M6 6l20 20M6 26 26 6" /></svg></span
+          ><span>More local knowledge.</span
+          ><span class="strip-star" aria-hidden="true"
+            ><svg class="icon-star" viewBox="0 0 32 32" aria-hidden="true">
+              <path d="M16 2v28M2 16h28M6 6l20 20M6 26 26 6" /></svg></span
+          ><span>A fairer everyday.</span>
+        </div>
+      </div>
 
-  <h2>How it works</h2>
-  <p>
-    Anyone can sign in and report today's price for a product in their
-    region, once per product per day. The app combines everyone's reports
-    into an aggregate estimate — individual reports, identities, and exact
-    locations are never shown publicly. See our
-    <a href="./privacy/">Privacy Policy</a> for the full details.
-  </p>
+      <section
+        id="how-it-works"
+        class="how-section wrap"
+        aria-labelledby="how-title"
+      >
+        <div class="section-intro">
+          <div>
+            <div class="eyebrow">GOOD INFORMATION TRAVELS.</div>
+            <h2 id="how-title">
+              Your neighbour knows.<br /><em>Now you do, too.</em>
+            </h2>
+          </div>
+          <p>
+            Every shared price helps someone shop a little smarter.<br />That’s
+            the simple idea behind SOUK-SCAN.
+          </p>
+        </div>
+        <div class="steps">
+          <article>
+            <span class="step-number">01 /</span
+            ><svg viewBox="0 0 48 48" aria-hidden="true">
+              <path d="M36 20c0 9-12 21-12 21S12 29 12 20a12 12 0 1 1 24 0Z" />
+              <circle cx="24" cy="20" r="4" />
+            </svg>
+            <h3>Start where you are.</h3>
+            <p>
+              Choose your Moroccan region. Get a local picture, because prices
+              aren’t the same everywhere.
+            </p>
+          </article>
+          <article>
+            <span class="step-number">02 /</span
+            ><svg viewBox="0 0 48 48" aria-hidden="true">
+              <path d="M8 18h32l-4 22H12L8 18Zm7 0 9-12 9 12M19 25v8m10-8v8" />
+            </svg>
+            <h3>Know before you go.</h3>
+            <p>
+              Explore recent community-reported price ranges for the everyday
+              food on your list.
+            </p>
+          </article>
+          <article>
+            <span class="step-number">03 /</span
+            ><svg viewBox="0 0 48 48" aria-hidden="true">
+              <path d="M8 10h32v23H24l-9 8v-8H8V10Zm10 12h12m-6-6v12" />
+            </svg>
+            <h3>Pass the knowledge on.</h3>
+            <p>
+              Share what you paid. Your small contribution helps build a clearer
+              picture for everyone.
+            </p>
+          </article>
+        </div>
+        <div class="privacy-line">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6l8-3Zm-4 9 3 3 5-6" />
+          </svg>
+          <p>
+            Shared prices. Private people.
+            <span
+              >Your identity and exact location are never shown publicly.</span
+            >
+          </p>
+        </div>
+      </section>
 
-  <h2>Status</h2>
-  <p>
-    SOUK-SCAN is currently in early beta. You can try the web version at
-    <a href="./app/">the app</a>.
-  </p>
+      <section
+        id="download"
+        class="download-section wrap"
+        aria-labelledby="download-title"
+      >
+        <div class="download-card">
+          <div class="download-copy">
+            <div class="eyebrow">THE SOUK GOES WHERE YOU GO.</div>
+            <h2 id="download-title">
+              A little peace of mind.<br /><em>Right in your pocket.</em>
+            </h2>
+            <p>
+              Keep local food prices close. At home, on the way,<br
+                class="desktop-break"
+              />
+              or standing right in front of the stall.
+            </p>
+            <a
+              class="button button-cream"
+              href="./downloads/SOUK-SCAN-v1.0.2.apk"
+              download
+              ><svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5" /></svg
+              ><span
+                >Download for Android<span class="button-caption"
+                  >v1.0.2 · APK · 8.3 MB</span
+                ></span
+              ><span aria-hidden="true"
+                ><svg class="icon-arrow" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M6 18 18 6M6 6h12v12" /></svg></span></a
+            ><a class="download-web-link" href="./app/"
+              >Or try the web app
+              <span aria-hidden="true"
+                ><svg class="icon-arrow" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M6 18 18 6M6 6h12v12" /></svg></span
+            ></a>
+            <p class="download-note">
+              Free to explore. Available in العربية, Français & English.<br />Android
+              APK installation may require allowing this source.<br />On iPhone?
+              Use the web app in your browser.
+            </p>
+          </div>
+          <div
+            class="phone-scene"
+            aria-label="Illustration of the SOUK-SCAN mobile price browsing experience"
+          >
+            <span class="phone-orbit orbit-one" aria-hidden="true"></span
+            ><span class="phone-orbit orbit-two" aria-hidden="true"></span
+            ><span class="floating-produce produce-orange" aria-hidden="true"
+              ><img
+                src="./assets/products/orange.png"
+                width="100"
+                height="100"
+                alt=""
+                loading="lazy" /></span
+            ><span class="floating-produce produce-tomato" aria-hidden="true"
+              ><img
+                src="./assets/products/tomato.png"
+                width="90"
+                height="90"
+                alt=""
+                loading="lazy"
+            /></span>
+            <div class="phone">
+              <div class="phone-camera"></div>
+              <div class="phone-status">
+                <span>9:41</span><span aria-hidden="true">▮▮▮ ▰</span>
+              </div>
+              <div class="phone-app-brand">
+                SOUK—SCAN
+                <span
+                  ><svg
+                    class="icon-star"
+                    viewBox="0 0 32 32"
+                    aria-hidden="true"
+                  >
+                    <path d="M16 2v28M2 16h28M6 6l20 20M6 26 26 6" /></svg
+                ></span>
+              </div>
+              <div class="phone-location">⌖ Your region <span>⌄</span></div>
+              <div class="phone-title">
+                A clearer picture.<br />A better market day.
+              </div>
+              <div class="phone-search">
+                ⌕ <span>What’s on your list?</span>
+              </div>
+              <div class="phone-category">Vegetables <span>See all</span></div>
+              <div class="phone-products">
+                <div>
+                  <img
+                    src="./assets/products/tomato.png"
+                    alt=""
+                    width="65"
+                    height="65"
+                    loading="lazy"
+                  /><strong>Tomatoes</strong><span>Recent local prices</span>
+                </div>
+                <div>
+                  <img
+                    src="./assets/products/carrot.png"
+                    alt=""
+                    width="65"
+                    height="65"
+                    loading="lazy"
+                  /><strong>Carrots</strong><span>Recent local prices</span>
+                </div>
+              </div>
+              <div class="phone-contribute">
+                <span>Good knowledge is shared.</span
+                ><strong>Share a price <span>+</span></strong>
+              </div>
+              <div class="phone-nav">
+                <span>⌂</span><span>♡</span><span>＋</span><span>☰</span>
+              </div>
+              <div class="phone-preview-label">App experience illustration</div>
+            </div>
+            <div class="pocket-note">
+              Made for your<br /><em>market day.</em
+              ><svg class="pocket-arrow" viewBox="0 0 50 65" aria-hidden="true">
+                <path d="M6 60q43-6 23-51m-5 16 5-16 14 8" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </section>
 
-  <footer>
-    Contact: <a href="mailto:sanamdev@soukscan.online">sanamdev@soukscan.online</a>
-    &nbsp;·&nbsp;
-    <a href="./privacy/">Privacy Policy</a>
-    &nbsp;·&nbsp;
-    <a href="./terms/">Terms of Service</a>
-  </footer>
-</main>
-</body>
+      <section class="faq-section wrap" aria-labelledby="faq-title">
+        <div>
+          <div class="eyebrow">A FEW THINGS TO KNOW</div>
+          <h2 id="faq-title">Before you<br /><em>head to the souk.</em></h2>
+        </div>
+        <div class="faq-list">
+          <details>
+            <summary>
+              Are these official or fixed prices?<span aria-hidden="true"
+                >+</span
+              >
+            </summary>
+            <p>
+              No. SOUK-SCAN shares estimates based on what people report paying
+              in their region. They’re a guide, not a guaranteed price. The
+              interactive souk above uses clearly marked sample prices.
+            </p>
+          </details>
+          <details>
+            <summary>
+              What if there isn’t enough local data?<span aria-hidden="true"
+                >+</span
+              >
+            </summary>
+            <p>
+              The app tells you when there aren’t enough recent reports. It
+              doesn’t invent a price. Your contribution can help fill in the
+              picture.
+            </p>
+          </details>
+          <details>
+            <summary>
+              Can I buy food through SOUK-SCAN?<span aria-hidden="true">+</span>
+            </summary>
+            <p>
+              SOUK-SCAN is a price-transparency app. The stalls are an
+              interactive way to explore food categories. There’s no checkout or
+              delivery service.
+            </p>
+          </details>
+          <details>
+            <summary>
+              How do I install the Android app?<span aria-hidden="true">+</span>
+            </summary>
+            <p>
+              Download the APK on your Android phone, open it, and follow the
+              installation prompts. Your phone may ask you to allow installation
+              from your browser. You can also use the web app without installing
+              anything.
+            </p>
+          </details>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer wrap">
+      <div class="footer-main">
+        <a class="footer-brand" href="./"
+          >SOUK—SCAN<span>From the souk. For everyone.</span></a
+        >
+        <p>
+          Built with care, for everyday life in Morocco.<br /><span
+            lang="ar"
+            dir="rtl"
+            >معرفة محلية، نشاركها جميعاً.</span
+          >
+        </p>
+        <a class="text-link" href="mailto:sanamdev@soukscan.online"
+          >Say salaam
+          <span aria-hidden="true"
+            ><svg class="icon-arrow" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6 18 18 6M6 6h12v12" /></svg></span
+        ></a>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year">2026</span> SOUK-SCAN</span>
+        <div>
+          <a href="./privacy/">Privacy</a><a href="./terms/">Terms</a
+          ><a href="./account-deletion/">Delete account</a>
+        </div>
+        <span>A community price-transparency project.</span>
+      </div>
+    </footer>
+  </body>
 </html>
