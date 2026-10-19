@@ -2242,3 +2242,248 @@ h2 {
     font-size: 20px;
   }
 }
+
+/* A selected stall opens its price counter in place, keeping the street as the entry. */
+.stall-display {
+  width: min(920px, calc(100vw - 48px));
+  max-height: 88dvh;
+  margin: auto;
+  padding: 22px 28px 28px;
+  border: 1px solid #b9af98;
+  border-radius: 16px;
+  background: var(--cream);
+  color: var(--ink);
+  box-shadow: 0 24px 100px #23342444;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.stall-display::backdrop {
+  background: #24332788;
+  backdrop-filter: blur(5px);
+}
+.stall-display[open] {
+  animation: counter-arrive 0.32s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+@keyframes counter-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(22px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.counter-close {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  width: 100%;
+  min-height: 44px;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  color: var(--green);
+  font:
+    500 12px Inter,
+    sans-serif;
+  cursor: pointer;
+  padding: 0 0 12px;
+  text-align: left;
+}
+.counter-close span:last-child {
+  margin-left: auto;
+  font-size: 25px;
+  line-height: 1;
+}
+.counter-header-art {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding-top: 12px;
+}
+.counter-header-art img {
+  width: 90px;
+  height: 102px;
+  object-fit: contain;
+}
+.counter-header-art span {
+  color: var(--green);
+  font-size: 18px;
+}
+.stall-display .product-section {
+  margin-top: 8px;
+  padding-top: 0;
+}
+.stall-display .product-heading h2 {
+  font-size: 30px;
+  line-height: 1.15;
+}
+.stall-display .product-heading {
+  margin-bottom: 18px;
+}
+.stall-display .category-switcher {
+  position: sticky;
+  top: -22px;
+  background: var(--cream);
+  z-index: 5;
+}
+.stall-label {
+  justify-content: space-between;
+}
+.stall-label > span:first-child {
+  font-size: 16px;
+  opacity: 1;
+}
+.stall:hover .stall-art {
+  transform: translateY(-3px);
+}
+.stall-art {
+  transition:
+    transform 0.2s ease,
+    filter 0.2s ease;
+}
+.sun-halo {
+  animation: sun-breathe 12s ease-in-out infinite alternate;
+}
+@keyframes sun-breathe {
+  from {
+    opacity: 0.35;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 0.55;
+    transform: scale(1.04);
+  }
+}
+.hero > * {
+  animation: hero-arrive 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+@keyframes hero-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(9px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.crate-produce {
+  top: 18%;
+  bottom: 20%;
+}
+.crate-produce > img {
+  width: 48%;
+  max-width: none;
+  top: auto !important;
+}
+.crate-produce > img:nth-child(1) {
+  left: 0;
+  bottom: 4%;
+  transform: rotate(-9deg);
+}
+.crate-produce > img:nth-child(2) {
+  right: 0;
+  bottom: 4%;
+  transform: rotate(8deg);
+}
+.crate-produce > img:nth-child(3),
+.product-card:hover .crate-produce img:nth-child(3) {
+  left: 26%;
+  bottom: 17%;
+  transform: rotate(-2deg);
+}
+.crate-produce > img:nth-child(4) {
+  left: 11%;
+  bottom: -20%;
+}
+.crate-produce > img:nth-child(5) {
+  right: 10%;
+  bottom: -20%;
+}
+@media (max-width: 760px) {
+  .stall-display {
+    width: 100%;
+    max-width: 100%;
+    max-height: 91dvh;
+    margin: auto 0 0;
+    border-radius: 18px 18px 0 0;
+    padding: 12px 18px 24px;
+  }
+  .stall-display .category-switcher {
+    top: -12px;
+  }
+  .stall-display .product-heading h2 {
+    font-size: 24px;
+  }
+  .stall-display .product-heading {
+    gap: 8px;
+  }
+  .stall-display .sample-badge {
+    font-size: 8px;
+    padding: 7px;
+  }
+  .counter-header-art {
+    padding-top: 6px;
+    gap: 14px;
+  }
+  .counter-header-art img {
+    width: 65px;
+    height: 74px;
+  }
+  .counter-header-art span {
+    font-size: 15px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero > *,
+  .sun-halo,
+  .stall-display[open] {
+    animation: none;
+  }
+  .stall-art {
+    transition: none;
+  }
+  .stall:hover .stall-art {
+    transform: none;
+  }
+}
+.stall-display .product-crate {
+  height: 125px;
+}
+.stall-display .crate-back {
+  top: 36%;
+  bottom: 10%;
+  height: auto;
+}
+.stall-display .crate-front {
+  top: 59%;
+  bottom: 7%;
+  height: auto;
+}
+.stall-display .crate-stamp {
+  top: 40%;
+  font-size: 5px;
+}
+.stall-display .product-grid {
+  gap: 18px 16px;
+}
+@media (max-width: 760px) {
+  .stall-display .product-crate {
+    height: 110px;
+  }
+  .stall-display .product-info {
+    min-height: 44px;
+  }
+  .stall-display .product-price > strong {
+    font-size: 20px;
+  }
+}
+/* Keep tall icons inside the stock chamber as well as behind the rim. */
+.crate-produce > img {
+  height: 82%;
+  max-height: 82%;
+  object-fit: contain;
+}

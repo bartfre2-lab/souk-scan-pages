@@ -70,6 +70,8 @@ for (const width of [320, 390, 768, 1440]) {
         errors.push(`${response.status()} ${response.url()}`);
     });
     await page.goto(base, { waitUntil: "networkidle" });
+    await page.locator('.stall[data-category="fruit"]').click();
+    assert.ok(await page.locator("dialog[open]").isVisible());
     assert.equal(await page.locator(".product-card").count(), 4);
     for (const [category, names] of [
       ["vegetable", ["Tomatoes", "Potatoes", "Carrots", "Onions"]],
@@ -94,6 +96,7 @@ for (const width of [320, 390, 768, 1440]) {
           .count(),
         2,
       );
+      await page.locator(".counter-close").click();
       await page.locator(`.stall[data-category="${category}"]`).click();
       assert.match(
         await page.locator("#vendor-kicker").textContent(),
@@ -104,19 +107,38 @@ for (const width of [320, 390, 768, 1440]) {
     await page.locator(".category-switcher button").first().focus();
     await page.keyboard.press("ArrowRight");
     assert.equal(
-      (await page.locator(".category-switcher .is-active").textContent()).trim(),
+      (
+        await page.locator(".category-switcher .is-active").textContent()
+      ).trim(),
       "Vegetables",
     );
     await page.keyboard.press("End");
     assert.equal(
-      (await page.locator(".category-switcher .is-active").textContent()).trim(),
+      (
+        await page.locator(".category-switcher .is-active").textContent()
+      ).trim(),
       "Poultry & eggs",
     );
     await page.keyboard.press("Home");
     assert.equal(
-      (await page.locator(".category-switcher .is-active").textContent()).trim(),
+      (
+        await page.locator(".category-switcher .is-active").textContent()
+      ).trim(),
       "Fruit",
     );
+    const counterA11y = await new AxeBuilder({ page })
+      .withTags(["wcag2a", "wcag2aa", "wcag21aa"])
+      .analyze();
+    assert.deepEqual(
+      counterA11y.violations.map((v) => ({
+        id: v.id,
+        nodes: v.nodes.map((n) => n.target),
+      })),
+      [],
+      "Open price counter accessibility",
+    );
+    await page.keyboard.press("Escape");
+    assert.equal(await page.locator("dialog[open]").count(), 0);
     for (const section of ["#how-it-works", "#download", ".faq-section"]) {
       await page.locator(section).scrollIntoViewIfNeeded();
     }
@@ -208,7 +230,7 @@ test("page works without JavaScript and respects reduced motion", async () => {
     viewport: { width: 390, height: 844 },
   });
   await page.goto(base);
-  assert.ok(await page.locator("noscript").isVisible());
+  assert.ok(await page.locator("noscript").last().isVisible());
   assert.equal(
     await page
       .locator(".sun-halo")
@@ -227,12 +249,20 @@ test("page works without JavaScript and respects reduced motion", async () => {
   await page.close();
 });
 
-test("motion reveals content when scrolled into view", async () => {
+test("selection animates the price counter and other page content remains visible", async () => {
   const page = await browser.newPage({
     viewport: { width: 1440, height: 900 },
     reducedMotion: "no-preference",
   });
   await page.goto(base);
+  await page.locator('.stall[data-category="fruit"]').click();
+  assert.ok(
+    await page
+      .locator(".product-card")
+      .evaluateAll((nodes) => nodes.some((n) => n.getAnimations().length > 0)),
+    "Selected stock animates into the counter",
+  );
+  await page.keyboard.press("Escape");
   for (const selector of [".steps article", ".download-card", ".faq-section"]) {
     for (const element of await page.locator(selector).all()) {
       await element.scrollIntoViewIfNeeded();
