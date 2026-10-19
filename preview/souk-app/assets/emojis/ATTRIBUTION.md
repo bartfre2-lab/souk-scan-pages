@@ -75,3 +75,4 @@ PNGs by `node scripts/render-icons.cjs`.
 | `squash.png` | Courge / squash / pumpkin (`squash`) | Orange ribbed pumpkin with stem and leaf. Distinct from courgette (zucchini), which keeps the shared cucumber icon |
 | `pomegranate.png` | Grenade / pomegranate (`pomegranate`) | Red fruit with its crown |
 | `yellow_melon.png` | Melon jaune / yellow melon (`yellow_melon`) | Smooth yellow oval melon. Distinct from the Souihla melon, which uses `melon.png` |
+

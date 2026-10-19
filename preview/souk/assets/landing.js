@@ -64,13 +64,7 @@ function renderCategory(category, announce = true) {
     card.className = "product-card";
     card.style.setProperty("--i", index);
     // All values below are authored constants, never remote or user-provided HTML.
-    card.innerHTML = `<div class="product-crate" aria-hidden="true">
-      <div class="crate-back"></div>
-      <div class="crate-produce">${Array.from({ length: 6 }, () => `<img src="./assets/products/${image}.png" alt="" width="78" height="78">`).join("")}</div>
-      <div class="crate-front"><span class="crate-stamp">SOUK · SCAN</span></div>
-      <div class="crate-tag"><strong>${price}</strong><span>MAD / ${unit}</span></div>
-      </div><div class="product-info"><h3>${name}</h3><span lang="ar" dir="rtl">${arabic}</span></div>
-      <p class="product-sub">Sample range · ${price} MAD per ${unit}</p>`;
+    card.innerHTML = `<div class="product-crate" aria-hidden="true"><div class="crate-back"></div><div class="crate-produce">${Array.from({ length: 5 }, () => `<img src="./assets/products/${image}.png" alt="" width="78" height="78">`).join("")}</div><div class="crate-front"><span class="crate-stamp">SOUK-SCAN</span></div></div><div class="product-info"><h3>${name}</h3><span lang="ar" dir="rtl">${arabic}</span></div><p class="product-sub">Example range</p><p class="product-price"><strong>${price}</strong><span>MAD / ${unit}</span></p>`;
     fragment.append(card);
   });
   productGrid.replaceChildren(fragment);
@@ -82,17 +76,6 @@ function renderCategory(category, announce = true) {
 categoryButtons.forEach((button) =>
   button.addEventListener("click", () => {
     renderCategory(button.dataset.category);
-    if (button.classList.contains("stall")) {
-      const productsTop =
-        document.querySelector("#stall-products").getBoundingClientRect().top +
-        window.scrollY;
-      window.scrollTo({
-        top: productsTop - (window.innerWidth > 760 ? 110 : 45),
-        behavior: matchMedia("(prefers-reduced-motion: reduce)").matches
-          ? "instant"
-          : "smooth",
-      });
-    }
     // Keep the matching illustrated stall in view when a small-screen visitor uses the category controls.
     if (button.closest(".category-switcher")) {
       const stall = document.querySelector(
@@ -144,49 +127,4 @@ for (const container of document.querySelectorAll(
   });
 }
 
-if (
-  "IntersectionObserver" in window &&
-  !matchMedia("(prefers-reduced-motion: reduce)").matches
-) {
-  const observer = new IntersectionObserver(
-    (entries) => {
-      for (const entry of entries) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
-        }
-      }
-    },
-    { threshold: 0.08 },
-  );
-  for (const element of document.querySelectorAll(
-    ".steps article, .download-card, .faq-section",
-  )) {
-    element.classList.add("reveal-ready");
-    observer.observe(element);
-  }
-}
 document.querySelector("#year").textContent = String(new Date().getFullYear());
-
-// A small amount of depth follows a mouse or pen; touch and reduced-motion users get a still scene.
-const marketWorld = document.querySelector(".market-world");
-if (
-  matchMedia("(hover: hover) and (prefers-reduced-motion: no-preference)")
-    .matches
-) {
-  marketWorld.addEventListener(
-    "pointermove",
-    (event) => {
-      if (event.pointerType === "touch") return;
-      const bounds = marketWorld.getBoundingClientRect();
-      marketWorld.style.setProperty(
-        "--market-x",
-        ((event.clientX - bounds.left) / bounds.width - 0.5).toFixed(3),
-      );
-    },
-    { passive: true },
-  );
-  marketWorld.addEventListener("pointerleave", () =>
-    marketWorld.style.setProperty("--market-x", "0"),
-  );
-}

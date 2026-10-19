@@ -1,8 +1,8 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
     <meta name="robots" content="noindex, nofollow" />
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#f7f4ee" />
     <title>SOUK-SCAN — A little local knowledge goes a long way.</title>
@@ -10,7 +10,7 @@
       name="description"
       content="Step into a Moroccan souk. Explore fruit, vegetables, meat and poultry, and discover SOUK-SCAN: community-reported food prices across Morocco. Download for Android or try the web app."
     />
-    <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="./assets/brand/logo.png" type="image/png" />
     <link
       rel="preload"
       href="./assets/fonts/inter-400.woff2"
@@ -25,17 +25,19 @@
     <a class="skip-link" href="#souk">Skip to the interactive souk</a>
     <header class="site-header wrap">
       <a class="brand" href="./" aria-label="SOUK-SCAN home"
-        ><svg viewBox="0 0 36 36" aria-hidden="true">
-          <path d="M5 15V9h6M25 9h6v6M31 25v6h-6M11 31H5v-6" />
-          <path d="M10 21h16M12 21v-6h12v6M14 15v-3h8v3M13 22v5m10-5v5" /></svg
-        ><span
-          >SOUK<span class="brand-dash">—</span>SCAN<span class="brand-sub"
-            >LOCAL KNOWLEDGE. SHARED.</span
+        ><img
+          src="./assets/brand/logo.png"
+          alt=""
+          width="44"
+          height="44"
+        /><span class="scanner-wordmark"
+          ><span aria-hidden="true">[</span>SOUK-SCAN<span aria-hidden="true"
+            >]</span
           ></span
         ></a
       >
       <nav aria-label="Main navigation">
-        <a href="#souk">The souk</a><a href="#how-it-works">How it works</a
+        <a href="#how-it-works">How it works</a
         ><a class="nav-app" href="../../app/"
           >Open web app
           <span aria-hidden="true"
@@ -408,94 +410,24 @@
               Use the web app in your browser.
             </p>
           </div>
-          <div
-            class="phone-scene"
-            aria-label="Illustration of the SOUK-SCAN mobile price browsing experience"
-          >
-            <span class="phone-orbit orbit-one" aria-hidden="true"></span
-            ><span class="phone-orbit orbit-two" aria-hidden="true"></span
-            ><span class="floating-produce produce-orange" aria-hidden="true"
-              ><img
-                src="./assets/products/orange.png"
-                width="100"
-                height="100"
-                alt=""
-                loading="lazy" /></span
-            ><span class="floating-produce produce-tomato" aria-hidden="true"
-              ><img
-                src="./assets/products/tomato.png"
-                width="90"
-                height="90"
-                alt=""
-                loading="lazy"
-            /></span>
-            <div class="phone">
-              <div class="phone-camera"></div>
-              <div class="phone-status">
-                <span>9:41</span><span aria-hidden="true">▮▮▮ ▰</span>
-              </div>
-              <div class="phone-app-brand">
-                SOUK—SCAN
-                <span
-                  ><svg
-                    class="icon-star"
-                    viewBox="0 0 32 32"
-                    aria-hidden="true"
-                  >
-                    <path d="M16 2v28M2 16h28M6 6l20 20M6 26 26 6" /></svg
-                ></span>
-              </div>
-              <div class="phone-location">⌖ Your region <span>⌄</span></div>
-              <div class="phone-title">
-                A clearer picture.<br />A better market day.
-              </div>
-              <div class="phone-search">
-                ⌕ <span>What’s on your list?</span>
-              </div>
-              <div class="phone-category">Vegetables <span>See all</span></div>
-              <div class="phone-products">
-                <div>
-                  <img
-                    src="./assets/products/tomato.png"
-                    alt=""
-                    width="65"
-                    height="65"
-                    loading="lazy"
-                  /><strong>Tomatoes</strong><span>Recent local prices</span>
-                </div>
-                <div>
-                  <img
-                    src="./assets/products/carrot.png"
-                    alt=""
-                    width="65"
-                    height="65"
-                    loading="lazy"
-                  /><strong>Carrots</strong><span>Recent local prices</span>
-                </div>
-              </div>
-              <div class="phone-contribute">
-                <span>Good knowledge is shared.</span
-                ><strong>Share a price <span>+</span></strong>
-              </div>
-              <div class="phone-nav">
-                <span>⌂</span><span>♡</span><span>＋</span><span>☰</span>
-              </div>
-              <div class="phone-preview-label">App experience illustration</div>
-            </div>
-            <div class="pocket-note">
-              Made for your<br /><em>market day.</em
-              ><svg class="pocket-arrow" viewBox="0 0 50 65" aria-hidden="true">
-                <path d="M6 60q43-6 23-51m-5 16 5-16 14 8" />
-              </svg>
-            </div>
-          </div>
+          <figure class="phone-scene">
+            <img
+              class="app-screen-preview"
+              src="./assets/app-preview.png"
+              alt="SOUK-SCAN design preview with the Moroccan street, vendor stalls and regional prices"
+              width="390"
+              height="844"
+              loading="lazy"
+            />
+            <figcaption>Souk interface · design preview</figcaption>
+          </figure>
         </div>
       </section>
 
       <section class="faq-section wrap" aria-labelledby="faq-title">
         <div>
           <div class="eyebrow">A FEW THINGS TO KNOW</div>
-          <h2 id="faq-title">Before you<br /><em>head to the souk.</em></h2>
+          <h2 id="faq-title">Before you <br /><em>head to the souk.</em></h2>
         </div>
         <div class="faq-list">
           <details>
@@ -548,22 +480,18 @@
     </main>
     <footer class="site-footer wrap">
       <div class="footer-main">
-        <a class="footer-brand" href="./"
-          >SOUK—SCAN<span>From the souk. For everyone.</span></a
+        <a class="brand" href="./" aria-label="SOUK-SCAN home"
+          ><img
+            src="./assets/brand/logo.png"
+            alt=""
+            width="44"
+            height="44"
+          /><span class="scanner-wordmark"
+            ><span aria-hidden="true">[</span>SOUK-SCAN<span aria-hidden="true"
+              >]</span
+            ></span
+          ></a
         >
-        <p>
-          Built with care, for everyday life in Morocco.<br /><span
-            lang="ar"
-            dir="rtl"
-            >معرفة محلية، نشاركها جميعاً.</span
-          >
-        </p>
-        <a class="text-link" href="mailto:sanamdev@soukscan.online"
-          >Say salaam
-          <span aria-hidden="true"
-            ><svg class="icon-arrow" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M6 18 18 6M6 6h12v12" /></svg></span
-        ></a>
       </div>
       <div class="footer-bottom">
         <span>© <span id="year">2026</span> SOUK-SCAN</span>
