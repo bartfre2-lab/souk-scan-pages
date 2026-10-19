@@ -46,13 +46,63 @@ const vendors = {
 const productGrid = document.querySelector("#product-grid");
 const categoryButtons = [...document.querySelectorAll("button[data-category]")];
 let activeCategory = null;
+const counter = document.querySelector(".stall-display");
+const reducedMotion = () =>
+  matchMedia("(prefers-reduced-motion: reduce)").matches;
+document
+  .querySelector(".counter-close")
+  .addEventListener("click", () => counter.close());
+counter.addEventListener("click", (event) => {
+  if (event.target === counter) {
+    const r = counter.getBoundingClientRect();
+    if (
+      event.clientX < r.left ||
+      event.clientX > r.right ||
+      event.clientY < r.top ||
+      event.clientY > r.bottom
+    )
+      counter.close();
+  }
+});
+function animateStock() {
+  if (!reducedMotion())
+    [...productGrid.children].forEach((card, index) =>
+      card.animate(
+        [
+          { opacity: 0, transform: "translateY(14px) scale(.97)" },
+          { opacity: 1, transform: "translateY(0) scale(1)" },
+        ],
+        {
+          duration: 320,
+          delay: index * 45,
+          easing: "cubic-bezier(.2,.7,.2,1)",
+          fill: "backwards",
+        },
+      ),
+    );
+}
+function showCounter(category) {
+  renderCategory(category);
+  if (!counter.open) {
+    counter.showModal();
+    animateStock();
+  }
+  counter.scrollTop = 0;
+}
 
 function renderCategory(category, announce = true) {
   const vendor = vendors[category];
   if (!vendor || activeCategory === category) return;
   activeCategory = category;
   document.querySelector("#vendor-kicker").textContent = vendor.kicker;
-  document.querySelector("#products-title").textContent = vendor.title;
+  document.querySelector("#products-title").textContent = {
+    fruit: "Fruit prices",
+    vegetable: "Vegetable prices",
+    meat: "Meat prices",
+    poultry: "Poultry & egg prices",
+  }[category];
+  document.querySelector(".counter-header-art img").src =
+    `./assets/stall-${category}.svg`;
   categoryButtons.forEach((button) => {
     const selected = button.dataset.category === category;
     button.classList.toggle("is-active", selected);
@@ -68,6 +118,7 @@ function renderCategory(category, announce = true) {
     fragment.append(card);
   });
   productGrid.replaceChildren(fragment);
+  if (counter.open) animateStock();
   if (announce)
     document.querySelector("#selection-status").textContent =
       `${vendor.kicker.toLowerCase()}: ${vendor.products.length} products shown. Illustrative prices in Moroccan dirhams.`;
@@ -75,22 +126,7 @@ function renderCategory(category, announce = true) {
 
 categoryButtons.forEach((button) =>
   button.addEventListener("click", () => {
-    renderCategory(button.dataset.category);
-    // Keep the matching illustrated stall in view when a small-screen visitor uses the category controls.
-    if (button.closest(".category-switcher")) {
-      const stall = document.querySelector(
-        `.stall[data-category="${button.dataset.category}"]`,
-      );
-      const scroller = document.querySelector(".market-scroll");
-      const targetLeft =
-        stall.offsetLeft + stall.offsetWidth / 2 - scroller.clientWidth / 2;
-      scroller.scrollTo({
-        left: targetLeft,
-        behavior: matchMedia("(prefers-reduced-motion: reduce)").matches
-          ? "instant"
-          : "smooth",
-      });
-    }
+    showCounter(button.dataset.category);
   }),
 );
 renderCategory("fruit", false);
@@ -117,10 +153,17 @@ for (const container of document.querySelectorAll(
     if (container.classList.contains("stall-row")) {
       const scroller = document.querySelector(".market-scroll");
       scroller.scrollTo({
-        left:
-          buttons[nextIndex].offsetLeft +
-          buttons[nextIndex].offsetWidth / 2 -
-          scroller.clientWidth / 2,
+        left: Math.max(
+          0,
+          Math.min(
+            scroller.scrollWidth - scroller.clientWidth,
+            scroller.scrollLeft +
+              buttons[nextIndex].getBoundingClientRect().left -
+              scroller.getBoundingClientRect().left +
+              buttons[nextIndex].offsetWidth / 2 -
+              scroller.clientWidth / 2,
+          ),
+        ),
         behavior: "instant",
       });
     }
