@@ -82,10 +82,8 @@ for (const width of [320, 390, 768, 1440]) {
       ],
       ["fruit", ["Oranges", "Apples", "Bananas", "Pomegranates"]],
     ]) {
-      // Category control also brings the correct illustrated vendor into view on mobile.
-      await page
-        .locator(`.category-switcher [data-category="${category}"]`)
-        .click();
+      // The actual stalls are the category controls; no detached selector is needed.
+      await page.locator(`.stall[data-category="${category}"]`).click();
       assert.deepEqual(
         await page.locator(".product-card h3").allTextContents(),
         names,
@@ -94,7 +92,7 @@ for (const width of [320, 390, 768, 1440]) {
         await page
           .locator(`button[data-category="${category}"][aria-pressed="true"]`)
           .count(),
-        2,
+        1,
       );
       await page.locator(`.stall[data-category="${category}"]`).click();
       assert.match(
@@ -103,25 +101,25 @@ for (const width of [320, 390, 768, 1440]) {
       );
       assert.ok(await page.locator(".product-card").first().isVisible());
     }
-    await page.locator(".category-switcher button").first().focus();
+    await page.locator(".stall-row button").first().focus();
     await page.keyboard.press("ArrowRight");
     assert.equal(
       (
-        await page.locator(".category-switcher .is-active").textContent()
+        await page.locator(".stall-row .is-active .stall-label").textContent()
       ).trim(),
       "Vegetables",
     );
     await page.keyboard.press("End");
     assert.equal(
       (
-        await page.locator(".category-switcher .is-active").textContent()
+        await page.locator(".stall-row .is-active .stall-label").textContent()
       ).trim(),
       "Poultry & eggs",
     );
     await page.keyboard.press("Home");
     assert.equal(
       (
-        await page.locator(".category-switcher .is-active").textContent()
+        await page.locator(".stall-row .is-active .stall-label").textContent()
       ).trim(),
       "Fruit",
     );
@@ -136,11 +134,9 @@ for (const width of [320, 390, 768, 1440]) {
       [],
       "Inline souk display accessibility",
     );
-    // All four categories can be centered, including at the wraparound edge.
+    // Every selection keeps all four stalls fully visible with no overlap.
     for (const category of ["poultry", "fruit", "meat", "vegetable"]) {
-      await page
-        .locator(`.category-switcher [data-category="${category}"]`)
-        .click();
+      await page.locator(`.stall[data-category="${category}"]`).click();
       const geometry = await page
         .locator(`.stall[data-category="${category}"]`)
         .evaluate((el) => {
@@ -162,14 +158,50 @@ for (const width of [320, 390, 768, 1440]) {
         geometry.width > geometry.otherWidth,
         "Selected stall is enlarged",
       );
+      const visible = await page.locator(".stall").evaluateAll((nodes) => {
+        const frame = document
+          .querySelector(".market-scroll")
+          .getBoundingClientRect();
+        const rects = nodes.map((n) => n.getBoundingClientRect());
+        return (
+          rects.every(
+            (r) =>
+              r.left >= frame.left - 1 &&
+              r.right <= frame.right + 1 &&
+              r.top >= frame.top - 1 &&
+              r.bottom <= frame.bottom + 1,
+          ) &&
+          rects.every((a, i) =>
+            rects
+              .slice(i + 1)
+              .every(
+                (b) =>
+                  a.right <= b.left ||
+                  b.right <= a.left ||
+                  a.bottom <= b.top ||
+                  b.bottom <= a.top,
+              ),
+          )
+        );
+      });
+      assert.ok(visible, "All four stalls fit and stay separate");
+      assert.ok(
+        await page.locator(".market-frame #product-grid").isVisible(),
+        "Stock shares the souk scene",
+      );
+      assert.equal(await page.locator(".category-switcher").count(), 0);
     }
-    await page.locator('.category-switcher [data-category="poultry"]').click();
-    await page.locator(".carousel-next").click();
+    assert.equal(
+      await page.locator("#market-progress").textContent(),
+      "4 of 4 stalls explored",
+    );
+    await page.locator('.stall[data-category="poultry"]').focus();
+    await page.keyboard.press("ArrowRight");
     assert.equal(
       await page.locator(".stall.is-active").getAttribute("data-category"),
       "fruit",
     );
-    await page.locator(".carousel-prev").click();
+    await page.keyboard.press("ArrowLeft");
     assert.equal(
       await page.locator(".stall.is-active").getAttribute("data-category"),
       "poultry",
@@ -284,24 +316,32 @@ test("page works without JavaScript and respects reduced motion", async () => {
   await page.close();
 });
 
-test("carousel selection animates stalls and stock while swipe and rapid selections stay correct", async () => {
+test("courtyard motion retargets rapidly, keeps the scene visible and supports swipes", async () => {
   const page = await browser.newPage({
     viewport: { width: 1440, height: 900 },
     reducedMotion: "no-preference",
   });
   await page.goto(base);
-  await page.locator(".carousel-next").click();
+  await page.locator('.stall[data-category="vegetable"]').click();
   assert.ok(
     await page
       .locator(".product-card")
       .evaluateAll((nodes) => nodes.some((n) => n.getAnimations().length > 0)),
     "Selected stock animates into the counter",
   );
-  for (const category of ["poultry", "fruit", "meat", "vegetable"])
+  await page.evaluate(() => {
+    for (const category of ["poultry", "fruit", "meat", "vegetable"])
+      document.querySelector(`.stall[data-category="${category}"]`).click();
+  });
+  assert.ok(
     await page
-      .locator(`.category-switcher [data-category="${category}"]`)
-      .click();
-  await page.waitForTimeout(850);
+      .locator(".stall")
+      .evaluateAll((nodes) =>
+        nodes.every((n) => n.getAnimations().length <= 1),
+      ),
+    "One motion per stall after rapid retargeting",
+  );
+  await page.waitForTimeout(450);
   assert.equal(
     await page.locator(".stall.is-active").getAttribute("data-category"),
     "vegetable",
