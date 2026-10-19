@@ -51,47 +51,111 @@ const reducedMotion = () =>
 const stalls = [...document.querySelectorAll(".stall")];
 const categories = Object.keys(vendors);
 const stage = document.querySelector(".market-scroll");
+const explored = new Set();
 function animateStock() {
   if (reducedMotion()) return;
   [...productGrid.children].forEach((card, index) =>
     card.animate(
       [
-        { opacity: 0, transform: "translateY(-18px) scale(.94)" },
+        { opacity: 0, transform: "translateY(8px)" },
         { opacity: 1, transform: "translateY(0) scale(1)" },
       ],
       {
-        duration: 520,
-        delay: 100 + index * 65,
-        easing: "cubic-bezier(.16,1,.3,1)",
+        duration: 260,
+        delay: index * 35,
+        easing: "cubic-bezier(.2,.7,.2,1)",
         fill: "backwards",
       },
     ),
   );
 }
-function positionStalls(category) {
-  document.querySelector(".stall-row").classList.add("is-ready");
-  const active = categories.indexOf(category);
-  stalls.forEach((stall, index) => {
-    let distance = (index - active + categories.length) % categories.length;
-    if (distance > 1) distance -= categories.length;
-    stall.style.setProperty("--slot", distance);
-    stall.style.zIndex =
-      distance === 0 ? "3" : Math.abs(distance) === 1 ? "2" : "0";
-    stall.classList.toggle("is-distant", Math.abs(distance) > 1);
+function positionStalls(category, animate = false) {
+  const width = stage.clientWidth;
+  const compact = width < 700;
+  const backWidth = Math.min(compact ? 100 : 156, (width - 34) / 3);
+  const frontWidth = Math.min(compact ? 172 : 224, width * 0.52);
+  const backY = 8;
+  const backHeight = backWidth * (248 / 240) + 32;
+  const frontY = backY + backHeight + 12;
+  const frontHeight = frontWidth * (248 / 240) + 32;
+  const sideInset = compact ? 10 : width * 0.17;
+  const backCenters = [
+    sideInset + backWidth / 2,
+    width / 2,
+    width - sideInset - backWidth / 2,
+  ];
+  let backIndex = 0;
+  stage.style.setProperty("--scene-height", `${frontY + frontHeight + 6}px`);
+  stalls.forEach((stall) => {
+    const current = getComputedStyle(stall);
+    const matrix = new DOMMatrixReadOnly(
+      current.transform === "none" ? undefined : current.transform,
+    );
+    const before = {
+      x: matrix.m41,
+      y: matrix.m42,
+      width: parseFloat(current.width),
+    };
+    const wasSelected = stall.classList.contains("is-active");
+    stall.getAnimations().forEach((animation) => animation.cancel());
+    const selected = stall.dataset.category === category;
+    const stallWidth = selected ? frontWidth : backWidth;
+    const center = selected ? width / 2 : backCenters[backIndex++];
+    stall.style.setProperty("--stall-width", `${stallWidth}px`);
+    stall.style.setProperty("--stall-x", `${center - stallWidth / 2}px`);
+    stall.style.setProperty("--stall-y", `${selected ? frontY : backY}px`);
+    stall.style.zIndex = selected ? "4" : wasSelected ? "3" : "2";
+    stall.classList.toggle("is-explored", explored.has(stall.dataset.category));
+    const mark = selected
+      ? '<path d="m5 12 4 4L19 6"/>'
+      : explored.has(stall.dataset.category)
+        ? '<circle cx="12" cy="12" r="3" fill="currentColor" stroke="none"/>'
+        : '<path d="M6 18 18 6M6 6h12v12"/>';
+    stall.querySelector(".stall-arrow").innerHTML =
+      `<svg viewBox="0 0 24 24" aria-hidden="true">${mark}</svg>`;
+    if (animate && !reducedMotion()) {
+      const x = center - stallWidth / 2,
+        y = selected ? frontY : backY;
+      const frames = [
+        {
+          transform: `translate3d(${before.x}px,${before.y}px,0)`,
+          width: `${before.width}px`,
+        },
+      ];
+      if (selected || wasSelected) {
+        const middleWidth = (before.width + stallWidth) / 2;
+        const lane = Math.min(120, width * 0.21) * (selected ? 1 : -1);
+        const middleX = Math.max(
+          4,
+          Math.min(width - middleWidth - 4, (before.x + x) / 2 + lane),
+        );
+        frames.push({
+          transform: `translate3d(${middleX}px,${(before.y + y) / 2}px,0)`,
+          width: `${middleWidth}px`,
+          offset: 0.5,
+        });
+      }
+      frames.push({
+        transform: `translate3d(${x}px,${y}px,0)`,
+        width: `${stallWidth}px`,
+      });
+      stall.animate(frames, {
+        duration: 380,
+        easing: "cubic-bezier(.25,.65,.3,1)",
+      });
+    }
   });
+  document.querySelector(".stall-row").classList.add("is-ready");
 }
+new ResizeObserver(() => {
+  if (activeCategory) positionStalls(activeCategory);
+}).observe(stage);
 function step(direction) {
   const index = categories.indexOf(activeCategory);
   renderCategory(
     categories[(index + direction + categories.length) % categories.length],
   );
 }
-document
-  .querySelector(".carousel-prev")
-  .addEventListener("click", () => step(-1));
-document
-  .querySelector(".carousel-next")
-  .addEventListener("click", () => step(1));
 let gesture = null;
 stage.addEventListener("pointerdown", (event) => {
   if (event.isPrimary)
@@ -125,6 +189,9 @@ function renderCategory(category, announce = true) {
   const vendor = vendors[category];
   if (!vendor || activeCategory === category) return;
   activeCategory = category;
+  explored.add(category);
+  document.querySelector("#market-progress").textContent =
+    `${explored.size} of 4 stalls explored`;
   document.querySelector("#vendor-kicker").textContent = vendor.kicker;
   document.querySelector("#products-title").textContent = {
     fruit: "Fruit prices",
@@ -132,9 +199,7 @@ function renderCategory(category, announce = true) {
     meat: "Meat prices",
     poultry: "Poultry & egg prices",
   }[category];
-  document.querySelector(".carousel-caption").textContent =
-    document.querySelector("#products-title").textContent;
-  positionStalls(category);
+  positionStalls(category, announce);
   categoryButtons.forEach((button) => {
     const selected = button.dataset.category === category;
     button.classList.toggle("is-active", selected);
@@ -168,9 +233,7 @@ categoryButtons.forEach((button) =>
 renderCategory("fruit", false);
 
 // Native buttons retain normal Tab / Shift+Tab behavior. Arrow keys are an additional convenience.
-for (const container of document.querySelectorAll(
-  ".stall-row, .category-switcher",
-)) {
+for (const container of document.querySelectorAll(".stall-row")) {
   container.addEventListener("keydown", (event) => {
     if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
     const buttons = [...container.querySelectorAll("button")];
