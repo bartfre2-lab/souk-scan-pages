@@ -1,65 +1,47 @@
 # SOUK-SCAN Pages
 
-Static website for SOUK-SCAN. The landing page uses the app’s warm ivory
-`#F7F4EE`, charcoal `#2B2621`, and muted green `#4A6B53` palette, with original
-Moroccan medina and vendor artwork, animated transitions, and food illustrations
-from the app. No build step, runtime package dependency, or backend configuration
-is needed to host it on GitHub Pages.
+Static SOUK-SCAN landing page and existing app hosting. No build is needed.
+Run `npm run dev` and open http://localhost:4173.
 
-## Preview
+The website uses the real app logo and the intentional `[SOUK-SCAN]` scanner
+wordmark, with the existing ivory, charcoal and muted-green palette. The Moroccan street and four vendor stalls remain the central interaction.
+All four category shortcuts fit on mobile; selecting one updates the product
+grid without moving the page vertically. Full wooden crates use clipped stock
+chambers behind opaque fronts and corner posts, including the small crates in
+the stall artwork. Product names, example price ranges and units stay upright
+outside the art.
 
-Run `npm run dev` (Python 3 required), then open http://localhost:4173.
+Prices on the landing page are explicitly labeled examples. The existing
+`app/` contains real regional prices. No checkout or delivery is implied.
 
-- `index.html`: landing page, download, FAQ, and navigation.
-- `assets/landing.css` and `assets/landing.js`: responsive styling and stall interactions.
-- `assets/stall-*.svg` and `assets/medina.svg`: original illustrations.
-- `scripts/generate-art.py`: regenerate the original SVG artwork with `npm run art`.
-- `assets/products/ATTRIBUTION.md`: reused product artwork attribution.
-- `app/`: existing web app bundle; maintained separately.
-- `privacy/`, `terms/`, `account-deletion/`: existing policy pages.
+## Files
 
-## Prices and interaction
+- `index.html`, `assets/landing.css`, `assets/landing.js`: the landing page.
+- `assets/brand/`: the actual SOUK-SCAN logo.
+- `assets/products/ATTRIBUTION.md`: existing product art attribution.
+- `downloads/`: original signed Android v1.0.2 APK and release checksums.
+- `app/`, `privacy/`, `terms/`, `account-deletion/`: maintained separately.
 
-Selecting a vendor updates the product crates and scrolls to the preview.
-Category buttons also move the illustrated stall into view on small screens.
-Keyboard users can use Tab, Enter/Space, and optional Left/Right/Home/End keys.
-Stall selections are announced to screen readers. Reduced-motion preferences
-turn off decorative motion and smooth scrolling. Core page content, FAQ,
-download, and web-app links work without JavaScript.
+The download is hosted here because the app's GitHub release is private. Its
+SHA-256 matches the release checksum. This does not imply a new Android release.
 
-**All landing-page prices are illustrative, explicitly labeled sample ranges.**
-The page does not request or imply live market data. Real regional prices,
-freshness, and insufficient-data states remain in the app. Meat previews contain
-only the two meat products supported by the app. Eggs use MAD per egg, while
-other products use MAD per kg.
-
-## Android download
-
-`downloads/SOUK-SCAN-v1.0.2.apk` is the existing signed v1.0.2 release APK,
-verified against its published `SHA256SUMS.txt`. It is hosted here so visitors
-can download without access to the private source repository. No new Android
-build or signing changes were made. There is no implied Play Store or iOS release.
-
-For a future release, obtain the approved signed APK and its checksum, verify
-with `sha256sum -c SHA256SUMS.txt --ignore-missing` in `downloads/`, and update
-the download filename, version and size in `index.html` and the test assertion.
-The checksum file also lists the AAB from the original release; that file is not
-hosted on this website.
-
-## Browser verification
+## Verification
 
 ```sh
 npm ci
-npx playwright install chromium  # if a system Chromium is unavailable
+npx playwright install chromium  # if system Chromium is unavailable
 npm test
 ```
 
-Tests use system `/usr/bin/chromium` when present, the `CHROMIUM_PATH` override,
-or the browser installed by Playwright. They start their own local static server
-on an available port and cover four viewport widths (320, 390, 768, 1440), all
-four categories, keyboard selection, images, JS/resource errors, horizontal
-overflow, FAQ controls, WCAG A/AA axe checks, internal links, APK download and
-checksum, motion reveals, and the no-JavaScript fallback.
+Browser checks cover four screen widths, category selection, product labels,
+keyboard controls, accessibility, resource errors, image loading, overflow,
+page links, download behavior/checksum, no-JavaScript access and reduced motion.
+They complement visual inspection; passing them is not a claim of visual quality.
 
-To publish, merge the website branch through the normal GitHub Pages workflow.
-This change does not update the app bundle or the policy pages.
+There are no automatic scene movements, floating objects, animated vendors,
+scroll-triggered hidden content, rotating tags, or forced scrolling. Focus and
+selection states are explicit. Reduced-motion preferences disable transitions.
+
+The review version is published under `/preview/souk/`. The separate app review
+is under `/preview/souk-app/`; the current public homepage and `/app/` remain
+separate from those review builds.
