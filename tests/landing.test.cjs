@@ -71,7 +71,7 @@ for (const width of [320, 390, 768, 1440]) {
     });
     await page.goto(base, { waitUntil: "networkidle" });
     await page.locator('.stall[data-category="fruit"]').click();
-    assert.ok(await page.locator("dialog[open]").isVisible());
+    assert.equal(await page.locator("dialog").count(), 0);
     assert.equal(await page.locator(".product-card").count(), 4);
     for (const [category, names] of [
       ["vegetable", ["Tomatoes", "Potatoes", "Carrots", "Onions"]],
@@ -96,7 +96,6 @@ for (const width of [320, 390, 768, 1440]) {
           .count(),
         2,
       );
-      await page.locator(".counter-close").click();
       await page.locator(`.stall[data-category="${category}"]`).click();
       assert.match(
         await page.locator("#vendor-kicker").textContent(),
@@ -135,10 +134,46 @@ for (const width of [320, 390, 768, 1440]) {
         nodes: v.nodes.map((n) => n.target),
       })),
       [],
-      "Open price counter accessibility",
+      "Inline souk display accessibility",
     );
-    await page.keyboard.press("Escape");
-    assert.equal(await page.locator("dialog[open]").count(), 0);
+    // All four categories can be centered, including at the wraparound edge.
+    for (const category of ["poultry", "fruit", "meat", "vegetable"]) {
+      await page
+        .locator(`.category-switcher [data-category="${category}"]`)
+        .click();
+      const geometry = await page
+        .locator(`.stall[data-category="${category}"]`)
+        .evaluate((el) => {
+          const r = el.getBoundingClientRect(),
+            f = document
+              .querySelector(".market-scroll")
+              .getBoundingClientRect();
+          const other = [...document.querySelectorAll(".stall:not(.is-active)")]
+            .find((n) => !n.classList.contains("is-distant"))
+            .getBoundingClientRect();
+          return {
+            offset: Math.abs(r.left + r.width / 2 - f.left - f.width / 2),
+            width: r.width,
+            otherWidth: other.width,
+          };
+        });
+      assert.ok(geometry.offset < 2, "Selected stall is centered");
+      assert.ok(
+        geometry.width > geometry.otherWidth,
+        "Selected stall is enlarged",
+      );
+    }
+    await page.locator('.category-switcher [data-category="poultry"]').click();
+    await page.locator(".carousel-next").click();
+    assert.equal(
+      await page.locator(".stall.is-active").getAttribute("data-category"),
+      "fruit",
+    );
+    await page.locator(".carousel-prev").click();
+    assert.equal(
+      await page.locator(".stall.is-active").getAttribute("data-category"),
+      "poultry",
+    );
     for (const section of ["#how-it-works", "#download", ".faq-section"]) {
       await page.locator(section).scrollIntoViewIfNeeded();
     }
@@ -249,20 +284,45 @@ test("page works without JavaScript and respects reduced motion", async () => {
   await page.close();
 });
 
-test("selection animates the price counter and other page content remains visible", async () => {
+test("carousel selection animates stalls and stock while swipe and rapid selections stay correct", async () => {
   const page = await browser.newPage({
     viewport: { width: 1440, height: 900 },
     reducedMotion: "no-preference",
   });
   await page.goto(base);
-  await page.locator('.stall[data-category="fruit"]').click();
+  await page.locator(".carousel-next").click();
   assert.ok(
     await page
       .locator(".product-card")
       .evaluateAll((nodes) => nodes.some((n) => n.getAnimations().length > 0)),
     "Selected stock animates into the counter",
   );
-  await page.keyboard.press("Escape");
+  for (const category of ["poultry", "fruit", "meat", "vegetable"])
+    await page
+      .locator(`.category-switcher [data-category="${category}"]`)
+      .click();
+  await page.waitForTimeout(850);
+  assert.equal(
+    await page.locator(".stall.is-active").getAttribute("data-category"),
+    "vegetable",
+  );
+  await page.locator(".market-scroll").scrollIntoViewIfNeeded();
+  const stage = await page.locator(".market-scroll").boundingBox();
+  await page.mouse.move(
+    stage.x + stage.width * 0.55,
+    stage.y + stage.height * 0.4,
+  );
+  await page.mouse.down();
+  await page.mouse.move(
+    stage.x + stage.width * 0.3,
+    stage.y + stage.height * 0.4,
+    { steps: 8 },
+  );
+  await page.mouse.up();
+  assert.equal(
+    await page.locator(".stall.is-active").getAttribute("data-category"),
+    "meat",
+  );
   for (const selector of [".steps article", ".download-card", ".faq-section"]) {
     for (const element of await page.locator(selector).all()) {
       await element.scrollIntoViewIfNeeded();

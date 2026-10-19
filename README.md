@@ -5,9 +5,11 @@ Run `npm run dev` and open http://localhost:4173.
 
 The website uses the real app logo and the intentional `[SOUK-SCAN]` scanner
 wordmark, with the existing ivory, charcoal and muted-green palette. The Moroccan street and four vendor stalls remain the central interaction.
-Selecting a stall opens its price counter in an animated dialog over the
-street, with compact crates, category shortcuts, Escape/backdrop dismissal and
-a clear return control. It does not force visitors down the page. Full wooden crates use clipped stock
+Selecting a stall animates it into the center of a circular carousel, enlarges
+it and displays its stock directly below in the same street scene. Neighboring
+stalls recede in depth. Touch swipes, arrows, category shortcuts and keyboard
+controls cycle through all four categories without automatic rotation or
+forced vertical scrolling. Full wooden crates use clipped stock
 chambers behind opaque fronts and corner posts, including the small crates in
 the stall artwork. Product names, example price ranges and units stay upright
 outside the art.
@@ -39,10 +41,11 @@ keyboard controls, accessibility, resource errors, image loading, overflow,
 page links, download behavior/checksum, no-JavaScript access and reduced motion.
 They complement visual inspection; passing them is not a claim of visual quality.
 
-Purposeful motion includes a short hero entrance, subtle sunlight, stall hover
-feedback, an arriving price counter and staggered crate entrances. Vendor
-figures and stock stay stable. Reduced-motion preferences disable these effects.
-The native dialog provides focus containment and restores focus on dismissal.
+Purposeful motion includes a short hero entrance, subtle sunlight, smooth
+carousel translation/scale/depth transitions and staggered crate entrances
+beneath the chosen stall. Reduced-motion preferences disable these effects.
+Browser checks include centered/enlarged selection, wraparound, rapid changes
+and swipe gestures.
 
 `npm run art` regenerates the shared stall illustrations using Python 3, Pillow
 and `/usr/share/fonts/truetype/noto/NotoNaskhArabic-Regular.ttf`. The signs embed
