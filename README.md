@@ -5,12 +5,13 @@ Run `npm run dev` and open http://localhost:4173.
 
 The website uses the real app logo and the intentional `[SOUK-SCAN]` scanner
 wordmark, with the existing ivory, charcoal and muted-green palette. The Moroccan street and four vendor stalls remain the central interaction.
-All four stalls remain visible in a virtual courtyard. Selecting one brings it
-forward while the other three remain available behind it. Its stock is laid
-out on the same continuous souk floor, without a separate product panel or
-category bar. A small exploration indicator records the categories visited.
-Touch swipes and keyboard controls also move between categories. Nothing
-rotates automatically or forces vertical scrolling. Full wooden crates use clipped stock
+The four categories repeat along an endless horizontal street. Touch and mouse
+drags move the stalls directly, then the nearest stall settles in the center
+with a slight enlargement and highlight. Five or more stalls fit across the
+viewport, keeping all four unique categories visible. The stock remains on the
+same souk floor below. Horizontal trackpad scrolling and keyboard navigation
+also work. Nothing rotates automatically or forces vertical scrolling.
+Full wooden crates use clipped stock
 chambers behind opaque fronts and corner posts, including the small crates in
 the stall artwork. Product names, example price ranges and units stay upright
 outside the art.
@@ -42,11 +43,16 @@ keyboard controls, accessibility, resource errors, image loading, overflow,
 page links, download behavior/checksum, no-JavaScript access and reduced motion.
 They complement visual inspection; passing them is not a claim of visual quality.
 
-Motion uses short curved paths for the incoming and outgoing vendors, with a
-brief stock entrance. New selections retarget from the current visual position
-and cancel previous motion, avoiding stacked animations. Reduced-motion
-preferences disable the effects. Browser checks cover all four stalls fitting
-without overlap, centered focus, exploration feedback, rapid changes and swipes.
+`assets/souk-loop.js` recycles identical offscreen copies around an unbounded
+position, so wrapping never sends the row back in the opposite direction.
+There is one settling animation at a time, and a new drag takes control from
+its current position. Copies are decorative; the four real category buttons
+remain available to keyboard and screen-reader users. Reduced-motion mode
+keeps direct manipulation and centers the chosen stall immediately on release.
+
+Browser checks cover multiple full loops in both directions, direct mouse and
+mobile touch dragging, centered selection, a stationary resting state, vertical
+page scrolling, rapid selections and all four categories staying visible.
 
 `npm run art` regenerates the shared stall illustrations using Python 3, Pillow
 and `/usr/share/fonts/truetype/noto/NotoNaskhArabic-Regular.ttf`. The signs embed

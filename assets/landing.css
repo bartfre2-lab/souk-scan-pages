@@ -2334,7 +2334,7 @@ h2 {
   object-fit: contain;
 }
 
-/* A courtyard keeps every stall available while the chosen stall comes forward. */
+/* The street follows the user's hand; its four categories repeat without endpoints. */
 .market-frame {
   position: relative;
   background: #e9e3d2;
@@ -2344,7 +2344,7 @@ h2 {
   justify-content: space-between;
   align-items: center;
   gap: 10px;
-  padding: 18px 24px 6px;
+  padding: 16px 22px 6px;
   background: #eee9dc;
 }
 .journey-label {
@@ -2363,117 +2363,139 @@ h2 {
 .market-scroll {
   overflow: hidden;
   touch-action: pan-y;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.market-scroll.is-dragging {
+  cursor: grabbing;
 }
 .market-world {
   width: 100%;
-  height: var(--scene-height, 490px);
+  height: var(--scene-height, 260px);
   background: transparent;
 }
 .market-backdrop {
   object-fit: cover;
-  opacity: 0.8;
+  opacity: 0.72;
+  pointer-events: none;
 }
 .market-welcome {
   display: none;
 }
-.market-welcome [lang="ar"] {
-  font-size: 19px;
-}
-.market-welcome > span:last-child {
-  font-size: 11px;
-}
 .stall-row {
   display: block;
   inset: 0;
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 2.5%,
+    #000 97.5%,
+    transparent
+  );
 }
-.stall {
+.stall-row::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 7px;
+  width: calc(var(--stall-width, 160px) * 1.25);
+  height: 17px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: #56744922;
+  filter: blur(5px);
+  pointer-events: none;
+}
+.stall,
+.stall-copy {
+  display: block;
   position: absolute;
   left: 0;
-  top: 0;
+  top: auto;
+  bottom: 18px;
   width: var(--stall-width, 150px);
-  transform: translate3d(var(--stall-x, 0px), var(--stall-y, 0px), 0);
-  transform-origin: center bottom;
+  height: var(--stall-height, 204px);
+  padding: 0;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  transform-origin: 50% 100%;
   opacity: 1;
-  z-index: 2;
   transition: none;
+  will-change: transform;
 }
-.stall.is-active {
-  transform: translate3d(var(--stall-x, 0px), var(--stall-y, 0px), 0);
-  z-index: 3;
+.stall-copy {
+  cursor: pointer;
 }
 .stall .stall-art,
+.stall-copy .stall-art,
 .stall:hover .stall-art,
 .stall:focus-visible .stall-art,
 .stall.is-active .stall-art {
   transform: none;
 }
-.stall .stall-art {
-  filter: saturate(0.87);
-  transition: filter 250ms ease;
-}
-.stall.is-active .stall-art {
-  filter: saturate(1.08) drop-shadow(0 10px 8px #5b513821);
-}
-.stall:hover .stall-art {
-  filter: saturate(1.08);
+.stall .stall-art,
+.stall-copy .stall-art {
+  filter: saturate(calc(0.85 + var(--focus, 0) * 0.2));
+  transition: none;
 }
 .stall-art img {
+  display: block;
+  width: 100%;
   height: auto;
-  aspect-ratio: 240 / 248;
+  aspect-ratio: 260/294;
+  pointer-events: none;
 }
 .stall-label {
   display: flex;
+  align-items: center;
   justify-content: center;
-  gap: 5px;
+  gap: 4px;
   font-size: 11px;
-  height: 32px;
-  min-height: 32px;
+  line-height: 1.15;
+  height: 34px;
+  min-height: 34px;
   padding: 3px;
-  margin-top: 0;
+  margin: 0;
   background: #f7f4eebf;
-  border-color: #bcb39d;
+  border: 1px solid #bcb39d;
+  transition:
+    background-color 0.16s,
+    color 0.16s;
+}
+.stall.is-active .stall-label {
+  background: var(--green);
+  color: var(--cream);
+  border-color: var(--green);
+  box-shadow: 0 2px 8px #344d3020;
 }
 .stall-label .stall-arrow {
   display: flex;
-  flex: 0 0 12px;
-  width: 12px;
-  height: 12px;
+  flex: 0 0 9px;
+  width: 9px;
+  height: 9px;
 }
 .stall-label .stall-arrow svg {
   display: block;
-  width: 12px;
-  height: 12px;
+  width: 9px;
+  height: 9px;
   fill: none;
   stroke: currentColor;
   stroke-width: 1.8;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
-.stall.is-active .stall-label {
-  box-shadow: 0 3px 12px #344d3020;
-}
 .market-frame .product-section {
   position: relative;
-  padding: 4px 32px 24px;
+  padding: 6px 32px 24px;
   margin: 0;
   background: transparent;
-  border-top: 0;
+  border: 0;
   box-shadow: none;
 }
-.market-frame .product-section:before {
+.market-frame .product-section::before {
   content: none;
-  position: absolute;
-  top: -7px;
-  left: 0;
-  right: 0;
-  height: 7px;
-  background: repeating-linear-gradient(
-    90deg,
-    transparent 0,
-    transparent 120px,
-    #a88c5d66 121px,
-    #a88c5d66 122px
-  );
 }
 .market-frame .product-heading {
   max-width: 820px;
@@ -2485,15 +2507,9 @@ h2 {
   line-height: 1.15;
   margin-top: 5px;
 }
-.market-frame .category-switcher {
-  max-width: 960px;
-  margin: 18px auto 0;
-}
-.market-frame .category-switcher button {
-  min-height: 40px;
-}
 .market-frame .product-grid {
-  max-width: 960px;
+  grid-template-columns: repeat(var(--stock-count, 4), minmax(0, 1fr));
+  max-width: min(960px, calc(var(--stock-count, 4) * 240px));
   margin: 4px auto 0;
   gap: 24px 20px;
   min-height: 0;
@@ -2519,37 +2535,54 @@ h2 {
   max-width: 960px;
   margin: 22px auto 0;
 }
+.stall-row:not(.is-ready) {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-content: start;
+  gap: 8px;
+  padding: 25px 12px;
+}
+.stall-row:not(.is-ready) .stall {
+  position: relative;
+  width: 100%;
+  height: auto;
+  transform: none;
+  bottom: auto;
+}
 @media (max-width: 760px) {
   .market-heading {
     flex-wrap: wrap;
     gap: 7px;
   }
-  .market-world {
-    height: var(--scene-height, 380px);
+  .market-journey {
+    padding: 12px 12px 6px;
   }
-  .market-welcome {
-    top: 13px;
+  .journey-label {
+    font-size: 10px;
   }
-  .market-welcome [lang="ar"] {
-    font-size: 16px;
-  }
-  .market-welcome > span:last-child {
+  .journey-progress {
     font-size: 9px;
   }
-  .stall {
-    width: var(--stall-width, 96px);
-    top: 0;
-  }
-  .stall-art img {
-    height: auto;
+  .market-world {
+    height: var(--scene-height, 180px);
   }
   .stall-label {
     font-size: 9px;
     padding: 2px;
-    min-height: 32px;
+    gap: 2px;
+  }
+  .stall-label .stall-arrow {
+    display: none;
+    flex-basis: 8px;
+    width: 8px;
+    height: 8px;
+  }
+  .stall-label .stall-arrow svg {
+    width: 8px;
+    height: 8px;
   }
   .market-frame .product-section {
-    padding: 2px 12px 18px;
+    padding: 4px 12px 18px;
   }
   .market-frame .product-heading h2 {
     font-size: 21px;
@@ -2561,16 +2594,10 @@ h2 {
     font-size: 7px;
     padding: 6px 8px;
   }
-  .market-frame .category-switcher {
-    margin-top: 14px;
-  }
-  .market-frame .category-switcher button {
-    font-size: 10px;
-    padding: 7px 9px;
-  }
   .market-frame .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 100%;
     gap: 18px 12px;
-    min-height: 0;
   }
   .market-frame .product-crate {
     height: 105px;
@@ -2591,43 +2618,11 @@ h2 {
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .stall,
-  .stall .stall-art {
-    transition: none;
-  }
-  .sun-halo {
-    animation: none;
-  }
-}
-
-/* Four usable stalls at first paint; measured positions take over after load. */
-.stall-row:not(.is-ready) {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-content: start;
-  gap: 12px;
-}
-.stall-row:not(.is-ready) .stall {
-  position: relative;
-  transform: none;
-  flex: 0 0 21%;
-}
-@media (prefers-reduced-motion: reduce) {
   .hero > *,
   .sun-halo {
     animation: none;
   }
-}
-
-/* Smaller categories stay centered underneath their vendor. */
-.market-frame .product-grid {
-  grid-template-columns: repeat(var(--stock-count, 4), minmax(0, 1fr));
-  max-width: min(960px, calc(var(--stock-count, 4) * 240px));
-}
-@media (max-width: 760px) {
-  .market-frame .product-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    max-width: 100%;
+  .stall-label {
+    transition: none;
   }
 }
