@@ -2107,6 +2107,8 @@ h2 {
 }
 .product-info {
   padding-inline: 7px;
+  gap: 4px 10px;
+  flex-wrap: wrap;
 }
 .product-info h3 {
   font-size: 14px;
@@ -2198,6 +2200,12 @@ h2 {
   }
   .product-price > strong {
     font-size: 21px;
+  }
+  .product-info {
+    flex-direction: column;
+    align-items: flex-start;
+    min-height: 48px;
+    justify-content: flex-start;
   }
   .product-info h3 {
     font-size: 12px;
