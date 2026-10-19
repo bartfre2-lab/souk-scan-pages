@@ -73,6 +73,14 @@ for (const width of [320, 390, 768, 1440]) {
     await page.locator('.stall[data-category="fruit"]').click();
     assert.equal(await page.locator("dialog").count(), 0);
     assert.equal(await page.locator(".product-card").count(), 4);
+    assert.ok(
+      await page
+        .locator(".stall-label")
+        .evaluateAll((nodes) =>
+          nodes.every((n) => n.scrollWidth <= n.clientWidth + 1),
+        ),
+      "Stall labels fit at this screen width",
+    );
     for (const [category, names] of [
       ["vegetable", ["Tomatoes", "Potatoes", "Carrots", "Onions"]],
       ["meat", ["Beef", "Mutton"]],
@@ -134,7 +142,7 @@ for (const width of [320, 390, 768, 1440]) {
       [],
       "Inline souk display accessibility",
     );
-    // Every selection keeps all four stalls fully visible with no overlap.
+    // The endless row keeps all four unique categories visible around the center.
     for (const category of ["poultry", "fruit", "meat", "vegetable"]) {
       await page.locator(`.stall[data-category="${category}"]`).click();
       const geometry = await page
@@ -316,13 +324,18 @@ test("page works without JavaScript and respects reduced motion", async () => {
   await page.close();
 });
 
-test("courtyard motion retargets rapidly, keeps the scene visible and supports swipes", async () => {
+test("endless street retargets rapidly and updates stock as the center changes", async () => {
   const page = await browser.newPage({
     viewport: { width: 1440, height: 900 },
     reducedMotion: "no-preference",
   });
   await page.goto(base);
   await page.locator('.stall[data-category="vegetable"]').click();
+  await page.waitForFunction(
+    () =>
+      document.querySelector(".stall.is-active")?.dataset.category ===
+      "vegetable",
+  );
   assert.ok(
     await page
       .locator(".product-card")
@@ -333,36 +346,17 @@ test("courtyard motion retargets rapidly, keeps the scene visible and supports s
     for (const category of ["poultry", "fruit", "meat", "vegetable"])
       document.querySelector(`.stall[data-category="${category}"]`).click();
   });
-  assert.ok(
-    await page
-      .locator(".stall")
-      .evaluateAll((nodes) =>
-        nodes.every((n) => n.getAnimations().length <= 1),
-      ),
-    "One motion per stall after rapid retargeting",
-  );
   await page.waitForTimeout(450);
   assert.equal(
     await page.locator(".stall.is-active").getAttribute("data-category"),
     "vegetable",
   );
-  await page.locator(".market-scroll").scrollIntoViewIfNeeded();
-  const stage = await page.locator(".market-scroll").boundingBox();
-  await page.mouse.move(
-    stage.x + stage.width * 0.55,
-    stage.y + stage.height * 0.4,
-  );
-  await page.mouse.down();
-  await page.mouse.move(
-    stage.x + stage.width * 0.3,
-    stage.y + stage.height * 0.4,
-    { steps: 8 },
-  );
-  await page.mouse.up();
-  assert.equal(
-    await page.locator(".stall.is-active").getAttribute("data-category"),
-    "meat",
-  );
+  assert.deepEqual(await page.locator(".product-card h3").allTextContents(), [
+    "Tomatoes",
+    "Potatoes",
+    "Carrots",
+    "Onions",
+  ]);
   for (const selector of [".steps article", ".download-card", ".faq-section"]) {
     for (const element of await page.locator(selector).all()) {
       await element.scrollIntoViewIfNeeded();
@@ -372,5 +366,155 @@ test("courtyard motion retargets rapidly, keeps the scene visible and supports s
       );
     }
   }
+  await page.close();
+});
+
+test("mobile touch capture supports repeated loops and preserves vertical page scrolling", async () => {
+  const page = await browser.newPage({
+    viewport: { width: 390, height: 844 },
+    isMobile: true,
+    hasTouch: true,
+    reducedMotion: "reduce",
+  });
+  await page.goto(base);
+  await page.locator(".market-scroll").scrollIntoViewIfNeeded();
+  const session = await page.context().newCDPSession(page);
+  const frame = await page.locator(".market-scroll").boundingBox();
+  const centers = await page.locator(".stall").evaluateAll((nodes) =>
+    nodes
+      .map((n) => {
+        const r = n.getBoundingClientRect();
+        return r.x + r.width / 2;
+      })
+      .sort((a, b) => a - b),
+  );
+  const spacing = centers[1] - centers[0],
+    x = frame.x + frame.width * 0.4,
+    y = frame.y + frame.height * 0.55;
+  const names = ["fruit", "vegetable", "meat", "poultry"];
+  let logical = 0;
+  for (const direction of [1, -1])
+    for (let turn = 0; turn < 8; turn++) {
+      await session.send("Input.dispatchTouchEvent", {
+        type: "touchStart",
+        touchPoints: [{ x, y }],
+      });
+      for (let part = 1; part <= 8; part++)
+        await session.send("Input.dispatchTouchEvent", {
+          type: "touchMove",
+          touchPoints: [{ x: x + (direction * spacing * part) / 8, y }],
+        });
+      await page.waitForTimeout(120);
+      await session.send("Input.dispatchTouchEvent", {
+        type: "touchEnd",
+        touchPoints: [],
+      });
+      logical -= direction;
+      assert.equal(
+        await page.locator(".stall.is-active").getAttribute("data-category"),
+        names[((logical % 4) + 4) % 4],
+      );
+    }
+  const scrollBefore = await page.evaluate(() => scrollY);
+  await session.send("Input.dispatchTouchEvent", {
+    type: "touchStart",
+    touchPoints: [{ x, y }],
+  });
+  for (let part = 1; part <= 8; part++)
+    await session.send("Input.dispatchTouchEvent", {
+      type: "touchMove",
+      touchPoints: [{ x, y: y - part * 10 }],
+    });
+  await session.send("Input.dispatchTouchEvent", {
+    type: "touchEnd",
+    touchPoints: [],
+  });
+  assert.ok(
+    (await page.evaluate(() => scrollY)) > scrollBefore,
+    "Vertical swipes still scroll the page",
+  );
+  assert.equal(
+    await page.locator(".stall.is-active").getAttribute("data-category"),
+    "fruit",
+  );
+  await page.close();
+});
+
+test("dragging follows the hand through three full loops in each direction without endpoints", async () => {
+  const page = await browser.newPage({
+    viewport: { width: 390, height: 844 },
+    reducedMotion: "reduce",
+  });
+  await page.goto(base);
+  await page.locator(".market-scroll").scrollIntoViewIfNeeded();
+  const names = ["fruit", "vegetable", "meat", "poultry"];
+  let logicalIndex = 0;
+  for (const direction of [1, -1]) {
+    for (let turn = 0; turn < 12; turn++) {
+      const frame = await page.locator(".market-scroll").boundingBox();
+      const centers = await page.locator(".stall").evaluateAll((nodes) =>
+        nodes
+          .map((n) => {
+            const r = n.getBoundingClientRect();
+            return r.x + r.width / 2;
+          })
+          .sort((a, b) => a - b),
+      );
+      const spacing = centers[1] - centers[0];
+      const active = page.locator(".stall.is-active");
+      const before = await active.boundingBox();
+      const beforeName = await active.getAttribute("data-category");
+      const x = frame.x + frame.width * 0.45,
+        y = frame.y + frame.height * 0.55;
+      await page.mouse.move(x, y);
+      await page.mouse.down();
+      await page.mouse.move(x + direction * spacing * 0.3, y, { steps: 4 });
+      const during = await page
+        .locator(`.stall[data-category="${beforeName}"]`)
+        .boundingBox();
+      assert.ok(
+        Math.abs(
+          during.x +
+            during.width / 2 -
+            (before.x + before.width / 2) -
+            direction * spacing * 0.3,
+        ) < 2,
+        "Street follows the drag before release",
+      );
+      await page.mouse.move(x + direction * spacing, y, { steps: 7 });
+      await page.waitForTimeout(120);
+      await page.mouse.up();
+      logicalIndex -= direction;
+      assert.equal(
+        await page.locator(".stall.is-active").getAttribute("data-category"),
+        names[((logicalIndex % 4) + 4) % 4],
+      );
+      const geometry = await page.locator(".stall.is-active").boundingBox();
+      assert.ok(
+        Math.abs(geometry.x + geometry.width / 2 - frame.x - frame.width / 2) <
+          2,
+        "Nearest stall settles in the center",
+      );
+      const visible = await page
+        .locator(".stall,.stall-copy")
+        .evaluateAll((nodes) => {
+          const f = document
+            .querySelector(".market-scroll")
+            .getBoundingClientRect();
+          return nodes.filter((n) => {
+            const r = n.getBoundingClientRect();
+            return r.left >= f.left && r.right <= f.right;
+          }).length;
+        });
+      assert.ok(visible >= 5, "More than three stalls remain fully visible");
+    }
+  }
+  const beforeIdle = await page.locator(".stall.is-active").boundingBox();
+  await page.waitForTimeout(350);
+  const afterIdle = await page.locator(".stall.is-active").boundingBox();
+  assert.ok(
+    Math.abs(beforeIdle.x - afterIdle.x) < 0.5,
+    "No automatic rotation after choosing a stall",
+  );
   await page.close();
 });

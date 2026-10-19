@@ -18,7 +18,7 @@
       crossorigin
     />
     <link rel="stylesheet" href="./assets/landing.css" />
-    <script src="./assets/landing.js" defer></script>
+    <script type="module" src="./assets/landing.js"></script>
   </head>
   <body>
     <a class="skip-link" href="#souk">Skip to the interactive souk</a>
@@ -93,7 +93,7 @@
               ><svg class="icon-star" viewBox="0 0 32 32" aria-hidden="true">
                 <path d="M16 2v28M2 16h28M6 6l20 20M6 26 26 6" /></svg
             ></span>
-            Explore the souk. Tap a stall to see its prices.</span
+            Slide through the souk. There’s always another stall.</span
           >
         </div>
         <div class="market-frame">
@@ -108,7 +108,8 @@
           <div
             class="market-scroll"
             role="region"
-            aria-label="Virtual Moroccan souk. All four stalls stay visible. Choose a stall to explore its prices."
+            aria-roledescription="carousel"
+            aria-label="Endless Moroccan souk. Swipe or drag in either direction. The centered stall shows its prices below. All four categories repeat."
           >
             <div class="market-world">
               <img
