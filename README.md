@@ -5,8 +5,9 @@ Run `npm run dev` and open http://localhost:4173.
 
 The website uses the real app logo and the intentional `[SOUK-SCAN]` scanner
 wordmark, with the existing ivory, charcoal and muted-green palette. The Moroccan street and four vendor stalls remain the central interaction.
-All four category shortcuts fit on mobile; selecting one updates the product
-grid without moving the page vertically. Full wooden crates use clipped stock
+Selecting a stall opens its price counter in an animated dialog over the
+street, with compact crates, category shortcuts, Escape/backdrop dismissal and
+a clear return control. It does not force visitors down the page. Full wooden crates use clipped stock
 chambers behind opaque fronts and corner posts, including the small crates in
 the stall artwork. Product names, example price ranges and units stay upright
 outside the art.
@@ -38,9 +39,14 @@ keyboard controls, accessibility, resource errors, image loading, overflow,
 page links, download behavior/checksum, no-JavaScript access and reduced motion.
 They complement visual inspection; passing them is not a claim of visual quality.
 
-There are no automatic scene movements, floating objects, animated vendors,
-scroll-triggered hidden content, rotating tags, or forced scrolling. Focus and
-selection states are explicit. Reduced-motion preferences disable transitions.
+Purposeful motion includes a short hero entrance, subtle sunlight, stall hover
+feedback, an arriving price counter and staggered crate entrances. Vendor
+figures and stock stay stable. Reduced-motion preferences disable these effects.
+The native dialog provides focus containment and restores focus on dismissal.
+
+`npm run art` regenerates the shared stall illustrations using Python 3, Pillow
+and `/usr/share/fonts/truetype/noto/NotoNaskhArabic-Regular.ttf`. The signs embed
+shaped Arabic artwork so browser font fallback cannot break their layout.
 
 The review version is published under `/preview/souk/`. The separate app review
 is under `/preview/souk-app/`; the current public homepage and `/app/` remain

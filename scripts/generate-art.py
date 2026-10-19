@@ -3,6 +3,8 @@ Food illustrations reuse the app's Fluent Emoji assets; see app/assets/emojis/AT
 """
 from pathlib import Path
 import base64
+from PIL import Image, ImageDraw, ImageFont
+from io import BytesIO
 
 ROOT = Path(__file__).resolve().parent.parent
 ASSETS = ROOT / 'assets'
@@ -39,10 +41,16 @@ for idx,(name,color,light,arabic,items,shirt,skin) in enumerate(configs):
         x=35+i*38
         s+=f'<path d="M{x} 22h19l{int((i-2)*2+3)} 42h-23Z" fill="{light}"/>'
     s+=f'<path d="M15 64h230v17q-12 16-23 0-12 16-23 0-12 16-23 0-12 16-23 0-12 16-23 0-12 16-23 0-12 16-23 0-12 16-23 0-12 16-23 0-12 16-23 0Z" fill="{color}"/><path d="M15 64h230" stroke="#f7f4ee" stroke-opacity=".25" stroke-width="2"/>'
-    # Hand-lettered hanging shop sign, supported by two cords.
-    s+=f'<path d="M89 85v15m82-15v15" stroke="#d1b78b" stroke-width="1.5"/><rect x="78" y="97" width="104" height="26" rx="2" fill="#efe6d0" stroke="#bda67d"/><text x="130" y="114" text-anchor="middle" font-family="serif" font-size="13" fill="#5e6047" direction="rtl">{arabic}</text>'
+    # Render Arabic with a known shaping font: standalone SVGs cannot rely on page fonts.
+    sign = Image.new('RGBA', (416, 88), (0,0,0,0))
+    draw = ImageDraw.Draw(sign)
+    font = ImageFont.truetype('/usr/share/fonts/truetype/noto/NotoNaskhArabic-Regular.ttf', 46)
+    draw.text((208, 42), arabic, font=font, fill='#4e5944', anchor='mm', direction='rtl')
+    buf=BytesIO(); sign.save(buf,format='PNG')
+    label=base64.b64encode(buf.getvalue()).decode()
+    s+=f'<path d="M89 85v11m82-11v11" stroke="#c5ac82" stroke-width="2"/><rect x="78" y="94" width="104" height="22" rx="3" fill="#f5edda" stroke="#bda67d"/><image href="data:image/png;base64,{label}" x="78" y="94" width="104" height="22"/>'
     # Vendor: apron, sleeves, expressive face and hands.
-    s+='<g class="vendor">'
+    s+='<g class="vendor" transform="translate(0 17)">'
     s+=f'<path d="M101 181q-6-31 11-38l18-6 18 6q17 7 12 38Z" fill="{shirt}"/><path d="M116 145q14 8 28 0l7 51h-42Z" fill="{color}"/><path d="M119 146v40m22-40v40" stroke="#eee1bf" stroke-width="1.5"/><path d="M124 136v11q6 5 12 0v-11Z" fill="{skin}"/><ellipse cx="130" cy="130" rx="15" ry="18" fill="{skin}"/>'
     if idx==0:
         s+='<path d="M114 128v-8q16-10 32 0v8l-3-5h-27Z" fill="#ece3cb"/><path d="M116 119q14-11 28 0Z" fill="#e7ddc5"/>'
