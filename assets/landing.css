@@ -2641,3 +2641,15 @@ h2 {
     animation: none;
   }
 }
+
+/* Smaller categories stay centered underneath their vendor. */
+.market-frame .product-grid {
+  grid-template-columns: repeat(var(--stock-count, 4), minmax(0, 1fr));
+  max-width: min(960px, calc(var(--stock-count, 4) * 240px));
+}
+@media (max-width: 760px) {
+  .market-frame .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 100%;
+  }
+}
