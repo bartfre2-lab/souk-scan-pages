@@ -94,15 +94,22 @@
               ><svg class="icon-star" viewBox="0 0 32 32" aria-hidden="true">
                 <path d="M16 2v28M2 16h28M6 6l20 20M6 26 26 6" /></svg
             ></span>
-            Your stall, front and centre. Swipe to explore.</span
+            Explore the souk. Tap a stall to see its prices.</span
           >
         </div>
         <div class="market-frame">
+          <div class="market-journey">
+            <span class="journey-label"
+              ><span aria-hidden="true">✧</span> Your souk to explore</span
+            >
+            <span class="journey-progress" id="market-progress"
+              >1 of 4 stalls explored</span
+            >
+          </div>
           <div
             class="market-scroll"
             role="region"
-            aria-roledescription="carousel"
-            aria-label="Moroccan souk price categories. Swipe or use the arrow controls to explore."
+            aria-label="Virtual Moroccan souk. All four stalls stay visible. Choose a stall to explore its prices."
           >
             <div class="market-world">
               <img
@@ -139,7 +146,7 @@
                       width="260"
                       height="294" /></span
                   ><span class="stall-label"
-                    >The fruit seller
+                    >Fruit
                     <span class="stall-arrow" aria-hidden="true"
                       ><svg
                         class="icon-arrow"
@@ -162,7 +169,7 @@
                       width="260"
                       height="294" /></span
                   ><span class="stall-label"
-                    >The greengrocer
+                    >Vegetables
                     <span class="stall-arrow" aria-hidden="true"
                       ><svg
                         class="icon-arrow"
@@ -185,7 +192,7 @@
                       width="260"
                       height="294" /></span
                   ><span class="stall-label"
-                    >The butcher
+                    >Meat
                     <span class="stall-arrow" aria-hidden="true"
                       ><svg
                         class="icon-arrow"
@@ -221,23 +228,6 @@
               </div>
             </div>
           </div>
-          <div class="carousel-controls" aria-label="Stall carousel controls">
-            <button
-              type="button"
-              class="carousel-prev"
-              aria-label="Previous price category"
-            >
-              <span aria-hidden="true">←</span>
-            </button>
-            <span class="carousel-caption">Fruit prices</span>
-            <button
-              type="button"
-              class="carousel-next"
-              aria-label="Next price category"
-            >
-              <span aria-hidden="true">→</span>
-            </button>
-          </div>
           <div
             class="product-section"
             id="stall-products"
@@ -250,24 +240,6 @@
                 <h2 id="products-title">A little colour in your basket.</h2>
               </div>
               <span class="sample-badge">Illustrative prices · MAD</span>
-            </div>
-            <div
-              class="category-switcher"
-              role="group"
-              aria-label="Choose a price category"
-            >
-              <button
-                data-category="fruit"
-                aria-pressed="true"
-                class="is-active"
-              >
-                Fruit</button
-              ><button data-category="vegetable" aria-pressed="false">
-                Vegetables</button
-              ><button data-category="meat" aria-pressed="false">Meat</button
-              ><button data-category="poultry" aria-pressed="false">
-                Poultry & eggs
-              </button>
             </div>
             <p
               id="selection-status"

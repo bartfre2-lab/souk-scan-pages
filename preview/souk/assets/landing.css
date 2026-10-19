@@ -2334,23 +2334,47 @@ h2 {
   object-fit: contain;
 }
 
-/* The souk carousel and its stock share one continuous market display. */
+/* A courtyard keeps every stall available while the chosen stall comes forward. */
+.market-frame {
+  position: relative;
+  background: #e9e3d2;
+}
+.market-journey {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 24px 6px;
+  background: #eee9dc;
+}
+.journey-label {
+  color: var(--green);
+  font-size: 11px;
+  font-weight: 600;
+}
+.journey-label > span {
+  margin-right: 7px;
+  font-size: 17px;
+}
+.journey-progress {
+  color: #655d4c;
+  font-size: 10px;
+}
 .market-scroll {
   overflow: hidden;
   touch-action: pan-y;
 }
 .market-world {
   width: 100%;
-  height: 420px;
-  perspective: 1100px;
+  height: var(--scene-height, 490px);
+  background: transparent;
 }
 .market-backdrop {
   object-fit: cover;
   opacity: 0.8;
 }
 .market-welcome {
-  top: 20px;
-  pointer-events: none;
+  display: none;
 }
 .market-welcome [lang="ar"] {
   font-size: 19px;
@@ -2361,33 +2385,21 @@ h2 {
 .stall-row {
   display: block;
   inset: 0;
-  perspective: 1100px;
-  --stall-step: clamp(185px, 27vw, 310px);
 }
 .stall {
   position: absolute;
-  left: 50%;
-  top: 78px;
-  width: 260px;
-  transform: translateX(-50%)
-    translateX(calc(var(--slot, 0) * var(--stall-step)))
-    rotateY(calc(var(--slot, 0) * -8deg)) scale(0.76);
-  transform-origin: 50% 85%;
-  opacity: 0.65;
-  transition:
-    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 0.5s ease,
-    filter 0.5s ease;
-  will-change: transform;
+  left: 0;
+  top: 0;
+  width: var(--stall-width, 150px);
+  transform: translate3d(var(--stall-x, 0px), var(--stall-y, 0px), 0);
+  transform-origin: center bottom;
+  opacity: 1;
+  z-index: 2;
+  transition: none;
 }
 .stall.is-active {
-  transform: translateX(-50%) translateX(0) translateY(-6px) rotateY(0)
-    scale(1.08);
-  opacity: 1;
-}
-.stall.is-distant {
-  opacity: 0;
-  pointer-events: none;
+  transform: translate3d(var(--stall-x, 0px), var(--stall-y, 0px), 0);
+  z-index: 3;
 }
 .stall .stall-art,
 .stall:hover .stall-art,
@@ -2396,8 +2408,8 @@ h2 {
   transform: none;
 }
 .stall .stall-art {
-  filter: saturate(0.65);
-  transition: filter 0.5s ease;
+  filter: saturate(0.87);
+  transition: filter 250ms ease;
 }
 .stall.is-active .stall-art {
   filter: saturate(1.08) drop-shadow(0 10px 8px #5b513821);
@@ -2406,64 +2418,50 @@ h2 {
   filter: saturate(1.08);
 }
 .stall-art img {
-  height: 270px;
+  height: auto;
+  aspect-ratio: 240 / 248;
 }
 .stall-label {
   display: flex;
   justify-content: center;
-  gap: 12px;
-  font-size: 12px;
-  min-height: 38px;
-  background: #f7f4eee8;
+  gap: 5px;
+  font-size: 11px;
+  height: 32px;
+  min-height: 32px;
+  padding: 3px;
+  margin-top: 0;
+  background: #f7f4eebf;
+  border-color: #bcb39d;
+}
+.stall-label .stall-arrow {
+  display: flex;
+  flex: 0 0 12px;
+  width: 12px;
+  height: 12px;
+}
+.stall-label .stall-arrow svg {
+  display: block;
+  width: 12px;
+  height: 12px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 .stall.is-active .stall-label {
   box-shadow: 0 3px 12px #344d3020;
 }
-.carousel-controls {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 18px;
-  min-height: 62px;
-  background: linear-gradient(#e5dfcc, #eee8db);
-}
-.carousel-controls button {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  border: 1px solid #b8bea6;
-  background: #f7f4eee6;
-  color: var(--green);
-  font-size: 21px;
-  cursor: pointer;
-  transition:
-    background 0.2s,
-    transform 0.2s;
-}
-.carousel-controls button:hover {
-  background: #d9e1d0;
-  transform: scale(1.06);
-}
-.carousel-controls button:active {
-  transform: scale(0.95);
-}
-.carousel-caption {
-  min-width: 180px;
-  text-align: center;
-  color: var(--green);
-  font-size: 12px;
-  font-weight: 600;
-}
 .market-frame .product-section {
   position: relative;
-  padding: 28px 36px 30px;
+  padding: 4px 32px 24px;
   margin: 0;
-  background: var(--cream);
-  border-top: 7px solid #c3a77a;
-  box-shadow: inset 0 2px #a88c5d;
+  background: transparent;
+  border-top: 0;
+  box-shadow: none;
 }
 .market-frame .product-section:before {
-  content: "";
+  content: none;
   position: absolute;
   top: -7px;
   left: 0;
@@ -2478,12 +2476,12 @@ h2 {
   );
 }
 .market-frame .product-heading {
-  max-width: 960px;
+  max-width: 820px;
   margin: 0 auto;
   align-items: center;
 }
 .market-frame .product-heading h2 {
-  font-size: 30px;
+  font-size: 24px;
   line-height: 1.15;
   margin-top: 5px;
 }
@@ -2496,9 +2494,9 @@ h2 {
 }
 .market-frame .product-grid {
   max-width: 960px;
-  margin: 20px auto 0;
+  margin: 4px auto 0;
   gap: 24px 20px;
-  min-height: 240px;
+  min-height: 0;
 }
 .market-frame .product-crate {
   height: 125px;
@@ -2527,7 +2525,7 @@ h2 {
     gap: 7px;
   }
   .market-world {
-    height: 300px;
+    height: var(--scene-height, 380px);
   }
   .market-welcome {
     top: 13px;
@@ -2538,38 +2536,23 @@ h2 {
   .market-welcome > span:last-child {
     font-size: 9px;
   }
-  .stall-row {
-    --stall-step: clamp(135px, 40vw, 220px);
-  }
   .stall {
-    width: 176px;
-    top: 60px;
+    width: var(--stall-width, 96px);
+    top: 0;
   }
   .stall-art img {
-    height: 190px;
+    height: auto;
   }
   .stall-label {
-    font-size: 10px;
-    padding: 7px;
+    font-size: 9px;
+    padding: 2px;
     min-height: 32px;
   }
-  .carousel-controls {
-    min-height: 56px;
-    gap: 8px;
-  }
-  .carousel-caption {
-    min-width: 160px;
-    font-size: 11px;
-  }
-  .carousel-controls button {
-    width: 40px;
-    height: 40px;
-  }
   .market-frame .product-section {
-    padding: 20px 14px 22px;
+    padding: 2px 12px 18px;
   }
   .market-frame .product-heading h2 {
-    font-size: 24px;
+    font-size: 21px;
   }
   .market-frame .product-heading .eyebrow {
     font-size: 7px;
@@ -2587,7 +2570,7 @@ h2 {
   }
   .market-frame .product-grid {
     gap: 18px 12px;
-    min-height: 420px;
+    min-height: 0;
   }
   .market-frame .product-crate {
     height: 105px;
@@ -2609,8 +2592,7 @@ h2 {
 }
 @media (prefers-reduced-motion: reduce) {
   .stall,
-  .stall .stall-art,
-  .carousel-controls button {
+  .stall .stall-art {
     transition: none;
   }
   .sun-halo {
@@ -2618,22 +2600,18 @@ h2 {
   }
 }
 
-/* Stable first paint, including the no-JavaScript fallback. */
-.stall:nth-child(1) {
-  --slot: 0;
+/* Four usable stalls at first paint; measured positions take over after load. */
+.stall-row:not(.is-ready) {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: start;
+  gap: 12px;
 }
-.stall:nth-child(2) {
-  --slot: 1;
-}
-.stall:nth-child(3) {
-  --slot: -2;
-}
-.stall:nth-child(4) {
-  --slot: -1;
-}
-.stall-row:not(.is-ready) .stall:nth-child(3) {
-  opacity: 0;
-  pointer-events: none;
+.stall-row:not(.is-ready) .stall {
+  position: relative;
+  transform: none;
+  flex: 0 0 21%;
 }
 @media (prefers-reduced-motion: reduce) {
   .hero > *,
