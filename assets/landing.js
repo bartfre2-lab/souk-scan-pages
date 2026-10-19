@@ -46,49 +46,80 @@ const vendors = {
 const productGrid = document.querySelector("#product-grid");
 const categoryButtons = [...document.querySelectorAll("button[data-category]")];
 let activeCategory = null;
-const counter = document.querySelector(".stall-display");
 const reducedMotion = () =>
   matchMedia("(prefers-reduced-motion: reduce)").matches;
+const stalls = [...document.querySelectorAll(".stall")];
+const categories = Object.keys(vendors);
+const stage = document.querySelector(".market-scroll");
+function animateStock() {
+  if (reducedMotion()) return;
+  [...productGrid.children].forEach((card, index) =>
+    card.animate(
+      [
+        { opacity: 0, transform: "translateY(-18px) scale(.94)" },
+        { opacity: 1, transform: "translateY(0) scale(1)" },
+      ],
+      {
+        duration: 520,
+        delay: 100 + index * 65,
+        easing: "cubic-bezier(.16,1,.3,1)",
+        fill: "backwards",
+      },
+    ),
+  );
+}
+function positionStalls(category) {
+  document.querySelector(".stall-row").classList.add("is-ready");
+  const active = categories.indexOf(category);
+  stalls.forEach((stall, index) => {
+    let distance = (index - active + categories.length) % categories.length;
+    if (distance > 1) distance -= categories.length;
+    stall.style.setProperty("--slot", distance);
+    stall.style.zIndex =
+      distance === 0 ? "3" : Math.abs(distance) === 1 ? "2" : "0";
+    stall.classList.toggle("is-distant", Math.abs(distance) > 1);
+  });
+}
+function step(direction) {
+  const index = categories.indexOf(activeCategory);
+  renderCategory(
+    categories[(index + direction + categories.length) % categories.length],
+  );
+}
 document
-  .querySelector(".counter-close")
-  .addEventListener("click", () => counter.close());
-counter.addEventListener("click", (event) => {
-  if (event.target === counter) {
-    const r = counter.getBoundingClientRect();
-    if (
-      event.clientX < r.left ||
-      event.clientX > r.right ||
-      event.clientY < r.top ||
-      event.clientY > r.bottom
-    )
-      counter.close();
+  .querySelector(".carousel-prev")
+  .addEventListener("click", () => step(-1));
+document
+  .querySelector(".carousel-next")
+  .addEventListener("click", () => step(1));
+let gesture = null;
+stage.addEventListener("pointerdown", (event) => {
+  if (event.isPrimary)
+    gesture = { x: event.clientX, y: event.clientY, id: event.pointerId };
+});
+stage.addEventListener("pointerup", (event) => {
+  if (!gesture || gesture.id !== event.pointerId) return;
+  const dx = event.clientX - gesture.x,
+    dy = event.clientY - gesture.y;
+  gesture = null;
+  if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.4) {
+    step(dx < 0 ? 1 : -1);
+    suppressClick = true;
+    setTimeout(() => {
+      suppressClick = false;
+    }, 0);
   }
 });
-function animateStock() {
-  if (!reducedMotion())
-    [...productGrid.children].forEach((card, index) =>
-      card.animate(
-        [
-          { opacity: 0, transform: "translateY(14px) scale(.97)" },
-          { opacity: 1, transform: "translateY(0) scale(1)" },
-        ],
-        {
-          duration: 320,
-          delay: index * 45,
-          easing: "cubic-bezier(.2,.7,.2,1)",
-          fill: "backwards",
-        },
-      ),
-    );
-}
-function showCounter(category) {
-  renderCategory(category);
-  if (!counter.open) {
-    counter.showModal();
-    animateStock();
-  }
-  counter.scrollTop = 0;
-}
+stage.addEventListener("pointercancel", () => {
+  gesture = null;
+});
+let suppressClick = false;
+stalls.forEach((stall) =>
+  stall.addEventListener("focus", () => {
+    if (stall.matches(":focus-visible")) renderCategory(stall.dataset.category);
+  }),
+);
+stage.addEventListener("dragstart", (event) => event.preventDefault());
 
 function renderCategory(category, announce = true) {
   const vendor = vendors[category];
@@ -101,8 +132,9 @@ function renderCategory(category, announce = true) {
     meat: "Meat prices",
     poultry: "Poultry & egg prices",
   }[category];
-  document.querySelector(".counter-header-art img").src =
-    `./assets/stall-${category}.svg`;
+  document.querySelector(".carousel-caption").textContent =
+    document.querySelector("#products-title").textContent;
+  positionStalls(category);
   categoryButtons.forEach((button) => {
     const selected = button.dataset.category === category;
     button.classList.toggle("is-active", selected);
@@ -118,7 +150,7 @@ function renderCategory(category, announce = true) {
     fragment.append(card);
   });
   productGrid.replaceChildren(fragment);
-  if (counter.open) animateStock();
+  if (announce) animateStock();
   if (announce)
     document.querySelector("#selection-status").textContent =
       `${vendor.kicker.toLowerCase()}: ${vendor.products.length} products shown. Illustrative prices in Moroccan dirhams.`;
@@ -126,7 +158,7 @@ function renderCategory(category, announce = true) {
 
 categoryButtons.forEach((button) =>
   button.addEventListener("click", () => {
-    showCounter(button.dataset.category);
+    if (!suppressClick) renderCategory(button.dataset.category);
   }),
 );
 renderCategory("fruit", false);
@@ -150,23 +182,6 @@ for (const container of document.querySelectorAll(
             buttons.length;
     buttons[nextIndex].focus({ preventScroll: true });
     buttons[nextIndex].click();
-    if (container.classList.contains("stall-row")) {
-      const scroller = document.querySelector(".market-scroll");
-      scroller.scrollTo({
-        left: Math.max(
-          0,
-          Math.min(
-            scroller.scrollWidth - scroller.clientWidth,
-            scroller.scrollLeft +
-              buttons[nextIndex].getBoundingClientRect().left -
-              scroller.getBoundingClientRect().left +
-              buttons[nextIndex].offsetWidth / 2 -
-              scroller.clientWidth / 2,
-          ),
-        ),
-        behavior: "instant",
-      });
-    }
   });
 }
 

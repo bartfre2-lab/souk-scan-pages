@@ -93,14 +93,15 @@
               ><svg class="icon-star" viewBox="0 0 32 32" aria-hidden="true">
                 <path d="M16 2v28M2 16h28M6 6l20 20M6 26 26 6" /></svg
             ></span>
-            Tap a category to explore its prices.</span
+            Your stall, front and centre. Swipe to explore.</span
           >
         </div>
         <div class="market-frame">
           <div
             class="market-scroll"
-            tabindex="0"
-            aria-label="Interactive Moroccan market. On small screens, scroll sideways to explore all four stalls."
+            role="region"
+            aria-roledescription="carousel"
+            aria-label="Moroccan souk price categories. Swipe or use the arrow controls to explore."
           >
             <div class="market-world">
               <img
@@ -119,7 +120,11 @@
                 <span lang="ar" dir="rtl">مرحبا بكم في السوق</span
                 ><span>Welcome to your neighbourhood.</span>
               </div>
-              <div class="stall-row">
+              <div
+                class="stall-row"
+                role="group"
+                aria-label="Choose a price category"
+              >
                 <button
                   class="stall is-active"
                   data-category="fruit"
@@ -215,36 +220,22 @@
               </div>
             </div>
           </div>
-          <div class="market-footnote">
-            <span
-              ><span class="live-dot"></span> Four stalls. One shared
-              community.</span
-            ><span class="scroll-hint"
-              >Swipe to explore <span aria-hidden="true">↔</span></span
-            ><span class="desktop-hint"
-              >Made of Morocco
-              <span aria-hidden="true"
-                ><svg class="icon-star" viewBox="0 0 32 32" aria-hidden="true">
-                  <path d="M16 2v28M2 16h28M6 6l20 20M6 26 26 6" /></svg></span
-            ></span>
-          </div>
-        </div>
-        <dialog class="stall-display" aria-labelledby="products-title">
-          <button
-            type="button"
-            class="counter-close"
-            aria-label="Back to the souk"
-          >
-            <span aria-hidden="true">←</span> Back to the souk
-            <span aria-hidden="true">×</span>
-          </button>
-          <div class="counter-header-art" aria-hidden="true">
-            <img
-              src="./assets/stall-fruit.svg"
-              width="90"
-              height="102"
-              alt=""
-            /><span lang="ar" dir="rtl">من السوق، للناس</span>
+          <div class="carousel-controls" aria-label="Stall carousel controls">
+            <button
+              type="button"
+              class="carousel-prev"
+              aria-label="Previous price category"
+            >
+              <span aria-hidden="true">←</span>
+            </button>
+            <span class="carousel-caption">Fruit prices</span>
+            <button
+              type="button"
+              class="carousel-next"
+              aria-label="Next price category"
+            >
+              <span aria-hidden="true">→</span>
+            </button>
           </div>
           <div
             class="product-section"
@@ -310,7 +301,7 @@
               ></a>
             </div>
           </div>
-        </dialog>
+        </div>
         <noscript
           ><p class="price-note">
             Explore regional food prices in the
