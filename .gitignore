@@ -1,2 +1,5 @@
 node_modules/
 test-results/
+dist/
+dist-review/
+__pycache__/

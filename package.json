@@ -4,8 +4,9 @@
   "private": true,
   "description": "Static SOUK-SCAN landing page and existing app hosting",
   "scripts": {
-    "dev": "python3 -m http.server 4173 --bind 0.0.0.0",
-    "test": "node --test tests/landing.test.cjs",
+    "build": "python3 scripts/build-site.py",
+    "dev": "npm run build && python3 -m http.server 4173 --bind 0.0.0.0 --directory dist",
+    "test": "npm run build && node --test tests/*.test.cjs",
     "art": "python3 scripts/generate-art.py"
   },
   "devDependencies": {

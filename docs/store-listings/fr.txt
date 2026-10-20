@@ -1,0 +1,28 @@
+SOUK-SCAN
+
+SHORT DESCRIPTION (59/80 characters)
+Les prix alimentaires au Maroc, partagés dans votre région.
+
+FULL DESCRIPTION (1850/4000 characters)
+Renseignez-vous avant d’aller au souk.
+
+SOUK-SCAN vous aide à découvrir les prix alimentaires dans les 12 régions du Maroc. Consultez les estimations signalées par la communauté pour les fruits, les légumes, la viande, la volaille et les œufs.
+
+• Choisissez une région manuellement, ou autorisez sa détection facultative sur votre appareil.
+• Consultez des fourchettes de prix lorsque les signalements valides sont suffisants.
+• Partagez un prix réellement observé ou payé : une contribution par produit et par jour, modifiable le jour même.
+• Comparez des références de gros distinctes et datées de Casa Prestations, lorsqu’elles sont disponibles.
+• Lisez les prix en DH/kg ou en DH par œuf, selon le produit.
+• Utilisez l’arabe, le français ou l’anglais, en mode clair ou sombre.
+
+BIEN COMPRENDRE LES PRIX
+Les estimations participatives et les références de gros sont deux sources différentes. Les bulletins de référence sont datés, peuvent être anciens et ne garantissent pas un prix de détail. L’application indique quand les données participatives sont insuffisantes. SOUK-SCAN ne vend pas de produits, ne fixe pas les prix et n’est pas un service public. L’application n’est pas affiliée à Casa Prestations.
+
+VOS INFORMATIONS
+Les coordonnées GPS brutes sont traitées sur votre appareil au lieu d’être envoyées à SOUK-SCAN. La région choisie ou détectée accompagne les demandes de prix et les contributions. Les identités et contributions individuelles ne sont pas affichées publiquement. L’application examinée ne contient ni publicité ni outils d’analyse tiers.
+
+Supprimez votre compte depuis Profil → Supprimer le compte, ou demandez sa suppression par e-mail en suivant la page dédiée.
+
+Confidentialité : https://soukscan.online/privacy/
+Suppression du compte : https://soukscan.online/account-deletion/
+Assistance : sanamdev@soukscan.online

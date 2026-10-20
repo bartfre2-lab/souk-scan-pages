@@ -7,7 +7,7 @@ const { resolve, extname, sep } = require("node:path");
 const { createHash } = require("node:crypto");
 const { chromium } = require("playwright");
 const { AxeBuilder } = require("@axe-core/playwright");
-const root = resolve(__dirname, "..");
+const root = resolve(__dirname, "..", "dist");
 let server, browser, base;
 const mime = {
   ".html": "text/html",
@@ -103,10 +103,13 @@ for (const width of [320, 390, 768, 1440]) {
     assert.equal(await page.locator(".courtyard-stall").count(), 4);
     assert.ok(await page.locator("#courtyard-welcome").isVisible());
     assert.ok(await page.locator("#stall-products").isHidden());
-    assert.equal(await page.locator('[aria-pressed="true"]').count(), 0);
+    assert.equal(
+      await page.locator('.courtyard-stall[aria-pressed="true"]').count(),
+      0,
+    );
     assert.equal(
       await page.locator(".courtyard-logo img").getAttribute("src"),
-      "./assets/brand/logo.png",
+      "/assets/brand/logo.png",
     );
     const idle = await geometry(page);
     // Two fixed stalls on each side, separated from each other.
@@ -121,7 +124,10 @@ for (const width of [320, 390, 768, 1440]) {
         await page.locator(".courtyard-product h4").allTextContents(),
         names,
       );
-      assert.equal(await page.locator('[aria-pressed="true"]').count(), 1);
+      assert.equal(
+        await page.locator('.courtyard-stall[aria-pressed="true"]').count(),
+        1,
+      );
       assert.equal(await stall.getAttribute("aria-pressed"), "true");
       assert.ok(await page.locator("#courtyard-welcome").isHidden());
       assert.ok(await page.locator("#stall-products").isVisible());
@@ -251,7 +257,7 @@ test("internal links, page anchors and verified Android download work", async ()
   for (const link of links) {
     if (link.startsWith("#"))
       assert.equal(await page.locator(link).count(), 1, `Anchor ${link}`);
-    else if (link.startsWith("./")) {
+    else if (link.startsWith("./") || link.startsWith("/")) {
       const response = await page.request.get(new URL(link, base + "/").href);
       assert.equal(response.status(), 200, link);
     }
