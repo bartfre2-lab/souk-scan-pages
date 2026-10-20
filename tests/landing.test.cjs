@@ -56,8 +56,39 @@ after(async () => {
   await new Promise((resolve) => server?.close(resolve));
 });
 
+const categories = {
+  fruit: ["Oranges", "Apples", "Bananas", "Pomegranates"],
+  vegetable: ["Tomatoes", "Potatoes", "Carrots", "Onions"],
+  meat: ["Beef", "Mutton"],
+  poultry: ["Live chicken", "Dressed chicken", "Beldi eggs", "Roumi eggs"],
+};
+async function geometry(page) {
+  return page.locator(".courtyard-scene").evaluate((scene) => {
+    const r = (element) => {
+      const b = element.getBoundingClientRect();
+      return {
+        left: b.left,
+        right: b.right,
+        top: b.top,
+        bottom: b.bottom,
+        width: b.width,
+        height: b.height,
+      };
+    };
+    return {
+      scene: r(scene),
+      stalls: [...scene.querySelectorAll(".courtyard-stall")].map(r),
+      stock: r(scene.querySelector(".courtyard-stock")),
+    };
+  });
+}
+const overlap = (a, b) =>
+  a.left < b.right - 0.5 &&
+  a.right > b.left + 0.5 &&
+  a.top < b.bottom - 0.5 &&
+  a.bottom > b.top + 0.5;
 for (const width of [320, 390, 768, 1440]) {
-  test(`all vendors, crates, keyboard navigation and page layout at ${width}px`, async () => {
+  test(`courtyard idle, all categories, fixed layout and accessibility at ${width}px`, async () => {
     const context = await browser.newContext({
       viewport: { width, height: 900 },
       reducedMotion: "reduce",
@@ -66,201 +97,149 @@ for (const width of [320, 390, 768, 1440]) {
     const errors = [];
     page.on("pageerror", (error) => errors.push(error.message));
     page.on("response", (response) => {
-      if (response.status() >= 400)
-        errors.push(`${response.status()} ${response.url()}`);
+      if (response.status() >= 400) errors.push(response.url());
     });
     await page.goto(base, { waitUntil: "networkidle" });
-    await page.locator('.stall[data-category="fruit"]').click();
-    assert.equal(await page.locator("dialog").count(), 0);
-    assert.equal(await page.locator(".product-card").count(), 4);
-    assert.ok(
-      await page
-        .locator(".stall-label")
-        .evaluateAll((nodes) =>
-          nodes.every((n) => n.scrollWidth <= n.clientWidth + 1),
-        ),
-      "Stall labels fit at this screen width",
+    assert.equal(await page.locator(".courtyard-stall").count(), 4);
+    assert.ok(await page.locator("#courtyard-welcome").isVisible());
+    assert.ok(await page.locator("#stall-products").isHidden());
+    assert.equal(await page.locator('[aria-pressed="true"]').count(), 0);
+    assert.equal(
+      await page.locator(".courtyard-logo img").getAttribute("src"),
+      "./assets/brand/logo.png",
     );
-    for (const [category, names] of [
-      ["vegetable", ["Tomatoes", "Potatoes", "Carrots", "Onions"]],
-      ["meat", ["Beef", "Mutton"]],
-      [
-        "poultry",
-        ["Live chicken", "Dressed chicken", "Beldi eggs", "Roumi eggs"],
-      ],
-      ["fruit", ["Oranges", "Apples", "Bananas", "Pomegranates"]],
-    ]) {
-      // The actual stalls are the category controls; no detached selector is needed.
-      await page.locator(`.stall[data-category="${category}"]`).click();
+    const idle = await geometry(page);
+    // Two fixed stalls on each side, separated from each other.
+    assert.ok(idle.stalls[0].right < idle.scene.left + idle.scene.width / 2);
+    assert.ok(idle.stalls[2].left > idle.scene.left + idle.scene.width / 2);
+    assert.ok(idle.stalls[0].bottom < idle.stalls[1].top);
+    assert.ok(idle.stalls[2].bottom < idle.stalls[3].top);
+    for (const [category, names] of Object.entries(categories)) {
+      const stall = page.locator(`button[data-category="${category}"]`);
+      await stall.click();
       assert.deepEqual(
-        await page.locator(".product-card h3").allTextContents(),
+        await page.locator(".courtyard-product h4").allTextContents(),
         names,
       );
-      assert.equal(
-        await page
-          .locator(`button[data-category="${category}"][aria-pressed="true"]`)
-          .count(),
-        1,
-      );
-      await page.locator(`.stall[data-category="${category}"]`).click();
-      assert.match(
-        await page.locator("#vendor-kicker").textContent(),
-        /FRUIT|GREENGROCER|BUTCHER|POULTRY/,
-      );
-      assert.ok(await page.locator(".product-card").first().isVisible());
-    }
-    await page.locator(".stall-row button").first().focus();
-    await page.keyboard.press("ArrowRight");
-    assert.equal(
-      (
-        await page.locator(".stall-row .is-active .stall-label").textContent()
-      ).trim(),
-      "Vegetables",
-    );
-    await page.keyboard.press("End");
-    assert.equal(
-      (
-        await page.locator(".stall-row .is-active .stall-label").textContent()
-      ).trim(),
-      "Poultry & eggs",
-    );
-    await page.keyboard.press("Home");
-    assert.equal(
-      (
-        await page.locator(".stall-row .is-active .stall-label").textContent()
-      ).trim(),
-      "Fruit",
-    );
-    const counterA11y = await new AxeBuilder({ page })
-      .withTags(["wcag2a", "wcag2aa", "wcag21aa"])
-      .analyze();
-    assert.deepEqual(
-      counterA11y.violations.map((v) => ({
-        id: v.id,
-        nodes: v.nodes.map((n) => n.target),
-      })),
-      [],
-      "Inline souk display accessibility",
-    );
-    // The endless row keeps all four unique categories visible around the center.
-    for (const category of ["poultry", "fruit", "meat", "vegetable"]) {
-      await page.locator(`.stall[data-category="${category}"]`).click();
-      const geometry = await page
-        .locator(`.stall[data-category="${category}"]`)
-        .evaluate((el) => {
-          const r = el.getBoundingClientRect(),
-            f = document
-              .querySelector(".market-scroll")
-              .getBoundingClientRect();
-          const other = [...document.querySelectorAll(".stall:not(.is-active)")]
-            .find((n) => !n.classList.contains("is-distant"))
-            .getBoundingClientRect();
-          return {
-            offset: Math.abs(r.left + r.width / 2 - f.left - f.width / 2),
-            width: r.width,
-            otherWidth: other.width,
-          };
-        });
-      assert.ok(geometry.offset < 2, "Selected stall is centered");
-      assert.ok(
-        geometry.width > geometry.otherWidth,
-        "Selected stall is enlarged",
-      );
-      const visible = await page.locator(".stall").evaluateAll((nodes) => {
-        const frame = document
-          .querySelector(".market-scroll")
-          .getBoundingClientRect();
-        const rects = nodes.map((n) => n.getBoundingClientRect());
-        return (
-          rects.every(
-            (r) =>
-              r.left >= frame.left - 1 &&
-              r.right <= frame.right + 1 &&
-              r.top >= frame.top - 1 &&
-              r.bottom <= frame.bottom + 1,
-          ) &&
-          rects.every((a, i) =>
-            rects
-              .slice(i + 1)
-              .every(
-                (b) =>
-                  a.right <= b.left ||
-                  b.right <= a.left ||
-                  a.bottom <= b.top ||
-                  b.bottom <= a.top,
-              ),
-          )
+      assert.equal(await page.locator('[aria-pressed="true"]').count(), 1);
+      assert.equal(await stall.getAttribute("aria-pressed"), "true");
+      assert.ok(await page.locator("#courtyard-welcome").isHidden());
+      assert.ok(await page.locator("#stall-products").isVisible());
+      const g = await geometry(page);
+      for (let i = 0; i < 4; i++) {
+        assert.ok(Math.abs(g.stalls[i].left - idle.stalls[i].left) < 1);
+        assert.ok(
+          g.stalls[i].left >= g.scene.left &&
+            g.stalls[i].right <= g.scene.right,
+          "Stalls remain inside courtyard",
         );
-      });
-      assert.ok(visible, "All four stalls fit and stay separate");
+        for (let j = i + 1; j < 4; j++)
+          assert.ok(
+            !overlap(g.stalls[i], g.stalls[j]),
+            "Stall hit areas never overlap",
+          );
+        assert.ok(
+          !overlap(g.stalls[i], g.stock),
+          "Central products never cover a stall",
+        );
+      }
       assert.ok(
-        await page.locator(".market-frame #product-grid").isVisible(),
-        "Stock shares the souk scene",
+        g.stock.top >= g.scene.top && g.stock.bottom < g.scene.bottom - 20,
+        "All products and reset fit inside courtyard",
       );
-      assert.equal(await page.locator(".category-switcher").count(), 0);
+      // Packed produce is clipped behind each opaque wooden front.
+      assert.ok(
+        await page
+          .locator(".stock-crate__produce")
+          .evaluateAll((nodes) =>
+            nodes.every((node) => getComputedStyle(node).overflow === "hidden"),
+          ),
+      );
+      await stall.click();
+      assert.deepEqual(
+        await page.locator(".courtyard-product h4").allTextContents(),
+        names,
+        "Repeat selection stays stable",
+      );
     }
     assert.equal(
       await page.locator("#market-progress").textContent(),
-      "4 of 4 stalls explored",
+      "4 of 4 categories explored",
     );
-    await page.locator('.stall[data-category="poultry"]').focus();
+    await page.locator(".courtyard-reset").click();
+    assert.ok(await page.locator("#courtyard-welcome").isVisible());
+    assert.equal(await page.locator(".courtyard-product").count(), 0);
+    assert.equal(
+      await page.locator(":focus").getAttribute("data-category"),
+      "poultry",
+    );
+    await page.locator('[data-category="fruit"]').focus();
     await page.keyboard.press("ArrowRight");
     assert.equal(
-      await page.locator(".stall.is-active").getAttribute("data-category"),
-      "fruit",
+      await page.locator(":focus").getAttribute("data-category"),
+      "meat",
+    );
+    await page.keyboard.press("ArrowDown");
+    assert.equal(
+      await page.locator(":focus").getAttribute("data-category"),
+      "poultry",
     );
     await page.keyboard.press("ArrowLeft");
     assert.equal(
-      await page.locator(".stall.is-active").getAttribute("data-category"),
+      await page.locator(":focus").getAttribute("data-category"),
+      "vegetable",
+    );
+    await page.keyboard.press("Home");
+    assert.equal(
+      await page
+        .locator(".courtyard-stall.is-active")
+        .getAttribute("data-category"),
+      "fruit",
+    );
+    await page.keyboard.press("End");
+    assert.equal(
+      await page
+        .locator(".courtyard-stall.is-active")
+        .getAttribute("data-category"),
       "poultry",
     );
-    for (const section of ["#how-it-works", "#download", ".faq-section"]) {
-      await page.locator(section).scrollIntoViewIfNeeded();
-    }
+    await page.keyboard.press("Escape");
+    assert.ok(await page.locator("#courtyard-welcome").isVisible());
+    await page.keyboard.press("Enter");
+    assert.ok(await page.locator("#stall-products").isVisible());
     await page.locator("summary").first().click();
     assert.equal(
       await page.locator("details").first().getAttribute("open"),
       "",
     );
-    await page.locator("summary").first().click();
-    assert.equal(
-      await page.locator("details").first().getAttribute("open"),
-      null,
-    );
     assert.equal(
       await page.evaluate(() => document.documentElement.scrollWidth),
       width,
-      "Page must not overflow horizontally",
     );
-    await page.waitForLoadState("networkidle");
     assert.deepEqual(
       await page
         .locator("img")
         .evaluateAll((images) =>
           images
-            .filter((image) => !image.complete || !image.naturalWidth)
-            .map((image) => image.src),
+            .filter((i) => !i.complete || !i.naturalWidth)
+            .map((i) => i.src),
         ),
       [],
-      "Every image must load",
     );
-    assert.deepEqual(errors, [], "No console errors or failed resources");
     const scan = await new AxeBuilder({ page })
       .withTags(["wcag2a", "wcag2aa", "wcag21aa"])
       .analyze();
     assert.deepEqual(
       scan.violations.map((v) => ({
         id: v.id,
-        description: v.description,
         nodes: v.nodes.map((n) => n.target),
       })),
       [],
-      "WCAG A/AA accessibility checks",
     );
-    await page.close();
+    assert.deepEqual(errors, []);
+    await context.close();
   });
 }
-
 test("internal links, page anchors and verified Android download work", async () => {
   const page = await browser.newPage();
   await page.goto(base);
@@ -298,223 +277,139 @@ test("internal links, page anchors and verified Android download work", async ()
   await page.close();
 });
 
-test("page works without JavaScript and respects reduced motion", async () => {
+test("no-JavaScript access and reduced-motion behaviour", async () => {
   const page = await browser.newPage({
     javaScriptEnabled: false,
     reducedMotion: "reduce",
     viewport: { width: 390, height: 844 },
   });
   await page.goto(base);
-  assert.ok(await page.locator("noscript").last().isVisible());
-  assert.equal(
-    await page
-      .locator(".sun-halo")
-      .evaluate((el) => getComputedStyle(el).animationName),
-    "none",
-  );
+  assert.ok(await page.locator("noscript").isVisible());
+  assert.ok(await page.locator(".courtyard-logo").isVisible());
+  assert.ok(await page.locator("a[download]").isVisible());
   assert.equal(
     await page
       .locator("html")
       .evaluate((el) => getComputedStyle(el).scrollBehavior),
     "auto",
   );
-  assert.ok(await page.locator("a[download]").isVisible());
-  const response = await page.request.get(base + "/app/");
-  assert.equal(response.status(), 200);
   await page.close();
 });
-
-test("endless street retargets rapidly and updates stock as the center changes", async () => {
+test("spatial delivery, rapid retargeting, reset, resize and motion preference changes", async () => {
   const page = await browser.newPage({
     viewport: { width: 1440, height: 900 },
     reducedMotion: "no-preference",
   });
+  const errors = [];
+  page.on("pageerror", (e) => errors.push(e.message));
   await page.goto(base);
-  await page.locator('.stall[data-category="vegetable"]').click();
-  await page.waitForFunction(
-    () =>
-      document.querySelector(".stall.is-active")?.dataset.category ===
-      "vegetable",
-  );
+  await page.locator('[data-category="fruit"]').click();
   assert.ok(
     await page
-      .locator(".product-card")
-      .evaluateAll((nodes) => nodes.some((n) => n.getAnimations().length > 0)),
-    "Selected stock animates into the counter",
+      .locator(".courtyard-product")
+      .evaluateAll((nodes) =>
+        nodes.some((n) => n.getAnimations({ subtree: true }).length > 0),
+      ),
+    "Crates animate from their originating stall",
   );
-  await page.evaluate(() => {
-    for (const category of ["poultry", "fruit", "meat", "vegetable"])
-      document.querySelector(`.stall[data-category="${category}"]`).click();
-  });
-  await page.waitForTimeout(450);
-  assert.equal(
-    await page.locator(".stall.is-active").getAttribute("data-category"),
-    "vegetable",
+  assert.match(
+    await page.locator(".courtyard-route path").getAttribute("d"),
+    /^M .* Q /,
+    "The route is curved through the square",
   );
-  assert.deepEqual(await page.locator(".product-card h3").allTextContents(), [
-    "Tomatoes",
-    "Potatoes",
-    "Carrots",
-    "Onions",
-  ]);
-  for (const selector of [".steps article", ".download-card", ".faq-section"]) {
-    for (const element of await page.locator(selector).all()) {
-      await element.scrollIntoViewIfNeeded();
-      await page.waitForFunction(
-        (el) => getComputedStyle(el).opacity === "1",
-        await element.elementHandle(),
-      );
-    }
+  // Change category while crates are still in transit.
+  await page.waitForTimeout(90);
+  for (const category of ["poultry", "meat", "vegetable", "fruit", "poultry"]) {
+    await page.locator(`[data-category="${category}"]`).click();
+    await page.waitForTimeout(40);
   }
+  await page.waitForTimeout(1100);
+  assert.deepEqual(
+    await page.locator(".courtyard-product h4").allTextContents(),
+    categories.poultry,
+  );
+  assert.equal(await page.locator(".courtyard-ghost").count(), 0);
+  assert.equal(
+    await page.locator(".courtyard-route path").getAttribute("d"),
+    "",
+  );
+  assert.equal(
+    await page
+      .locator(".courtyard-scene")
+      .evaluate((el) => el.getAnimations({ subtree: true }).length),
+    0,
+    "No accumulated or runaway animation",
+  );
+  await page.locator('[data-category="fruit"]').click();
+  await page.waitForTimeout(100);
+  await page.locator(".courtyard-reset").click();
+  await page.waitForTimeout(500);
+  assert.ok(await page.locator("#courtyard-welcome").isVisible());
+  assert.equal(await page.locator(".courtyard-ghost").count(), 0);
+  await page.locator('[data-category="meat"]').click();
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.waitForTimeout(100);
+  assert.deepEqual(
+    await page.locator(".courtyard-product h4").allTextContents(),
+    categories.meat,
+  );
+  await page.locator('[data-category="fruit"]').click();
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.waitForTimeout(100);
+  assert.equal(
+    await page
+      .locator(".courtyard-scene")
+      .evaluate((el) => el.getAnimations({ subtree: true }).length),
+    0,
+  );
+  assert.equal(await page.locator(".courtyard-ghost").count(), 0);
+  assert.deepEqual(errors, []);
   await page.close();
 });
-
-test("mobile touch capture supports repeated loops and preserves vertical page scrolling", async () => {
-  const page = await browser.newPage({
+test("phone taps keep the square stationary and vertical scrolling works", async () => {
+  const context = await browser.newContext({
     viewport: { width: 390, height: 844 },
     isMobile: true,
     hasTouch: true,
-    reducedMotion: "reduce",
+    reducedMotion: "no-preference",
   });
+  const page = await context.newPage();
   await page.goto(base);
-  await page.locator(".market-scroll").scrollIntoViewIfNeeded();
-  const session = await page.context().newCDPSession(page);
-  const frame = await page.locator(".market-scroll").boundingBox();
-  const centers = await page.locator(".stall").evaluateAll((nodes) =>
-    nodes
-      .map((n) => {
-        const r = n.getBoundingClientRect();
-        return r.x + r.width / 2;
-      })
-      .sort((a, b) => a - b),
-  );
-  const spacing = centers[1] - centers[0],
-    x = frame.x + frame.width * 0.4,
-    y = frame.y + frame.height * 0.55;
-  const names = ["fruit", "vegetable", "meat", "poultry"];
-  let logical = 0;
-  for (const direction of [1, -1])
-    for (let turn = 0; turn < 8; turn++) {
-      await session.send("Input.dispatchTouchEvent", {
-        type: "touchStart",
-        touchPoints: [{ x, y }],
-      });
-      for (let part = 1; part <= 8; part++)
-        await session.send("Input.dispatchTouchEvent", {
-          type: "touchMove",
-          touchPoints: [{ x: x + (direction * spacing * part) / 8, y }],
-        });
-      await page.waitForTimeout(120);
-      await session.send("Input.dispatchTouchEvent", {
-        type: "touchEnd",
-        touchPoints: [],
-      });
-      logical -= direction;
-      assert.equal(
-        await page.locator(".stall.is-active").getAttribute("data-category"),
-        names[((logical % 4) + 4) % 4],
-      );
-    }
-  const scrollBefore = await page.evaluate(() => scrollY);
+  await page.locator(".souk-courtyard").scrollIntoViewIfNeeded();
+  for (const category of ["fruit", "poultry", "meat", "vegetable"]) {
+    const before = await page.evaluate(() => scrollY);
+    await page.locator(`[data-category="${category}"]`).tap();
+    await page.waitForTimeout(1000);
+    assert.ok(
+      Math.abs((await page.evaluate(() => scrollY)) - before) < 2,
+      "Selection does not force page scrolling",
+    );
+    assert.deepEqual(
+      await page.locator(".courtyard-product h4").allTextContents(),
+      categories[category],
+    );
+  }
+  const before = await page.evaluate(() => scrollY);
+  const session = await context.newCDPSession(page);
+  const r = await page.locator(".courtyard-scene").boundingBox();
+  const x = r.x + 10,
+    y = Math.min(650, r.y + r.height * 0.6);
   await session.send("Input.dispatchTouchEvent", {
     type: "touchStart",
     touchPoints: [{ x, y }],
   });
-  for (let part = 1; part <= 8; part++)
+  for (let i = 1; i <= 8; i++)
     await session.send("Input.dispatchTouchEvent", {
       type: "touchMove",
-      touchPoints: [{ x, y: y - part * 10 }],
+      touchPoints: [{ x, y: y - i * 15 }],
     });
   await session.send("Input.dispatchTouchEvent", {
     type: "touchEnd",
     touchPoints: [],
   });
   assert.ok(
-    (await page.evaluate(() => scrollY)) > scrollBefore,
-    "Vertical swipes still scroll the page",
+    (await page.evaluate(() => scrollY)) > before,
+    "Normal vertical touch scrolling is preserved",
   );
-  assert.equal(
-    await page.locator(".stall.is-active").getAttribute("data-category"),
-    "fruit",
-  );
-  await page.close();
-});
-
-test("dragging follows the hand through three full loops in each direction without endpoints", async () => {
-  const page = await browser.newPage({
-    viewport: { width: 390, height: 844 },
-    reducedMotion: "reduce",
-  });
-  await page.goto(base);
-  await page.locator(".market-scroll").scrollIntoViewIfNeeded();
-  const names = ["fruit", "vegetable", "meat", "poultry"];
-  let logicalIndex = 0;
-  for (const direction of [1, -1]) {
-    for (let turn = 0; turn < 12; turn++) {
-      const frame = await page.locator(".market-scroll").boundingBox();
-      const centers = await page.locator(".stall").evaluateAll((nodes) =>
-        nodes
-          .map((n) => {
-            const r = n.getBoundingClientRect();
-            return r.x + r.width / 2;
-          })
-          .sort((a, b) => a - b),
-      );
-      const spacing = centers[1] - centers[0];
-      const active = page.locator(".stall.is-active");
-      const before = await active.boundingBox();
-      const beforeName = await active.getAttribute("data-category");
-      const x = frame.x + frame.width * 0.45,
-        y = frame.y + frame.height * 0.55;
-      await page.mouse.move(x, y);
-      await page.mouse.down();
-      await page.mouse.move(x + direction * spacing * 0.3, y, { steps: 4 });
-      const during = await page
-        .locator(`.stall[data-category="${beforeName}"]`)
-        .boundingBox();
-      assert.ok(
-        Math.abs(
-          during.x +
-            during.width / 2 -
-            (before.x + before.width / 2) -
-            direction * spacing * 0.3,
-        ) < 2,
-        "Street follows the drag before release",
-      );
-      await page.mouse.move(x + direction * spacing, y, { steps: 7 });
-      await page.waitForTimeout(120);
-      await page.mouse.up();
-      logicalIndex -= direction;
-      assert.equal(
-        await page.locator(".stall.is-active").getAttribute("data-category"),
-        names[((logicalIndex % 4) + 4) % 4],
-      );
-      const geometry = await page.locator(".stall.is-active").boundingBox();
-      assert.ok(
-        Math.abs(geometry.x + geometry.width / 2 - frame.x - frame.width / 2) <
-          2,
-        "Nearest stall settles in the center",
-      );
-      const visible = await page
-        .locator(".stall,.stall-copy")
-        .evaluateAll((nodes) => {
-          const f = document
-            .querySelector(".market-scroll")
-            .getBoundingClientRect();
-          return nodes.filter((n) => {
-            const r = n.getBoundingClientRect();
-            return r.left >= f.left && r.right <= f.right;
-          }).length;
-        });
-      assert.ok(visible >= 5, "More than three stalls remain fully visible");
-    }
-  }
-  const beforeIdle = await page.locator(".stall.is-active").boundingBox();
-  await page.waitForTimeout(350);
-  const afterIdle = await page.locator(".stall.is-active").boundingBox();
-  assert.ok(
-    Math.abs(beforeIdle.x - afterIdle.x) < 0.5,
-    "No automatic rotation after choosing a stall",
-  );
-  await page.close();
+  await context.close();
 });
