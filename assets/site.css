@@ -32,6 +32,12 @@ body {
   background: #41694c;
   color: #fffaf0;
 }
+.brand-inline {
+  display: inline-block;
+  white-space: nowrap;
+  direction: ltr;
+  unicode-bidi: isolate;
+}
 html[lang="ar"] body {
   font-family: "IBM Plex Sans Arabic", system-ui, sans-serif;
 }

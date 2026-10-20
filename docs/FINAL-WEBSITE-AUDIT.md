@@ -24,6 +24,10 @@ a separate decision.
 | Global keyboard / no JavaScript      | A theme control without JavaScript could appear to work. The focused skip-link's light text on the dark theme's pale accent had poor contrast.             | Theme controls appear only after initialization. Focused skip links use a consistent dark-green background and light text in both themes. Native links, policies, FAQ and downloads remain usable without JavaScript.                          |
 | SEO / utility pages                  | Preview indexing must stay separate from production SEO.                                                                                                   | Checked localized titles, descriptions, canonical and hreflang links, language/direction, structured app data, sitemap and robots file. Review pages deliberately remain `noindex, nofollow`. The Google verification page remains accessible. |
 
+Final heading inspection also found “SOUK-SCAN” breaking at the hyphen in the
+narrow Arabic download heading. Brand mentions in headings now use an isolated,
+non-breaking inline unit, preserving the name and mixed-direction reading.
+
 ## Page and link coverage
 
 The public crawl reached **22 pages / entry points**:
@@ -40,6 +44,12 @@ scripts, stylesheets and dynamically selected food artwork are included.
 All checked targets returned successful responses. No broken images, placeholder
 anchors, JavaScript exceptions or HTTP resource failures were found. Email
 syntax is checked; mailbox deliverability is not established by a browser audit.
+
+One subsequent crawl received a transient HTTP 503 for the unchanged alternate
+app's JavaScript bundle. An immediate direct retry returned 200, and a fresh
+browser visit loaded that app with no resource or console errors. This was not
+a missing link; the temporary response is recorded here rather than treated as
+a code defect that this website change fixed.
 
 The original app's language, welcome, community, wholesale, sign-in,
 password-reset form, registration form and terms views were also exercised in

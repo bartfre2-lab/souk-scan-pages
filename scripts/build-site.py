@@ -82,6 +82,8 @@ def main():
         common=catalogs[lang]['common']
         return '<footer class="legal-footer"><a href="'+route(lang)+'">SOUK-SCAN</a>'+''.join(f'<a href="{route(lang,key)}">{escape(common[key])}</a>' for key in ('privacy','terms','account-deletion','support'))+'</footer>'
     def save(lang,section,body,title,description,home=False):
+        # Keep the Latin brand readable inside both RTL and LTR headings.
+        body=re.sub(r'(<h[1-6]\b[^>]*>)(.*?)(</h[1-6]>)',lambda m:m[1]+m[2].replace('SOUK-SCAN','<bdi class="brand-inline">SOUK-SCAN</bdi>')+m[3],body,flags=re.S)
         document=f'<!doctype html><html lang="{lang}" dir="{"rtl" if lang=="ar" else "ltr"}">'+head(lang,section,title,description)+body+payload(lang,section)+('</body></html>')
         for original,versioned in versions.items():document=document.replace(base+'assets/'+original,base+'assets/'+versioned)
         path=out/('' if lang=='en' else lang)/(section if section else '')/'index.html'
