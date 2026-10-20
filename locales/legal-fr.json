@@ -35,7 +35,7 @@
       {
         "title": "Stockage sur votre appareil",
         "paragraphs": [
-          "L’application conserve sur votre appareil des préférences telles que la langue, l’apparence, la région et les favoris, ainsi que les informations de session nécessaires à votre connexion. Ce site enregistre uniquement les préférences de langue et d’apparence. Vous pouvez les effacer dans les paramètres de stockage de l’appareil ou du navigateur."
+          "L’application conserve sur votre appareil des préférences telles que la langue, l’apparence, la région et les favoris, ainsi que les informations de session nécessaires à votre connexion. Ce site conserve les préférences de langue, d’apparence et de région et l’envoie à Supabase pour consulter les estimations régionales. Il ne demande pas votre position GPS et ne vous connecte pas à un compte. Vous pouvez les effacer dans les paramètres de stockage de l’appareil ou du navigateur."
         ]
       },
       {
@@ -178,7 +178,7 @@
       {
         "title": "Prix et régions",
         "paragraphs": [
-          "Choisissez une région manuellement ou activez sa détection automatique facultative. Les estimations participatives apparaissent lorsque les signalements valides sont suffisants. Les références de gros disponibles indiquent leur source et leur date ; elles ne garantissent pas un prix de détail. Les prix du souk interactif de ce site sont illustratifs."
+          "Choisissez une région manuellement ou activez sa détection automatique facultative. Les estimations participatives apparaissent lorsque les signalements valides sont suffisants. Les références de gros disponibles indiquent leur source et leur date ; elles ne garantissent pas un prix de détail. Le souk interactif de ce site consulte les mêmes estimations régionales et références de gros datées que l’application."
         ]
       },
       {

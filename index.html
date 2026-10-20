@@ -49,7 +49,7 @@
           ></span
         ></a
       >
-      <nav aria-label="Main navigation">
+      <nav class="primary-nav" aria-label="Main navigation">
         <a href="#how-it-works">How it works</a
         ><a class="nav-app" href="./app/"
           >Open web app
@@ -58,6 +58,7 @@
               <path d="M6 18 18 6M6 6h12v12" /></svg></span
         ></a>
       </nav>
+      <!--header-controls-->
       <a class="button button-small" href="#download"
         >Get the app
         <span aria-hidden="true"
@@ -79,7 +80,7 @@
         </p>
         <div class="hero-actions">
           <a class="button" href="#souk"
-            >Explore example prices
+            >Explore prices
             <span aria-hidden="true"
               ><svg class="icon-arrow" viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M12 4v16m-6-6 6 6 6-6" /></svg></span></a
@@ -98,7 +99,19 @@
             <span class="eyebrow">EXPLORE BY CATEGORY</span>
             <h2 id="souk-title">Explore <em>food prices.</em></h2>
           </div>
-          <p>Choose a category.<br />Example prices appear in the square.</p>
+          <p>Choose a category.<br />Prices appear in the square.</p>
+        </div>
+        <div class="market-controls">
+          <label class="market-region"
+            ><span>Choose your region</span
+            ><select id="market-region" disabled>
+              <option value="">Choose your region</option>
+            </select></label
+          >
+          <button class="market-refresh" type="button" disabled>
+            Refresh prices
+          </button>
+          <p id="market-fetch-state" role="status" aria-live="polite"></p>
         </div>
         <div class="souk-courtyard" data-state="idle">
           <div class="courtyard-topline">
@@ -187,11 +200,10 @@
                     height="128"
                   /><span class="courtyard-scan" aria-hidden="true"></span>
                 </div>
-                <p class="eyebrow">EXAMPLE PRICES</p>
+                <p class="eyebrow">FOOD PRICES</p>
                 <h3>Local prices.<br /><em>Shared by people.</em></h3>
                 <p class="courtyard-idle__hint">
-                  Choose a stall around the square<br />to explore example food
-                  prices.
+                  Choose a stall around the square<br />to explore food prices.
                 </p>
                 <span class="courtyard-idle__compass" aria-hidden="true"
                   ><svg viewBox="0 0 24 24">
@@ -209,7 +221,7 @@
                 <div class="courtyard-stock__heading">
                   <span class="eyebrow" id="vendor-kicker"></span>
                   <h3 id="products-title"></h3>
-                  <p>Example ranges · MAD</p>
+                  <p id="stock-region">Choose your region</p>
                 </div>
                 <div class="courtyard-stock__grid" id="product-grid"></div>
                 <button
@@ -243,8 +255,8 @@
         ></p>
         <div class="courtyard-price-note">
           <p>
-            These are illustrative prices. For recent community-reported prices
-            in your region, open SOUK-SCAN.
+            Community estimates are regional. Wholesale references are dated
+            prices from the Casablanca market, not retail prices in your region.
           </p>
           <a class="text-link" href="./app/"
             >Find prices near you
@@ -409,7 +421,8 @@
             <p>
               Community prices are estimates from recent observations. Dated
               wholesale references are shown separately. Prices vary by market,
-              quality and date. The souk on this page shows examples.
+              quality and date. Choose your region to see its community
+              estimates.
             </p>
           </details>
           <details>

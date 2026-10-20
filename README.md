@@ -21,7 +21,7 @@ meat and poultry on the right, with the real logo in the centre before selection
 The four stalls stay visible and fixed. Choosing one brings packed product crates
 along curved paths from that stall into the central square. Switching returns
 the previous stock to its vendor. The back control or Escape restores the logo.
-The central display includes every example product in that category.
+The central display includes every product configured for that stall.
 
 The paved Moroccan medina setting uses plaster facades, horseshoe arches and
 zellij details. Right-hand stalls face the centre. Coordinated retro cartoon
@@ -30,14 +30,16 @@ product silhouettes visible. Only crates follow the delivery arcs. Names and
 prices remain anchored in the centre.
 
 Wooden crates use contained stock chambers behind opaque fronts and corner posts.
-Product names, example ranges and units stay upright outside the art. Mobile
+Product names, real source ranges and units stay upright outside the art. Mobile
 layouts preserve the same two-sided composition. Touch, pointer and spatial
 arrow-key navigation work without forced scrolling. Reduced motion removes
 the delivery animations; changing preference or resizing also cancels in-flight
 effects. Rapid switching cancels obsolete animation and removes temporary crates.
 
-Prices on the landing page are explicitly labeled examples. The existing
-`app/` contains real regional prices. No checkout or delivery is implied.
+The courtyard reads the same public price RPCs as the original app. Choose a
+region for community estimates; wholesale references keep their own bulletin
+date and source. Insufficient data and errors are shown explicitly, with no
+sample values. No checkout or delivery is implied. See [live price integration](docs/LIVE-PRICES.md).
 
 ## Files
 
@@ -45,6 +47,7 @@ Prices on the landing page are explicitly labeled examples. The existing
 - `assets/courtyard.css`, `assets/souk-world.css`: the courtyard layout and artwork styling.
 - `assets/souk-medina-panorama.png`, `assets/souk-*-rubber-hose.png`: original generated artwork.
 - `assets/site.css`, `assets/site.js`: compact layout, localization and persistent dark mode.
+- `assets/market-prices.js`, `data/market.json`: the public price read/cache protocol and region configuration.
 - `locales/`, `scripts/build-site.py`: static translated pages and metadata.
 - `assets/brand/`: the actual SOUK-SCAN logo.
 - `assets/products/ATTRIBUTION.md`: existing product art attribution.
@@ -95,12 +98,12 @@ metadata. Production legal pages remain unchanged until approved.
 
 The compact desktop courtyard is 430–500px high (440px on short laptops), about
 40% shorter than the previous 780px scene. Four products share a central desktop
-row; smaller screens use two columns. The panorama retains the roofline and sky.
+row; phones use two columns. The panorama retains the roofline and sky.
 Food fits completely inside the visible chamber above the crate front.
 
 Appearance follows the system until changed, persists between localized pages
 and works when storage is blocked. Arabic has RTL text and a local Arabic font.
-The 28 browser checks also cover all 15 static routes, localized SEO/legal links,
+The 35 automated checks also cover all 15 static routes, localized SEO/legal links,
 food containment and accessibility in both themes.
 
 See [Google Play review](docs/GOOGLE-PLAY-REVIEW.md) for code evidence, Data safety

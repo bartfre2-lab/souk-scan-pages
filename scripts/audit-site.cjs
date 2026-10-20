@@ -23,8 +23,14 @@ const report = {
 };
 const fail = (type, data) => report.errors.push({ type, ...data });
 let browser;
+async function auditContext(options) {
+  const context = await browser.newContext(options);
+  if (!remote)
+    await require("../tests/market-fixtures.cjs").installPriceFixtures(context);
+  return context;
+}
 async function crawl() {
-  const context = await browser.newContext({ reducedMotion: "reduce" });
+  const context = await auditContext({ reducedMotion: "reduce" });
   const queue = [start];
   if (remote)
     for (const route of [
@@ -205,7 +211,7 @@ async function crawl() {
 }
 async function motionChecks() {
   for (const width of [390, 1366]) {
-    const context = await browser.newContext({
+    const context = await auditContext({
       viewport: { width, height: 844 },
       reducedMotion: "no-preference",
     });
@@ -267,7 +273,7 @@ async function motionChecks() {
 async function layouts() {
   for (const language of ["en", "fr", "ar"])
     for (const theme of ["light", "dark"]) {
-      const context = await browser.newContext({
+      const context = await auditContext({
         reducedMotion: "reduce",
         colorScheme: theme,
       });

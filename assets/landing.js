@@ -1,47 +1,42 @@
-/* The landing page demonstrates categories with clearly marked example prices.
- * Live regional data remains in the existing SOUK-SCAN app.
- */
+/* Public price reads use the same server-side rules as the original app. */
+import { createPriceStore } from "./market-prices.js";
 const siteCopy = JSON.parse(document.querySelector("#site-copy").textContent);
-const marketCopy = siteCopy.market;
+const marketCopy = siteCopy.market,
+  priceCopy = siteCopy.prices;
 const message = (text, values) =>
   text.replace(/\{(\w+)\}/g, (_, key) => values[key] ?? "");
 const vendors = {
   fruit: {
-    kicker: "THE FRUIT SELLER",
     products: [
-      ["Oranges", "برتقال", "orange", "5–8", "kg"],
-      ["Apples", "تفاح", "apple", "10–16", "kg"],
-      ["Bananas", "موز", "banana", "12–18", "kg"],
-      ["Pomegranates", "رمان", "pomegranate", "8–14", "kg"],
+      ["Oranges", "orange", "orange", "kg"],
+      ["Apples", "apple", "apple", "kg"],
+      ["Bananas", "banana", "banana", "kg"],
+      ["Pomegranates", "pomegranate", "pomegranate", "kg"],
     ],
   },
   vegetable: {
-    kicker: "THE GREENGROCER",
     products: [
-      ["Tomatoes", "طماطم", "tomato", "4–7", "kg"],
-      ["Potatoes", "بطاطس", "potato", "5–8", "kg"],
-      ["Carrots", "جزر", "carrot", "4–7", "kg"],
-      ["Onions", "بصل", "onion", "4–6", "kg"],
+      ["Tomatoes", "tomato", "tomato", "kg"],
+      ["Potatoes", "potato", "potato", "kg"],
+      ["Carrots", "carrot", "carrot", "kg"],
+      ["Onions", "onion", "onion", "kg"],
     ],
   },
   meat: {
-    kicker: "THE BUTCHER",
     products: [
-      ["Beef", "لحم بقري", "cut_of_meat", "85–110", "kg"],
-      ["Mutton", "لحم غنمي", "meat_on_bone", "95–130", "kg"],
+      ["Beef", "beef", "cut_of_meat", "kg"],
+      ["Mutton", "mutton", "meat_on_bone", "kg"],
     ],
   },
   poultry: {
-    kicker: "POULTRY & EGGS",
     products: [
-      ["Live chicken", "دجاج حي", "chicken", "17–23", "kg"],
-      ["Dressed chicken", "دجاج مذبوح", "poultry_leg", "25–32", "kg"],
-      ["Beldi eggs", "بيض بلدي", "egg", "2–3", "egg"],
-      ["Roumi eggs", "بيض رومي", "egg", "1–1.5", "egg"],
+      ["Live chicken", "live_chicken", "chicken", "kg"],
+      ["Dressed chicken", "slaughtered_chicken", "poultry_leg", "kg"],
+      ["Beldi eggs", "beldi_eggs", "egg", "egg"],
+      ["Roumi eggs", "roumi_eggs", "egg", "egg"],
     ],
   },
 };
-
 const scene = document.querySelector(".courtyard-scene");
 const courtyard = document.querySelector(".souk-courtyard");
 const welcome = document.querySelector("#courtyard-welcome");
@@ -257,6 +252,188 @@ function deliver(category) {
     { duration: 600, easing: "cubic-bezier(.2,.7,.2,1)" },
   );
 }
+const priceStore = createPriceStore(siteCopy.priceConfig);
+const regionSelect = document.querySelector("#market-region");
+const refreshButton = document.querySelector(".market-refresh");
+const fetchState = document.querySelector("#market-fetch-state");
+let regionId = "",
+  priceGeneration = 0;
+try {
+  const stored =
+    localStorage.getItem("soukscan.website.region") ||
+    localStorage.getItem("soukscan.region");
+  if (siteCopy.regions.some((r) => r.id === stored)) regionId = stored;
+} catch {}
+for (const region of siteCopy.regions) {
+  const option = document.createElement("option");
+  option.value = region.id;
+  option.textContent = region["name_" + siteCopy.language] || region.name_en;
+  regionSelect.append(option);
+}
+regionSelect.value = regionId;
+regionSelect.disabled = false;
+function regionName() {
+  const region = siteCopy.regions.find((r) => r.id === regionId);
+  return region
+    ? region["name_" + siteCopy.language] || region.name_en
+    : priceCopy.chooseRegion;
+}
+function plural(key, count) {
+  return message(priceCopy[key + (count === 1 ? "One" : "Other")], { count });
+}
+function appendText(parent, tag, className, text) {
+  const node = document.createElement(tag);
+  node.className = className;
+  node.textContent = text;
+  parent.append(node);
+  return node;
+}
+function paintSource(card, kind, value) {
+  const host = card.querySelector(".product-prices");
+  let row = host.querySelector('[data-source="' + kind + '"]');
+  if (!row) {
+    row = document.createElement("div");
+    row.dataset.source = kind;
+    host.append(row);
+  }
+  row.className = "product-price-source product-price-source--" + kind;
+  row.dataset.status = value.status;
+  row.replaceChildren();
+  appendText(
+    row,
+    "span",
+    "price-source-label",
+    kind === "reference" ? priceCopy.wholesale : priceCopy.community,
+  );
+  if (value.status === "ok") {
+    const line = document.createElement("div");
+    line.className = "courtyard-product__price";
+    appendText(
+      line,
+      "strong",
+      "price-value",
+      `${value.lowerRange} – ${value.upperRange}`,
+    ).dir = "ltr";
+    row.append(line);
+    if (kind === "reference") {
+      const date = new Intl.DateTimeFormat(siteCopy.language, {
+        day: "numeric",
+        month: "short",
+        year: "numeric",
+        timeZone: "Africa/Casablanca",
+      }).format(new Date(value.bulletinDate + "T12:00:00Z"));
+      const meta = appendText(row, "time", "price-meta", date);
+      meta.dateTime = value.bulletinDate;
+      meta.dir = "auto";
+      row.title =
+        priceCopy.source +
+        (value.note ? " · " + priceCopy[value.note + "Note"] : "");
+      row.dataset.note = value.note || "";
+      if (value.note)
+        appendText(
+          meta,
+          "span",
+          "sr-only",
+          " · " + priceCopy[value.note + "Note"],
+        );
+    } else {
+      appendText(
+        row,
+        "span",
+        "price-meta",
+        value.freshnessDays === 0
+          ? priceCopy.today
+          : plural("updated", value.freshnessDays),
+      );
+      row.title = plural("observations", value.sampleSize);
+    }
+  } else {
+    const text =
+      value.status === "loading"
+        ? priceCopy.loading
+        : value.status === "region"
+          ? priceCopy.chooseRegion
+          : value.status === "insufficient"
+            ? priceCopy.insufficient
+            : value.status === "none"
+              ? priceCopy.none
+              : priceCopy.rowError;
+    appendText(row, "span", "price-state", text);
+  }
+  if (value.refreshFailed) row.dataset.refreshFailed = "true";
+  else delete row.dataset.refreshFailed;
+}
+function updatePrices(force = false) {
+  const generation = ++priceGeneration,
+    category = selected,
+    region = regionId;
+  if (!category) {
+    refreshButton.disabled = true;
+    fetchState.textContent = "";
+    return;
+  }
+  document.querySelector("#stock-region").textContent = regionName();
+  document.querySelector("#stock-region").title = regionName();
+  refreshButton.disabled = true;
+  fetchState.textContent = priceCopy.loading;
+  const requests = [];
+  for (const card of grid.children) {
+    for (const kind of ["reference", "community"]) {
+      if (kind === "community" && !region) {
+        paintSource(card, kind, { status: "region" });
+        continue;
+      }
+      paintSource(
+        card,
+        kind,
+        priceStore.read(kind, card.dataset.productId, region) || {
+          status: "loading",
+        },
+      );
+      requests.push(
+        priceStore
+          .load(kind, card.dataset.productId, region, { force })
+          .then((value) => {
+            if (
+              generation !== priceGeneration ||
+              category !== selected ||
+              region !== regionId ||
+              !card.isConnected
+            )
+              return value;
+            paintSource(card, kind, value);
+            return value;
+          }),
+      );
+    }
+  }
+  Promise.all(requests).then((values) => {
+    if (
+      generation !== priceGeneration ||
+      category !== selected ||
+      region !== regionId
+    )
+      return;
+    refreshButton.disabled = false;
+    fetchState.textContent = values.some((v) => v.refreshFailed)
+      ? priceCopy.refreshFailed
+      : values.some((v) => v.status === "error")
+        ? priceCopy.error
+        : region
+          ? ""
+          : priceCopy.regionHint;
+  });
+}
+regionSelect.addEventListener("change", () => {
+  regionId = siteCopy.regions.some((r) => r.id === regionSelect.value)
+    ? regionSelect.value
+    : "";
+  try {
+    localStorage.setItem("soukscan.website.region", regionId);
+  } catch {}
+  updatePrices();
+});
+refreshButton.addEventListener("click", () => updatePrices(true));
 function select(category) {
   if (!vendors[category] || category === selected) return;
   const outgoing = captureStock();
@@ -278,14 +455,16 @@ function select(category) {
     marketCopy.kickers[category];
   document.querySelector("#products-title").textContent = titles[category];
   const fragment = document.createDocumentFragment();
-  for (const [name, arabic, image, price, unit] of vendors[category].products) {
+  for (const [name, productId, image, unit] of vendors[category].products) {
     const card = document.createElement("article");
     card.className = "courtyard-product";
+    card.dataset.productId = productId;
+    card.dataset.unit = unit;
     const frame = foodFrames[name === "Roumi eggs" ? "white_egg" : image];
     // The inner viewport also clips letterboxed edges to the selected frame.
     const foodArt = `<svg class="stock-crate__food" viewBox="0 0 ${frame[2]} ${frame[3]}" preserveAspectRatio="xMidYMid meet" focusable="false"><svg width="${frame[2]}" height="${frame[3]}" viewBox="${frame.join(" ")}" overflow="hidden"><image href="${foodSheet}" width="1254" height="1254" /></svg></svg>`;
     // These are authored constants, never user input or remote HTML.
-    card.innerHTML = `<div class="stock-crate" aria-hidden="true"><span class="stock-crate__shadow"></span><div class="stock-crate__back"></div><div class="stock-crate__produce">${foodArt}</div><div class="stock-crate__front"></div></div><h4 class="courtyard-product__name">${marketCopy.products[name]}</h4><p class="courtyard-product__price"><strong><bdi>${price}</bdi></strong><span>${marketCopy.units[unit]}</span></p>`;
+    card.innerHTML = `<div class="stock-crate" aria-hidden="true"><span class="stock-crate__shadow"></span><div class="stock-crate__back"></div><div class="stock-crate__produce">${foodArt}</div><div class="stock-crate__front"></div></div><h4 class="courtyard-product__name">${marketCopy.products[name]}</h4><span class="product-unit">${marketCopy.units[unit]}</span><div class="product-prices"></div>`;
     fragment.append(card);
   }
   grid.replaceChildren(fragment);
@@ -301,6 +480,7 @@ function select(category) {
     marketCopy.announcement,
     { title: titles[category], count: vendors[category].products.length },
   );
+  updatePrices();
   deliver(category);
 }
 function returnToSquare() {
@@ -310,6 +490,9 @@ function returnToSquare() {
   stopMotion();
   packAway(previous, outgoing);
   selected = null;
+  priceGeneration++;
+  refreshButton.disabled = true;
+  fetchState.textContent = "";
   courtyard.dataset.state = "idle";
   delete courtyard.dataset.category;
   stock.hidden = true;
