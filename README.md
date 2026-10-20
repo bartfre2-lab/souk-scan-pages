@@ -1,159 +1,116 @@
-# SOUK-SCAN Pages
+# SOUK-SCAN website
 
-Static English, French and Arabic website, with the existing app hosted separately.
-Run `npm ci`, then `npm run dev` and open http://localhost:4173.
+The official English, French and Arabic website at [soukscan.online](https://soukscan.online/).
+Four fixed Moroccan souk stalls reveal real food-price information in the central
+courtyard. The site preserves the app's logo, scanner wordmark, onboarding copy
+and green/ivory palette. Language and light/dark controls are in every header.
 
-Python 3 builds 15 static pages into ignored `dist/`: home, privacy, terms,
-account deletion and support for each language. English uses `/`, French `/fr/`
-and Arabic `/ar/`. Language links preserve the current section. Pages contain
-their translated content and metadata without requiring client-side translation.
-The interactive courtyard needs JavaScript.
+**`main` is the maintained source and deployment branch.** GitHub Actions builds,
+tests and publishes the website; generated production pages are not edited or
+committed separately. The native app is maintained in its own repository.
 
-Edit the English source template `index.html` and the translation/legal catalogs
-in `locales/`, then rebuild with `npm run build`. Missing home translations fail
-the build. `scripts/build-site.py` handles routes, canonical/hreflang links,
-social metadata, structured data and the sitemap. Do not edit generated HTML.
+## Work locally
 
-The website uses the real app logo and the intentional `[SOUK-SCAN]` scanner
-wordmark, with the existing ivory, charcoal and muted-green palette.
-The website is a Moroccan souk courtyard: fruit and vegetables on the left,
-meat and poultry on the right, with the real logo in the centre before selection.
-The four stalls stay visible and fixed. Choosing one brings packed product crates
-along curved paths from that stall into the central square. Switching returns
-the previous stock to its vendor. The back control or Escape restores the logo.
-The central display includes every product configured for that stall.
-
-The paved Moroccan medina setting uses plaster facades, horseshoe arches and
-zellij details. Right-hand stalls face the centre. Coordinated retro cartoon
-sprite sheets supply the vendor and food art; shallow crate fronts leave the
-product silhouettes visible. Only crates follow the delivery arcs. Names and
-prices remain anchored in the centre.
-
-Wooden crates use contained stock chambers behind opaque fronts and corner posts.
-Product names, real source ranges and units stay upright outside the art. Mobile
-layouts preserve the same two-sided composition. Touch, pointer and spatial
-arrow-key navigation work without forced scrolling. Reduced motion removes
-the delivery animations; changing preference or resizing also cancels in-flight
-effects. Rapid switching cancels obsolete animation and removes temporary crates.
-
-The courtyard reads the same public price RPCs as the original app. Choose a
-region for community estimates; wholesale references keep their own bulletin
-date and source. Insufficient data and errors are shown explicitly, with no
-sample values. No checkout or delivery is implied. See [live price integration](docs/LIVE-PRICES.md).
-
-## Files
-
-- `index.html`, `assets/landing.css`, `assets/landing.js`: the landing page.
-- `assets/courtyard.css`, `assets/souk-world.css`: the courtyard layout and artwork styling.
-- `assets/souk-medina-panorama.png`, `assets/souk-*-rubber-hose.png`: original generated artwork.
-- `assets/site.css`, `assets/site.js`: compact layout, localization and persistent dark mode.
-- `assets/market-prices.js`, `data/market.json`: the public price read/cache protocol and region configuration.
-- `locales/`, `scripts/build-site.py`: static translated pages and metadata.
-- `assets/brand/`: the actual SOUK-SCAN logo.
-- `assets/products/ATTRIBUTION.md`: existing product art attribution.
-- `downloads/`: original signed Android v1.0.2 APK and release checksums.
-- `app/`: maintained separately. Generated website policies come from
-  `locales/legal-*.json`; the old root legal source directories are historical.
-
-The download is hosted here because the app's GitHub release is private. Its
-SHA-256 matches the release checksum. This does not imply a new Android release.
-
-## Verification
+Use Node 24 (`nvm use`), Python 3.9+ and npm:
 
 ```sh
 npm ci
-npx playwright install chromium  # if system Chromium is unavailable
+npx playwright install --with-deps chromium
+npm run dev
+```
+
+Open `http://localhost:4173/`. Edit `index.html`, `assets/`, `locales/` and
+`data/market.json`, then rebuild. `npm run dev` serves a build; it does not watch
+files. English is `/`, French `/fr/` and Arabic `/ar/`. Each language includes
+privacy, terms, account deletion and support pages. Translations, canonical and
+hreflang links, sitemap and structured data are generated statically.
+
+## Verify and deploy
+
+```sh
 npm test
+npm run build -- --out-dir dist-production --asset-version local-check
+npm run verify:build -- dist-production local-check
 ```
 
-Browser checks cover four screen widths, category selection, product labels,
-keyboard controls, accessibility, resource errors, image loading, overflow,
-page links, download behavior/checksum, no-JavaScript access and reduced motion.
-They complement visual inspection; passing them is not a claim of visual quality.
+Tests cover region/cache races, failed refreshes, localized navigation, source
+separation, accessibility, crate containment, keyboard/touch interaction, motion
+cancellation and the signed APK. Artifact checks additionally verify production
+SEO, imports, retained cached assets, exact app/review snapshots and absence of
+source/environment files. The build refuses to overwrite source/release folders.
 
-Browser checks cover the branded idle state, all four category displays, fixed
-stall positions, separation between stalls and stock, reset/Escape and focus
-return, spatial keyboard selection, rapid changes during delivery, animation
-cleanup, resizing and changed motion preferences. Mobile tests check category
-taps without page movement and normal vertical touch scrolling.
+Open a short-lived branch and pull request for future changes. The **Website
+checks and deployment** workflow runs on pull requests and `main`. After checks
+pass, a main-branch update uploads only `dist-production/` and deploys it through
+GitHub Pages Actions. The same workflow can be rerun with **Run workflow** on
+`main`. No manual copying, deployment commits, external hosting service or new
+secrets are required. Workflows use pinned action revisions and Node 24;
+Dependabot checks npm and action updates monthly.
 
-`npm run art` regenerates the older SVG stalls. The website now uses PNG sprite
-sheets and native category labels. The app's artwork and carousel remain separate
-from this website change.
+GitHub Pages must use **GitHub Actions** as its build source. Deployment requires
+`pages: write` and `id-token: write`; build/test has read-only repository access.
+The `github-pages` environment is restricted to the production branch. Never
+publish the raw repository root or merge unbuilt HTML through legacy Jekyll.
 
-The approved website is published at `https://soukscan.online/`, with French at
-`/fr/` and Arabic at `/ar/`. Each language includes privacy, terms, account
-deletion and support pages. The original app stays at `/app/`.
-The historical website review remains at `/preview/souk/` with noindex metadata;
-the separate app review remains at `/preview/souk-app/`.
+## Repository layout
 
-## Production publication
+| Path | Purpose |
+| --- | --- |
+| `index.html`, `assets/` | Editable home template, styling, interactions, illustrations and fonts |
+| `locales/` | English, French and Arabic website/legal copy |
+| `data/market.json` | Existing public client configuration and canonical regions |
+| `scripts/` | Static builder, deployment verification and read-only browser audit |
+| `tests/` | Browser, data/cache and build regression checks |
+| `app/` | Existing independently built web app, published unchanged at `/app/` |
+| `preview/` | Historical website and alternate-app review snapshots; retained for existing links |
+| `public/assets/` | Previous versioned production JS/CSS, retained for cached open tabs |
+| `downloads/` | Original signed Android v1.0.2 APK and release checksums |
+| `CNAME`, `google*.html` | Custom-domain and Search Console verification |
+| `dist*/` | Ignored generated output; only this output is deployed |
+| `docs/` | Price integration, Google Play review, store drafts and historical audit evidence |
+
+The builder includes the static `app/`, `preview/`, retained cache assets, domain
+and verification file in production output. It does not rebuild an app or touch
+the backend. App-only updates committed to `app/` also run the website checks and
+publish through the same workflow. Keep old versioned assets while cached pages
+may still request them. Product credits remain in `assets/products/ATTRIBUTION.md`;
+`scripts/generate-art.py` is the historical SVG generator, not the current PNG art.
+
+## Prices and privacy
+
+The website calls the original app's public price functions. Community estimates
+use the selected region; wholesale references retain their own date and Casa
+Prestations attribution. Server aggregation is authoritative. Insufficient data,
+missing references and network errors are distinct; no numeric sample fallback
+is used. Only successful responses are cached for 60 seconds, with separate
+product/region/source keys and shared in-flight requests.
+
+Website preferences use separate local-storage keys. Region reads do not request
+GPS, sign in, submit reports or change accounts. `data/market.json` contains an
+intentional **public anon/publishable key**, never a service-role key or secret.
+Database policies still control access. See [price integration](docs/LIVE-PRICES.md).
+
+## Additional audits and recovery
+
+With a generated site being served, run:
 
 ```sh
-npm run build -- --base / --out-dir /tmp/souk-production --asset-version COMMIT
+AUDIT_URL=http://localhost:4173/ node scripts/audit-site.cjs --layout --motion
+AUDIT_URL=https://soukscan.online/ node scripts/audit-site.cjs --crawl
 ```
 
-Publish generated `index.html`, `robots.txt`, `sitemap.xml`, `fr/`, `ar/`,
-`privacy/`, `terms/`, `account-deletion/`, `support/`, `assets/` and `downloads/`
-to the Pages `main` branch. Keep existing versioned assets. Do not copy the
-generated `app/` directory: the app is maintained and deployed separately.
-Preserve `CNAME`, the Google verification file and both review directories.
-Production builds use root URLs, indexable metadata and the production sitemap.
-The owner approved promotion of the website and legal pages on 20 October 2026.
+`AUDIT_BROWSER=firefox` or `webkit` selects another installed engine. Each layout
+run covers 120 responsive layouts and 36 automated accessibility scans. Audit
+reports/screenshots are ignored under `test-results/`; live crawls are read-only.
+Physical-device and authenticated account actions are outside these checks.
 
-## Localized review publication
+The pre-cleanup production state is retained by the tag
+`archive/pre-cleanup-2026-10-20`. All old branch work remains in merged Git history.
+For a future regression, revert the relevant source change on `main` and let the
+workflow redeploy; an existing successful Pages deployment can also be restored
+from its Actions run. Do not switch back to publishing raw source from the branch.
 
-```sh
-npm run build -- --base /preview/souk/ --out-dir dist-review --preview --asset-version COMMIT
-```
-
-Copy `dist-review/` into **only** `preview/souk/` on the Pages publishing branch.
-Keep older versioned assets and legacy scripts for cached open tabs. Preview
-HTML is deliberately `noindex, nofollow`; production builds contain indexable
-metadata. Review publication is separate from the official root website.
-
-The compact desktop courtyard is 430–500px high (440px on short laptops), about
-40% shorter than the previous 780px scene. Four products share a central desktop
-row; phones use two columns. The panorama retains the roofline and sky.
-Food fits completely inside the visible chamber above the crate front.
-
-Appearance follows the system until changed, persists between localized pages
-and works when storage is blocked. Arabic has RTL text and a local Arabic font.
-The 35 automated checks also cover all 15 static routes, localized SEO/legal links,
-food containment and accessibility in both themes.
-
-See [Google Play review](docs/GOOGLE-PLAY-REVIEW.md) for code evidence, Data safety
-recommendations and remaining release checks. Revised English and new French/
-Arabic descriptions are in [store-listings](docs/store-listings/).
-This website implementation does not build or release a new native app.
-
-## Final website audit
-
-The hero follows the original app's onboarding copy. Section copy uses direct
-product descriptions, and the download section shows the original app's actual
-welcome screen rather than the alternate souk-app preview.
-
-`scripts/audit-site.cjs` provides a read-only crawl and extended layout audit:
-
-```sh
-# Serve the generated site first (npm run dev uses port 4173).
-AUDIT_URL=http://localhost:4173/ node scripts/audit-site.cjs --layout
-AUDIT_URL=http://localhost:4173/ node scripts/audit-site.cjs --motion
-AUDIT_BROWSER=firefox AUDIT_URL=http://localhost:4173/ node scripts/audit-site.cjs --layout
-AUDIT_BROWSER=webkit AUDIT_URL=http://localhost:4173/ node scripts/audit-site.cjs --layout
-AUDIT_URL=https://soukscan.online/preview/souk/ node scripts/audit-site.cjs --crawl
-```
-
-Install the selected browser and its host dependencies with Playwright as needed.
-Each engine checks 48 home and 72 legal/support layouts and runs 36 automated
-accessibility scans, including WCAG 2.2 target-size rules. Reports and screenshots
-go into ignored `test-results/`; `AUDIT_OUTPUT` sets another directory.
-The remote crawl follows public navigation, CSS resources and sitemap URLs and
-also includes the root site, existing legal pages, app entry points and Google
-verification file. It does not create accounts or submit forms.
-`--motion` checks rapid retargeting, completion, resizing, motion preference
-changes and Escape/focus return at phone and desktop sizes in the chosen engine.
-
-See [the final audit report](docs/FINAL-WEBSITE-AUDIT.md) for findings by section,
-implemented fixes, verification results and authenticated-flow limits. The
-report records the historical review phase; promotion is now owner-approved.
+[Google Play review](docs/GOOGLE-PLAY-REVIEW.md) and [listing drafts](docs/store-listings/)
+are preparation documents, not Play Console submissions or approval guarantees.
+[The original visual audit](docs/FINAL-WEBSITE-AUDIT.md) records the earlier preview
+phase; current maintenance and publishing instructions are this README.

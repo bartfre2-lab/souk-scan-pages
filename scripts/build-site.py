@@ -50,8 +50,22 @@ def main():
     args=parser.parse_args()
     base='/'+args.base.strip('/')+'/' if args.base.strip('/') else '/'
     out=ROOT/args.out_dir
-    if out.resolve() in (ROOT.resolve(),ROOT.parent.resolve()):raise ValueError('Unsafe output directory')
+    resolved=out.resolve()
+    protected=[ROOT/name for name in ('app','preview','public','assets','locales','data','scripts','tests','docs','downloads','.git','node_modules','.github')]
+    if any(resolved==p.resolve() or resolved.is_relative_to(p.resolve()) for p in protected) or resolved in (ROOT.resolve(),ROOT.parent.resolve()):
+        raise ValueError('Unsafe output directory')
+    if args.asset_version and not re.fullmatch(r'[A-Za-z0-9_-]+',args.asset_version):
+        raise ValueError('Invalid asset version')
     out.mkdir(parents=True,exist_ok=True)
+    if base=='/':
+        # Static app/review releases are maintained independently. Only their
+        # built files, domain verification and retained browser-cache assets ship.
+        for directory in ('app','preview','public'):
+            source=ROOT/directory
+            if source.is_dir():shutil.copytree(source,out if directory=='public' else out/directory,dirs_exist_ok=True)
+        for name in ('CNAME','google7e57ca047c540b15.html'):
+            if (ROOT/name).is_file():shutil.copy2(ROOT/name,out/name)
+        (out/'.nojekyll').write_text('')
     versions={name:name.rsplit('.',1)[0]+'-'+args.asset_version+'.'+name.rsplit('.',1)[1] for name in ('landing.js','site.js','landing.css','courtyard.css','souk-world.css','site.css','market-prices.js')} if args.asset_version else {}
     for directory in ('assets','downloads'):
         (out/directory).mkdir(parents=True,exist_ok=True)
@@ -63,8 +77,6 @@ def main():
                 for original,versioned in versions.items():content=content.replace('./'+original,'./'+versioned)
                 destination.write_text(content)
             else:shutil.copy2(entry,destination)
-    if base=='/' and (ROOT/'app').is_dir():
-        shutil.copytree(ROOT/'app',out/'app',dirs_exist_ok=True)
     catalogs={lang:json.loads((ROOT/'locales'/f'{lang}.json').read_text()) for lang in LANGUAGES}
     legal={lang:json.loads((ROOT/'locales'/f'legal-{lang}.json').read_text()) for lang in LANGUAGES}
     origin='https://soukscan.online'
