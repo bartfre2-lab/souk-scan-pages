@@ -5,6 +5,11 @@ See [the current integration notes](LIVE-PRICES.md) for the header controls,
 regional API behavior, privacy updates and added tests that supersede the
 earlier sample-price implementation described below.
 
+The owner subsequently approved main-site publication on 20 October 2026. The
+approved multilingual site and legal pages are promoted using production root
+routes and indexable metadata; the preview-only statements below describe the
+historical audit phase. See the README for the production publication procedure.
+
 The fixes are implemented in the website design branch and published only under
 `/preview/souk/`, following the user's preview-only instruction. The original
 `/app/`, native application, backend, root homepage and root legal pages are not

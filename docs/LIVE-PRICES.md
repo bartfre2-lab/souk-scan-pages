@@ -1,6 +1,6 @@
 # Header and real price integration
 
-The preview header now contains language and appearance controls on home and
+The website header contains language and appearance controls on home and
 legal/support pages. Desktop uses one row; compact layouts keep both rows inside
 the same header. The appearance button names its next action, shows the matching
 sun/moon icon and retains the existing preference/system-theme behavior.
@@ -55,9 +55,11 @@ authenticated sessions or write endpoints are needed.
 versions this module and rewrites its import in the versioned courtyard entry
 module, so cached open pages can continue using their previous assets.
 
-Privacy and support copy in all three languages now describes website region
-storage/transmission and real price reads. Preview-only publication and noindex
-remain unchanged; the original native/web app and backend are untouched.
+Privacy and support copy in all three languages describes website region
+storage/transmission and real price reads. The owner approved promotion of the
+website and its legal pages to the main domain on 20 October 2026. Production
+pages are indexable; historical review pages retain noindex. The original
+native/web app and backend are untouched.
 
 ## Verification
 

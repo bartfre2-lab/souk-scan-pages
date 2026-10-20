@@ -52,8 +52,8 @@ sample values. No checkout or delivery is implied. See [live price integration](
 - `assets/brand/`: the actual SOUK-SCAN logo.
 - `assets/products/ATTRIBUTION.md`: existing product art attribution.
 - `downloads/`: original signed Android v1.0.2 APK and release checksums.
-- `app/`: maintained separately. Root legal directories are legacy production sources;
-  generated review policies come from `locales/legal-*.json`.
+- `app/`: maintained separately. Generated website policies come from
+  `locales/legal-*.json`; the old root legal source directories are historical.
 
 The download is hosted here because the app's GitHub release is private. Its
 SHA-256 matches the release checksum. This does not imply a new Android release.
@@ -81,9 +81,25 @@ taps without page movement and normal vertical touch scrolling.
 sheets and native category labels. The app's artwork and carousel remain separate
 from this website change.
 
-The review version is published under `/preview/souk/`. The separate app review
-is under `/preview/souk-app/`; the current public homepage and `/app/` remain
-separate from those review builds.
+The approved website is published at `https://soukscan.online/`, with French at
+`/fr/` and Arabic at `/ar/`. Each language includes privacy, terms, account
+deletion and support pages. The original app stays at `/app/`.
+The historical website review remains at `/preview/souk/` with noindex metadata;
+the separate app review remains at `/preview/souk-app/`.
+
+## Production publication
+
+```sh
+npm run build -- --base / --out-dir /tmp/souk-production --asset-version COMMIT
+```
+
+Publish generated `index.html`, `robots.txt`, `sitemap.xml`, `fr/`, `ar/`,
+`privacy/`, `terms/`, `account-deletion/`, `support/`, `assets/` and `downloads/`
+to the Pages `main` branch. Keep existing versioned assets. Do not copy the
+generated `app/` directory: the app is maintained and deployed separately.
+Preserve `CNAME`, the Google verification file and both review directories.
+Production builds use root URLs, indexable metadata and the production sitemap.
+The owner approved promotion of the website and legal pages on 20 October 2026.
 
 ## Localized review publication
 
@@ -94,7 +110,7 @@ npm run build -- --base /preview/souk/ --out-dir dist-review --preview --asset-v
 Copy `dist-review/` into **only** `preview/souk/` on the Pages publishing branch.
 Keep older versioned assets and legacy scripts for cached open tabs. Preview
 HTML is deliberately `noindex, nofollow`; production builds contain indexable
-metadata. Production legal pages remain unchanged until approved.
+metadata. Review publication is separate from the official root website.
 
 The compact desktop courtyard is 430–500px high (440px on short laptops), about
 40% shorter than the previous 780px scene. Four products share a central desktop
@@ -139,5 +155,5 @@ verification file. It does not create accounts or submit forms.
 changes and Escape/focus return at phone and desktop sizes in the chosen engine.
 
 See [the final audit report](docs/FINAL-WEBSITE-AUDIT.md) for findings by section,
-implemented fixes, verification results and the remaining production-promotion
-and authenticated-flow limits.
+implemented fixes, verification results and authenticated-flow limits. The
+report records the historical review phase; promotion is now owner-approved.
