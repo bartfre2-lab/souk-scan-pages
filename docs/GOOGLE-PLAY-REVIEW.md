@@ -76,17 +76,17 @@ support address. Active-account deletion is distinguished from provider logs,
 backups and local preferences. Email deletion retains the existing public
 page's 30-calendar-day timeframe; the operator must continue honoring it.
 
-| Language | Privacy review path         | Deletion review path                 |
+| Language | Official privacy path | Official deletion path |
 | -------- | --------------------------- | ------------------------------------ |
-| English  | `/preview/souk/privacy/`    | `/preview/souk/account-deletion/`    |
-| French   | `/preview/souk/fr/privacy/` | `/preview/souk/fr/account-deletion/` |
-| Arabic   | `/preview/souk/ar/privacy/` | `/preview/souk/ar/account-deletion/` |
+| English  | `/privacy/`    | `/account-deletion/`    |
+| French   | `/fr/privacy/` | `/fr/account-deletion/` |
+| Arabic   | `/ar/privacy/` | `/ar/account-deletion/` |
 
-The user requested preview-only publication, so these pages are `noindex` and
-root legal pages remain unchanged. Proposed listings keep the stable production
-URLs `https://soukscan.online/privacy/` and
-`https://soukscan.online/account-deletion/`. Publish approved policy changes at
-those production URLs before a submission that relies on them.
+The owner approved and published these policies to the official domain on
+20 October 2026. Proposed listings use the stable production URLs
+`https://soukscan.online/privacy/` and
+`https://soukscan.online/account-deletion/`. The historical website review
+remains available under `/preview/souk/` with noindex metadata.
 
 ## Remaining release checks
 

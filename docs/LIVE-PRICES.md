@@ -63,10 +63,12 @@ native/web app and backend are untouched.
 
 ## Verification
 
-`npm test` contains 35 checks, including new cases for region races, cache
+`npm test` contains 39 checks, including cases for region races, cache
 separation/deduplication/expiry, failed refreshes, first-load failures, no-region
 behavior, malformed responses and the public-key/region configuration. Browser
 fixtures intercept only the two read RPCs; tests never submit live observations.
+Build regressions also verify the deployment artifact, retained app/review/cache
+snapshots, source/environment-file exclusion and protected output directories.
 
 Chromium, Firefox and WebKit each passed 120 responsive layouts, 36 automated
 accessibility scans and two motion/cancellation scenarios with the populated
