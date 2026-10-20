@@ -69,7 +69,7 @@ def main():
     def controls(lang,section):
         links=''.join(f'<a href="{route(code,section)}" lang="{code}" hreflang="{code}"'+(' aria-current="page"' if code==lang else '')+'>'+label+'</a>' for code,label in [('en','English'),('fr','Français'),('ar','العربية')])
         common=catalogs[lang]['common']
-        return f'<div class="site-controls wrap"><nav aria-label="{escape(common["languageLabel"])}">{links}</nav><button class="theme-toggle" type="button" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14A8 8 0 0 1 10 4a8 8 0 1 0 10 10Z"/></svg><span>{escape(common["darkMode"])}</span></button></div>'
+        return f'<div class="site-controls wrap"><nav aria-label="{escape(common["languageLabel"])}">{links}</nav><button class="theme-toggle" hidden type="button" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14A8 8 0 0 1 10 4a8 8 0 1 0 10 10Z"/></svg><span>{escape(common["darkMode"])}</span></button></div>'
     boot="""(()=>{try{let t=localStorage.getItem('soukscan.website.theme');document.documentElement.dataset.theme=t==='dark'||t==='light'?t:matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}catch{document.documentElement.dataset.theme=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}})();"""
     def head(lang,section,title,description):
         url=origin+route(lang,section)
@@ -97,14 +97,14 @@ def main():
         body=body.replace('href="./app/"','href="/app/"')
         body=body.replace('./assets/',base+'assets/').replace('./downloads/',base+'downloads/')
         body=body.replace('</header>','</header>'+controls(lang,''),1)
-        body=body.replace('assets/app-preview.png',f'assets/app-preview-{lang}.png')
+        body=body.replace('assets/app-welcome-en.png',f'assets/app-welcome-{lang}.png')
         body='<body>'+body+f'<script type="module" src="{base}assets/landing.js"></script>'
         schema={'@context':'https://schema.org','@type':'SoftwareApplication','name':'SOUK-SCAN','applicationCategory':'LifestyleApplication','operatingSystem':'Android, Web','inLanguage':lang,'url':origin+route(lang),'description':catalog['meta']['description'],'isAccessibleForFree':True,'offers':{'@type':'Offer','price':'0','priceCurrency':'MAD'}}
         body+='<script type="application/ld+json">'+json.dumps(schema,ensure_ascii=False).replace('<','\\u003c')+'</script>'
         save(lang,'',body,catalog['meta']['title'],catalog['meta']['description'],True)
         for section,page in legal[lang].items():
             content=''.join('<section><h2>'+escape(item['title'])+'</h2>'+''.join('<p>'+text+'</p>' for text in item['paragraphs'])+'</section>' for item in page['sections'])
-            body=f'<body class="legal-page"><header class="site-header wrap"><a class="brand" href="{route(lang)}"><img src="{base}assets/brand/logo.png" alt="" width="44" height="44"><span class="scanner-wordmark">[SOUK-SCAN]</span></a><a class="text-link" href="{route(lang)}">{escape(catalog["common"]["backHome"])}</a></header>'+controls(lang,section)+f'<main class="legal-content"><p class="eyebrow">SOUK-SCAN</p><h1>{escape(page["title"])}</h1><p class="legal-updated">{escape(page["updated"])}</p><p class="legal-summary">{page["intro"]}</p>{content}'+footer(lang)+'</main>'
+            body=f'<body class="legal-page"><a class="skip-link" href="#main-content">{escape(catalog["common"]["skipContent"])}</a><header class="site-header wrap"><a class="brand" href="{route(lang)}"><img src="{base}assets/brand/logo.png" alt="" width="44" height="44"><span class="scanner-wordmark">[SOUK-SCAN]</span></a><a class="text-link" href="{route(lang)}">{escape(catalog["common"]["backHome"])}</a></header>'+controls(lang,section)+f'<main class="legal-content" id="main-content" tabindex="-1"><p class="eyebrow">SOUK-SCAN</p><h1>{escape(page["title"])}</h1><p class="legal-updated">{escape(page["updated"])}</p><p class="legal-summary">{page["intro"]}</p>{content}'+footer(lang)+'</main>'
             for key in ('privacy','terms','account-deletion','support'):body=body.replace('@@'+key+'@@',route(lang,key))
             save(lang,section,body,page['title']+' — SOUK-SCAN',page['description'])
     urls=[origin+route(lang,section) for lang in LANGUAGES for section in ('','privacy','terms','account-deletion','support')]

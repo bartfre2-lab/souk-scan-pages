@@ -77,7 +77,7 @@
       {
         "title": "Demander la suppression sans ouvrir l’application",
         "paragraphs": [
-          "Écrivez à <a href=\"mailto:sanamdev@soukscan.online\">sanamdev@soukscan.online</a> depuis l’adresse associée à votre compte, avec l’objet <strong>Demande de suppression du compte SOUK-SCAN</strong>. Si vous utilisez Google, écrivez depuis l’adresse de ce compte Google. N’envoyez pas votre mot de passe.",
+          "Écrivez à <a href=\"mailto:sanamdev@soukscan.online?subject=Demande%20de%20suppression%20du%20compte%20SOUK-SCAN\">sanamdev@soukscan.online</a> depuis l’adresse associée à votre compte, avec l’objet <strong>Demande de suppression du compte SOUK-SCAN</strong>. Si vous utilisez Google, écrivez depuis l’adresse de ce compte Google. N’envoyez pas votre mot de passe.",
           "Nous pouvons vous demander de confirmer que vous contrôlez l’adresse enregistrée. Nous traitons les demandes valides dans les <strong>30 jours calendaires</strong> suivant leur réception et vous confirmons la suppression par e-mail."
         ]
       },
