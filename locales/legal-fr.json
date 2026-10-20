@@ -1,0 +1,204 @@
+{
+  "privacy": {
+    "title": "Politique de confidentialité",
+    "updated": "Dernière mise à jour : 20 octobre 2026",
+    "intro": "SOUK-SCAN est une application participative d’information sur les prix alimentaires au Maroc (identifiant Android <bdi>com.soukscan.app</bdi>). Cette politique décrit le traitement des informations dans l’application et sur ce site. Pour toute question ou demande relative à vos données, contactez <a href=\"mailto:sanamdev@soukscan.online\">sanamdev@soukscan.online</a>.",
+    "description": "Traitement des données de compte, des prix signalés, de la région, des autorisations de localisation et des demandes de suppression dans SOUK-SCAN.",
+    "sections": [
+      {
+        "title": "Informations traitées par l’application",
+        "paragraphs": [
+          "Les informations de compte comprennent votre adresse e-mail, votre identifiant de compte et les données nécessaires à l’authentification. La connexion Google peut aussi transmettre des informations de profil au prestataire d’authentification. Nous enregistrons l’acceptation des conditions de l’application.",
+          "Un prix signalé comprend le produit, le prix, la région, la date et l’identifiant de compte nécessaire à la gestion de vos contributions. Les commentaires comprennent la catégorie, le message et l’identifiant de compte que vous envoyez."
+        ]
+      },
+      {
+        "title": "Localisation et région",
+        "paragraphs": [
+          "La détection automatique de la région est facultative. Avec votre autorisation, l’application lit une position sur votre appareil et la rapproche de l’une des 12 régions du Maroc. Elle ne transmet, ne conserve ni ne journalise les coordonnées GPS brutes. Vous pouvez choisir une région manuellement.",
+          "La région choisie ou détectée est enregistrée sur votre appareil et envoyée au serveur lors des demandes de prix régionaux ou de l’envoi d’un prix. Les contributions conservent cette région avec l’identifiant du compte. Le traitement local des coordonnées brutes ne signifie donc pas qu’aucune information de région n’est transmise."
+        ]
+      },
+      {
+        "title": "Informations visibles par les autres utilisateurs",
+        "paragraphs": [
+          "Les prix participatifs publics sont des estimations agrégées. Votre adresse e-mail, votre identité et vos contributions individuelles ne sont pas affichées publiquement. Les commentaires restent réservés aux responsables du service. Les références de gros datées, lorsqu’elles sont disponibles, constituent une source distincte."
+        ]
+      },
+      {
+        "title": "Prestataires et informations techniques",
+        "paragraphs": [
+          "Supabase fournit la base de données et l’authentification. Google gère la connexion Google lorsque vous la choisissez. GitHub Pages héberge ce site. Ces prestataires reçoivent les informations techniques de connexion, notamment l’adresse IP et les informations de requête, nécessaires au fonctionnement et à la sécurité de leurs services.",
+          "Nous ne vendons pas de données personnelles et ne diffusons pas de publicité. L’application et le site examinés n’intègrent pas d’outils publicitaires ni d’analyse tiers. Le traitement par un prestataire d’hébergement ou d’authentification se distingue de la publication d’informations aux autres utilisateurs."
+        ]
+      },
+      {
+        "title": "Stockage sur votre appareil",
+        "paragraphs": [
+          "L’application conserve sur votre appareil des préférences telles que la langue, l’apparence, la région et les favoris, ainsi que les informations de session nécessaires à votre connexion. Ce site conserve les préférences de langue, d’apparence et de région et l’envoie à Supabase pour consulter les estimations régionales. Il ne demande pas votre position GPS et ne vous connecte pas à un compte. Vous pouvez les effacer dans les paramètres de stockage de l’appareil ou du navigateur."
+        ]
+      },
+      {
+        "title": "Conservation et suppression",
+        "paragraphs": [
+          "Les informations du compte, les prix liés au compte, les commentaires et les acceptations des conditions sont conservés tant qu’ils sont nécessaires à la gestion du compte et du service, jusqu’à la suppression du compte ou à leur retrait anticipé. Une période limitée d’affichage des prix ne signifie pas que les contributions sources sont automatiquement effacées à son terme.",
+          "La suppression confirmée dans l’application retire le compte actif, les prix qui lui sont liés et ses commentaires. Les demandes valides envoyées par e-mail sont traitées dans les 30 jours calendaires suivant leur réception. Consultez la page <a href=\"@@account-deletion@@\">de suppression du compte</a> pour connaître la procédure.",
+          "Les journaux techniques et les copies de sauvegarde éventuellement conservés par les prestataires suivent leurs règles de conservation. La suppression du compte actif ne garantit pas l’effacement immédiat de chaque journal ou sauvegarde. Les préférences locales peuvent rester jusqu’à l’effacement du stockage de l’application ou du navigateur."
+        ]
+      },
+      {
+        "title": "Sécurité et choix disponibles",
+        "paragraphs": [
+          "L’application communique avec son serveur par HTTPS et utilise des contrôles d’accès authentifiés pour les données privées. Aucun service en ligne ne peut garantir une sécurité absolue. L’application ne reçoit jamais votre mot de passe Google.",
+          "Vous pouvez refuser la localisation, choisir une région manuellement, modifier la langue ou l’apparence, vous déconnecter ou demander la suppression du compte. Pour une demande d’accès, de rectification ou toute autre question, écrivez à <a href=\"mailto:sanamdev@soukscan.online\">sanamdev@soukscan.online</a>."
+        ]
+      },
+      {
+        "title": "Modifications et contact",
+        "paragraphs": [
+          "Nous mettons cette page à jour lorsque les pratiques du service évoluent. La date ci-dessus identifie cette révision de la politique du site. Vous pouvez joindre les responsables de SOUK-SCAN à <a href=\"mailto:sanamdev@soukscan.online\">sanamdev@soukscan.online</a>."
+        ]
+      }
+    ]
+  },
+  "account-deletion": {
+    "title": "Supprimer votre compte SOUK-SCAN",
+    "updated": "Dernière mise à jour : 20 octobre 2026",
+    "intro": "Vous pouvez supprimer définitivement votre compte SOUK-SCAN et les données qui lui sont liées dans l’application ou en faire la demande par e-mail. Cette page concerne <bdi>com.soukscan.app</bdi>.",
+    "description": "Supprimez votre compte SOUK-SCAN dans l’application ou par e-mail. Données supprimées, procédure et délai de traitement.",
+    "sections": [
+      {
+        "title": "Supprimer le compte dans l’application",
+        "paragraphs": [
+          "Ouvrez SOUK-SCAN et connectez-vous. Accédez à <strong>Profil → Supprimer le compte</strong>, lisez les informations puis confirmez la suppression.",
+          "La suppression prend effet lorsque le serveur la confirme. L’application vous déconnecte ensuite. En cas d’échec, un message vous permet de réessayer. La suppression est définitive. Pour un compte administrateur, contactez les responsables du service."
+        ]
+      },
+      {
+        "title": "Demander la suppression sans ouvrir l’application",
+        "paragraphs": [
+          "Écrivez à <a href=\"mailto:sanamdev@soukscan.online?subject=Demande%20de%20suppression%20du%20compte%20SOUK-SCAN\">sanamdev@soukscan.online</a> depuis l’adresse associée à votre compte, avec l’objet <strong>Demande de suppression du compte SOUK-SCAN</strong>. Si vous utilisez Google, écrivez depuis l’adresse de ce compte Google. N’envoyez pas votre mot de passe.",
+          "Nous pouvons vous demander de confirmer que vous contrôlez l’adresse enregistrée. Nous traitons les demandes valides dans les <strong>30 jours calendaires</strong> suivant leur réception et vous confirmons la suppression par e-mail."
+        ]
+      },
+      {
+        "title": "Données supprimées",
+        "paragraphs": [
+          "La suppression retire le compte actif, l’identité de connexion, les prix que vous avez signalés, vos commentaires et les acceptations des conditions qui lui sont liées. Vos prix cessent de contribuer aux estimations calculées à partir des contributions restantes. Votre identité et vos contributions individuelles n’étaient pas affichées publiquement."
+        ]
+      },
+      {
+        "title": "Données pouvant subsister",
+        "paragraphs": [
+          "Les éventuels journaux techniques et sauvegardes des prestataires suivent leurs politiques de conservation, distinctes de la suppression du compte actif. Les préférences locales peuvent subsister jusqu’à l’effacement du stockage de l’application ou des données du navigateur."
+        ]
+      },
+      {
+        "title": "Questions relatives à vos données",
+        "paragraphs": [
+          "Pour toute question sur la suppression ou autre demande relative à vos données, écrivez à <a href=\"mailto:sanamdev@soukscan.online\">sanamdev@soukscan.online</a>. Consultez la <a href=\"@@privacy@@\">politique de confidentialité</a> pour en savoir plus."
+        ]
+      }
+    ]
+  },
+  "terms": {
+    "title": "Conditions d’utilisation",
+    "updated": "Version des conditions de l’application : 12 octobre 2026 · Site mis à jour le 20 octobre 2026",
+    "intro": "<bdi>SOUK-SCAN</bdi> est un outil d'information qui rend les prix alimentaires au Maroc plus faciles à consulter et à comparer. L'application ne vend aucun produit, ne fixe ni ne contrôle les prix du marché, ne garantit pas les prix pratiqués par les vendeurs et n'est ni une place de marché ni un organisme de régulation. Ce n'est pas un service public.",
+    "description": "Conditions d’utilisation de SOUK-SCAN, contributions responsables et portée des prix participatifs et références de gros.",
+    "sections": [
+      {
+        "title": "Nature des prix",
+        "paragraphs": [
+          "Les prix présentés comme prix de la communauté sont des signalements envoyés par des utilisateurs. Ils peuvent être inexacts, incomplets, dépassés ou non représentatifs, et ne reflètent pas forcément tous les commerces ni tous les marchés. Ils ne sont affichés que lorsqu'il existe assez de signalements récents et valides."
+        ]
+      },
+      {
+        "title": "Prix de référence",
+        "paragraphs": [
+          "Lorsqu'ils sont disponibles, les prix de référence de gros proviennent des bulletins publiés par <bdi>Casa Prestations</bdi> (<bdi>casaprestations.ma</bdi>). Chaque référence indique sa source et la date du bulletin dont elle est issue. Ce sont des prix de gros, qui ne sont pas nécessairement des prix de détail. Si un produit ne figure pas dans le dernier bulletin, l'application peut afficher sa référence antérieure la plus récente, clairement signalée avec sa date. <bdi>SOUK-SCAN</bdi> n'est ni approuvé par <bdi>Casa Prestations</bdi>, ni affilié ou associé à elle."
+        ]
+      },
+      {
+        "title": "Utilisation responsable",
+        "paragraphs": [
+          "Lorsque vous envoyez un prix, indiquez ce que vous avez réellement vu ou payé. N'envoyez pas de prix faux ou volontairement trompeurs, ne cherchez pas à fausser les moyennes, n'abusez pas du service et ne le surchargez pas, n'envoyez pas de spam et ne publiez aucun contenu illicite ou nuisible."
+        ]
+      },
+      {
+        "title": "Modération",
+        "paragraphs": [
+          "Nous pouvons examiner, signaler, rejeter, masquer ou supprimer les envois qui semblent peu fiables ou abusifs, et restreindre ou fermer les comptes qui détournent le service. Un prix inhabituel n'est pas automatiquement considéré comme faux."
+        ]
+      },
+      {
+        "title": "Limites de l'information",
+        "paragraphs": [
+          "Les prix varient selon le lieu, le marché, la qualité du produit, l'unité et la date. Vérifiez les prix actuels sur place avant de vous appuyer sur un chiffre pour une décision importante."
+        ]
+      },
+      {
+        "title": "Disponibilité du service",
+        "paragraphs": [
+          "Nous nous efforçons de maintenir <bdi>SOUK-SCAN</bdi> disponible et utile, mais nous ne promettons ni un service ininterrompu, ni une exactitude parfaite, ni des données récentes pour chaque produit en permanence. Des fonctionnalités et des données peuvent changer ou être indisponibles de temps à autre."
+        ]
+      },
+      {
+        "title": "Responsabilité",
+        "paragraphs": [
+          "Dans la mesure permise par la loi applicable, <bdi>SOUK-SCAN</bdi> n'est pas responsable des pertes résultant de la confiance accordée à des informations de prix incomplètes, inexactes, tardives ou indisponibles. Rien dans ces conditions n'exclut ni ne limite un droit ou une responsabilité qui ne peut légalement être exclu ou limité."
+        ]
+      },
+      {
+        "title": "Votre compte et les évolutions",
+        "paragraphs": [
+          "Vous pouvez cesser d'utiliser <bdi>SOUK-SCAN</bdi> à tout moment et supprimer votre compte ainsi que les données qui y sont liées depuis le Profil (« Supprimer le compte »). Nous pouvons restreindre des comptes comme indiqué ci-dessus, faire évoluer le service et modifier ces conditions. En cas de modification importante, nous vous demanderons de lire et d'accepter la nouvelle version avant de continuer."
+        ]
+      },
+      {
+        "title": "Droit applicable et contact",
+        "paragraphs": [
+          "Ces conditions sont régies par le droit du Royaume du Maroc, sans porter atteinte aux droits impératifs dont vous disposez en tant que consommateur. Pour toute question, pour signaler un problème ou pour une demande concernant vos données, utilisez le formulaire « Commentaires » du Profil."
+        ]
+      },
+      {
+        "title": "Contact",
+        "paragraphs": [
+          "<a href=\"mailto:sanamdev@soukscan.online\">sanamdev@soukscan.online</a>"
+        ]
+      }
+    ]
+  },
+  "support": {
+    "title": "Aide et assistance",
+    "updated": "Dernière mise à jour : 20 octobre 2026",
+    "intro": "Obtenez de l’aide pour utiliser SOUK-SCAN, comprendre les prix ou gérer votre compte.",
+    "description": "Aide SOUK-SCAN : prix par région, autorisation de localisation, installation Android et suppression du compte.",
+    "sections": [
+      {
+        "title": "Prix et régions",
+        "paragraphs": [
+          "Choisissez une région manuellement ou activez sa détection automatique facultative. Les estimations participatives apparaissent lorsque les signalements valides sont suffisants. Les références de gros disponibles indiquent leur source et leur date ; elles ne garantissent pas un prix de détail. Le souk interactif de ce site consulte les mêmes estimations régionales et références de gros datées que l’application."
+        ]
+      },
+      {
+        "title": "Installation et utilisation",
+        "paragraphs": [
+          "L’application web fonctionne sur Android, iPhone et ordinateur. Le fichier APK proposé sur la page d’accueil correspond à la version Android 1.0.2. Votre appareil peut vous demander d’autoriser l’installation depuis le navigateur. Téléchargez uniquement depuis une source de confiance."
+        ]
+      },
+      {
+        "title": "Compte et données",
+        "paragraphs": [
+          "Pour supprimer votre compte, suivez la <a href=\"@@account-deletion@@\">procédure de suppression</a>. Consultez aussi la <a href=\"@@privacy@@\">politique de confidentialité</a> et les <a href=\"@@terms@@\">conditions d’utilisation</a>."
+        ]
+      },
+      {
+        "title": "Contacter SOUK-SCAN",
+        "paragraphs": [
+          "Envoyez un message depuis la rubrique Commentaires du Profil ou écrivez à <a href=\"mailto:sanamdev@soukscan.online\">sanamdev@soukscan.online</a>. Décrivez le problème et précisez votre appareil ou navigateur. N’envoyez ni mot de passe ni coordonnées GPS précises."
+        ]
+      }
+    ]
+  }
+}
