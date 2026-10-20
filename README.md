@@ -4,17 +4,26 @@ Static SOUK-SCAN landing page and existing app hosting. No build is needed.
 Run `npm run dev` and open http://localhost:4173.
 
 The website uses the real app logo and the intentional `[SOUK-SCAN]` scanner
-wordmark, with the existing ivory, charcoal and muted-green palette. The Moroccan street and four vendor stalls remain the central interaction.
-The four categories repeat along an endless horizontal street. Touch and mouse
-drags move the stalls directly, then the nearest stall settles in the center
-with a slight enlargement and highlight. Five or more stalls fit across the
-viewport, keeping all four unique categories visible. The stock remains on the
-same souk floor below. Horizontal trackpad scrolling and keyboard navigation
-also work. Nothing rotates automatically or forces vertical scrolling.
-Full wooden crates use clipped stock
-chambers behind opaque fronts and corner posts, including the small crates in
-the stall artwork. Product names, example price ranges and units stay upright
-outside the art.
+wordmark, with the existing ivory, charcoal and muted-green palette.
+The website is a Moroccan souk courtyard: fruit and vegetables on the left,
+meat and poultry on the right, with the real logo in the centre before selection.
+The four stalls stay visible and fixed. Choosing one brings packed product crates
+along curved paths from that stall into the central square. Switching returns
+the previous stock to its vendor. The back control or Escape restores the logo.
+The central display includes every example product in that category.
+
+The paved Moroccan medina setting uses plaster facades, horseshoe arches and
+zellij details. Right-hand stalls face the centre. Coordinated retro cartoon
+sprite sheets supply the vendor and food art; shallow crate fronts leave the
+product silhouettes visible. Only crates follow the delivery arcs. Names and
+prices remain anchored in the centre.
+
+Wooden crates use clipped stock chambers behind opaque fronts and corner posts.
+Product names, example ranges and units stay upright outside the art. Mobile
+layouts preserve the same two-sided composition. Touch, pointer and spatial
+arrow-key navigation work without forced scrolling. Reduced motion removes
+the delivery animations; changing preference or resizing also cancels in-flight
+effects. Rapid switching cancels obsolete animation and removes temporary crates.
 
 Prices on the landing page are explicitly labeled examples. The existing
 `app/` contains real regional prices. No checkout or delivery is implied.
@@ -22,6 +31,8 @@ Prices on the landing page are explicitly labeled examples. The existing
 ## Files
 
 - `index.html`, `assets/landing.css`, `assets/landing.js`: the landing page.
+- `assets/courtyard.css`, `assets/souk-world.css`: the courtyard layout and artwork styling.
+- `assets/souk-medina-square.png`, `assets/souk-*-rubber-hose.png`: original generated artwork.
 - `assets/brand/`: the actual SOUK-SCAN logo.
 - `assets/products/ATTRIBUTION.md`: existing product art attribution.
 - `downloads/`: original signed Android v1.0.2 APK and release checksums.
@@ -43,20 +54,15 @@ keyboard controls, accessibility, resource errors, image loading, overflow,
 page links, download behavior/checksum, no-JavaScript access and reduced motion.
 They complement visual inspection; passing them is not a claim of visual quality.
 
-`assets/souk-loop.js` recycles identical offscreen copies around an unbounded
-position, so wrapping never sends the row back in the opposite direction.
-There is one settling animation at a time, and a new drag takes control from
-its current position. Copies are decorative; the four real category buttons
-remain available to keyboard and screen-reader users. Reduced-motion mode
-keeps direct manipulation and centers the chosen stall immediately on release.
+Browser checks cover the branded idle state, all four category displays, fixed
+stall positions, separation between stalls and stock, reset/Escape and focus
+return, spatial keyboard selection, rapid changes during delivery, animation
+cleanup, resizing and changed motion preferences. Mobile tests check category
+taps without page movement and normal vertical touch scrolling.
 
-Browser checks cover multiple full loops in both directions, direct mouse and
-mobile touch dragging, centered selection, a stationary resting state, vertical
-page scrolling, rapid selections and all four categories staying visible.
-
-`npm run art` regenerates the shared stall illustrations using Python 3, Pillow
-and `/usr/share/fonts/truetype/noto/NotoNaskhArabic-Regular.ttf`. The signs embed
-shaped Arabic artwork so browser font fallback cannot break their layout.
+`npm run art` regenerates the older SVG stalls. The website now uses PNG sprite
+sheets and native category labels. The app's artwork and carousel remain separate
+from this website change.
 
 The review version is published under `/preview/souk/`. The separate app review
 is under `/preview/souk-app/`; the current public homepage and `/app/` remain
