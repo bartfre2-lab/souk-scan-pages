@@ -1,6 +1,10 @@
 /* The landing page demonstrates categories with clearly marked example prices.
  * Live regional data remains in the existing SOUK-SCAN app.
  */
+const siteCopy = JSON.parse(document.querySelector("#site-copy").textContent);
+const marketCopy = siteCopy.market;
+const message = (text, values) =>
+  text.replace(/\{(\w+)\}/g, (_, key) => values[key] ?? "");
 const vendors = {
   fruit: {
     kicker: "THE FRUIT SELLER",
@@ -50,27 +54,26 @@ const motion = matchMedia("(prefers-reduced-motion: reduce)");
 const explored = new Set();
 const animations = new Set();
 const ghosts = new Set();
-const titles = {
-  fruit: "Fruit prices",
-  vegetable: "Vegetable prices",
-  meat: "Meat prices",
-  poultry: "Poultry & eggs",
+const titles = marketCopy.titles;
+// The drawn sheet is not an exact grid. Individual viewports include the whole
+// silhouette and exclude neighbouring rows, without modifying the source art.
+const foodFrames = {
+  orange: [33, 45, 293, 291],
+  apple: [345, 65, 290, 275],
+  banana: [640, 60, 295, 280],
+  pomegranate: [975, 60, 250, 280],
+  tomato: [30, 360, 300, 270],
+  potato: [345, 380, 290, 250],
+  carrot: [645, 355, 295, 280],
+  onion: [955, 380, 280, 255],
+  cut_of_meat: [20, 650, 310, 275],
+  meat_on_bone: [355, 640, 280, 290],
+  chicken: [660, 640, 270, 297],
+  poultry_leg: [935, 675, 310, 255],
+  egg: [30, 955, 285, 260],
+  white_egg: [350, 960, 280, 255],
 };
-const foodCells = {
-  orange: [0, 0],
-  apple: [1, 0],
-  banana: [2, 0],
-  pomegranate: [3, 0],
-  tomato: [0, 1],
-  potato: [1, 1],
-  carrot: [2, 1],
-  onion: [3, 1],
-  cut_of_meat: [0, 2],
-  meat_on_bone: [1, 2],
-  chicken: [2, 2],
-  poultry_leg: [3, 2],
-  egg: [0, 3],
-};
+const foodSheet = new URL("./souk-food-rubber-hose.png", import.meta.url).href;
 let selected = null;
 
 function stopMotion() {
@@ -104,14 +107,6 @@ function captureStock() {
   return [...grid.children].map((card) => {
     const crate = card.querySelector(".stock-crate");
     const ghost = crate.cloneNode(true);
-    ghost.style.setProperty(
-      "--food-x",
-      card.style.getPropertyValue("--food-x"),
-    );
-    ghost.style.setProperty(
-      "--food-y",
-      card.style.getPropertyValue("--food-y"),
-    );
     return {
       ghost,
       bounds: crate.getBoundingClientRect(),
@@ -280,24 +275,32 @@ function select(category) {
     button.setAttribute("aria-pressed", String(active));
   });
   document.querySelector("#vendor-kicker").textContent =
-    vendors[category].kicker;
+    marketCopy.kickers[category];
   document.querySelector("#products-title").textContent = titles[category];
   const fragment = document.createDocumentFragment();
   for (const [name, arabic, image, price, unit] of vendors[category].products) {
     const card = document.createElement("article");
     card.className = "courtyard-product";
-    const [column, row] = name === "Roumi eggs" ? [1, 3] : foodCells[image];
-    card.style.setProperty("--food-x", `${(column / 3) * 100}%`);
-    card.style.setProperty("--food-y", `${(row / 3) * 100}%`);
+    const frame = foodFrames[name === "Roumi eggs" ? "white_egg" : image];
+    // The inner viewport also clips letterboxed edges to the selected frame.
+    const foodArt = `<svg class="stock-crate__food" viewBox="0 0 ${frame[2]} ${frame[3]}" preserveAspectRatio="xMidYMid meet" focusable="false"><svg width="${frame[2]}" height="${frame[3]}" viewBox="${frame.join(" ")}" overflow="hidden"><image href="${foodSheet}" width="1254" height="1254" /></svg></svg>`;
     // These are authored constants, never user input or remote HTML.
-    card.innerHTML = `<div class="stock-crate" aria-hidden="true"><span class="stock-crate__shadow"></span><div class="stock-crate__back"></div><div class="stock-crate__produce"><span class="stock-crate__food"></span></div><div class="stock-crate__front"></div></div><h4 class="courtyard-product__name">${name}</h4><span class="courtyard-product__arabic" lang="ar" dir="rtl">${arabic}</span><p class="courtyard-product__price"><strong>${price}</strong><span>MAD / ${unit}</span></p>`;
+    card.innerHTML = `<div class="stock-crate" aria-hidden="true"><span class="stock-crate__shadow"></span><div class="stock-crate__back"></div><div class="stock-crate__produce">${foodArt}</div><div class="stock-crate__front"></div></div><h4 class="courtyard-product__name">${marketCopy.products[name]}</h4><p class="courtyard-product__price"><strong><bdi>${price}</bdi></strong><span>${marketCopy.units[unit]}</span></p>`;
     fragment.append(card);
   }
   grid.replaceChildren(fragment);
-  document.querySelector("#market-progress").textContent =
-    `${explored.size} of 4 categories explored`;
-  document.querySelector("#selection-status").textContent =
-    `${titles[category]}. ${vendors[category].products.length} products in the centre of the square. Example prices in Moroccan dirhams.`;
+  grid.style.setProperty(
+    "--stock-count",
+    String(vendors[category].products.length),
+  );
+  document.querySelector("#market-progress").textContent = message(
+    marketCopy.explored,
+    { count: explored.size },
+  );
+  document.querySelector("#selection-status").textContent = message(
+    marketCopy.announcement,
+    { title: titles[category], count: vendors[category].products.length },
+  );
   deliver(category);
 }
 function returnToSquare() {
@@ -317,7 +320,7 @@ function returnToSquare() {
     button.setAttribute("aria-pressed", "false");
   });
   document.querySelector("#selection-status").textContent =
-    "Back in the souk square. Choose any of the four stalls to explore example prices.";
+    marketCopy.backAnnouncement;
   stalls
     .find((button) => button.dataset.category === previous)
     .focus({ preventScroll: true });

@@ -1,0 +1,28 @@
+SOUK-SCAN
+
+SHORT DESCRIPTION (56/80 characters)
+Food prices in Morocco, shared by people in your region.
+
+FULL DESCRIPTION (1604/4000 characters)
+Know more before you head to the souk.
+
+SOUK-SCAN helps you explore food prices in Morocco’s 12 regions. Compare community-reported estimates for fruit, vegetables, meat, poultry and eggs.
+
+• Choose a region manually, or use optional location access to detect your region on your device.
+• See typical ranges when enough valid community reports are available.
+• Report a price you genuinely saw or paid: one report per product per day, editable the same day.
+• Compare separate, dated wholesale references from Casa Prestations where available.
+• Read prices in DH/kg or DH per egg, depending on the product.
+• Use Arabic, French or English, with light and dark themes.
+
+UNDERSTAND THE PRICES
+Community estimates and wholesale references are different sources. Reference bulletins are dated, may be older, and are not guaranteed retail prices. The app clearly shows when there is not enough community data. SOUK-SCAN does not sell food, set market prices or represent a government service. It is not affiliated with Casa Prestations.
+
+YOUR INFORMATION
+Raw GPS coordinates are processed on your device, rather than sent to SOUK-SCAN. The selected or detected region is sent with regional price requests and reports. Account identities and individual reports are not displayed publicly. No ads or third-party analytics tools are included in the reviewed app.
+
+Manage deletion from Profile → Delete account, or use the account-deletion page to request deletion by email.
+
+Privacy: https://soukscan.online/privacy/
+Account deletion: https://soukscan.online/account-deletion/
+Support: sanamdev@soukscan.online

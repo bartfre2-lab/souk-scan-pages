@@ -1,7 +1,18 @@
 # SOUK-SCAN Pages
 
-Static SOUK-SCAN landing page and existing app hosting. No build is needed.
-Run `npm run dev` and open http://localhost:4173.
+Static English, French and Arabic website, with the existing app hosted separately.
+Run `npm ci`, then `npm run dev` and open http://localhost:4173.
+
+Python 3 builds 15 static pages into ignored `dist/`: home, privacy, terms,
+account deletion and support for each language. English uses `/`, French `/fr/`
+and Arabic `/ar/`. Language links preserve the current section. Pages contain
+their translated content and metadata without requiring client-side translation.
+The interactive courtyard needs JavaScript.
+
+Edit the English source template `index.html` and the translation/legal catalogs
+in `locales/`, then rebuild with `npm run build`. Missing home translations fail
+the build. `scripts/build-site.py` handles routes, canonical/hreflang links,
+social metadata, structured data and the sitemap. Do not edit generated HTML.
 
 The website uses the real app logo and the intentional `[SOUK-SCAN]` scanner
 wordmark, with the existing ivory, charcoal and muted-green palette.
@@ -18,7 +29,7 @@ sprite sheets supply the vendor and food art; shallow crate fronts leave the
 product silhouettes visible. Only crates follow the delivery arcs. Names and
 prices remain anchored in the centre.
 
-Wooden crates use clipped stock chambers behind opaque fronts and corner posts.
+Wooden crates use contained stock chambers behind opaque fronts and corner posts.
 Product names, example ranges and units stay upright outside the art. Mobile
 layouts preserve the same two-sided composition. Touch, pointer and spatial
 arrow-key navigation work without forced scrolling. Reduced motion removes
@@ -32,11 +43,14 @@ Prices on the landing page are explicitly labeled examples. The existing
 
 - `index.html`, `assets/landing.css`, `assets/landing.js`: the landing page.
 - `assets/courtyard.css`, `assets/souk-world.css`: the courtyard layout and artwork styling.
-- `assets/souk-medina-square.png`, `assets/souk-*-rubber-hose.png`: original generated artwork.
+- `assets/souk-medina-panorama.png`, `assets/souk-*-rubber-hose.png`: original generated artwork.
+- `assets/site.css`, `assets/site.js`: compact layout, localization and persistent dark mode.
+- `locales/`, `scripts/build-site.py`: static translated pages and metadata.
 - `assets/brand/`: the actual SOUK-SCAN logo.
 - `assets/products/ATTRIBUTION.md`: existing product art attribution.
 - `downloads/`: original signed Android v1.0.2 APK and release checksums.
-- `app/`, `privacy/`, `terms/`, `account-deletion/`: maintained separately.
+- `app/`: maintained separately. Root legal directories are legacy production sources;
+  generated review policies come from `locales/legal-*.json`.
 
 The download is hosted here because the app's GitHub release is private. Its
 SHA-256 matches the release checksum. This does not imply a new Android release.
@@ -67,3 +81,29 @@ from this website change.
 The review version is published under `/preview/souk/`. The separate app review
 is under `/preview/souk-app/`; the current public homepage and `/app/` remain
 separate from those review builds.
+
+## Localized review publication
+
+```sh
+npm run build -- --base /preview/souk/ --out-dir dist-review --preview --asset-version COMMIT
+```
+
+Copy `dist-review/` into **only** `preview/souk/` on the Pages publishing branch.
+Keep older versioned assets and legacy scripts for cached open tabs. Preview
+HTML is deliberately `noindex, nofollow`; production builds contain indexable
+metadata. Production legal pages remain unchanged until approved.
+
+The compact desktop courtyard is 430–500px high (440px on short laptops), about
+40% shorter than the previous 780px scene. Four products share a central desktop
+row; smaller screens use two columns. The panorama retains the roofline and sky.
+Food fits completely inside the visible chamber above the crate front.
+
+Appearance follows the system until changed, persists between localized pages
+and works when storage is blocked. Arabic has RTL text and a local Arabic font.
+The 28 browser checks also cover all 15 static routes, localized SEO/legal links,
+food containment and accessibility in both themes.
+
+See [Google Play review](docs/GOOGLE-PLAY-REVIEW.md) for code evidence, Data safety
+recommendations and remaining release checks. Revised English and new French/
+Arabic descriptions are in [store-listings](docs/store-listings/).
+This website implementation does not build or release a new native app.
