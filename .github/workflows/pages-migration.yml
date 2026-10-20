@@ -1,0 +1,20 @@
+name: Migrate Pages to the source build workflow
+on:
+  push:
+    branches: [main]
+    paths: [.github/workflows/pages-migration.yml]
+permissions:
+  contents: read
+  pages: write
+jobs:
+  migrate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Select GitHub Actions as the Pages build source
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          gh api --method PUT "repos/$GH_REPO/pages" -f build_type=workflow --jq .build_type
+          test "$(gh api "repos/$GH_REPO/pages" --jq .build_type)" = workflow
