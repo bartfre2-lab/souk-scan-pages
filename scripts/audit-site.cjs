@@ -190,7 +190,13 @@ async function crawl() {
       for (const [, location] of (await response.text()).matchAll(
         /<loc>([^<]+)<\/loc>/g,
       )) {
-        const linked = await context.request.get(location);
+        // Canonical sitemap URLs use the production origin even in local builds.
+        const target = new URL(location);
+        const checkedURL =
+          !remote && target.origin === "https://soukscan.online"
+            ? origin + target.pathname + target.search
+            : location;
+        const linked = await context.request.get(checkedURL);
         if (!linked.ok())
           fail("sitemap-url", { url: location, status: linked.status() });
       }
@@ -503,6 +509,8 @@ async function layouts() {
     if (args.has("--crawl")) await crawl();
     if (args.has("--layout")) await layouts();
     if (args.has("--motion")) await motionChecks();
+  } catch (error) {
+    fail("audit-exception", { message: error.message });
   } finally {
     await browser.close();
     await writeFile(
