@@ -17,5 +17,10 @@ The logo in `brand/` is the existing SOUK-SCAN logo. Older product artwork and
 its attribution in `products/ATTRIBUTION.md` are separate from these assets.
 
 `app-preview-en.png`, `app-preview-fr.png` and `app-preview-ar.png` are localized
-captures of the existing app design preview, labelled as preview images on the
-website. They do not depict a new native release.
+captures previously used for the alternate app design preview. They are retained
+for cached pages and do not depict a new native release.
+
+The current download section uses `app-welcome-en.png`, `app-welcome-fr.png`
+and `app-welcome-ar.png`: unchanged browser captures of the original public
+`/app/` welcome screen, taken on 20 October 2026 after choosing the respective
+language. The previous design-preview captures remain for cached pages.
