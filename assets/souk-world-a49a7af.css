@@ -1,0 +1,258 @@
+/* Moroccan medina square: inward-facing stalls and readable packed produce. */
+.courtyard-scene {
+  height: 780px;
+  background: #ecddbd;
+}
+.courtyard-ground {
+  z-index: -3;
+  object-fit: cover;
+  object-position: center top;
+}
+.courtyard-stall__sprite {
+  display: block;
+  width: 100%;
+  aspect-ratio: 656/599.5;
+  background-image: url("./souk-vendors-rubber-hose.png");
+  background-size: 200% 200%;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+}
+.courtyard-stall[data-category="meat"] .courtyard-stall__sprite {
+  background-position: 100% 0;
+  transform: scaleX(-1);
+}
+.courtyard-stall[data-category="vegetable"] .courtyard-stall__sprite {
+  background-position: 0 100%;
+}
+.courtyard-stall[data-category="poultry"] .courtyard-stall__sprite {
+  background-position: 100% 100%;
+  transform: scaleX(-1);
+}
+.courtyard-stall__art {
+  filter: none;
+}
+.courtyard-stall__halo {
+  left: 2%;
+  right: 2%;
+  bottom: 19%;
+  height: 7%;
+  background: #715831;
+  opacity: 0.18;
+  filter: blur(3px);
+  transform: none;
+  border: 0;
+}
+.courtyard-stall.is-active .courtyard-stall__halo {
+  opacity: 0.25;
+  background: var(--stall-accent);
+}
+.courtyard-stall__label {
+  border: 1px solid #a89c7b;
+  background: #fbf3df;
+  box-shadow: 0 2px 0 #8b7a5122;
+  border-radius: 7px;
+  min-height: 44px;
+}
+.courtyard-stall.is-active .courtyard-stall__art {
+  filter: drop-shadow(0 5px 4px #443d2e16);
+}
+.courtyard-centre {
+  inset: 26% 28% 8%;
+}
+.courtyard-idle {
+  padding: 24px 0;
+}
+.courtyard-logo {
+  width: 100px;
+  height: 100px;
+}
+.courtyard-scan {
+  border-color: #5d735466;
+}
+.courtyard-idle__hint {
+  color: #514b3b;
+}
+.courtyard-price-note {
+  margin-top: 18px;
+}
+.stock-crate {
+  height: 110px;
+}
+.stock-crate__produce {
+  inset: 0 6% 20%;
+}
+.stock-crate__food {
+  position: absolute;
+  width: 74%;
+  aspect-ratio: 1;
+  bottom: -7%;
+  left: 13%;
+  background-image: url("./souk-food-rubber-hose.png");
+  background-size: 400% 400%;
+  background-position: var(--food-x) var(--food-y);
+  background-repeat: no-repeat;
+}
+.stock-crate__back {
+  background: #b8955d;
+  border: 1.5px solid #594b32;
+  border-radius: 5px;
+  inset: 38% 5% 0;
+}
+.stock-crate__front {
+  background:
+    linear-gradient(transparent 48%, #9f814b 48% 52%, transparent 52%), #d2ad70;
+  border: 1.5px solid #594b32;
+  border-radius: 3px;
+  inset: 72% 1% 0;
+  box-shadow: 0 2px 0 #755d3522;
+}
+.stock-crate__front:before,
+.stock-crate__front:after {
+  border: 1px solid #75603d;
+  background: #deb984;
+  width: 6px;
+  top: -2px;
+  bottom: -2px;
+  border-radius: 2px;
+}
+.stock-crate__front:before {
+  left: 4px;
+}
+.stock-crate__front:after {
+  right: 4px;
+}
+.stock-crate__shadow {
+  filter: blur(2px);
+  background: #6b603022;
+}
+.courtyard-stock__heading h3 {
+  font-size: 30px;
+}
+.courtyard-stock__heading .eyebrow {
+  color: #3d5236;
+}
+.courtyard-stock__heading > p,
+.courtyard-product__arabic,
+.courtyard-product__price span {
+  color: #554b38;
+}
+.courtyard-reset {
+  color: #3e4c32;
+  background: #fbf2de;
+  border-color: #bca476;
+}
+@media (min-width: 1100px) {
+  .courtyard-stall {
+    max-width: 240px;
+  }
+  .courtyard-stall--left-top {
+    left: 3%;
+    top: 21%;
+  }
+  .courtyard-stall--right-top {
+    right: 3%;
+    top: 21%;
+  }
+  .courtyard-stall--left-bottom {
+    left: 3%;
+    bottom: 8%;
+  }
+  .courtyard-stall--right-bottom {
+    right: 3%;
+    bottom: 8%;
+  }
+}
+@media (min-width: 761px) and (max-width: 1099px) {
+  .courtyard-scene {
+    height: 730px;
+  }
+  .courtyard-centre {
+    inset: 26% 28% 8%;
+  }
+  .stock-crate {
+    height: 100px;
+  }
+  .courtyard-stall--left-top,
+  .courtyard-stall--right-top {
+    top: 25%;
+  }
+  .courtyard-stall--left-bottom,
+  .courtyard-stall--right-bottom {
+    bottom: 9%;
+  }
+}
+@media (max-width: 760px) {
+  .courtyard-scene {
+    height: 680px;
+  }
+  .courtyard-ground {
+    object-position: center top;
+  }
+  .courtyard-logo {
+    width: 78px;
+    height: 78px;
+  }
+  .courtyard-idle h3 {
+    font-size: 23px;
+  }
+  .courtyard-stall--left-top,
+  .courtyard-stall--right-top {
+    top: 23%;
+  }
+  .courtyard-stall--left-bottom,
+  .courtyard-stall--right-bottom {
+    bottom: 11%;
+  }
+  .courtyard-stock__heading h3 {
+    font-size: 22px;
+  }
+  .courtyard-stall__halo {
+    bottom: 26%;
+    height: 5%;
+  }
+  .courtyard-stall__label {
+    background: #fbf3df;
+  }
+  .stock-crate {
+    height: 72px;
+  }
+  .stock-crate__front:before,
+  .stock-crate__front:after {
+    width: 4px;
+    top: -1px;
+    bottom: -1px;
+  }
+  .stock-crate__front:before {
+    left: 2px;
+  }
+  .stock-crate__front:after {
+    right: 2px;
+  }
+  .courtyard-centre {
+    inset: 26% 27.5% 8%;
+  }
+  .stock-crate__food {
+    width: 90%;
+    left: 5%;
+  }
+}
+@media (max-width: 370px) {
+  .courtyard-logo {
+    width: 68px;
+    height: 68px;
+  }
+  .courtyard-stock__heading h3 {
+    font-size: 20px;
+  }
+  .courtyard-idle h3 {
+    font-size: 22px;
+  }
+  .stock-crate {
+    height: 68px;
+  }
+  .courtyard-product__name {
+    font-size: 9px;
+    letter-spacing: -0.15px;
+    overflow-wrap: normal;
+  }
+}
