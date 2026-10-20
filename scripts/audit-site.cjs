@@ -302,6 +302,9 @@ async function layouts() {
             rect = (e) => e.getBoundingClientRect();
           if (document.documentElement.scrollWidth > innerWidth)
             issues.push("Horizontal page overflow");
+          for (const brand of document.querySelectorAll(".brand-inline"))
+            if (brand.getClientRects().length !== 1)
+              issues.push("Brand breaks across lines");
           for (const e of document.querySelectorAll(
             "h1,h2,h3,.hero-copy,.steps p,.download-copy p,.faq-list p,.courtyard-stall__label",
           )) {
