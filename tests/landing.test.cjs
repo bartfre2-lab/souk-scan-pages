@@ -292,6 +292,8 @@ test("no-JavaScript access and reduced-motion behaviour", async () => {
   await page.goto(base);
   assert.ok(await page.locator("noscript").isVisible());
   assert.ok(await page.locator(".courtyard-logo").isVisible());
+  assert.ok(await page.locator(".theme-toggle").isHidden());
+  assert.equal(await page.locator(".courtyard-stall:disabled").count(), 4);
   assert.ok(await page.locator("a[download]").isVisible());
   assert.equal(
     await page

@@ -363,4 +363,7 @@ courtyard.addEventListener("keydown", (event) => {
 });
 motion.addEventListener("change", stopMotion);
 new ResizeObserver(stopMotion).observe(scene);
+stalls.forEach((button) => {
+  button.disabled = false;
+});
 document.querySelector("#year").textContent = String(new Date().getFullYear());

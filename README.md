@@ -107,3 +107,34 @@ See [Google Play review](docs/GOOGLE-PLAY-REVIEW.md) for code evidence, Data saf
 recommendations and remaining release checks. Revised English and new French/
 Arabic descriptions are in [store-listings](docs/store-listings/).
 This website implementation does not build or release a new native app.
+
+## Final website audit
+
+The hero follows the original app's onboarding copy. Section copy uses direct
+product descriptions, and the download section shows the original app's actual
+welcome screen rather than the alternate souk-app preview.
+
+`scripts/audit-site.cjs` provides a read-only crawl and extended layout audit:
+
+```sh
+# Serve the generated site first (npm run dev uses port 4173).
+AUDIT_URL=http://localhost:4173/ node scripts/audit-site.cjs --layout
+AUDIT_URL=http://localhost:4173/ node scripts/audit-site.cjs --motion
+AUDIT_BROWSER=firefox AUDIT_URL=http://localhost:4173/ node scripts/audit-site.cjs --layout
+AUDIT_BROWSER=webkit AUDIT_URL=http://localhost:4173/ node scripts/audit-site.cjs --layout
+AUDIT_URL=https://soukscan.online/preview/souk/ node scripts/audit-site.cjs --crawl
+```
+
+Install the selected browser and its host dependencies with Playwright as needed.
+Each engine checks 48 home and 72 legal/support layouts and runs 36 automated
+accessibility scans, including WCAG 2.2 target-size rules. Reports and screenshots
+go into ignored `test-results/`; `AUDIT_OUTPUT` sets another directory.
+The remote crawl follows public navigation, CSS resources and sitemap URLs and
+also includes the root site, existing legal pages, app entry points and Google
+verification file. It does not create accounts or submit forms.
+`--motion` checks rapid retargeting, completion, resizing, motion preference
+changes and Escape/focus return at phone and desktop sizes in the chosen engine.
+
+See [the final audit report](docs/FINAL-WEBSITE-AUDIT.md) for findings by section,
+implemented fixes, verification results and the remaining production-promotion
+and authenticated-flow limits.

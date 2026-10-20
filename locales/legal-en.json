@@ -77,7 +77,7 @@
       {
         "title": "Request deletion without opening the app",
         "paragraphs": [
-          "Email <a href=\"mailto:sanamdev@soukscan.online\">sanamdev@soukscan.online</a> from the address registered with your account. Use the subject <strong>SOUK-SCAN account deletion request</strong>. If you used Google sign-in, write from that Google account’s address. Do not send your password.",
+          "Email <a href=\"mailto:sanamdev@soukscan.online?subject=SOUK-SCAN%20account%20deletion%20request\">sanamdev@soukscan.online</a> from the address registered with your account. Use the subject <strong>SOUK-SCAN account deletion request</strong>. If you used Google sign-in, write from that Google account’s address. Do not send your password.",
           "We may ask you to confirm that you control the registered email address. We complete valid email deletion requests within <strong>30 calendar days</strong> of receipt and reply when deletion is complete."
         ]
       },

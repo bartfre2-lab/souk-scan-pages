@@ -280,6 +280,19 @@ test("theme follows the system until explicitly changed, persists across pages, 
   page.on("pageerror", (e) => errors.push(e.message));
   await page.goto(base + "/ar/");
   await page.locator(".theme-toggle").click();
+  await page.emulateMedia({ colorScheme: "dark" });
+  await page.emulateMedia({ colorScheme: "light" });
+  await page.evaluate(
+    () =>
+      new Promise((resolve) =>
+        requestAnimationFrame(() => requestAnimationFrame(resolve)),
+      ),
+  );
+  assert.equal(
+    await page.locator("html").getAttribute("data-theme"),
+    "dark",
+    "Explicit choice survives OS changes even when storage is blocked",
+  );
   await page.locator('button[data-category="meat"]').click();
   assert.equal(await page.locator(".courtyard-product").count(), 2);
   assert.deepEqual(errors, []);
