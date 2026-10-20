@@ -1,0 +1,204 @@
+{
+  "privacy": {
+    "title": "Privacy policy",
+    "updated": "Last updated: 20 October 2026",
+    "intro": "SOUK-SCAN is a community food-price information app for Morocco (Android package <bdi>com.soukscan.app</bdi>). This policy explains how the app and this website handle information. For privacy questions or requests, contact <a href=\"mailto:sanamdev@soukscan.online\">sanamdev@soukscan.online</a>.",
+    "description": "How SOUK-SCAN handles account information, food-price reports, region data, location permissions and account deletion.",
+    "sections": [
+      {
+        "title": "Information the app processes",
+        "paragraphs": [
+          "Account information includes your email address, account identifier and authentication records. Google sign-in may also provide account profile information to the authentication provider. We record acceptance of the app’s terms.",
+          "Price reports contain the product, price, region, date and the account identifier needed to manage your submissions. Feedback contains the category, message and account identifier you send."
+        ]
+      },
+      {
+        "title": "Location and region",
+        "paragraphs": [
+          "Automatic region detection is optional. With permission, the app reads a location on your device and matches it to one of Morocco’s 12 regions. The app does not transmit, persist or log the raw GPS coordinates. You can select a region manually instead.",
+          "The selected or detected region is saved on your device and sent to the backend when requesting regional prices or submitting a report. Reports retain that region alongside the account identifier. Keeping raw coordinates local does not mean that no region information leaves the device."
+        ]
+      },
+      {
+        "title": "What other users can see",
+        "paragraphs": [
+          "Public community prices are aggregated estimates. Your email, account identity and individual reports are not displayed publicly. Feedback is private to the service’s maintainers. Dated wholesale reference figures, where available, are a separate source."
+        ]
+      },
+      {
+        "title": "Service providers and technical information",
+        "paragraphs": [
+          "Supabase provides the app’s database and authentication services. Google handles Google sign-in when you choose it. GitHub Pages hosts this website. These services receive technical connection information, such as IP addresses and request information, needed to operate and secure their services.",
+          "We do not sell personal data, run ads, or include advertising or third-party analytics tools in the reviewed app or website. Processing by a hosting or authentication provider is different from publishing information to other users."
+        ]
+      },
+      {
+        "title": "Storage on your device",
+        "paragraphs": [
+          "The app stores preferences such as language, appearance, selected region and favourites on your device, along with the session information needed to keep you signed in. This website stores language, appearance and selected-region preferences on your device. It sends the selected region to Supabase when requesting community estimates; it does not ask for GPS access or sign you in. You can remove local preferences through your device or browser storage settings."
+        ]
+      },
+      {
+        "title": "Retention and deletion",
+        "paragraphs": [
+          "Account information, linked reports, feedback and terms-acceptance records are kept while needed to operate your account and the service, until account deletion or earlier removal. A limited display window for prices is not a promise that underlying reports are automatically erased after that window.",
+          "Confirmed in-app deletion removes the active account and its linked reports and feedback. Email deletion requests are completed within 30 calendar days after a valid request is received. See <a href=\"@@account-deletion@@\">account deletion</a> for the steps and scope.",
+          "Operational logs or backup copies retained by service providers follow their retention policies. Active-account deletion does not promise immediate removal of every provider log or backup. Local device preferences can remain until you clear the app or browser storage."
+        ]
+      },
+      {
+        "title": "Security and your choices",
+        "paragraphs": [
+          "The app communicates with its backend over HTTPS and uses authenticated access controls for private account data. No online service can guarantee absolute security. The app never receives your Google password.",
+          "You can deny location permission, choose a region manually, change language or appearance, sign out, or request account deletion. For access, correction or other privacy questions, contact <a href=\"mailto:sanamdev@soukscan.online\">sanamdev@soukscan.online</a>."
+        ]
+      },
+      {
+        "title": "Changes and contact",
+        "paragraphs": [
+          "We update this page when the service’s data practices change. The date above identifies this website policy revision. Contact the SOUK-SCAN maintainers at <a href=\"mailto:sanamdev@soukscan.online\">sanamdev@soukscan.online</a>."
+        ]
+      }
+    ]
+  },
+  "account-deletion": {
+    "title": "Delete your SOUK-SCAN account",
+    "updated": "Last updated: 20 October 2026",
+    "intro": "You can permanently delete your SOUK-SCAN account and its associated data in the app or request deletion by email. This page applies to <bdi>com.soukscan.app</bdi>.",
+    "description": "Delete your SOUK-SCAN account in the app or request deletion by email. Learn which data is removed and the request timeframe.",
+    "sections": [
+      {
+        "title": "Delete in the app",
+        "paragraphs": [
+          "Open SOUK-SCAN and sign in. Go to <strong>Profile → Delete account</strong>, review the information and confirm deletion.",
+          "Successful in-app deletion takes effect when the server confirms it. The app then signs you out. If deletion fails, you see an error and can retry. Deletion is permanent. Administrator accounts require assistance from the service maintainers."
+        ]
+      },
+      {
+        "title": "Request deletion without opening the app",
+        "paragraphs": [
+          "Email <a href=\"mailto:sanamdev@soukscan.online?subject=SOUK-SCAN%20account%20deletion%20request\">sanamdev@soukscan.online</a> from the address registered with your account. Use the subject <strong>SOUK-SCAN account deletion request</strong>. If you used Google sign-in, write from that Google account’s address. Do not send your password.",
+          "We may ask you to confirm that you control the registered email address. We complete valid email deletion requests within <strong>30 calendar days</strong> of receipt and reply when deletion is complete."
+        ]
+      },
+      {
+        "title": "What deletion removes",
+        "paragraphs": [
+          "Deletion removes your active account and sign-in identity, submitted price reports, feedback and linked terms-acceptance records. Removed reports no longer contribute to estimates computed from the remaining reports. Individual reports and account identities were not displayed publicly."
+        ]
+      },
+      {
+        "title": "What may remain",
+        "paragraphs": [
+          "Service-provider technical logs and backups, if retained, follow the providers’ retention policies rather than immediate active-account deletion. Preferences saved only on your device may remain until you clear the app’s storage or browser data."
+        ]
+      },
+      {
+        "title": "Privacy questions",
+        "paragraphs": [
+          "For questions about deletion or another data request, email <a href=\"mailto:sanamdev@soukscan.online\">sanamdev@soukscan.online</a>. Read the <a href=\"@@privacy@@\">privacy policy</a> for the full description of data handling."
+        ]
+      }
+    ]
+  },
+  "terms": {
+    "title": "Terms of use",
+    "updated": "App terms version: 12 October 2026 · Website updated: 20 October 2026",
+    "intro": "<bdi>SOUK-SCAN</bdi> is an informational tool that makes food prices in Morocco easier to see and compare. It does not sell products, set or control market prices, guarantee the prices any seller offers, or act as a marketplace or a regulator. It is not a government service.",
+    "description": "Terms for using SOUK-SCAN, reporting prices responsibly and understanding community and wholesale reference data.",
+    "sections": [
+      {
+        "title": "What the prices are",
+        "paragraphs": [
+          "Prices shown as community prices are reports submitted by users. They can be inaccurate, incomplete, out of date or unrepresentative, and they do not necessarily reflect every shop or market. They are shown only when enough recent, valid reports exist."
+        ]
+      },
+      {
+        "title": "Reference prices",
+        "paragraphs": [
+          "Where available, wholesale reference prices come from the published bulletins of <bdi>Casa Prestations</bdi> (<bdi>casaprestations.ma</bdi>). Each reference shows its source and the date of the bulletin it comes from. These are wholesale prices, which are not necessarily retail prices. When a product is missing from the latest bulletin, the app may show its most recent earlier reference, clearly labelled with its date. <bdi>SOUK-SCAN</bdi> is not endorsed by, affiliated with or partnered with <bdi>Casa Prestations</bdi>."
+        ]
+      },
+      {
+        "title": "Using SOUK-SCAN responsibly",
+        "paragraphs": [
+          "When you submit a price, please report what you genuinely saw or paid. Do not submit false or deliberately misleading prices, try to manipulate averages, abuse or overload the service, send spam, or submit unlawful or harmful content."
+        ]
+      },
+      {
+        "title": "Moderation",
+        "paragraphs": [
+          "We may review, flag, reject, hide or remove submissions that appear unreliable or abusive, and may restrict or close accounts that misuse the service. An unusual price is not automatically treated as a wrong one."
+        ]
+      },
+      {
+        "title": "Limits of the information",
+        "paragraphs": [
+          "Prices vary by location, market, product quality, unit and date. Please check current prices locally before relying on any figure for an important decision."
+        ]
+      },
+      {
+        "title": "Availability of the service",
+        "paragraphs": [
+          "We aim to keep <bdi>SOUK-SCAN</bdi> available and useful, but we do not promise uninterrupted service, perfect accuracy, or fresh data for every product at all times. Features and data may change or be unavailable from time to time."
+        ]
+      },
+      {
+        "title": "Responsibility",
+        "paragraphs": [
+          "To the extent permitted by applicable law, <bdi>SOUK-SCAN</bdi> is not responsible for losses that result from relying on incomplete, inaccurate, delayed or unavailable price information. Nothing in these terms excludes or limits any right or liability that cannot lawfully be excluded or limited."
+        ]
+      },
+      {
+        "title": "Your account and changes",
+        "paragraphs": [
+          "You can stop using <bdi>SOUK-SCAN</bdi> at any time, and you can delete your account and the data linked to it from Profile (Delete account). We may restrict accounts as described above, update the service, and update these terms. When the terms change materially, we will ask you to review and accept the new version before you continue."
+        ]
+      },
+      {
+        "title": "Applicable law and contact",
+        "paragraphs": [
+          "These terms are governed by the laws of the Kingdom of Morocco, without affecting any mandatory rights you have as a consumer. For questions, to report a problem, or to ask about your data, use the Feedback form in Profile."
+        ]
+      },
+      {
+        "title": "Contact",
+        "paragraphs": [
+          "<a href=\"mailto:sanamdev@soukscan.online\">sanamdev@soukscan.online</a>"
+        ]
+      }
+    ]
+  },
+  "support": {
+    "title": "Help & support",
+    "updated": "Last updated: 20 October 2026",
+    "intro": "Find help using SOUK-SCAN, understanding price information or managing your account.",
+    "description": "Get help with SOUK-SCAN, regional food prices, location permission, Android installation and account deletion.",
+    "sections": [
+      {
+        "title": "Prices and regions",
+        "paragraphs": [
+          "Choose a region manually or enable optional automatic detection. Community estimates appear only when sufficient valid reports exist. Wholesale references, where available, show their own source and date and are not retail price guarantees. This website’s interactive scene reads the same public regional estimates and dated wholesale references as the app."
+        ]
+      },
+      {
+        "title": "Installing and using the app",
+        "paragraphs": [
+          "Use the web app on Android, iPhone or desktop. The Android APK linked on the home page is version 1.0.2. Your device may ask you to allow installation from your browser. Only download the APK from a source you trust."
+        ]
+      },
+      {
+        "title": "Account and data",
+        "paragraphs": [
+          "For account removal, follow the <a href=\"@@account-deletion@@\">account-deletion instructions</a>. Read our <a href=\"@@privacy@@\">privacy policy</a> and <a href=\"@@terms@@\">terms of use</a>."
+        ]
+      },
+      {
+        "title": "Contact SOUK-SCAN",
+        "paragraphs": [
+          "Send a message through Feedback in Profile, or email <a href=\"mailto:sanamdev@soukscan.online\">sanamdev@soukscan.online</a>. Describe the issue and the device or browser you use. Do not include passwords or precise GPS coordinates."
+        ]
+      }
+    ]
+  }
+}
