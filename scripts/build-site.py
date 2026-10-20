@@ -2,7 +2,7 @@
 from pathlib import Path
 from html.parser import HTMLParser
 from html import escape
-import argparse, json, re, shutil
+import argparse, json, re, shutil, base64
 
 ROOT = Path(__file__).resolve().parent.parent
 LANGUAGES = ('en', 'fr', 'ar')
@@ -52,31 +52,41 @@ def main():
     out=ROOT/args.out_dir
     if out.resolve() in (ROOT.resolve(),ROOT.parent.resolve()):raise ValueError('Unsafe output directory')
     out.mkdir(parents=True,exist_ok=True)
-    versions={name:name.rsplit('.',1)[0]+'-'+args.asset_version+'.'+name.rsplit('.',1)[1] for name in ('landing.js','site.js','landing.css','courtyard.css','souk-world.css','site.css')} if args.asset_version else {}
+    versions={name:name.rsplit('.',1)[0]+'-'+args.asset_version+'.'+name.rsplit('.',1)[1] for name in ('landing.js','site.js','landing.css','courtyard.css','souk-world.css','site.css','market-prices.js')} if args.asset_version else {}
     for directory in ('assets','downloads'):
         (out/directory).mkdir(parents=True,exist_ok=True)
         for entry in (ROOT/directory).iterdir():
             destination=out/directory/(versions.get(entry.name,entry.name) if directory=='assets' else entry.name)
             if entry.is_dir():shutil.copytree(entry,destination,dirs_exist_ok=True)
+            elif entry.suffix=='.js' and versions:
+                content=entry.read_text()
+                for original,versioned in versions.items():content=content.replace('./'+original,'./'+versioned)
+                destination.write_text(content)
             else:shutil.copy2(entry,destination)
     if base=='/' and (ROOT/'app').is_dir():
         shutil.copytree(ROOT/'app',out/'app',dirs_exist_ok=True)
     catalogs={lang:json.loads((ROOT/'locales'/f'{lang}.json').read_text()) for lang in LANGUAGES}
     legal={lang:json.loads((ROOT/'locales'/f'legal-{lang}.json').read_text()) for lang in LANGUAGES}
     origin='https://soukscan.online'
+    market_data=json.loads((ROOT/'data/market.json').read_text())
+    client_key=market_data['config']['key']
+    if not client_key.startswith('sb_publishable_'):
+        claims_part=client_key.split('.')[1]
+        claims=json.loads(base64.urlsafe_b64decode(claims_part+'='*(-len(claims_part)%4)))
+        if claims.get('role')!='anon':raise ValueError('Only a public anon/publishable client key may be shipped')
     def route(lang,section=''):
         return base+('' if lang=='en' else lang+'/')+(section+'/' if section else '')
     def controls(lang,section):
         links=''.join(f'<a href="{route(code,section)}" lang="{code}" hreflang="{code}"'+(' aria-current="page"' if code==lang else '')+'>'+label+'</a>' for code,label in [('en','English'),('fr','Français'),('ar','العربية')])
         common=catalogs[lang]['common']
-        return f'<div class="site-controls wrap"><nav aria-label="{escape(common["languageLabel"])}">{links}</nav><button class="theme-toggle" hidden type="button" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14A8 8 0 0 1 10 4a8 8 0 1 0 10 10Z"/></svg><span>{escape(common["darkMode"])}</span></button></div>'
+        return f'<div class="site-controls"><nav aria-label="{escape(common["languageLabel"])}">{links}</nav><button class="theme-toggle" hidden type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14A8 8 0 0 1 10 4a8 8 0 1 0 10 10Z"/></svg><span>{escape(common["darkMode"])}</span></button></div>'
     boot="""(()=>{try{let t=localStorage.getItem('soukscan.website.theme');document.documentElement.dataset.theme=t==='dark'||t==='light'?t:matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}catch{document.documentElement.dataset.theme=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}})();"""
     def head(lang,section,title,description):
         url=origin+route(lang,section)
         alternates=''.join(f'<link rel="alternate" hreflang="{code}" href="{origin+route(code,section)}">' for code in LANGUAGES)
         return f'''<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f7f4ee"><title>{escape(title)}</title><meta name="description" content="{escape(description,quote=True)}"><meta name="robots" content="{'noindex, nofollow' if args.preview else 'index, follow'}"><link rel="canonical" href="{url}">{alternates}<link rel="alternate" hreflang="x-default" href="{origin+route('en',section)}"><meta property="og:type" content="website"><meta property="og:title" content="{escape(title,quote=True)}"><meta property="og:description" content="{escape(description,quote=True)}"><meta property="og:url" content="{url}"><meta property="og:locale" content="{dict(en='en_GB',fr='fr_MA',ar='ar_MA')[lang]}"><meta property="og:image" content="{origin+base}assets/brand/logo.png"><meta name="twitter:card" content="summary"><link rel="icon" href="{base}assets/brand/logo.png"><script>{boot}</script><link rel="preload" href="{base}assets/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="{base}assets/landing.css"><link rel="stylesheet" href="{base}assets/courtyard.css"><link rel="stylesheet" href="{base}assets/souk-world.css"><link rel="stylesheet" href="{base}assets/site.css"><script defer src="{base}assets/site.js"></script></head>'''
     def payload(lang,section):
-        data={'language':lang,'common':catalogs[lang]['common'],'market':catalogs[lang]['market']}
+        data={'language':lang,'common':catalogs[lang]['common'],'market':catalogs[lang]['market'],'prices':catalogs[lang]['prices'],'priceConfig':market_data['config'],'regions':market_data['regions']}
         return '<script id="site-copy" type="application/json">'+json.dumps(data,ensure_ascii=False).replace('<','\\u003c')+'</script>'
     def footer(lang):
         common=catalogs[lang]['common']
@@ -98,7 +108,7 @@ def main():
             body=body.replace(f'href="./{section}/"',f'href="{route(lang,section)}"')
         body=body.replace('href="./app/"','href="/app/"')
         body=body.replace('./assets/',base+'assets/').replace('./downloads/',base+'downloads/')
-        body=body.replace('</header>','</header>'+controls(lang,''),1)
+        body=body.replace('<!--header-controls-->',controls(lang,''),1)
         body=body.replace('assets/app-welcome-en.png',f'assets/app-welcome-{lang}.png')
         body='<body>'+body+f'<script type="module" src="{base}assets/landing.js"></script>'
         schema={'@context':'https://schema.org','@type':'SoftwareApplication','name':'SOUK-SCAN','applicationCategory':'LifestyleApplication','operatingSystem':'Android, Web','inLanguage':lang,'url':origin+route(lang),'description':catalog['meta']['description'],'isAccessibleForFree':True,'offers':{'@type':'Offer','price':'0','priceCurrency':'MAD'}}
@@ -106,7 +116,7 @@ def main():
         save(lang,'',body,catalog['meta']['title'],catalog['meta']['description'],True)
         for section,page in legal[lang].items():
             content=''.join('<section><h2>'+escape(item['title'])+'</h2>'+''.join('<p>'+text+'</p>' for text in item['paragraphs'])+'</section>' for item in page['sections'])
-            body=f'<body class="legal-page"><a class="skip-link" href="#main-content">{escape(catalog["common"]["skipContent"])}</a><header class="site-header wrap"><a class="brand" href="{route(lang)}"><img src="{base}assets/brand/logo.png" alt="" width="44" height="44"><span class="scanner-wordmark">[SOUK-SCAN]</span></a><a class="text-link" href="{route(lang)}">{escape(catalog["common"]["backHome"])}</a></header>'+controls(lang,section)+f'<main class="legal-content" id="main-content" tabindex="-1"><p class="eyebrow">SOUK-SCAN</p><h1>{escape(page["title"])}</h1><p class="legal-updated">{escape(page["updated"])}</p><p class="legal-summary">{page["intro"]}</p>{content}'+footer(lang)+'</main>'
+            body=f'<body class="legal-page"><a class="skip-link" href="#main-content">{escape(catalog["common"]["skipContent"])}</a><header class="site-header wrap"><a class="brand" href="{route(lang)}"><img src="{base}assets/brand/logo.png" alt="" width="44" height="44"><span class="scanner-wordmark">[SOUK-SCAN]</span></a>{controls(lang,section)}<a class="text-link" href="{route(lang)}">{escape(catalog["common"]["backHome"])}</a></header>'+f'<main class="legal-content" id="main-content" tabindex="-1"><p class="eyebrow">SOUK-SCAN</p><h1>{escape(page["title"])}</h1><p class="legal-updated">{escape(page["updated"])}</p><p class="legal-summary">{page["intro"]}</p>{content}'+footer(lang)+'</main>'
             for key in ('privacy','terms','account-deletion','support'):body=body.replace('@@'+key+'@@',route(lang,key))
             save(lang,section,body,page['title']+' — SOUK-SCAN',page['description'])
     urls=[origin+route(lang,section) for lang in LANGUAGES for section in ('','privacy','terms','account-deletion','support')]

@@ -44,12 +44,12 @@
       "Roumi eggs": "Œufs roumi"
     },
     "units": {
-      "kg": "DH / kg",
-      "egg": "DH / œuf"
+      "kg": "DH/kg",
+      "egg": "DH/œuf"
     },
     "explored": "{count} catégories explorées sur 4",
-    "announcement": "{title}. {count} produits au centre de la place. Exemples de prix en dirhams.",
-    "backAnnouncement": "Retour à la place du souk. Choisissez un des quatre étals pour découvrir des exemples de prix."
+    "announcement": "{title}. {count} produits au centre. Prix de SOUK-SCAN.",
+    "backAnnouncement": "Retour sur la place. Choisissez un étal pour consulter les prix."
   },
   "strings": {
     "Skip to the interactive souk": "Aller au souk interactif",
@@ -68,14 +68,12 @@
     "Local prices.": "Des prix locaux.",
     "Shared by people.": "Partagés par la communauté.",
     "Choose a stall around the square": "Choisissez un étal autour de la place",
-    "to explore example food prices.": "pour découvrir des exemples de prix.",
     "EXPLORE THE STALLS": "DÉCOUVREZ LES ÉTALS",
     "Example ranges · MAD": "Exemples de prix · DH",
     "Return to the souk square and clear the selected category": "Revenir à la place du souk et désélectionner la catégorie",
     "Back to the square": "Retour à la place",
     "Explore the square at your own pace.": "Explorez la place à votre rythme.",
     "COMMUNITY PRICE GUIDE": "GUIDE PARTICIPATIF DES PRIX",
-    "These are illustrative prices. For recent community-reported prices in your region, open SOUK-SCAN.": "Ces prix sont des exemples. Ouvrez SOUK-SCAN pour consulter les prix récemment signalés par la communauté dans votre région.",
     "Find prices near you": "Voir les prix près de chez vous",
     "SOUK-SCAN app": "l’application SOUK-SCAN",
     "Download for Android": "Télécharger pour Android",
@@ -96,13 +94,10 @@
     "Know the recent local price": "Connaître le prix local récent",
     "before you buy!": "avant d'acheter !",
     "Prices are estimated from recent community observations shared by people like you": "Les prix sont estimés à partir d'observations communautaires récentes partagées par des personnes comme vous.",
-    "Explore example prices": "Voir des exemples de prix",
     "EXPLORE BY CATEGORY": "EXPLORER PAR CATÉGORIE",
     "Explore": "Explorez",
     "food prices.": "les prix alimentaires.",
     "Choose a category.": "Choisissez une catégorie.",
-    "Example prices appear in the square.": "Les exemples de prix s’affichent au centre.",
-    "EXAMPLE PRICES": "EXEMPLES DE PRIX",
     "12 Moroccan regions": "12 régions du Maroc",
     "Community observations": "Observations de la communauté",
     "Dated wholesale references": "Références de gros datées",
@@ -128,12 +123,38 @@
     "HELP": "AIDE",
     "Questions": "Questions sur",
     "about the app.": "l’application.",
-    "Community prices are estimates from recent observations. Dated wholesale references are shown separately. Prices vary by market, quality and date. The souk on this page shows examples.": "Les prix communautaires sont estimés à partir d’observations récentes. Les références de gros datées sont affichées séparément. Les prix varient selon le marché, la qualité et la date. Le souk de cette page présente des exemples.",
     "The app shows “Not enough data yet” when there are too few valid recent observations to estimate a price.": "L’application affiche « Pas encore assez de données » lorsque les observations récentes valides sont insuffisantes pour estimer un prix.",
     "No. SOUK-SCAN shows price information. It does not sell food or offer delivery.": "Non. SOUK-SCAN fournit des informations sur les prix. L’application ne vend pas de produits et ne propose pas de livraison.",
     "Community food-price information for Morocco.": "Des informations communautaires sur les prix alimentaires au Maroc.",
     "The interactive souk needs JavaScript. You can explore regional food prices in the": "Le souk interactif nécessite JavaScript. Retrouvez les prix alimentaires régionaux dans",
     "SOUK-SCAN app welcome screen": "Écran d’accueil de l’application SOUK-SCAN",
-    "App welcome screen": "Écran d’accueil de l’application"
+    "App welcome screen": "Écran d’accueil de l’application",
+    "Explore prices": "Voir les prix",
+    "Prices appear in the square.": "Les prix s’affichent au centre.",
+    "FOOD PRICES": "PRIX ALIMENTAIRES",
+    "to explore food prices.": "pour consulter les prix alimentaires.",
+    "Community estimates are regional. Wholesale references are dated prices from the Casablanca market, not retail prices in your region.": "Les estimations communautaires concernent votre région. Les références de gros sont datées et proviennent du marché de Casablanca ; ce ne sont pas les prix de détail de votre région.",
+    "Community prices are estimates from recent observations. Dated wholesale references are shown separately. Prices vary by market, quality and date. Choose your region to see its community estimates.": "Les prix communautaires sont estimés à partir d’observations récentes. Les références de gros datées sont affichées séparément. Les prix varient selon le marché, la qualité et la date. Choisissez votre région pour consulter ses estimations.",
+    "Refresh prices": "Actualiser les prix"
+  },
+  "prices": {
+    "chooseRegion": "Choisissez votre région",
+    "regionHint": "Choisissez une région pour ses estimations.",
+    "loading": "Chargement…",
+    "error": "Impossible de charger les prix. Réessayez.",
+    "rowError": "Échec du chargement",
+    "none": "Aucune référence",
+    "today": "Aujourd’hui",
+    "updatedOne": "Il y a {count} jour",
+    "updatedOther": "Il y a {count} jours",
+    "wholesale": "Gros",
+    "community": "Communauté",
+    "insufficient": "Pas encore assez de données",
+    "refreshFailed": "Actualisation impossible. Les derniers prix chargés restent affichés.",
+    "source": "Casa Prestations",
+    "oldNote": "Cette référence est ancienne. Vérifiez les prix actuels sur place.",
+    "omittedNote": "Absent du dernier bulletin : c'est la référence la plus récente disponible pour ce produit.",
+    "observationsOne": "{count} observation",
+    "observationsOther": "{count} observations"
   }
 }

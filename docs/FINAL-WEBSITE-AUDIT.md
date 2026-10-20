@@ -1,5 +1,10 @@
 # Final website audit — 20 October 2026
 
+This is the audit snapshot before the subsequent header and real-price update.
+See [the current integration notes](LIVE-PRICES.md) for the header controls,
+regional API behavior, privacy updates and added tests that supersede the
+earlier sample-price implementation described below.
+
 The fixes are implemented in the website design branch and published only under
 `/preview/souk/`, following the user's preview-only instruction. The original
 `/app/`, native application, backend, root homepage and root legal pages are not

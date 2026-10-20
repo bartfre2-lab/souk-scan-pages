@@ -8,7 +8,14 @@ try {
 } catch {}
 function updateThemeControl() {
   const dark = document.documentElement.dataset.theme === "dark";
-  button.setAttribute("aria-pressed", String(dark));
+  button
+    .querySelector("path")
+    .setAttribute(
+      "d",
+      dark
+        ? "M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8M12 2v3m0 14v3M2 12h3m14 0h3M5 5l2 2m10 10 2 2M5 19l2-2M17 7l2-2"
+        : "M20 14A8 8 0 0 1 10 4a8 8 0 1 0 10 10Z",
+    );
   button.querySelector("span").textContent = dark
     ? copy.common.lightMode
     : copy.common.darkMode;

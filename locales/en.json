@@ -44,12 +44,12 @@
       "Roumi eggs": "Roumi eggs"
     },
     "units": {
-      "kg": "MAD / kg",
-      "egg": "MAD / egg"
+      "kg": "DH/kg",
+      "egg": "DH/egg"
     },
     "explored": "{count} of 4 categories explored",
-    "announcement": "{title}. {count} products in the square. Example prices in Moroccan dirhams.",
-    "backAnnouncement": "Back in the souk square. Choose any of the four stalls to explore example prices."
+    "announcement": "{title}. {count} products in the square. Prices from SOUK-SCAN.",
+    "backAnnouncement": "Back in the souk square. Choose a stall to explore food prices."
   },
   "strings": {
     "Skip to the interactive souk": "Skip to the interactive souk",
@@ -68,14 +68,12 @@
     "Local prices.": "Local prices.",
     "Shared by people.": "Shared by people.",
     "Choose a stall around the square": "Choose a stall around the square",
-    "to explore example food prices.": "to explore example food prices.",
     "EXPLORE THE STALLS": "EXPLORE THE STALLS",
     "Example ranges · MAD": "Example ranges · MAD",
     "Return to the souk square and clear the selected category": "Return to the souk square and clear the selected category",
     "Back to the square": "Back to the square",
     "Explore the square at your own pace.": "Explore the square at your own pace.",
     "COMMUNITY PRICE GUIDE": "COMMUNITY PRICE GUIDE",
-    "These are illustrative prices. For recent community-reported prices in your region, open SOUK-SCAN.": "These are illustrative prices. For recent community-reported prices in your region, open SOUK-SCAN.",
     "Find prices near you": "Find prices near you",
     "SOUK-SCAN app": "SOUK-SCAN app",
     "Download for Android": "Download for Android",
@@ -96,13 +94,10 @@
     "Know the recent local price": "Know the recent local price",
     "before you buy!": "before you buy!",
     "Prices are estimated from recent community observations shared by people like you": "Prices are estimated from recent community observations shared by people like you",
-    "Explore example prices": "Explore example prices",
     "EXPLORE BY CATEGORY": "EXPLORE BY CATEGORY",
     "Explore": "Explore",
     "food prices.": "food prices.",
     "Choose a category.": "Choose a category.",
-    "Example prices appear in the square.": "Example prices appear in the square.",
-    "EXAMPLE PRICES": "EXAMPLE PRICES",
     "12 Moroccan regions": "12 Moroccan regions",
     "Community observations": "Community observations",
     "Dated wholesale references": "Dated wholesale references",
@@ -128,12 +123,38 @@
     "HELP": "HELP",
     "Questions": "Questions",
     "about the app.": "about the app.",
-    "Community prices are estimates from recent observations. Dated wholesale references are shown separately. Prices vary by market, quality and date. The souk on this page shows examples.": "Community prices are estimates from recent observations. Dated wholesale references are shown separately. Prices vary by market, quality and date. The souk on this page shows examples.",
     "The app shows “Not enough data yet” when there are too few valid recent observations to estimate a price.": "The app shows “Not enough data yet” when there are too few valid recent observations to estimate a price.",
     "No. SOUK-SCAN shows price information. It does not sell food or offer delivery.": "No. SOUK-SCAN shows price information. It does not sell food or offer delivery.",
     "Community food-price information for Morocco.": "Community food-price information for Morocco.",
     "The interactive souk needs JavaScript. You can explore regional food prices in the": "The interactive souk needs JavaScript. You can explore regional food prices in the",
     "SOUK-SCAN app welcome screen": "SOUK-SCAN app welcome screen",
-    "App welcome screen": "App welcome screen"
+    "App welcome screen": "App welcome screen",
+    "Explore prices": "Explore prices",
+    "Prices appear in the square.": "Prices appear in the square.",
+    "FOOD PRICES": "FOOD PRICES",
+    "to explore food prices.": "to explore food prices.",
+    "Community estimates are regional. Wholesale references are dated prices from the Casablanca market, not retail prices in your region.": "Community estimates are regional. Wholesale references are dated prices from the Casablanca market, not retail prices in your region.",
+    "Community prices are estimates from recent observations. Dated wholesale references are shown separately. Prices vary by market, quality and date. Choose your region to see its community estimates.": "Community prices are estimates from recent observations. Dated wholesale references are shown separately. Prices vary by market, quality and date. Choose your region to see its community estimates.",
+    "Refresh prices": "Refresh prices"
+  },
+  "prices": {
+    "chooseRegion": "Choose your region",
+    "regionHint": "Choose a region for community estimates.",
+    "loading": "Loading…",
+    "error": "Couldn’t load prices. Try again.",
+    "rowError": "Couldn’t load",
+    "none": "No reference",
+    "today": "Today",
+    "updatedOne": "{count} day ago",
+    "updatedOther": "{count} days ago",
+    "wholesale": "Wholesale",
+    "community": "Community",
+    "insufficient": "Not enough data yet",
+    "refreshFailed": "Couldn't refresh. Showing the last prices that loaded.",
+    "source": "Casa Prestations",
+    "oldNote": "This reference is old. Check current prices locally.",
+    "omittedNote": "Not in the newest bulletin: this is the most recent available reference for this product.",
+    "observationsOne": "{count} observation",
+    "observationsOther": "{count} observations"
   }
 }

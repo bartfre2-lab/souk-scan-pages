@@ -35,7 +35,7 @@
       {
         "title": "Storage on your device",
         "paragraphs": [
-          "The app stores preferences such as language, appearance, selected region and favourites on your device, along with the session information needed to keep you signed in. This website stores language and appearance preferences only. You can remove local preferences through your device or browser storage settings."
+          "The app stores preferences such as language, appearance, selected region and favourites on your device, along with the session information needed to keep you signed in. This website stores language, appearance and selected-region preferences on your device. It sends the selected region to Supabase when requesting community estimates; it does not ask for GPS access or sign you in. You can remove local preferences through your device or browser storage settings."
         ]
       },
       {
@@ -178,7 +178,7 @@
       {
         "title": "Prices and regions",
         "paragraphs": [
-          "Choose a region manually or enable optional automatic detection. Community estimates appear only when sufficient valid reports exist. Wholesale references, where available, show their own source and date and are not retail price guarantees. This website’s interactive scene uses illustrative prices."
+          "Choose a region manually or enable optional automatic detection. Community estimates appear only when sufficient valid reports exist. Wholesale references, where available, show their own source and date and are not retail price guarantees. This website’s interactive scene reads the same public regional estimates and dated wholesale references as the app."
         ]
       },
       {

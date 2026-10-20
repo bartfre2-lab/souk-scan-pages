@@ -1,3 +1,4 @@
+const { marketContext, marketPage } = require("./market-fixtures.cjs");
 const { test, before, after } = require("node:test");
 const assert = require("node:assert/strict");
 const { createServer } = require("node:http");
@@ -89,7 +90,7 @@ const overlap = (a, b) =>
   a.bottom > b.top + 0.5;
 for (const width of [320, 390, 768, 1440]) {
   test(`courtyard idle, all categories, fixed layout and accessibility at ${width}px`, async () => {
-    const context = await browser.newContext({
+    const context = await marketContext(browser, {
       viewport: { width, height: 900 },
       reducedMotion: "reduce",
     });
@@ -247,7 +248,7 @@ for (const width of [320, 390, 768, 1440]) {
   });
 }
 test("internal links, page anchors and verified Android download work", async () => {
-  const page = await browser.newPage();
+  const page = await marketPage(browser);
   await page.goto(base);
   const links = await page
     .locator("a")
@@ -284,7 +285,7 @@ test("internal links, page anchors and verified Android download work", async ()
 });
 
 test("no-JavaScript access and reduced-motion behaviour", async () => {
-  const page = await browser.newPage({
+  const page = await marketPage(browser, {
     javaScriptEnabled: false,
     reducedMotion: "reduce",
     viewport: { width: 390, height: 844 },
@@ -304,7 +305,7 @@ test("no-JavaScript access and reduced-motion behaviour", async () => {
   await page.close();
 });
 test("spatial delivery, rapid retargeting, reset, resize and motion preference changes", async () => {
-  const page = await browser.newPage({
+  const page = await marketPage(browser, {
     viewport: { width: 1440, height: 900 },
     reducedMotion: "no-preference",
   });
@@ -375,7 +376,7 @@ test("spatial delivery, rapid retargeting, reset, resize and motion preference c
   await page.close();
 });
 test("phone taps keep the square stationary and vertical scrolling works", async () => {
-  const context = await browser.newContext({
+  const context = await marketContext(browser, {
     viewport: { width: 390, height: 844 },
     isMobile: true,
     hasTouch: true,
