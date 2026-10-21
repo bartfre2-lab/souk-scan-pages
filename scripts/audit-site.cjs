@@ -39,7 +39,6 @@ async function crawl() {
       "/privacy/",
       "/terms/",
       "/account-deletion/",
-      "/preview/souk-app/",
       "/google7e57ca047c540b15.html",
     ])
       queue.push(origin + route);
