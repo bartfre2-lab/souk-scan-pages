@@ -1,0 +1,104 @@
+{
+  "en": {
+    "country": "MOROCCO",
+    "feature": [
+      "Know the prices.",
+      "Before you buy."
+    ],
+    "featureSub": "Food prices, clearer.",
+    "slides": [
+      [
+        "Know the prices.",
+        "Before you buy.",
+        "Explore food prices across Morocco.",
+        "01-market"
+      ],
+      [
+        "Your market.",
+        "In your pocket.",
+        "Fruit, vegetables, meat, poultry and eggs.",
+        "02-fruit"
+      ],
+      [
+        "12 regions.",
+        "One souk.",
+        "Choose the region you want to explore.",
+        "03-regions"
+      ],
+      [
+        "Your essentials.",
+        "Always close.",
+        "Save your everyday products as favorites.",
+        "04-favorites"
+      ]
+    ]
+  },
+  "fr": {
+    "country": "MAROC",
+    "feature": [
+      "Les prix en tête.",
+      "Avant vos achats."
+    ],
+    "featureSub": "Les prix alimentaires, en clair.",
+    "slides": [
+      [
+        "Les prix en tête.",
+        "Avant vos achats.",
+        "Explorez les prix alimentaires au Maroc.",
+        "01-market"
+      ],
+      [
+        "Votre marché.",
+        "Dans votre poche.",
+        "Fruits, légumes, viandes, volailles et œufs.",
+        "02-fruit"
+      ],
+      [
+        "12 régions.",
+        "Un même souk.",
+        "Choisissez la région que vous souhaitez explorer.",
+        "03-regions"
+      ],
+      [
+        "Vos essentiels.",
+        "À portée de main.",
+        "Gardez vos produits du quotidien en favoris.",
+        "04-favorites"
+      ]
+    ]
+  },
+  "ar": {
+    "country": "المغرب",
+    "feature": [
+      "اعرف الأسعار",
+      "قبل أن تشتري"
+    ],
+    "featureSub": "أسعار المواد الغذائية بوضوح.",
+    "slides": [
+      [
+        "اعرف الأسعار",
+        "قبل أن تشتري",
+        "اكتشف أسعار المواد الغذائية في المغرب.",
+        "01-market"
+      ],
+      [
+        "سوقك",
+        "بين يديك",
+        "فواكه وخضروات ولحوم ودواجن وبيض.",
+        "02-fruit"
+      ],
+      [
+        "١٢ جهة",
+        "وسوق واحد",
+        "اختر الجهة التي تريد استكشافها.",
+        "03-regions"
+      ],
+      [
+        "منتجاتك المفضلة",
+        "دائمًا بقربك",
+        "احفظ منتجاتك اليومية في قائمة المفضلة.",
+        "04-favorites"
+      ]
+    ]
+  }
+}
