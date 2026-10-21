@@ -1,0 +1,114 @@
+[
+  {
+    "file": "en/01-market.png",
+    "width": 1080,
+    "height": 1920,
+    "bytes": 1733373,
+    "channels": "srgb"
+  },
+  {
+    "file": "en/02-fruit.png",
+    "width": 1080,
+    "height": 1920,
+    "bytes": 1919219,
+    "channels": "srgb"
+  },
+  {
+    "file": "en/03-regions.png",
+    "width": 1080,
+    "height": 1920,
+    "bytes": 1763182,
+    "channels": "srgb"
+  },
+  {
+    "file": "en/04-favorites.png",
+    "width": 1080,
+    "height": 1920,
+    "bytes": 1756444,
+    "channels": "srgb"
+  },
+  {
+    "file": "en/feature-1024x500.png",
+    "width": 1024,
+    "height": 500,
+    "bytes": 759138,
+    "channels": "srgb"
+  },
+  {
+    "file": "fr/01-market.png",
+    "width": 1080,
+    "height": 1920,
+    "bytes": 1742900,
+    "channels": "srgb"
+  },
+  {
+    "file": "fr/02-fruit.png",
+    "width": 1080,
+    "height": 1920,
+    "bytes": 1918005,
+    "channels": "srgb"
+  },
+  {
+    "file": "fr/03-regions.png",
+    "width": 1080,
+    "height": 1920,
+    "bytes": 1766195,
+    "channels": "srgb"
+  },
+  {
+    "file": "fr/04-favorites.png",
+    "width": 1080,
+    "height": 1920,
+    "bytes": 1757742,
+    "channels": "srgb"
+  },
+  {
+    "file": "fr/feature-1024x500.png",
+    "width": 1024,
+    "height": 500,
+    "bytes": 760857,
+    "channels": "srgb"
+  },
+  {
+    "file": "ar/01-market.png",
+    "width": 1080,
+    "height": 1920,
+    "bytes": 1711253,
+    "channels": "srgb"
+  },
+  {
+    "file": "ar/02-fruit.png",
+    "width": 1080,
+    "height": 1920,
+    "bytes": 1909784,
+    "channels": "srgb"
+  },
+  {
+    "file": "ar/03-regions.png",
+    "width": 1080,
+    "height": 1920,
+    "bytes": 1743788,
+    "channels": "srgb"
+  },
+  {
+    "file": "ar/04-favorites.png",
+    "width": 1080,
+    "height": 1920,
+    "bytes": 1744170,
+    "channels": "srgb"
+  },
+  {
+    "file": "ar/feature-1024x500.png",
+    "width": 1024,
+    "height": 500,
+    "bytes": 756425,
+    "channels": "srgb"
+  },
+  {
+    "file": "icon-512.png",
+    "width": 512,
+    "height": 512,
+    "bytes": 189412,
+    "channels": "srgb"
+  }
+]
