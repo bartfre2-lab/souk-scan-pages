@@ -85,8 +85,8 @@ page's 30-calendar-day timeframe; the operator must continue honoring it.
 The owner approved and published these policies to the official domain on
 20 October 2026. Proposed listings use the stable production URLs
 `https://soukscan.online/privacy/` and
-`https://soukscan.online/account-deletion/`. The historical website review
-remains available under `/preview/souk/` with noindex metadata.
+`https://soukscan.online/account-deletion/`. The historical preview pages were
+removed on 2026-10-21.
 
 ## Remaining release checks
 
