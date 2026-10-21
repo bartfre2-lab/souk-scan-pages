@@ -89,8 +89,8 @@ def verify(out, version=''):
     except (OSError, ET.ParseError) as error:
         errors.append('Invalid SEO utility file: ' + str(error))
 
-    # App and review snapshots are public build inputs, never rebuilt here.
-    for directory in ('app', 'preview', 'public'):
+    # The app snapshot is a public build input, never rebuilt here.
+    for directory in ('app', 'public'):
         source = ROOT / directory
         require(source.is_dir(), 'Missing static input: ' + directory)
         for path in source.rglob('*'):
@@ -118,7 +118,7 @@ def verify(out, version=''):
             require((script.parent / name).is_file(), 'Missing JavaScript import: ' + name)
     if errors:
         raise ValueError('\n'.join(errors))
-    return 'Verified 15 production pages, SEO, assets/imports, static app/previews, cached assets and signed APK'
+    return 'Verified 15 production pages, SEO, assets/imports, static app, cached assets and signed APK'
 
 
 if __name__ == '__main__':

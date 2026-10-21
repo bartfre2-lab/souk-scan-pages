@@ -36,7 +36,7 @@ test("artifact verification rejects leaked configuration files and incorrect pro
 });
 test("build refuses source/release directories and invalid asset filenames without modifying them", () => {
   const app = join(root, "app/index.html"), original = readFileSync(app);
-  for (const directory of [root, join(root, "app"), join(root, "preview/souk"), join(root, "assets")])
+  for (const directory of [root, join(root, "app"), join(root, "public"), join(root, "assets")])
     assert.notEqual(run("build-site.py", "--out-dir", directory).status, 0);
   assert.deepEqual(readFileSync(app), original);
   assert.notEqual(run("build-site.py", "--out-dir", join(temporary, "invalid"), "--asset-version", "../invalid").status, 0);

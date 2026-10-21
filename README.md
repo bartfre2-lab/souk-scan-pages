@@ -62,14 +62,13 @@ publish the raw repository root or merge unbuilt HTML through legacy Jekyll.
 | `scripts/` | Static builder, deployment verification and read-only browser audit |
 | `tests/` | Browser, data/cache and build regression checks |
 | `app/` | Existing independently built web app, published unchanged at `/app/` |
-| `preview/` | Historical website and alternate-app review snapshots; retained for existing links |
 | `public/assets/` | Previous versioned production JS/CSS, retained for cached open tabs |
 | `downloads/` | Original signed Android v1.0.2 APK and release checksums |
 | `CNAME`, `google*.html` | Custom-domain and Search Console verification |
 | `dist*/` | Ignored generated output; only this output is deployed |
 | `docs/` | Price integration, Google Play review, store drafts and historical audit evidence |
 
-The builder includes the static `app/`, `preview/`, retained cache assets, domain
+The builder includes the static `app/`, retained cache assets, domain
 and verification file in production output. It does not rebuild an app or touch
 the backend. App-only updates committed to `app/` also run the website checks and
 publish through the same workflow. Keep old versioned assets while cached pages
