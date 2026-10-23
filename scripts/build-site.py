@@ -58,9 +58,9 @@ def main():
         raise ValueError('Invalid asset version')
     out.mkdir(parents=True,exist_ok=True)
     if base=='/':
-        # The static app release is maintained independently. Only their
+        # The static app release and the review preview are maintained independently. Only their
         # built files, domain verification and retained browser-cache assets ship.
-        for directory in ('app','public'):
+        for directory in ('app','preview','public'):
             source=ROOT/directory
             if source.is_dir():shutil.copytree(source,out if directory=='public' else out/directory,dirs_exist_ok=True)
         for name in ('CNAME','google7e57ca047c540b15.html'):
