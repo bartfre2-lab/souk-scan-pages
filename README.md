@@ -63,7 +63,7 @@ publish the raw repository root or merge unbuilt HTML through legacy Jekyll.
 | `tests/` | Browser, data/cache and build regression checks |
 | `app/` | Existing independently built web app, published unchanged at `/app/` |
 | `public/assets/` | Previous versioned production JS/CSS, retained for cached open tabs |
-| `downloads/` | Original signed Android v1.0.2 APK and release checksums |
+| `downloads/` | Current signed Android v1.1.1 APK, checksums and the retained v1.0.2 download |
 | `CNAME`, `google*.html` | Custom-domain and Search Console verification |
 | `dist*/` | Ignored generated output; only this output is deployed |
 | `docs/` | Price integration, Google Play review, store drafts and historical audit evidence |
@@ -74,6 +74,15 @@ the backend. App-only updates committed to `app/` also run the website checks an
 publish through the same workflow. Keep old versioned assets while cached pages
 may still request them. Product credits remain in `assets/products/ATTRIBUTION.md`;
 `scripts/generate-art.py` is the historical SVG generator, not the current PNG art.
+
+The public Android button downloads version **1.1.1 (versionCode 5)**. Its APK is
+copied from the signed GitHub Release built from SOUK-SCAN `0234ea7`, and its
+SHA-256 is recorded in `downloads/SHA256SUMS.txt`. The v1.0.2 file and checksum
+remain for existing direct links. For future updates, copy the verified signed
+APK and update the home template, all three locale captions, checksum manifest
+and download test together. Artifact verification refuses to advertise an older
+APK when a newer one is already hosted. GitHub's app repository is private, so
+its authenticated release URLs are not public website download targets.
 
 ## Prices and privacy
 
