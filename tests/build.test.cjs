@@ -52,3 +52,10 @@ test("preview builds stay noindex with prefixed imports and exclude nested app/r
   for (const name of ["app", "preview", "CNAME"])
     assert.equal(existsSync(join(preview, name)), false);
 });
+
+test("the app review preview is noindex, built for its own base path and free of dev login", () => {
+  const html = readFileSync(join(root, "preview/souk-app/index.html"), "utf8");
+  assert(html.includes('<meta name="robots" content="noindex, nofollow"'));
+  assert(html.includes('/preview/souk-app/assets/'));
+  assert(!/\/app\/assets\//.test(html));
+});
