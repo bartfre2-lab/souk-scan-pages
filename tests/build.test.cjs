@@ -41,6 +41,22 @@ test("build refuses source/release directories and invalid asset filenames witho
   assert.deepEqual(readFileSync(app), original);
   assert.notEqual(run("build-site.py", "--out-dir", join(temporary, "invalid"), "--asset-version", "../invalid").status, 0);
 });
+test("artifact verification rejects an old retained APK advertised in any language", () => {
+  for (const prefix of ["", "fr", "ar"]) {
+    const home = join(output, prefix, "index.html");
+    const original = readFileSync(home, "utf8");
+    const current = "/downloads/SOUK-SCAN-v1.1.1.apk";
+    assert(original.includes(current));
+    try {
+      writeFileSync(home, original.replace(current, "/downloads/SOUK-SCAN-v1.0.2.apk"));
+      const result = run("verify-build.py", output);
+      assert.notEqual(result.status, 0);
+      assert.match(result.stderr, /Download link does not use newest hosted APK/);
+    } finally {
+      writeFileSync(home, original);
+    }
+  }
+});
 test("preview builds stay noindex with prefixed imports and exclude nested app/review snapshots", () => {
   const preview = join(temporary, "preview");
   const result = run("build-site.py", "--out-dir", preview, "--base", "/preview/souk/", "--preview", "--asset-version", "test-review");

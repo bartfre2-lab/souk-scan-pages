@@ -267,7 +267,8 @@ test("internal links, page anchors and verified Android download work", async ()
     page.waitForEvent("download"),
     page.locator("a[download]").click(),
   ]);
-  assert.equal(download.suggestedFilename(), "SOUK-SCAN-v1.0.2.apk");
+  const filename = "SOUK-SCAN-v1.1.1.apk";
+  assert.equal(download.suggestedFilename(), filename);
   assert.equal(await download.failure(), null);
   const checksumFile = await readFile(
     resolve(root, "downloads/SHA256SUMS.txt"),
@@ -275,10 +276,10 @@ test("internal links, page anchors and verified Android download work", async ()
   );
   const expected = checksumFile
     .split("\n")
-    .find((line) => line.includes(".apk"))
+    .find((line) => line.trim().split(/\s+/)[1] === filename)
     .split(/\s+/)[0];
   const actual = createHash("sha256")
-    .update(await readFile(resolve(root, "downloads/SOUK-SCAN-v1.0.2.apk")))
+    .update(await readFile(resolve(root, "downloads", filename)))
     .digest("hex");
   assert.equal(actual, expected, "APK must match signed release checksum");
   await page.close();
