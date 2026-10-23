@@ -104,12 +104,26 @@ def verify(out, version=''):
         require((out / name).is_file() and digest(out / name) == digest(ROOT / name),
                 'Domain/verification file changed or missing: ' + name)
     try:
+        hosted_releases = []
         for line in (out / 'downloads/SHA256SUMS.txt').read_text().splitlines():
             checksum, filename = line.split()
             path = out / 'downloads' / filename
             # The AAB is Play-only; the hosted APK must match the signed release.
             if filename.endswith('.apk'):
                 require(path.is_file() and digest(path) == checksum, 'APK checksum mismatch')
+                match = re.fullmatch(r'SOUK-SCAN-v(\d+)\.(\d+)\.(\d+)\.apk', filename)
+                if match:
+                    hosted_releases.append((tuple(map(int, match.groups())), filename))
+        require(bool(hosted_releases), 'No versioned APK in download checksums')
+        if hosted_releases:
+            latest = max(hosted_releases)[1]
+            for prefix in ('', 'fr', 'ar'):
+                home = out / prefix / 'index.html'
+                if home.is_file():
+                    downloads = [attrs.get('href') for tag, attrs in Page(home.read_text()).tags
+                                 if tag == 'a' and 'download' in attrs]
+                    require(downloads == ['/downloads/' + latest],
+                            'Download link does not use newest hosted APK: /' + prefix)
     except (OSError, ValueError) as error:
         errors.append('Invalid download checksums: ' + str(error))
 
