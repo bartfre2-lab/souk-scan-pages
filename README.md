@@ -62,7 +62,6 @@ publish the raw repository root or merge unbuilt HTML through legacy Jekyll.
 | `scripts/` | Static builder, deployment verification and read-only browser audit |
 | `tests/` | Browser, data/cache and build regression checks |
 | `app/` | Existing independently built web app, published unchanged at `/app/` |
-| `preview/souk-app/` | Review build of the web app at `/preview/souk-app/` (`noindex`, production backend, not linked from the site); replace or delete it when the review is over |
 | `public/assets/` | Previous versioned production JS/CSS, retained for cached open tabs |
 | `downloads/` | Original signed Android v1.0.2 APK and release checksums |
 | `CNAME`, `google*.html` | Custom-domain and Search Console verification |
