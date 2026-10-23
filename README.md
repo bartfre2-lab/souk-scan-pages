@@ -109,7 +109,8 @@ For a future regression, revert the relevant source change on `main` and let the
 workflow redeploy; an existing successful Pages deployment can also be restored
 from its Actions run. Do not switch back to publishing raw source from the branch.
 
-[Google Play review](docs/GOOGLE-PLAY-REVIEW.md) and [listing drafts](docs/store-listings/)
-are preparation documents, not Play Console submissions or approval guarantees.
+[Google Play review](docs/GOOGLE-PLAY-REVIEW.md), [listing drafts](docs/store-listings/)
+and [store graphics](docs/store-graphics/)
+are preparation materials, not Play Console submissions or approval guarantees.
 [The original visual audit](docs/FINAL-WEBSITE-AUDIT.md) records the earlier preview
 phase; current maintenance and publishing instructions are this README.
