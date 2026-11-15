@@ -70,7 +70,7 @@ def main():
         # Copy its asset subtree only, never arbitrary review HTML or routes.
         cached_assets=ROOT/'public/assets'
         if cached_assets.is_dir():shutil.copytree(cached_assets,out/'assets',dirs_exist_ok=True)
-        for name in ('CNAME','google7e57ca047c540b15.html'):
+        for name in ('CNAME','google7e57ca047c540b15.html','404.html'):
             if (ROOT/name).is_file():shutil.copy2(ROOT/name,out/name)
         (out/'.nojekyll').write_text('')
     versions={name:name.rsplit('.',1)[0]+'-'+args.asset_version+'.'+name.rsplit('.',1)[1] for name in ('landing.js','site.js','landing.css','courtyard.css','souk-world.css','site.css','market-prices.js')} if args.asset_version else {}
