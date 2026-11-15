@@ -250,6 +250,42 @@ for (const lang of ["en", "fr", "ar"])
         assert.equal(await p.locator(".courtyard-stall").count(), 4);
         assert.equal(await p.locator(".site-header .site-controls").count(), 1);
         assert.ok(await p.locator(".site-header .theme-toggle").isVisible());
+        // Navigation must remain reachable on phones, with independent hit areas
+        // even when translated labels need more space than their English text.
+        for (const link of await p.locator(".primary-nav a").all())
+          assert.ok(await link.isVisible());
+        const headerCollisions = await p
+          .locator(".site-header")
+          .evaluate((header) => {
+            const targets = [
+              ...header.querySelectorAll("a, button:not([hidden])"),
+            ];
+            const boxes = targets.map((target) =>
+              target.getBoundingClientRect(),
+            );
+            return boxes.flatMap((a, i) =>
+              boxes
+                .slice(i + 1)
+                .flatMap((b, j) =>
+                  a.left < b.right - 0.5 &&
+                  a.right > b.left + 0.5 &&
+                  a.top < b.bottom - 0.5 &&
+                  a.bottom > b.top + 0.5
+                    ? [
+                        [
+                          targets[i].textContent.trim(),
+                          targets[i + j + 1].textContent.trim(),
+                        ],
+                      ]
+                    : [],
+                ),
+            );
+          });
+        assert.deepEqual(
+          headerCollisions,
+          [],
+          "Header controls must not overlap",
+        );
         for (const category of ["fruit", "poultry", "meat", "vegetable"]) {
           await p.locator(`button[data-category="${category}"]`).click();
           assert.equal(
