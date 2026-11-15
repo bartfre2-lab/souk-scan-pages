@@ -36,7 +36,7 @@ npm run verify:build -- dist-production local-check
 Tests cover region/cache races, failed refreshes, localized navigation, source
 separation, accessibility, crate containment, keyboard/touch interaction, motion
 cancellation and the signed APK. Artifact checks additionally verify production
-SEO, imports, retained cached assets, exact app/review snapshots and absence of
+SEO, imports, retained cached assets, the exact app snapshot and absence of
 source/environment files. The build refuses to overwrite source/release folders.
 
 Open a short-lived branch and pull request for future changes. The **Website
@@ -75,14 +75,32 @@ publish through the same workflow. Keep old versioned assets while cached pages
 may still request them. Product credits remain in `assets/products/ATTRIBUTION.md`;
 `scripts/generate-art.py` is the historical SVG generator, not the current PNG art.
 
-The public Android button downloads version **1.1.1 (versionCode 5)**. Its APK is
+The primary Android button opens [SOUK-SCAN on Google Play](https://play.google.com/store/apps/details?id=com.soukscan.app).
+The English, French and Arabic home/support pages announce the upcoming iOS app
+and additional products. iOS is not advertised as currently available or included
+in the structured data's supported operating systems.
+
+The secondary direct-download link serves **1.1.1 (versionCode 5)**. Its APK is
 copied from the signed GitHub Release built from SOUK-SCAN `0234ea7`, and its
 SHA-256 is recorded in `downloads/SHA256SUMS.txt`. The v1.0.2 file and checksum
 remain for existing direct links. For future updates, copy the verified signed
-APK and update the home template, all three locale captions, checksum manifest
+APK and update the home template, checksum manifest
 and download test together. Artifact verification refuses to advertise an older
 APK when a newer one is already hosted. GitHub's app repository is private, so
 its authenticated release URLs are not public website download targets.
+
+## Unpublished review pages
+
+Retired `/preview/`, `/test/` and `/demo/` pages are not published. Keep historical
+versions in Git; local preview generation remains available for development.
+Production builds remove stale review routes from generated output and copy only
+the retained `public/assets/` cache subtree. Artifact verification permits only
+the 15 official website pages, `/app/index.html` and Search Console verification
+HTML, and rejects test/review routes even when they are hidden among assets.
+
+This repository and its Git history are public. Excluding a page from deployment
+makes its website URL unavailable; it does not make old commits private. Use the
+private SOUK-SCAN repository for experiments that need source-level privacy.
 
 ## Prices and privacy
 
@@ -119,6 +137,6 @@ workflow redeploy; an existing successful Pages deployment can also be restored
 from its Actions run. Do not switch back to publishing raw source from the branch.
 
 [Google Play review](docs/GOOGLE-PLAY-REVIEW.md) and [listing drafts](docs/store-listings/)
-are preparation documents, not Play Console submissions or approval guarantees.
+are historical preparation documents; the published listing linked above is current.
 [The original visual audit](docs/FINAL-WEBSITE-AUDIT.md) records the earlier preview
 phase; current maintenance and publishing instructions are this README.

@@ -1,7 +1,7 @@
 const { test, before, after } = require("node:test");
 const assert = require("node:assert/strict");
 const { spawnSync } = require("node:child_process");
-const { mkdtempSync, readFileSync, writeFileSync, rmSync, existsSync } = require("node:fs");
+const { mkdtempSync, readFileSync, writeFileSync, rmSync, existsSync, mkdirSync } = require("node:fs");
 const { tmpdir } = require("node:os");
 const { join, resolve } = require("node:path");
 const root = resolve(__dirname, "..");
@@ -14,10 +14,57 @@ before(() => {
   assert.equal(result.status, 0, result.stderr);
 });
 after(() => rmSync(temporary, { recursive: true, force: true }));
-test("production artifact includes exact app/review/cache snapshots and no source files", () => {
+test("production artifact includes exact app/cache snapshots and no source files", () => {
   const result = run("verify-build.py", output, "test-release");
   assert.equal(result.status, 0, result.stderr);
   assert(existsSync(join(output, "assets/market-prices-test-release.js")));
+});
+test("Google Play is the primary Android destination and iOS remains upcoming in all languages", () => {
+  for (const prefix of ["", "fr", "ar"]) {
+    const home = join(output, prefix, "index.html"), original = readFileSync(home, "utf8");
+    assert(original.includes('class="button button-cream play-store-link"'));
+    assert(original.includes('class="platform-coming-soon"'));
+    assert(original.includes('class="catalog-note"'));
+    assert(!original.includes('apps.apple.com'));
+    try {
+      writeFileSync(home, original.replaceAll('details?id=com.soukscan.app', 'details?id=wrong.app'));
+      const result = run("verify-build.py", output);
+      assert.notEqual(result.status, 0);
+      assert.match(result.stderr, /Google Play|availability metadata/);
+    } finally { writeFileSync(home, original); }
+  }
+});
+test("artifact verification blocks review routes and HTML pages hidden among assets", () => {
+  for (const relative of ["preview/souk-app/index.html", "assets/internal.html"]) {
+    const file = join(output, relative);
+    mkdirSync(join(file, ".."), { recursive: true });
+    writeFileSync(file, '<h1>Private review</h1>');
+    try {
+      const result = run("verify-build.py", output);
+      assert.notEqual(result.status, 0);
+      assert.match(result.stderr, /Unpublished test\/review route|Unapproved HTML page/);
+    } finally {
+      if (relative.startsWith("preview/")) rmSync(join(output, "preview"), { recursive: true });
+      else rmSync(file);
+    }
+  }
+});
+test("rebuild removes stale review output and preserves unpublished source pages", () => {
+  const rebuilt = join(temporary, "reused"), archived = join(root, "public/preview");
+  assert.equal(existsSync(archived), false, 'Do not overwrite an existing local archive');
+  mkdirSync(join(rebuilt, "preview/souk"), { recursive: true });
+  writeFileSync(join(rebuilt, "preview/souk/index.html"), 'Stale generated preview');
+  mkdirSync(archived, { recursive: true });
+  const source = join(archived, "index.html");
+  writeFileSync(source, 'Preserved review source');
+  try {
+    const result = run("build-site.py", "--out-dir", rebuilt, "--asset-version", "test-release");
+    assert.equal(result.status, 0, result.stderr);
+    assert.equal(existsSync(join(rebuilt, "preview")), false);
+    assert.equal(readFileSync(source, 'utf8'), 'Preserved review source');
+    const verified = run("verify-build.py", rebuilt, "test-release");
+    assert.equal(verified.status, 0, verified.stderr);
+  } finally { rmSync(archived, { recursive: true }); }
 });
 test("artifact verification rejects leaked configuration files and incorrect production metadata", () => {
   const leak = join(output, ".env");

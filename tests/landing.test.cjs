@@ -250,6 +250,10 @@ for (const width of [320, 390, 768, 1440]) {
 test("internal links, page anchors and verified Android download work", async () => {
   const page = await marketPage(browser);
   await page.goto(base);
+  assert.equal(await page.locator('.play-store-link').getAttribute('href'),
+    'https://play.google.com/store/apps/details?id=com.soukscan.app');
+  assert.match(await page.locator('.platform-coming-soon').innerText(), /iOS.*coming soon/);
+  assert.match(await page.locator('.catalog-note').innerText(), /More products.*coming soon/);
   const links = await page
     .locator("a")
     .evaluateAll((nodes) => [

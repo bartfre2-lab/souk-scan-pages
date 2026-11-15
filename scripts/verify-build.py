@@ -3,11 +3,14 @@ from pathlib import Path
 from html.parser import HTMLParser
 from urllib.parse import urlparse, unquote
 import hashlib
+import json
 import re
 import sys
 import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parent.parent
+PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.soukscan.app'
+UNPUBLISHED_ROUTES = {'preview', 'test', 'tests', 'demo', 'demos', 'archive', 'archives'}
 
 
 class Page(HTMLParser):
@@ -32,11 +35,20 @@ def verify(out, version=''):
         return hashlib.sha256(path.read_bytes()).hexdigest()
 
     for name in ('.git', '.github', '.env', '.env.local', 'node_modules',
-                 'locales', 'data', 'scripts', 'tests', 'package.json', 'package-lock.json'):
+                 'locales', 'data', 'scripts', 'tests', 'docs', 'package.json', 'package-lock.json'):
         require(not (out / name).exists(), 'Source/private file in artifact: ' + name)
+    allowed_html = {Path('app/index.html'), Path('google7e57ca047c540b15.html')}
+    for language in ('', 'fr', 'ar'):
+        for section in ('', 'privacy', 'terms', 'account-deletion', 'support'):
+            allowed_html.add(Path(language) / section / 'index.html')
     for path in out.rglob('*'):
         require(not path.is_symlink(), 'Symlink in deployment artifact: ' + str(path))
         require(not path.name.startswith('.env'), 'Environment file in artifact: ' + str(path))
+        relative = path.relative_to(out)
+        require(not any(part.lower() in UNPUBLISHED_ROUTES for part in relative.parts),
+                'Unpublished test/review route in artifact: ' + str(relative))
+        if path.suffix.lower() in ('.html', '.htm'):
+            require(relative in allowed_html, 'Unapproved HTML page in artifact: ' + str(relative))
     require((out / '.nojekyll').is_file(), 'Missing .nojekyll')
     expected_urls = set()
     for language in ('en', 'fr', 'ar'):
@@ -74,8 +86,8 @@ def verify(out, version=''):
                     target = (out / unquote(url.path).lstrip('/')).resolve()
                     require(target.is_relative_to(out) and target.exists(),
                             'Missing/unsafe target: ' + route + ' -> ' + value)
-                    require(not url.path.startswith('/preview/souk/'),
-                            'Production link points to website preview: ' + value)
+                    require(not any(part.lower() in UNPUBLISHED_ROUTES for part in Path(url.path).parts),
+                            'Production link points to an unpublished page: ' + value)
             require('<!--header-controls-->' not in text, 'Unbuilt template: ' + route)
             if version:
                 require(f'/assets/site-{version}.js' in text, 'Wrong asset version: ' + route)
@@ -90,14 +102,14 @@ def verify(out, version=''):
         errors.append('Invalid SEO utility file: ' + str(error))
 
     # The app snapshot is a public build input, never rebuilt here.
-    for directory in ('app', 'public'):
+    for directory in ('app', 'public/assets'):
         source = ROOT / directory
         require(source.is_dir(), 'Missing static input: ' + directory)
         for path in source.rglob('*'):
             if not path.is_file():
                 continue
             relative = path.relative_to(source)
-            target = out / relative if directory == 'public' else out / directory / relative
+            target = out / 'assets' / relative if directory == 'public/assets' else out / directory / relative
             require(target.is_file() and digest(target) == digest(path),
                     'Static release/cache file changed or missing: ' + str(path.relative_to(ROOT)))
     for name in ('CNAME', 'google7e57ca047c540b15.html'):
@@ -120,7 +132,16 @@ def verify(out, version=''):
             for prefix in ('', 'fr', 'ar'):
                 home = out / prefix / 'index.html'
                 if home.is_file():
-                    downloads = [attrs.get('href') for tag, attrs in Page(home.read_text()).tags
+                    text = home.read_text()
+                    tags = Page(text).tags
+                    store_links = [attrs.get('href') for tag, attrs in tags
+                                   if tag == 'a' and 'play-store-link' in attrs.get('class', '').split()]
+                    require(store_links == [PLAY_STORE_URL], 'Missing/incorrect primary Google Play link: /' + prefix)
+                    schemas = [json.loads(raw) for raw in re.findall(r'<script type="application/ld\+json">(.*?)</script>', text, re.S)]
+                    require(any(schema.get('@type') == 'SoftwareApplication' and schema.get('installUrl') == PLAY_STORE_URL
+                                and schema.get('operatingSystem') == 'Android, Web' for schema in schemas),
+                            'Incorrect app availability metadata: /' + prefix)
+                    downloads = [attrs.get('href') for tag, attrs in tags
                                  if tag == 'a' and 'download' in attrs]
                     require(downloads == ['/downloads/' + latest],
                             'Download link does not use newest hosted APK: /' + prefix)
