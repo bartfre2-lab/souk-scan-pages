@@ -5,7 +5,6 @@ const { createServer } = require("node:http");
 const { readFile, stat } = require("node:fs/promises");
 const { existsSync } = require("node:fs");
 const { resolve, extname, sep } = require("node:path");
-const { createHash } = require("node:crypto");
 const { chromium } = require("playwright");
 const { AxeBuilder } = require("@axe-core/playwright");
 const root = resolve(__dirname, "..", "dist");
@@ -247,7 +246,7 @@ for (const width of [320, 390, 768, 1440]) {
     await context.close();
   });
 }
-test("internal links, page anchors and verified Android download work", async () => {
+test("internal links and Google Play-only app access work", async () => {
   const page = await marketPage(browser);
   await page.goto(base);
   assert.equal(await page.locator('.play-store-link').getAttribute('href'),
@@ -267,25 +266,8 @@ test("internal links, page anchors and verified Android download work", async ()
       assert.equal(response.status(), 200, link);
     }
   }
-  const [download] = await Promise.all([
-    page.waitForEvent("download"),
-    page.locator("a[download]").click(),
-  ]);
-  const filename = "SOUK-SCAN-v1.1.1.apk";
-  assert.equal(download.suggestedFilename(), filename);
-  assert.equal(await download.failure(), null);
-  const checksumFile = await readFile(
-    resolve(root, "downloads/SHA256SUMS.txt"),
-    "utf8",
-  );
-  const expected = checksumFile
-    .split("\n")
-    .find((line) => line.trim().split(/\s+/)[1] === filename)
-    .split(/\s+/)[0];
-  const actual = createHash("sha256")
-    .update(await readFile(resolve(root, "downloads", filename)))
-    .digest("hex");
-  assert.equal(actual, expected, "APK must match signed release checksum");
+  assert.equal(await page.locator('a[download]').count(),0);
+  for(const route of ['/app/','/downloads/SOUK-SCAN-v1.1.1.apk','/downloads/SOUK-SCAN-v1.0.2.apk'])assert.equal((await page.request.get(base+route)).status(),404,route);
   await page.close();
 });
 
@@ -300,7 +282,8 @@ test("no-JavaScript access and reduced-motion behaviour", async () => {
   assert.ok(await page.locator(".courtyard-logo").isVisible());
   assert.ok(await page.locator(".theme-toggle").isHidden());
   assert.equal(await page.locator(".courtyard-stall:disabled").count(), 4);
-  assert.ok(await page.locator("a[download]").isVisible());
+  assert.ok(await page.locator(".play-store-link").isVisible());
+  assert.equal(await page.locator("a[download]").count(),0);
   assert.equal(
     await page
       .locator("html")

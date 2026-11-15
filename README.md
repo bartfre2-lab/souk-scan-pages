@@ -35,8 +35,8 @@ npm run verify:build -- dist-production local-check
 
 Tests cover region/cache races, failed refreshes, localized navigation, source
 separation, accessibility, crate containment, keyboard/touch interaction, motion
-cancellation and the signed APK. Artifact checks additionally verify production
-SEO, imports, retained cached assets, the exact app snapshot and absence of
+cancellation and store-only distribution. Artifact checks additionally verify production
+SEO, imports, retained cached assets, the approved HTML page allowlist and absence of
 source/environment files. The build refuses to overwrite source/release folders.
 
 Open a short-lived branch and pull request for future changes. The **Website
@@ -61,41 +61,35 @@ publish the raw repository root or merge unbuilt HTML through legacy Jekyll.
 | `data/market.json` | Existing public client configuration and canonical regions |
 | `scripts/` | Static builder, deployment verification and read-only browser audit |
 | `tests/` | Browser, data/cache and build regression checks |
-| `app/` | Existing independently built web app, published unchanged at `/app/` |
 | `public/assets/` | Previous versioned production JS/CSS, retained for cached open tabs |
-| `downloads/` | Current signed Android v1.1.1 APK, checksums and the retained v1.0.2 download |
 | `CNAME`, `google*.html` | Custom-domain and Search Console verification |
 | `dist*/` | Ignored generated output; only this output is deployed |
 | `docs/` | Price integration, Google Play review, store drafts and historical audit evidence |
 
-The builder includes the static `app/`, retained cache assets, domain
-and verification file in production output. It does not rebuild an app or touch
-the backend. App-only updates committed to `app/` also run the website checks and
-publish through the same workflow. Keep old versioned assets while cached pages
-may still request them. Product credits remain in `assets/products/ATTRIBUTION.md`;
-`scripts/generate-art.py` is the historical SVG generator, not the current PNG art.
+## Store-only app distribution
 
-The primary Android button opens [SOUK-SCAN on Google Play](https://play.google.com/store/apps/details?id=com.soukscan.app).
-The English, French and Arabic home/support pages announce the upcoming iOS app
-and additional products. iOS is not advertised as currently available or included
-in the structured data's supported operating systems.
+The app is distributed through [Google Play](https://play.google.com/store/apps/details?id=com.soukscan.app).
+This repository does not publish a web app, APK, AAB or other installable app
+package. The iOS app is announced as coming soon. `/app/` and `/downloads/` must
+return 404, including every old APK URL. App/store screenshots are marketing
+images, not runnable previews.
 
-The secondary direct-download link serves **1.1.1 (versionCode 5)**. Its APK is
-copied from the signed GitHub Release built from SOUK-SCAN `0234ea7`, and its
-SHA-256 is recorded in `downloads/SHA256SUMS.txt`. The v1.0.2 file and checksum
-remain for existing direct links. For future updates, copy the verified signed
-APK and update the home template, checksum manifest
-and download test together. Artifact verification refuses to advertise an older
-APK when a newer one is already hosted. GitHub's app repository is private, so
-its authenticated release URLs are not public website download targets.
+Before removing the public app and binary trees, the complete previous website
+commit `074dce0` and its history were preserved in the **private** SOUK-SCAN
+repository on `archive/website-before-lockdown-2026-11-15`. Private signed release
+assets also retain the Android builds. Do not restore these files to deployment.
+
+The public site's older Git history predates this restriction and is still
+public; removing current files does not erase past public Git objects. Website
+route blocking is not a claim of retroactive Git-history privacy.
 
 ## Unpublished review pages
 
 Retired `/preview/`, `/test/` and `/demo/` pages are not published. Keep historical
 versions in Git; local preview generation remains available for development.
-Production builds remove stale review routes from generated output and copy only
+Production builds remove stale app/download/review routes from generated output and copy only
 the retained `public/assets/` cache subtree. Artifact verification permits only
-the 15 official website pages, `/app/index.html` and Search Console verification
+the 15 official website pages and Search Console verification
 HTML, and rejects test/review routes even when they are hidden among assets.
 
 This repository and its Git history are public. Excluding a page from deployment
@@ -132,7 +126,8 @@ Physical-device and authenticated account actions are outside these checks.
 
 The pre-cleanup production state is retained by the tag
 `archive/pre-cleanup-2026-10-20`. All old branch work remains in merged Git history.
-For a future regression, revert the relevant source change on `main` and let the
+For a future regression, preserve the store-only distribution restrictions when
+reverting the relevant source change on `main` and let the
 workflow redeploy; an existing successful Pages deployment can also be restored
 from its Actions run. Do not switch back to publishing raw source from the branch.
 
