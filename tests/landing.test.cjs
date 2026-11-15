@@ -213,6 +213,10 @@ for (const width of [320, 390, 768, 1440]) {
     assert.ok(await page.locator("#courtyard-welcome").isVisible());
     await page.keyboard.press("Enter");
     assert.ok(await page.locator("#stall-products").isVisible());
+    // The app screenshot is lazy-loaded. Visit it and await decoding before
+    // checking image health, rather than racing the scroll to the FAQ below it.
+    await page.locator(".app-screen-preview").scrollIntoViewIfNeeded();
+    await page.locator(".app-screen-preview").evaluate((image) => image.decode());
     await page.locator("summary").first().click();
     assert.equal(
       await page.locator("details").first().getAttribute("open"),
