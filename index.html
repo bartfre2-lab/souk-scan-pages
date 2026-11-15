@@ -50,6 +50,7 @@
         ></a
       >
       <nav class="primary-nav" aria-label="Main navigation">
+        <a href="#souk">Explore prices</a>
         <a href="#how-it-works">How it works</a>
       </nav>
       <!--header-controls-->
@@ -103,24 +104,24 @@
             <span>Prices appear in the square.</span>
           </p>
         </div>
-        <div class="market-controls">
-          <label class="market-region"
-            ><span>Choose your region</span
-            ><select id="market-region" disabled>
-              <option value="">Choose your region</option>
-            </select></label
-          >
-          <button class="market-refresh" type="button" disabled>
-            Refresh prices
-          </button>
-          <p id="market-fetch-state" role="status" aria-live="polite"></p>
-        </div>
         <div class="souk-courtyard" data-state="idle">
           <div class="courtyard-topline">
             <span
               ><span class="live-dot" aria-hidden="true"></span> YOUR
               NEIGHBOURHOOD SOUK</span
             ><span>From the souk. For everyone.</span>
+          </div>
+          <div class="market-controls">
+            <label class="market-region"
+              ><span>Choose your region</span
+              ><select id="market-region" disabled>
+                <option value="">Choose your region</option>
+              </select></label
+            >
+            <button class="market-refresh" type="button" disabled>
+              Refresh prices
+            </button>
+            <p id="market-fetch-state" role="status" aria-live="polite"></p>
           </div>
           <div
             class="courtyard-scene"
