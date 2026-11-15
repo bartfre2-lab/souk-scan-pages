@@ -171,7 +171,7 @@
   },
   "support": {
     "title": "Aide et assistance",
-    "updated": "Dernière mise à jour : 20 octobre 2026",
+    "updated": "Dernière mise à jour : 15 novembre 2026",
     "intro": "Obtenez de l’aide pour utiliser SOUK-SCAN, comprendre les prix ou gérer votre compte.",
     "description": "Aide SOUK-SCAN : prix par région, autorisation de localisation, installation Android et suppression du compte.",
     "sections": [
@@ -184,7 +184,7 @@
       {
         "title": "Installation et utilisation",
         "paragraphs": [
-          "L’application web fonctionne sur Android, iPhone et ordinateur. Le fichier APK proposé sur la page d’accueil correspond à la version Android 1.0.2. Votre appareil peut vous demander d’autoriser l’installation depuis le navigateur. Téléchargez uniquement depuis une source de confiance."
+          "Installez SOUK-SCAN pour Android depuis <a href=\"https://play.google.com/store/apps/details?id=com.soukscan.app\">Google Play</a>, ou utilisez l’application web sur votre téléphone ou ordinateur. L’application iOS arrive bientôt. En attendant, l’application web reste disponible sur iPhone et iPad."
         ]
       },
       {
