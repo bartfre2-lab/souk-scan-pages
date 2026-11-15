@@ -7,7 +7,7 @@ import argparse, json, re, shutil, base64
 ROOT = Path(__file__).resolve().parent.parent
 LANGUAGES = ('en', 'fr', 'ar')
 PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.soukscan.app'
-UNPUBLISHED_ROUTES = ('preview', 'test', 'tests', 'demo', 'demos', 'archive', 'archives')
+UNPUBLISHED_ROUTES = ('app', 'downloads', 'preview', 'test', 'tests', 'demo', 'demos', 'archive', 'archives')
 VOID = {'area','base','br','col','embed','hr','img','input','link','meta','param','source','track','wbr'}
 
 class LocalizedHTML(HTMLParser):
@@ -66,11 +66,6 @@ def main():
         if stale.is_symlink() or stale.is_file():stale.unlink()
         elif stale.is_dir():shutil.rmtree(stale)
     if base=='/':
-        # The static app release is maintained independently. Only their
-        # built files, domain verification and retained browser-cache assets ship.
-        for directory in ('app',):
-            source=ROOT/directory
-            if source.is_dir():shutil.copytree(source,out/directory,dirs_exist_ok=True)
         # `public` is a cache-asset archive, not an additional page source.
         # Copy its asset subtree only, never arbitrary review HTML or routes.
         cached_assets=ROOT/'public/assets'
@@ -79,7 +74,7 @@ def main():
             if (ROOT/name).is_file():shutil.copy2(ROOT/name,out/name)
         (out/'.nojekyll').write_text('')
     versions={name:name.rsplit('.',1)[0]+'-'+args.asset_version+'.'+name.rsplit('.',1)[1] for name in ('landing.js','site.js','landing.css','courtyard.css','souk-world.css','site.css','market-prices.js')} if args.asset_version else {}
-    for directory in ('assets','downloads'):
+    for directory in ('assets',):
         (out/directory).mkdir(parents=True,exist_ok=True)
         for entry in (ROOT/directory).iterdir():
             destination=out/directory/(versions.get(entry.name,entry.name) if directory=='assets' else entry.name)
@@ -130,12 +125,11 @@ def main():
         body=body.replace('href="./"','href="'+route(lang)+'"')
         for section in ('privacy','terms','account-deletion','support'):
             body=body.replace(f'href="./{section}/"',f'href="{route(lang,section)}"')
-        body=body.replace('href="./app/"','href="/app/"')
         body=body.replace('./assets/',base+'assets/').replace('./downloads/',base+'downloads/')
         body=body.replace('<!--header-controls-->',controls(lang,''),1)
         body=body.replace('assets/app-welcome-en.png',f'assets/app-welcome-{lang}.png')
         body='<body>'+body+f'<script type="module" src="{base}assets/landing.js"></script>'
-        schema={'@context':'https://schema.org','@type':'SoftwareApplication','name':'SOUK-SCAN','applicationCategory':'LifestyleApplication','operatingSystem':'Android, Web','inLanguage':lang,'url':origin+route(lang),'installUrl':PLAY_STORE_URL,'description':catalog['meta']['description'],'isAccessibleForFree':True,'offers':{'@type':'Offer','price':'0','priceCurrency':'MAD'}}
+        schema={'@context':'https://schema.org','@type':'SoftwareApplication','name':'SOUK-SCAN','applicationCategory':'LifestyleApplication','operatingSystem':'Android','inLanguage':lang,'url':origin+route(lang),'installUrl':PLAY_STORE_URL,'description':catalog['meta']['description'],'isAccessibleForFree':True,'offers':{'@type':'Offer','price':'0','priceCurrency':'MAD'}}
         body+='<script type="application/ld+json">'+json.dumps(schema,ensure_ascii=False).replace('<','\\u003c')+'</script>'
         save(lang,'',body,catalog['meta']['title'],catalog['meta']['description'],True)
         for section,page in legal[lang].items():

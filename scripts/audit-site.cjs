@@ -35,7 +35,6 @@ async function crawl() {
   if (remote)
     for (const route of [
       "/",
-      "/app/",
       "/privacy/",
       "/terms/",
       "/account-deletion/",

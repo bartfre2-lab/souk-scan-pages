@@ -15,9 +15,6 @@
   font-size: 11px;
   line-height: 1.6;
 }
-.download-copy .download-apk-link {
-  margin-block-start: 10px;
-}
 :root {
   color-scheme: light;
   --paper: #f7f4ee;

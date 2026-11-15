@@ -14,10 +14,12 @@ before(() => {
   assert.equal(result.status, 0, result.stderr);
 });
 after(() => rmSync(temporary, { recursive: true, force: true }));
-test("production artifact includes exact app/cache snapshots and no source files", () => {
+test("production artifact excludes the web app, direct downloads and source files", () => {
   const result = run("verify-build.py", output, "test-release");
   assert.equal(result.status, 0, result.stderr);
   assert(existsSync(join(output, "assets/market-prices-test-release.js")));
+  assert.equal(existsSync(join(output, "app")), false);
+  assert.equal(existsSync(join(output, "downloads")), false);
 });
 test("Google Play is the primary Android destination and iOS remains upcoming in all languages", () => {
   for (const prefix of ["", "fr", "ar"]) {
@@ -52,6 +54,7 @@ test("artifact verification blocks review routes and HTML pages hidden among ass
 test("rebuild removes stale review output and preserves unpublished source pages", () => {
   const rebuilt = join(temporary, "reused"), archived = join(root, "public/preview");
   assert.equal(existsSync(archived), false, 'Do not overwrite an existing local archive');
+  for(const route of ["app","downloads","preview/souk"]){mkdirSync(join(rebuilt,route),{recursive:true});writeFileSync(join(rebuilt,route,"index.html"),"Stale public artifact");}
   mkdirSync(join(rebuilt, "preview/souk"), { recursive: true });
   writeFileSync(join(rebuilt, "preview/souk/index.html"), 'Stale generated preview');
   mkdirSync(archived, { recursive: true });
@@ -60,7 +63,7 @@ test("rebuild removes stale review output and preserves unpublished source pages
   try {
     const result = run("build-site.py", "--out-dir", rebuilt, "--asset-version", "test-release");
     assert.equal(result.status, 0, result.stderr);
-    assert.equal(existsSync(join(rebuilt, "preview")), false);
+    for(const route of ["app","downloads","preview"])assert.equal(existsSync(join(rebuilt,route)),false);
     assert.equal(readFileSync(source, 'utf8'), 'Preserved review source');
     const verified = run("verify-build.py", rebuilt, "test-release");
     assert.equal(verified.status, 0, verified.stderr);
@@ -82,26 +85,17 @@ test("artifact verification rejects leaked configuration files and incorrect pro
   writeFileSync(module, content);
 });
 test("build refuses source/release directories and invalid asset filenames without modifying them", () => {
-  const app = join(root, "app/index.html"), original = readFileSync(app);
+  const app = join(root, "index.html"), original = readFileSync(app);
   for (const directory of [root, join(root, "app"), join(root, "public"), join(root, "assets")])
     assert.notEqual(run("build-site.py", "--out-dir", directory).status, 0);
   assert.deepEqual(readFileSync(app), original);
   assert.notEqual(run("build-site.py", "--out-dir", join(temporary, "invalid"), "--asset-version", "../invalid").status, 0);
 });
-test("artifact verification rejects an old retained APK advertised in any language", () => {
-  for (const prefix of ["", "fr", "ar"]) {
-    const home = join(output, prefix, "index.html");
-    const original = readFileSync(home, "utf8");
-    const current = "/downloads/SOUK-SCAN-v1.1.1.apk";
-    assert(original.includes(current));
-    try {
-      writeFileSync(home, original.replace(current, "/downloads/SOUK-SCAN-v1.0.2.apk"));
-      const result = run("verify-build.py", output);
-      assert.notEqual(result.status, 0);
-      assert.match(result.stderr, /Download link does not use newest hosted APK/);
-    } finally {
-      writeFileSync(home, original);
-    }
+test("artifact verification rejects hosted app binaries and the web app", () => {
+  for (const relative of ['downloads/SOUK-SCAN-v1.1.1.apk','assets/hidden.apk','app/index.html']) {
+    const file=join(output,relative);mkdirSync(join(file,'..'),{recursive:true});writeFileSync(file,'Forbidden app artifact');
+    try {const result=run('verify-build.py',output);assert.notEqual(result.status,0);assert.match(result.stderr,/Packaged app binary|Unpublished test\/review route|Unapproved HTML/);}
+    finally {if(relative.startsWith('downloads/'))rmSync(join(output,'downloads'),{recursive:true});else if(relative.startsWith('app/'))rmSync(join(output,'app'),{recursive:true});else rmSync(file);}
   }
 });
 test("preview builds stay noindex with prefixed imports and exclude nested app/review snapshots", () => {
