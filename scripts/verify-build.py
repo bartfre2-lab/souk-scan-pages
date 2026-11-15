@@ -10,7 +10,7 @@ import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parent.parent
 PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.soukscan.app'
-UNPUBLISHED_ROUTES = {'preview', 'test', 'tests', 'demo', 'demos', 'archive', 'archives'}
+UNPUBLISHED_ROUTES = {'app', 'downloads', 'preview', 'test', 'tests', 'demo', 'demos', 'archive', 'archives'}
 
 
 class Page(HTMLParser):
@@ -37,13 +37,15 @@ def verify(out, version=''):
     for name in ('.git', '.github', '.env', '.env.local', 'node_modules',
                  'locales', 'data', 'scripts', 'tests', 'docs', 'package.json', 'package-lock.json'):
         require(not (out / name).exists(), 'Source/private file in artifact: ' + name)
-    allowed_html = {Path('app/index.html'), Path('google7e57ca047c540b15.html')}
+    allowed_html = {Path('google7e57ca047c540b15.html')}
     for language in ('', 'fr', 'ar'):
         for section in ('', 'privacy', 'terms', 'account-deletion', 'support'):
             allowed_html.add(Path(language) / section / 'index.html')
     for path in out.rglob('*'):
         require(not path.is_symlink(), 'Symlink in deployment artifact: ' + str(path))
         require(not path.name.startswith('.env'), 'Environment file in artifact: ' + str(path))
+        require(path.suffix.lower() not in ('.apk', '.aab', '.ipa', '.apks', '.xapk'),
+                'Packaged app binary in artifact: ' + str(path))
         relative = path.relative_to(out)
         require(not any(part.lower() in UNPUBLISHED_ROUTES for part in relative.parts),
                 'Unpublished test/review route in artifact: ' + str(relative))
@@ -102,7 +104,7 @@ def verify(out, version=''):
         errors.append('Invalid SEO utility file: ' + str(error))
 
     # The app snapshot is a public build input, never rebuilt here.
-    for directory in ('app', 'public/assets'):
+    for directory in ('public/assets',):
         source = ROOT / directory
         require(source.is_dir(), 'Missing static input: ' + directory)
         for path in source.rglob('*'):
@@ -115,45 +117,27 @@ def verify(out, version=''):
     for name in ('CNAME', 'google7e57ca047c540b15.html'):
         require((out / name).is_file() and digest(out / name) == digest(ROOT / name),
                 'Domain/verification file changed or missing: ' + name)
-    try:
-        hosted_releases = []
-        for line in (out / 'downloads/SHA256SUMS.txt').read_text().splitlines():
-            checksum, filename = line.split()
-            path = out / 'downloads' / filename
-            # The AAB is Play-only; the hosted APK must match the signed release.
-            if filename.endswith('.apk'):
-                require(path.is_file() and digest(path) == checksum, 'APK checksum mismatch')
-                match = re.fullmatch(r'SOUK-SCAN-v(\d+)\.(\d+)\.(\d+)\.apk', filename)
-                if match:
-                    hosted_releases.append((tuple(map(int, match.groups())), filename))
-        require(bool(hosted_releases), 'No versioned APK in download checksums')
-        if hosted_releases:
-            latest = max(hosted_releases)[1]
-            for prefix in ('', 'fr', 'ar'):
-                home = out / prefix / 'index.html'
-                if home.is_file():
-                    text = home.read_text()
-                    tags = Page(text).tags
-                    store_links = [attrs.get('href') for tag, attrs in tags
-                                   if tag == 'a' and 'play-store-link' in attrs.get('class', '').split()]
-                    require(store_links == [PLAY_STORE_URL], 'Missing/incorrect primary Google Play link: /' + prefix)
-                    schemas = [json.loads(raw) for raw in re.findall(r'<script type="application/ld\+json">(.*?)</script>', text, re.S)]
-                    require(any(schema.get('@type') == 'SoftwareApplication' and schema.get('installUrl') == PLAY_STORE_URL
-                                and schema.get('operatingSystem') == 'Android, Web' for schema in schemas),
-                            'Incorrect app availability metadata: /' + prefix)
-                    downloads = [attrs.get('href') for tag, attrs in tags
-                                 if tag == 'a' and 'download' in attrs]
-                    require(downloads == ['/downloads/' + latest],
-                            'Download link does not use newest hosted APK: /' + prefix)
-    except (OSError, ValueError) as error:
-        errors.append('Invalid download checksums: ' + str(error))
+    for prefix in ('', 'fr', 'ar'):
+        home = out / prefix / 'index.html'
+        if not home.is_file():continue
+        text = home.read_text()
+        tags = Page(text).tags
+        store_links = [attrs.get('href') for tag, attrs in tags
+                       if tag == 'a' and 'play-store-link' in attrs.get('class', '').split()]
+        require(store_links == [PLAY_STORE_URL], 'Missing/incorrect primary Google Play link: /' + prefix)
+        schemas = [json.loads(raw) for raw in re.findall(r'<script type="application/ld\+json">(.*?)</script>', text, re.S)]
+        require(any(schema.get('@type') == 'SoftwareApplication' and schema.get('installUrl') == PLAY_STORE_URL
+                    and schema.get('operatingSystem') == 'Android' for schema in schemas),
+                'Incorrect app availability metadata: /' + prefix)
+        require(not any(tag == 'a' and 'download' in attrs for tag, attrs in tags),
+                'Direct download link is forbidden: /' + prefix)
 
     for script in (out / 'assets').glob('*.js'):
         for name in re.findall(r'from\s+["\'](\./[^"\']+)["\']', script.read_text()):
             require((script.parent / name).is_file(), 'Missing JavaScript import: ' + name)
     if errors:
         raise ValueError('\n'.join(errors))
-    return 'Verified 15 production pages, SEO, assets/imports, static app, cached assets and signed APK'
+    return 'Verified 15 production pages, SEO, assets/imports, cached assets and store-only app distribution'
 
 
 if __name__ == '__main__':

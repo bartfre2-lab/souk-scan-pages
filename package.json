@@ -2,7 +2,7 @@
   "name": "souk-scan-pages",
   "version": "1.0.0",
   "private": true,
-  "description": "Static SOUK-SCAN landing page and existing app hosting",
+  "description": "SOUK-SCAN marketing website",
   "scripts": {
     "build": "python3 scripts/build-site.py",
     "dev": "npm run build && python3 -m http.server 4173 --bind 0.0.0.0 --directory dist",
