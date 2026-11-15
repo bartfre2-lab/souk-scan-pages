@@ -19,8 +19,13 @@ function updateThemeControl() {
   button.querySelector("span").textContent = dark
     ? copy.common.lightMode
     : copy.common.darkMode;
+  button.setAttribute(
+    "aria-label",
+    dark ? copy.common.lightMode : copy.common.darkMode,
+  );
+  button.title = dark ? copy.common.lightMode : copy.common.darkMode;
   document.querySelector('meta[name="theme-color"]').content = dark
-    ? "#171c19"
+    ? "#171e1a"
     : "#f7f4ee";
 }
 button.addEventListener("click", () => {
@@ -53,3 +58,45 @@ document.querySelectorAll(".site-controls a").forEach((link) =>
 );
 updateThemeControl();
 button.hidden = false;
+
+// Compact navigation is progressively enhanced; links stay visible without JS.
+const header = document.querySelector(".site-header");
+const menu = document.querySelector(".menu-toggle");
+const language = document.querySelector(".language-menu");
+const compactHeader = matchMedia("(max-width: 760px)");
+function closeMenu(restoreFocus = false) {
+  if (!menu) return;
+  const wasOpen = menu.getAttribute("aria-expanded") === "true";
+  header.classList.remove("navigation-open");
+  menu.setAttribute("aria-expanded", "false");
+  if (restoreFocus && wasOpen) menu.focus();
+}
+if (menu) {
+  header.classList.add("navigation-ready");
+  menu.hidden = false;
+  menu.addEventListener("click", () => {
+    const open = menu.getAttribute("aria-expanded") !== "true";
+    menu.setAttribute("aria-expanded", String(open));
+    header.classList.toggle("navigation-open", open);
+    if (open) language.open = false;
+  });
+  document
+    .querySelectorAll(".primary-nav a")
+    .forEach((link) => link.addEventListener("click", () => closeMenu()));
+  compactHeader.addEventListener("change", () => closeMenu());
+}
+language.addEventListener("toggle", () => {
+  if (language.open) closeMenu();
+});
+document.addEventListener("click", (event) => {
+  if (!language.contains(event.target)) language.open = false;
+  if (!header.contains(event.target)) closeMenu();
+});
+document.addEventListener("keydown", (event) => {
+  if (event.key !== "Escape") return;
+  closeMenu(true);
+  if (language.open) {
+    language.open = false;
+    language.querySelector("summary").focus();
+  }
+});

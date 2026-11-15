@@ -252,14 +252,18 @@ for (const lang of ["en", "fr", "ar"])
         assert.ok(await p.locator(".site-header .theme-toggle").isVisible());
         // Navigation must remain reachable on phones, with independent hit areas
         // even when translated labels need more space than their English text.
-        for (const link of await p.locator(".primary-nav a").all())
+        const mobileMenu = p.locator(".menu-toggle");
+        if (await mobileMenu.isVisible()) await mobileMenu.click();
+        for (const link of await p
+          .locator(".primary-nav a:not(.nav-download)")
+          .all())
           assert.ok(await link.isVisible());
         const headerCollisions = await p
           .locator(".site-header")
           .evaluate((header) => {
             const targets = [
-              ...header.querySelectorAll("a, button:not([hidden])"),
-            ];
+              ...header.querySelectorAll("a, button:not([hidden]), summary"),
+            ].filter((target) => target.getBoundingClientRect().width > 0);
             const boxes = targets.map((target) =>
               target.getBoundingClientRect(),
             );
@@ -286,6 +290,10 @@ for (const lang of ["en", "fr", "ar"])
           [],
           "Header controls must not overlap",
         );
+        if (await mobileMenu.isVisible()) {
+          await p.keyboard.press("Escape");
+          assert.equal(await mobileMenu.getAttribute("aria-expanded"), "false");
+        }
         for (const category of ["fruit", "poultry", "meat", "vegetable"]) {
           await p.locator(`button[data-category="${category}"]`).click();
           assert.equal(
@@ -532,3 +540,55 @@ for (const lang of ["en", "fr", "ar"])
       }
       await context.close();
     });
+
+test("compact navigation and language disclosure support keyboard, dismissal and real routes", async () => {
+  const context = await marketContext(browser, {
+    viewport: { width: 390, height: 844 },
+    reducedMotion: "reduce",
+  });
+  const page = await context.newPage();
+  await page.goto(base + "/fr/");
+  const menu = page.locator(".menu-toggle"),
+    language = page.locator(".language-menu");
+  assert.equal(await menu.getAttribute("aria-expanded"), "false");
+  await menu.focus();
+  await page.keyboard.press("Enter");
+  assert.ok(
+    await page.locator('.primary-nav a[href="#how-it-works"]').isVisible(),
+  );
+  await page.keyboard.press("Escape");
+  assert.ok(await menu.evaluate((node) => node === document.activeElement));
+  await menu.click();
+  await page.locator('.primary-nav a[href="#how-it-works"]').click();
+  assert.equal(new URL(page.url()).hash, "#how-it-works");
+  assert.equal(await menu.getAttribute("aria-expanded"), "false");
+  await page.evaluate(() => scrollTo(0, 0));
+  await language.locator("summary").focus();
+  await page.keyboard.press("Enter");
+  assert.ok(await language.locator('a[lang="ar"]').isVisible());
+  await page.keyboard.press("Escape");
+  assert.equal(await language.getAttribute("open"), null);
+  assert.ok(
+    await language
+      .locator("summary")
+      .evaluate((node) => node === document.activeElement),
+  );
+  await language.locator("summary").click();
+  await page.locator(".hero-copy").click();
+  assert.equal(await language.getAttribute("open"), null);
+  await language.locator("summary").click();
+  await language.locator('a[lang="ar"]').click();
+  assert.equal(new URL(page.url()).pathname, "/ar/");
+  assert.equal(await page.locator("html").getAttribute("dir"), "rtl");
+  assert.equal(
+    await page.evaluate(() =>
+      localStorage.getItem("soukscan.website.language"),
+    ),
+    "ar",
+  );
+  await page.setViewportSize({ width: 1366, height: 900 });
+  assert.ok(
+    await page.locator('.primary-nav a[href="#how-it-works"]').isVisible(),
+  );
+  await context.close();
+});

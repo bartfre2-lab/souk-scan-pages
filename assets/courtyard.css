@@ -1,26 +1,4 @@
-/* A fixed, shared courtyard. No carousel positioning or detached product panel. */
-.courtyard-intro {
-  display: flex;
-  justify-content: space-between;
-  align-items: end;
-  gap: 24px;
-  margin: 16px 0 24px;
-}
-.courtyard-intro .eyebrow {
-  color: var(--green);
-  font-size: 9px;
-}
-.courtyard-intro h2 {
-  font: 400 clamp(30px, 3.4vw, 46px) / 1.15 var(--serif);
-  letter-spacing: -1.4px;
-  margin: 8px 0 0;
-}
-.courtyard-intro > p {
-  margin: 0 0 3px;
-  font-size: 12px;
-  line-height: 1.8;
-  color: var(--muted);
-}
+/* Illustrated courtyard components; page composition lives in landing.css. */
 .souk-courtyard {
   --stall-accent: #4a6b53;
   position: relative;
@@ -451,25 +429,6 @@
 .courtyard-reset:hover {
   background: #e7e8d7;
 }
-.courtyard-price-note {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 25px;
-  margin: 17px 4px 0;
-  color: var(--muted);
-}
-.courtyard-price-note p {
-  font-size: 10px;
-  line-height: 1.7;
-  max-width: 620px;
-  margin: 0;
-}
-.courtyard-price-note .text-link {
-  font-size: 11px;
-  white-space: nowrap;
-  gap: 14px;
-}
 .courtyard-idle__compass svg {
   width: 18px;
   height: 18px;
@@ -546,22 +505,6 @@
   }
 }
 @media (max-width: 760px) {
-  .courtyard-intro {
-    gap: 15px;
-    margin: 15px 0 18px;
-  }
-  .courtyard-intro .eyebrow {
-    font-size: 7px;
-    letter-spacing: 1px;
-  }
-  .courtyard-intro h2 {
-    font-size: 29px;
-    letter-spacing: -1px;
-  }
-  .courtyard-intro > p {
-    font-size: 10px;
-    max-width: 150px;
-  }
   .souk-courtyard {
     border-radius: 12px;
   }
@@ -736,32 +679,8 @@
     gap: 4px;
     white-space: nowrap;
   }
-  .courtyard-price-note {
-    align-items: start;
-    gap: 13px;
-    margin-top: 13px;
-    flex-direction: column;
-  }
-  .courtyard-price-note p {
-    font-size: 10px;
-  }
-  .courtyard-price-note .text-link {
-    font-size: 11px;
-  }
 }
 @media (max-width: 370px) {
-  .courtyard-intro {
-    align-items: start;
-    flex-direction: column;
-    gap: 10px;
-  }
-  .courtyard-intro > p {
-    max-width: none;
-    font-size: 11px;
-  }
-  .courtyard-intro > p br {
-    display: none;
-  }
   .courtyard-scene {
     height: 590px;
   }
