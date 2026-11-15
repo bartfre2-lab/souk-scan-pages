@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "SOUK-SCAN — Les prix alimentaires au Maroc, partagés par tous",
-    "description": "Consultez les prix alimentaires signalés par la communauté dans les 12 régions du Maroc : fruits, légumes, viande et volaille, avec des références de gros datées."
+    "description": "Consultez les prix alimentaires partagés au Maroc. SOUK-SCAN est sur Google Play et sur le web. Plus de produits et une version iOS arrivent bientôt."
   },
   "common": {
     "languageLabel": "Langue du site",
@@ -76,16 +76,12 @@
     "COMMUNITY PRICE GUIDE": "GUIDE PARTICIPATIF DES PRIX",
     "Find prices near you": "Voir les prix près de chez vous",
     "SOUK-SCAN app": "l’application SOUK-SCAN",
-    "Download for Android": "Télécharger pour Android",
-    "v1.1.1 · APK": "v1.1.1 · APK",
     "Or try the web app": "Ou essayer l’application web",
-    "Android APK installation may require allowing this source.": "L’installation de l’APK peut nécessiter l’autorisation de cette source.",
     "On iPhone? Use the web app in your browser.": "Sur iPhone ? Utilisez l’application web dans votre navigateur.",
     "Are these official or fixed prices?": "S’agit-il de prix officiels ou fixes ?",
     "What if there isn’t enough local data?": "Et s’il n’y a pas assez de données locales ?",
     "Can I buy food through SOUK-SCAN?": "Puis-je acheter des produits avec SOUK-SCAN ?",
     "How do I install the Android app?": "Comment installer l’application Android ?",
-    "Download the APK on your Android phone, open it, and follow the installation prompts. Your phone may ask you to allow installation from your browser. You can also use the web app without installing anything.": "Téléchargez l’APK sur votre téléphone Android, ouvrez-le et suivez les instructions. Votre téléphone peut vous demander d’autoriser l’installation depuis votre navigateur. Vous pouvez aussi utiliser l’application web sans rien installer.",
     "Privacy": "Confidentialité",
     "Terms": "Conditions d’utilisation",
     "Delete account": "Supprimer le compte",
@@ -117,7 +113,6 @@
     "ANDROID AND WEB": "ANDROID ET WEB",
     "Use SOUK-SCAN": "Utilisez SOUK-SCAN",
     "wherever you are.": "où que vous soyez.",
-    "Download the Android app": "Téléchargez l’application Android",
     "or open SOUK-SCAN in your browser.": "ou ouvrez SOUK-SCAN dans votre navigateur.",
     "Free. Available in Arabic, French and English.": "Gratuit. Disponible en arabe, en français et en anglais.",
     "HELP": "AIDE",
@@ -135,7 +130,15 @@
     "to explore food prices.": "pour consulter les prix alimentaires.",
     "Community estimates are regional. Wholesale references are dated prices from the Casablanca market, not retail prices in your region.": "Les estimations communautaires concernent votre région. Les références de gros sont datées et proviennent du marché de Casablanca ; ce ne sont pas les prix de détail de votre région.",
     "Community prices are estimates from recent observations. Dated wholesale references are shown separately. Prices vary by market, quality and date. Choose your region to see its community estimates.": "Les prix communautaires sont estimés à partir d’observations récentes. Les références de gros datées sont affichées séparément. Les prix varient selon le marché, la qualité et la date. Choisissez votre région pour consulter ses estimations.",
-    "Refresh prices": "Actualiser les prix"
+    "Refresh prices": "Actualiser les prix",
+    "Get the Android app on Google Play": "Téléchargez l’application Android sur Google Play",
+    "Get it on Google Play": "Disponible sur Google Play",
+    "iOS app coming soon": "Application iOS bientôt disponible",
+    "Download the APK directly": "Télécharger directement l’APK",
+    "More products are coming soon.": "De nouveaux produits arrivent bientôt.",
+    "Install SOUK-SCAN from Google Play. You can also use the web app without installing anything.": "Installez SOUK-SCAN depuis Google Play. Vous pouvez aussi utiliser l’application web sans rien installer.",
+    "Is an iOS app available?": "Une application iOS est-elle disponible ?",
+    "The iOS app is coming soon. You can use SOUK-SCAN in your browser on iPhone and iPad in the meantime.": "L’application iOS arrive bientôt. En attendant, utilisez SOUK-SCAN dans votre navigateur sur iPhone ou iPad."
   },
   "prices": {
     "chooseRegion": "Choisissez votre région",

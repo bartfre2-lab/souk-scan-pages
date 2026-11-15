@@ -6,6 +6,8 @@ import argparse, json, re, shutil, base64
 
 ROOT = Path(__file__).resolve().parent.parent
 LANGUAGES = ('en', 'fr', 'ar')
+PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.soukscan.app'
+UNPUBLISHED_ROUTES = ('preview', 'test', 'tests', 'demo', 'demos', 'archive', 'archives')
 VOID = {'area','base','br','col','embed','hr','img','input','link','meta','param','source','track','wbr'}
 
 class LocalizedHTML(HTMLParser):
@@ -57,12 +59,22 @@ def main():
     if args.asset_version and not re.fullmatch(r'[A-Za-z0-9_-]+',args.asset_version):
         raise ValueError('Invalid asset version')
     out.mkdir(parents=True,exist_ok=True)
+    # Only generated output is cleaned. Local review sources and Git history
+    # remain intact; stale review builds must never survive a production rebuild.
+    for name in UNPUBLISHED_ROUTES:
+        stale=out/name
+        if stale.is_symlink() or stale.is_file():stale.unlink()
+        elif stale.is_dir():shutil.rmtree(stale)
     if base=='/':
         # The static app release is maintained independently. Only their
         # built files, domain verification and retained browser-cache assets ship.
-        for directory in ('app','public'):
+        for directory in ('app',):
             source=ROOT/directory
-            if source.is_dir():shutil.copytree(source,out if directory=='public' else out/directory,dirs_exist_ok=True)
+            if source.is_dir():shutil.copytree(source,out/directory,dirs_exist_ok=True)
+        # `public` is a cache-asset archive, not an additional page source.
+        # Copy its asset subtree only, never arbitrary review HTML or routes.
+        cached_assets=ROOT/'public/assets'
+        if cached_assets.is_dir():shutil.copytree(cached_assets,out/'assets',dirs_exist_ok=True)
         for name in ('CNAME','google7e57ca047c540b15.html'):
             if (ROOT/name).is_file():shutil.copy2(ROOT/name,out/name)
         (out/'.nojekyll').write_text('')
@@ -123,7 +135,7 @@ def main():
         body=body.replace('<!--header-controls-->',controls(lang,''),1)
         body=body.replace('assets/app-welcome-en.png',f'assets/app-welcome-{lang}.png')
         body='<body>'+body+f'<script type="module" src="{base}assets/landing.js"></script>'
-        schema={'@context':'https://schema.org','@type':'SoftwareApplication','name':'SOUK-SCAN','applicationCategory':'LifestyleApplication','operatingSystem':'Android, Web','inLanguage':lang,'url':origin+route(lang),'description':catalog['meta']['description'],'isAccessibleForFree':True,'offers':{'@type':'Offer','price':'0','priceCurrency':'MAD'}}
+        schema={'@context':'https://schema.org','@type':'SoftwareApplication','name':'SOUK-SCAN','applicationCategory':'LifestyleApplication','operatingSystem':'Android, Web','inLanguage':lang,'url':origin+route(lang),'installUrl':PLAY_STORE_URL,'description':catalog['meta']['description'],'isAccessibleForFree':True,'offers':{'@type':'Offer','price':'0','priceCurrency':'MAD'}}
         body+='<script type="application/ld+json">'+json.dumps(schema,ensure_ascii=False).replace('<','\\u003c')+'</script>'
         save(lang,'',body,catalog['meta']['title'],catalog['meta']['description'],True)
         for section,page in legal[lang].items():
@@ -131,8 +143,7 @@ def main():
             body=f'<body class="legal-page"><a class="skip-link" href="#main-content">{escape(catalog["common"]["skipContent"])}</a><header class="site-header wrap"><a class="brand" href="{route(lang)}"><img src="{base}assets/brand/logo.png" alt="" width="44" height="44"><span class="scanner-wordmark">[SOUK-SCAN]</span></a>{controls(lang,section)}<a class="text-link" href="{route(lang)}">{escape(catalog["common"]["backHome"])}</a></header>'+f'<main class="legal-content" id="main-content" tabindex="-1"><p class="eyebrow">SOUK-SCAN</p><h1>{escape(page["title"])}</h1><p class="legal-updated">{escape(page["updated"])}</p><p class="legal-summary">{page["intro"]}</p>{content}'+footer(lang)+'</main>'
             for key in ('privacy','terms','account-deletion','support'):body=body.replace('@@'+key+'@@',route(lang,key))
             save(lang,section,body,page['title']+' — SOUK-SCAN',page['description'])
-    urls=[origin+route(lang,section) for lang in LANGUAGES for section in ('','privacy','terms','account-deletion','support')]
-    sitemap='<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+''.join('<url><loc>'+escape(url)+'</loc><lastmod>2026-10-20</lastmod></url>' for url in urls)+'</urlset>'
+    sitemap='<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+''.join('<url><loc>'+escape(origin+route(lang,section))+'</loc><lastmod>'+('2026-11-15' if section in ('','support') else '2026-10-20')+'</lastmod></url>' for lang in LANGUAGES for section in ('','privacy','terms','account-deletion','support'))+'</urlset>'
     (out/'sitemap.xml').write_text(sitemap)
     (out/'robots.txt').write_text('User-agent: *\nDisallow: '+base+'\n' if args.preview else 'User-agent: *\nAllow: /\nSitemap: '+origin+base+'sitemap.xml\n')
     print(f'Built 15 localized pages in {out}, base {base}, preview={args.preview}')

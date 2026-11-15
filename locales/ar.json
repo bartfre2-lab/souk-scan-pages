@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "SOUK-SCAN — أسعار المواد الغذائية في المغرب بمشاركة الناس",
-    "description": "اطّلع على أسعار المواد الغذائية التي يشاركها الناس في جهات المغرب الاثنتي عشرة، وقارن أسعار الفواكه والخضروات واللحوم والدواجن ومراجع أسعار الجملة المؤرخة."
+    "description": "تابع تقديرات أسعار المواد الغذائية في المغرب. حمّل SOUK-SCAN من Google Play أو استخدم تطبيق الويب. منتجات إضافية وتطبيق iOS قريبًا."
   },
   "common": {
     "languageLabel": "لغة الموقع",
@@ -76,16 +76,12 @@
     "COMMUNITY PRICE GUIDE": "دليل أسعار بمشاركة المجتمع",
     "Find prices near you": "اطّلع على أسعار منطقتك",
     "SOUK-SCAN app": "تطبيق SOUK-SCAN",
-    "Download for Android": "تحميل لنظام أندرويد",
-    "v1.1.1 · APK": "الإصدار 1.1.1 · ملف APK",
     "Or try the web app": "أو جرّب تطبيق الويب",
-    "Android APK installation may require allowing this source.": "قد يتطلب تثبيت ملف APK السماح بالتثبيت من هذا المصدر.",
     "On iPhone? Use the web app in your browser.": "تستخدم آيفون؟ افتح تطبيق الويب في متصفحك.",
     "Are these official or fixed prices?": "هل هذه أسعار رسمية أو ثابتة؟",
     "What if there isn’t enough local data?": "ماذا لو لم تتوفر بيانات محلية كافية؟",
     "Can I buy food through SOUK-SCAN?": "هل يمكنني شراء الطعام عبر SOUK-SCAN؟",
     "How do I install the Android app?": "كيف أثبّت التطبيق على أندرويد؟",
-    "Download the APK on your Android phone, open it, and follow the installation prompts. Your phone may ask you to allow installation from your browser. You can also use the web app without installing anything.": "حمّل ملف APK على هاتفك، ثم افتحه واتبع تعليمات التثبيت. قد يطلب الهاتف السماح بالتثبيت من المتصفح. ويمكنك أيضًا استخدام تطبيق الويب دون تثبيت.",
     "Privacy": "سياسة الخصوصية",
     "Terms": "شروط الاستخدام",
     "Delete account": "حذف الحساب",
@@ -117,7 +113,6 @@
     "ANDROID AND WEB": "أندرويد والويب",
     "Use SOUK-SCAN": "استخدم SOUK-SCAN",
     "wherever you are.": "أينما كنت.",
-    "Download the Android app": "حمّل تطبيق أندرويد",
     "or open SOUK-SCAN in your browser.": "أو افتح SOUK-SCAN في متصفحك.",
     "Free. Available in Arabic, French and English.": "مجاني. متوفر بالعربية والفرنسية والإنجليزية.",
     "HELP": "مساعدة",
@@ -135,7 +130,15 @@
     "to explore food prices.": "لاستكشاف أسعار المواد الغذائية.",
     "Community estimates are regional. Wholesale references are dated prices from the Casablanca market, not retail prices in your region.": "تقديرات المجتمع تخص جهتك. مراجع أسعار الجملة مؤرخة ومن سوق الدار البيضاء، وليست أسعار البيع بالتقسيط في جهتك.",
     "Community prices are estimates from recent observations. Dated wholesale references are shown separately. Prices vary by market, quality and date. Choose your region to see its community estimates.": "أسعار المجتمع تقديرات مبنية على معلومات حديثة. تظهر مراجع أسعار الجملة المؤرخة بشكل منفصل. تختلف الأسعار حسب السوق والجودة والتاريخ. اختر جهتك للاطّلاع على تقديرات المجتمع فيها.",
-    "Refresh prices": "تحديث الأسعار"
+    "Refresh prices": "تحديث الأسعار",
+    "Get the Android app on Google Play": "حمّل تطبيق أندرويد من Google Play",
+    "Get it on Google Play": "حمّله من Google Play",
+    "iOS app coming soon": "تطبيق iOS قريبًا",
+    "Download the APK directly": "تحميل ملف APK مباشرة",
+    "More products are coming soon.": "منتجات إضافية قريبًا.",
+    "Install SOUK-SCAN from Google Play. You can also use the web app without installing anything.": "ثبّت SOUK-SCAN من Google Play. ويمكنك أيضًا استخدام تطبيق الويب دون تثبيت أي شيء.",
+    "Is an iOS app available?": "هل يتوفر تطبيق لنظام iOS؟",
+    "The iOS app is coming soon. You can use SOUK-SCAN in your browser on iPhone and iPad in the meantime.": "تطبيق iOS قادم قريبًا. إلى حين توفره، يمكنك استخدام SOUK-SCAN في المتصفح على آيفون وآيباد."
   },
   "prices": {
     "chooseRegion": "اختر جهتك",
