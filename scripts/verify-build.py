@@ -37,7 +37,7 @@ def verify(out, version=''):
     for name in ('.git', '.github', '.env', '.env.local', 'node_modules',
                  'locales', 'data', 'scripts', 'tests', 'docs', 'package.json', 'package-lock.json'):
         require(not (out / name).exists(), 'Source/private file in artifact: ' + name)
-    allowed_html = {Path('google7e57ca047c540b15.html')}
+    allowed_html = {Path('404.html'), Path('google7e57ca047c540b15.html')}
     for language in ('', 'fr', 'ar'):
         for section in ('', 'privacy', 'terms', 'account-deletion', 'support'):
             allowed_html.add(Path(language) / section / 'index.html')
@@ -52,6 +52,7 @@ def verify(out, version=''):
         if path.suffix.lower() in ('.html', '.htm'):
             require(relative in allowed_html, 'Unapproved HTML page in artifact: ' + str(relative))
     require((out / '.nojekyll').is_file(), 'Missing .nojekyll')
+    require((out / '404.html').is_file(), 'Missing unavailable-page response')
     expected_urls = set()
     for language in ('en', 'fr', 'ar'):
         prefix = '' if language == 'en' else language + '/'

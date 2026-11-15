@@ -89,7 +89,7 @@ Retired `/preview/`, `/test/` and `/demo/` pages are not published. Keep histori
 versions in Git; local preview generation remains available for development.
 Production builds remove stale app/download/review routes from generated output and copy only
 the retained `public/assets/` cache subtree. Artifact verification permits only
-the 15 official website pages and Search Console verification
+the 15 official website pages, the unavailable-page response and Search Console verification
 HTML, and rejects test/review routes even when they are hidden among assets.
 
 This repository and its Git history are public. Excluding a page from deployment
