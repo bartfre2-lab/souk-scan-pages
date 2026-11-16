@@ -221,38 +221,38 @@
     "file": "carousels/en/01-why-souk-scan/01-purpose.jpg",
     "language": "en",
     "logo": {
-      "x": 64,
-      "y": 44,
-      "right": 136,
-      "bottom": 116,
-      "width": 72
+      "x": 374.421875,
+      "y": 46,
+      "right": 466.421875,
+      "bottom": 138,
+      "width": 92
     },
-    "logoSafe": true,
+    "brand": {
+      "x": 374.421875,
+      "y": 46,
+      "right": 705.5625,
+      "bottom": 138,
+      "width": 331.140625
+    },
     "text": {
-      "x": 64,
-      "y": 166,
-      "right": 519,
-      "bottom": 532.796875,
-      "width": 455
+      "x": 160,
+      "y": 196,
+      "right": 920,
+      "bottom": 568.78125,
+      "width": 760
     },
-    "headlineFont": 61,
-    "bodyFont": 31,
-    "overflow": false,
+    "headlineFont": 92,
+    "swipe": {
+      "x": 370.390625,
+      "y": 962.8125,
+      "right": 709.59375,
+      "bottom": 1024,
+      "width": 339.203125
+    },
+    "gridSafe": true,
     "withinGreen": true,
-    "phone": {
-      "x": 623,
-      "y": 216,
-      "right": 1008.97998046875,
-      "bottom": 934.6199951171875,
-      "width": 385.97998046875
-    },
-    "cta": {
-      "x": 64,
-      "y": 800,
-      "right": 317.59375,
-      "bottom": 922,
-      "width": 253.59375
-    },
+    "logoSafe": true,
+    "overflow": false,
     "collision": false,
     "ctaCollision": false
   },
@@ -400,32 +400,40 @@
     "file": "carousels/en/02-understand-the-prices/01-sources.jpg",
     "language": "en",
     "logo": {
-      "x": 64,
-      "y": 44,
-      "right": 136,
-      "bottom": 116,
-      "width": 72
+      "x": 374.421875,
+      "y": 46,
+      "right": 466.421875,
+      "bottom": 138,
+      "width": 92
     },
-    "logoSafe": true,
+    "brand": {
+      "x": 374.421875,
+      "y": 46,
+      "right": 705.5625,
+      "bottom": 138,
+      "width": 331.140625
+    },
     "text": {
-      "x": 72,
-      "y": 139,
-      "right": 1008,
-      "bottom": 554.984375,
-      "width": 936
+      "x": 160,
+      "y": 196,
+      "right": 920,
+      "bottom": 589.078125,
+      "width": 760
     },
-    "headlineFont": 64,
-    "bodyFont": 31,
-    "overflow": false,
+    "headlineFont": 80,
+    "swipe": {
+      "x": 370.390625,
+      "y": 962.8125,
+      "right": 709.59375,
+      "bottom": 1024,
+      "width": 339.203125
+    },
+    "gridSafe": true,
     "withinGreen": true,
-    "visual": {
-      "x": 72,
-      "y": 448.09375,
-      "right": 1008,
-      "bottom": 554.984375,
-      "width": 936
-    },
-    "collision": false
+    "logoSafe": true,
+    "overflow": false,
+    "collision": false,
+    "ctaCollision": false
   },
   {
     "file": "carousels/en/02-understand-the-prices/02-community.jpg",
@@ -555,38 +563,38 @@
     "file": "carousels/en/03-contribute-a-price/01-contribute.jpg",
     "language": "en",
     "logo": {
-      "x": 64,
-      "y": 44,
-      "right": 136,
-      "bottom": 116,
-      "width": 72
+      "x": 374.421875,
+      "y": 46,
+      "right": 466.421875,
+      "bottom": 138,
+      "width": 92
     },
-    "logoSafe": true,
+    "brand": {
+      "x": 374.421875,
+      "y": 46,
+      "right": 705.5625,
+      "bottom": 138,
+      "width": 331.140625
+    },
     "text": {
-      "x": 64,
-      "y": 166,
-      "right": 519,
-      "bottom": 569.46875,
-      "width": 455
+      "x": 160,
+      "y": 196,
+      "right": 920,
+      "bottom": 568.78125,
+      "width": 760
     },
-    "headlineFont": 58,
-    "bodyFont": 31,
-    "overflow": false,
+    "headlineFont": 92,
+    "swipe": {
+      "x": 370.390625,
+      "y": 962.8125,
+      "right": 709.59375,
+      "bottom": 1024,
+      "width": 339.203125
+    },
+    "gridSafe": true,
     "withinGreen": true,
-    "phone": {
-      "x": 623,
-      "y": 216,
-      "right": 1008.97998046875,
-      "bottom": 934.6199951171875,
-      "width": 385.97998046875
-    },
-    "cta": {
-      "x": 64,
-      "y": 800,
-      "right": 317.59375,
-      "bottom": 922,
-      "width": 253.59375
-    },
+    "logoSafe": true,
+    "overflow": false,
     "collision": false,
     "ctaCollision": false
   },
@@ -952,38 +960,38 @@
     "file": "carousels/fr/01-why-souk-scan/01-purpose.jpg",
     "language": "fr",
     "logo": {
-      "x": 64,
-      "y": 44,
-      "right": 136,
-      "bottom": 116,
-      "width": 72
+      "x": 374.421875,
+      "y": 46,
+      "right": 466.421875,
+      "bottom": 138,
+      "width": 92
     },
-    "logoSafe": true,
+    "brand": {
+      "x": 374.421875,
+      "y": 46,
+      "right": 705.5625,
+      "bottom": 138,
+      "width": 331.140625
+    },
     "text": {
-      "x": 64,
-      "y": 166,
-      "right": 519,
-      "bottom": 510.390625,
-      "width": 455
+      "x": 160,
+      "y": 196,
+      "right": 920,
+      "bottom": 553.65625,
+      "width": 760
     },
-    "headlineFont": 51,
-    "bodyFont": 31,
-    "overflow": false,
+    "headlineFont": 85,
+    "swipe": {
+      "x": 367.1875,
+      "y": 962.8125,
+      "right": 712.8125,
+      "bottom": 1024,
+      "width": 345.625
+    },
+    "gridSafe": true,
     "withinGreen": true,
-    "phone": {
-      "x": 623,
-      "y": 216,
-      "right": 1008.97998046875,
-      "bottom": 934.6199951171875,
-      "width": 385.97998046875
-    },
-    "cta": {
-      "x": 64,
-      "y": 800,
-      "right": 398.75,
-      "bottom": 922,
-      "width": 334.75
-    },
+    "logoSafe": true,
+    "overflow": false,
     "collision": false,
     "ctaCollision": false
   },
@@ -1131,32 +1139,40 @@
     "file": "carousels/fr/02-understand-the-prices/01-sources.jpg",
     "language": "fr",
     "logo": {
-      "x": 64,
-      "y": 44,
-      "right": 136,
-      "bottom": 116,
-      "width": 72
+      "x": 374.421875,
+      "y": 46,
+      "right": 466.421875,
+      "bottom": 138,
+      "width": 92
     },
-    "logoSafe": true,
+    "brand": {
+      "x": 374.421875,
+      "y": 46,
+      "right": 705.5625,
+      "bottom": 138,
+      "width": 331.140625
+    },
     "text": {
-      "x": 72,
-      "y": 139,
-      "right": 1008,
-      "bottom": 554.984375,
-      "width": 936
+      "x": 160,
+      "y": 196,
+      "right": 920,
+      "bottom": 599.890625,
+      "width": 760
     },
-    "headlineFont": 64,
-    "bodyFont": 31,
-    "overflow": false,
+    "headlineFont": 85,
+    "swipe": {
+      "x": 367.1875,
+      "y": 962.8125,
+      "right": 712.8125,
+      "bottom": 1024,
+      "width": 345.625
+    },
+    "gridSafe": true,
     "withinGreen": true,
-    "visual": {
-      "x": 72,
-      "y": 448.09375,
-      "right": 1008,
-      "bottom": 554.984375,
-      "width": 936
-    },
-    "collision": false
+    "logoSafe": true,
+    "overflow": false,
+    "collision": false,
+    "ctaCollision": false
   },
   {
     "file": "carousels/fr/02-understand-the-prices/02-community.jpg",
@@ -1286,38 +1302,38 @@
     "file": "carousels/fr/03-contribute-a-price/01-contribute.jpg",
     "language": "fr",
     "logo": {
-      "x": 64,
-      "y": 44,
-      "right": 136,
-      "bottom": 116,
-      "width": 72
+      "x": 374.421875,
+      "y": 46,
+      "right": 466.421875,
+      "bottom": 138,
+      "width": 92
     },
-    "logoSafe": true,
+    "brand": {
+      "x": 374.421875,
+      "y": 46,
+      "right": 705.5625,
+      "bottom": 138,
+      "width": 331.140625
+    },
     "text": {
-      "x": 64,
-      "y": 166,
-      "right": 519,
-      "bottom": 606.140625,
-      "width": 455
+      "x": 160,
+      "y": 196,
+      "right": 920,
+      "bottom": 612.828125,
+      "width": 760
     },
-    "headlineFont": 55,
-    "bodyFont": 31,
-    "overflow": false,
+    "headlineFont": 91,
+    "swipe": {
+      "x": 367.1875,
+      "y": 962.8125,
+      "right": 712.8125,
+      "bottom": 1024,
+      "width": 345.625
+    },
+    "gridSafe": true,
     "withinGreen": true,
-    "phone": {
-      "x": 623,
-      "y": 216,
-      "right": 1008.97998046875,
-      "bottom": 934.6199951171875,
-      "width": 385.97998046875
-    },
-    "cta": {
-      "x": 64,
-      "y": 800,
-      "right": 398.75,
-      "bottom": 922,
-      "width": 334.75
-    },
+    "logoSafe": true,
+    "overflow": false,
     "collision": false,
     "ctaCollision": false
   },
@@ -1683,38 +1699,38 @@
     "file": "carousels/ar/01-why-souk-scan/01-purpose.jpg",
     "language": "ar",
     "logo": {
-      "x": 944,
-      "y": 44,
-      "right": 1016,
-      "bottom": 116,
-      "width": 72
+      "x": 613.5625,
+      "y": 46,
+      "right": 705.5625,
+      "bottom": 138,
+      "width": 92
     },
-    "logoSafe": true,
+    "brand": {
+      "x": 374.421875,
+      "y": 46,
+      "right": 705.5625,
+      "bottom": 138,
+      "width": 331.140625
+    },
     "text": {
-      "x": 561,
-      "y": 166,
-      "right": 1016,
-      "bottom": 493.25,
-      "width": 455
+      "x": 160,
+      "y": 196,
+      "right": 920,
+      "bottom": 583.5,
+      "width": 760
     },
-    "headlineFont": 59,
-    "bodyFont": 31,
-    "overflow": false,
+    "headlineFont": 92,
+    "swipe": {
+      "x": 450.765625,
+      "y": 962.8125,
+      "right": 629.234375,
+      "bottom": 1024,
+      "width": 178.46875
+    },
+    "gridSafe": true,
     "withinGreen": true,
-    "phone": {
-      "x": 44,
-      "y": 216,
-      "right": 429.97998046875,
-      "bottom": 934.6199951171875,
-      "width": 385.97998046875
-    },
-    "cta": {
-      "x": 791.03125,
-      "y": 800,
-      "right": 1016,
-      "bottom": 922,
-      "width": 224.96875
-    },
+    "logoSafe": true,
+    "overflow": false,
     "collision": false,
     "ctaCollision": false
   },
@@ -1862,32 +1878,40 @@
     "file": "carousels/ar/02-understand-the-prices/01-sources.jpg",
     "language": "ar",
     "logo": {
-      "x": 944,
-      "y": 44,
-      "right": 1016,
-      "bottom": 116,
-      "width": 72
+      "x": 613.5625,
+      "y": 46,
+      "right": 705.5625,
+      "bottom": 138,
+      "width": 92
     },
-    "logoSafe": true,
+    "brand": {
+      "x": 374.421875,
+      "y": 46,
+      "right": 705.5625,
+      "bottom": 138,
+      "width": 331.140625
+    },
     "text": {
-      "x": 72,
-      "y": 139,
-      "right": 1008,
-      "bottom": 524.9375,
-      "width": 936
+      "x": 160,
+      "y": 196,
+      "right": 920,
+      "bottom": 583.5,
+      "width": 760
     },
-    "headlineFont": 64,
-    "bodyFont": 31,
-    "overflow": false,
+    "headlineFont": 92,
+    "swipe": {
+      "x": 450.765625,
+      "y": 962.8125,
+      "right": 629.234375,
+      "bottom": 1024,
+      "width": 178.46875
+    },
+    "gridSafe": true,
     "withinGreen": true,
-    "visual": {
-      "x": 72,
-      "y": 418.046875,
-      "right": 1008,
-      "bottom": 524.9375,
-      "width": 936
-    },
-    "collision": false
+    "logoSafe": true,
+    "overflow": false,
+    "collision": false,
+    "ctaCollision": false
   },
   {
     "file": "carousels/ar/02-understand-the-prices/02-community.jpg",
@@ -2017,38 +2041,38 @@
     "file": "carousels/ar/03-contribute-a-price/01-contribute.jpg",
     "language": "ar",
     "logo": {
-      "x": 944,
-      "y": 44,
-      "right": 1016,
-      "bottom": 116,
-      "width": 72
+      "x": 613.5625,
+      "y": 46,
+      "right": 705.5625,
+      "bottom": 138,
+      "width": 92
     },
-    "logoSafe": true,
+    "brand": {
+      "x": 374.421875,
+      "y": 46,
+      "right": 705.5625,
+      "bottom": 138,
+      "width": 331.140625
+    },
     "text": {
-      "x": 561,
-      "y": 166,
-      "right": 1016,
-      "bottom": 567.953125,
-      "width": 455
+      "x": 160,
+      "y": 196,
+      "right": 920,
+      "bottom": 583.5,
+      "width": 760
     },
-    "headlineFont": 72,
-    "bodyFont": 31,
-    "overflow": false,
+    "headlineFont": 92,
+    "swipe": {
+      "x": 450.765625,
+      "y": 962.8125,
+      "right": 629.234375,
+      "bottom": 1024,
+      "width": 178.46875
+    },
+    "gridSafe": true,
     "withinGreen": true,
-    "phone": {
-      "x": 44,
-      "y": 216,
-      "right": 429.97998046875,
-      "bottom": 934.6199951171875,
-      "width": 385.97998046875
-    },
-    "cta": {
-      "x": 791.03125,
-      "y": 800,
-      "right": 1016,
-      "bottom": 922,
-      "width": 224.96875
-    },
+    "logoSafe": true,
+    "overflow": false,
     "collision": false,
     "ctaCollision": false
   },

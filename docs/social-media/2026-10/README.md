@@ -34,6 +34,18 @@ per post. The filenames preserve the same order in Arabic; its layouts and
 copy are genuinely RTL. Do not upload the preview/contact-sheet images as
 individual campaign posts.
 
+## Instagram grid-safe covers
+
+Instagram's profile grid shows each post as a centred 3:4 crop, so a 1080 × 1080
+first slide keeps only x 135–945 there. The first slide of each carousel (nine
+covers) therefore uses a dedicated centred cover layout: logo, title, text and
+swipe button all sit inside that column, and the market art fills the full
+square behind them. Because of this, the cover places the logo at the top centre
+instead of the upper corner used on the other slides. `render.cjs` fails the
+render if a cover's content leaves the safe column. Slides 2–5 and the six square
+posts are unchanged. `SOCIAL_COVERS_ONLY=1` re-renders only the covers and
+merges them into `manifest.json` and `layout-checks.json`.
+
 ## Brand and layout
 
 The original app logo is used unchanged in the upper-left header for English
