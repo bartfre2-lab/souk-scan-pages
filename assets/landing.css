@@ -655,6 +655,42 @@ html[lang="ar"] h2 {
   font-size: 12px;
   max-width: 320px;
 }
+.download-social {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 20px;
+}
+.download-social-label {
+  font-size: 12px;
+  color: var(--soft-text);
+}
+.download-social nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.download-social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  color: var(--soft-text);
+}
+.download-social a:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+.download-social svg {
+  width: 17px;
+  height: 17px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+}
 .phone-scene {
   display: flex;
   flex-direction: column;
