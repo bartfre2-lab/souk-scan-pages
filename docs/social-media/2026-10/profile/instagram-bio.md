@@ -15,10 +15,50 @@ transparent corners and text would be cropped in a circle.
 SOUK-SCAN | Prix alimentaires Maroc
 ```
 
-## Bio (max 150 characters)
+## Bio (max 150 characters) — punchier options
 
-Recommended for a single account used for all three languages
-(105 characters, Arabic first):
+All of them open with "Bchhal?" (بشحال؟, "how much?"), the question everyone
+asks at the souk. None promises savings or guaranteed prices.
+
+A — trilingual, English-led (119 characters):
+
+```text
+بشحال؟ Bchhal ? How much?
+🛒 Know the price before the souk
+📍 12 regions · shared by real people
+👇 Saw a price? Share it
+```
+
+B — French-led (129 characters):
+
+```text
+Bchhal ? 🤔 Le souk, en toute clarté.
+🛒 Les prix alimentaires du Maroc
+📍 12 régions · AR / FR / EN
+👇 Un prix observé ? Partagez-le
+```
+
+C — Arabic, Moroccan-flavored (108 characters):
+
+```text
+بشحال؟ 🤔 اعرف قبل ما تمشي للسوق
+🛒 أسعار المواد الغذائية في المغرب
+📍 12 جهة · بمساهمة الناس
+👇 شفتي ثمن؟ شاركه
+```
+
+D — short and playful (110 characters):
+
+```text
+بشحال؟ · Bchhal ? · How much? 🇲🇦
+The souk, a little clearer.
+Prix 🛒 Prices 🛒 أسعار
+📍 12 · 👇 Share what you saw
+```
+
+## Earlier, more neutral bios
+
+Neutral trilingual bio (105 characters), kept for reference:
 
 ```text
 🛒 أسعار المواد الغذائية في المغرب
@@ -27,7 +67,7 @@ Food prices in Morocco
 📍 12 · 👇 AR · FR · EN
 ```
 
-Single-language alternatives, if you run separate accounts:
+Single-language neutral versions, if you run separate accounts:
 
 English (127 characters):
 
