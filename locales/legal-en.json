@@ -1,15 +1,16 @@
 {
   "privacy": {
     "title": "Privacy policy",
-    "updated": "Last updated: 20 October 2026",
+    "updated": "Last updated: 19 November 2026",
     "intro": "SOUK-SCAN is a community food-price information app for Morocco (Android package <bdi>com.soukscan.app</bdi>). This policy explains how the app and this website handle information. For privacy questions or requests, contact <a href=\"mailto:sanamdev@soukscan.online\">sanamdev@soukscan.online</a>.",
-    "description": "How SOUK-SCAN handles account information, food-price reports, region data, location permissions and account deletion.",
+    "description": "How SOUK-SCAN handles account information, food-price reports, Calculator entries, region data, location permissions and account deletion.",
     "sections": [
       {
         "title": "Information the app processes",
         "paragraphs": [
-          "Account information includes your email address, account identifier and authentication records. Google sign-in may also provide account profile information to the authentication provider. We record acceptance of the app’s terms.",
-          "Price reports contain the product, price, region, date and the account identifier needed to manage your submissions. Feedback contains the category, message and account identifier you send."
+          "Account information includes your email address, account identifier and authentication records. Google sign-in may also provide account profile information to the authentication provider. We record your acceptance of the app’s terms and which version you accepted.",
+          "Price reports contain the product, price, region, date and the account identifier needed to manage your submissions. Feedback contains the category, message and account identifier you send.",
+          "If you use the Calculator tab, we also store what you enter there, linked to your account: see “Your Calculator entries” below."
         ]
       },
       {
@@ -20,9 +21,34 @@
         ]
       },
       {
+        "title": "Your Calculator entries",
+        "paragraphs": [
+          "The Calculator tab is a grocery calculator. For each day you use it, you can enter shops (with an optional name of up to 40 characters that you choose), the products you buy, the price per kilo (or per egg) and the quantity, in kilos or in pieces for eggs. The app works out the line, shop and grand totals on your phone from these entries; the totals are not stored separately.",
+          "These entries are stored on our servers and are linked to your account. The app owner can see them, account by account, so that we can improve the service and understand what people buy. They are not shown to other users, and they are not sold or used for advertising.",
+          "When you add or change a price in the Calculator, the app also sends that price, with the product, your region and the date, as a community price, in the same way as any price you submit. The quantity, the total and the shop name are not sent with it. Other users only see community prices as aggregated estimates. You cannot withdraw a community price that was sent, but you can correct it on the same day.",
+          "You can change a Calculator list on the day you make it; afterwards it is read-only. The Calculator also keeps a copy on your phone so that it works without a connection, and sends it when your phone is online again. A list that reaches us late is still accepted for up to two days. Use it on one phone at a time. If you uninstall the app or clear its data, what has not been sent yet is lost. Signing out removes the copy from your phone (the app asks first if something has not been sent).",
+          "Your Calculator entries are deleted when you delete your account."
+        ]
+      },
+      {
+        "title": "Al-Qoffa basket",
+        "paragraphs": [
+          "The Al-Qoffa tab shows a typical reference basket priced with data the app already has. The products, quantities and week, month and household choices you set stay on your device only and are never sent to our servers. To show the default basket, the app downloads the list and factors that we publish, like other public information; nothing from your own basket is sent."
+        ]
+      },
+      {
         "title": "What other users can see",
         "paragraphs": [
-          "Public community prices are aggregated estimates. Your email, account identity and individual reports are not displayed publicly. Feedback is private to the service’s maintainers. Dated wholesale reference figures, where available, are a separate source."
+          "Public community prices are aggregated estimates. Your email, account identity and individual reports are not displayed publicly. Feedback is private to the service’s maintainers. Your Calculator entries and your Al-Qoffa basket are not shown to other users; the app owner can see the Calculator entries, as described below. Dated wholesale reference figures, where available, are a separate source."
+        ]
+      },
+      {
+        "title": "News, update checks and the rating pop-up",
+        "paragraphs": [
+          "The Info tab shows news that we publish. The app downloads it from our backend (Supabase), and the pictures are loaded from our own website, <bdi>soukscan.online</bdi>, which GitHub Pages hosts. Like any web request, this shows your device’s internet address to those services. The app keeps the latest news on your device so that the tab opens without a connection, and a marker of the last post you saw so that it can show a dot for new ones.",
+          "When it starts and when you return to it, the app reads two public numbers from our backend (the newest version and the oldest version still allowed) to tell you if an update is available or required. It remembers on your device that you dismissed an update notice. The update button opens the SOUK-SCAN page on Google Play, which Google handles.",
+          "These requests ask for public information only and add none of your entries or personal details. Like every request to our backend, they carry the technical connection information described above and, while you are signed in, the session token the app uses for all its requests.",
+          "Occasionally the app may ask, in a pop-up, whether you would rate it on Google Play. What it keeps for this (your recent open days, when the pop-up was last shown, and your answer) stays on your device only; nothing is sent to us. If you choose to rate, Google Play opens and Google handles what you do there."
         ]
       },
       {
@@ -35,35 +61,35 @@
       {
         "title": "Storage on your device",
         "paragraphs": [
-          "The app stores preferences such as language, appearance, selected region and favourites on your device, along with the session information needed to keep you signed in. This website stores language, appearance and selected-region preferences on your device. It sends the selected region to Supabase when requesting community estimates; it does not ask for GPS access or sign you in. You can remove local preferences through your device or browser storage settings."
+          "The app stores preferences such as language, appearance, selected region and favourites on your device, along with the session information needed to keep you signed in. It also stores on your device your Al-Qoffa basket choices, a copy of your recent Calculator entries (including any not sent yet), the latest news we published and a marker of the last post you saw, the update notice you dismissed, and the state of the rating pop-up. This website stores language, appearance and selected-region preferences on your device. It sends the selected region to Supabase when requesting community estimates; it does not ask for GPS access or sign you in. You can remove local preferences through your device or browser storage settings."
         ]
       },
       {
         "title": "Retention and deletion",
         "paragraphs": [
-          "Account information, linked reports, feedback and terms-acceptance records are kept while needed to operate your account and the service, until account deletion or earlier removal. A limited display window for prices is not a promise that underlying reports are automatically erased after that window.",
-          "Confirmed in-app deletion removes the active account and its linked reports and feedback. Email deletion requests are completed within 30 calendar days after a valid request is received. See <a href=\"@@account-deletion@@\">account deletion</a> for the steps and scope.",
-          "Operational logs or backup copies retained by service providers follow their retention policies. Active-account deletion does not promise immediate removal of every provider log or backup. Local device preferences can remain until you clear the app or browser storage."
+          "Account information, linked reports, Calculator entries, feedback and terms-acceptance records are kept while needed to operate your account and the service, until account deletion or earlier removal. A limited display window for prices is not a promise that underlying reports are automatically erased after that window.",
+          "Confirmed in-app deletion removes the active account and its linked reports, Calculator entries and feedback. Email deletion requests are completed within 30 calendar days after a valid request is received. See <a href=\"@@account-deletion@@\">account deletion</a> for the steps and scope.",
+          "Operational logs or backup copies retained by service providers follow their retention policies. Active-account deletion does not promise immediate removal of every provider log or backup. Local device preferences (including your Al-Qoffa basket) can remain until you clear the app or browser storage."
         ]
       },
       {
         "title": "Security and your choices",
         "paragraphs": [
           "The app communicates with its backend over HTTPS and uses authenticated access controls for private account data. No online service can guarantee absolute security. The app never receives your Google password.",
-          "You can deny location permission, choose a region manually, change language or appearance, sign out, or request account deletion. For access, correction or other privacy questions, contact <a href=\"mailto:sanamdev@soukscan.online\">sanamdev@soukscan.online</a>."
+          "You can deny location permission, choose a region manually, change language or appearance, choose not to use the Calculator, sign out, or request account deletion. For access, correction or other privacy questions, contact <a href=\"mailto:sanamdev@soukscan.online\">sanamdev@soukscan.online</a>."
         ]
       },
       {
         "title": "Changes and contact",
         "paragraphs": [
-          "We update this page when the service’s data practices change. The date above identifies this website policy revision. Contact the SOUK-SCAN maintainers at <a href=\"mailto:sanamdev@soukscan.online\">sanamdev@soukscan.online</a>."
+          "We update this page when the service’s data practices change. The date above identifies this website policy revision. When the terms or this policy change materially, the app asks you to review and accept the new version before you continue; release 1.2.0 asks you to accept the updated version once. Contact the SOUK-SCAN maintainers at <a href=\"mailto:sanamdev@soukscan.online\">sanamdev@soukscan.online</a>."
         ]
       }
     ]
   },
   "account-deletion": {
     "title": "Delete your SOUK-SCAN account",
-    "updated": "Last updated: 20 October 2026",
+    "updated": "Last updated: 19 November 2026",
     "intro": "You can permanently delete your SOUK-SCAN account and its associated data in the app or request deletion by email. This page applies to <bdi>com.soukscan.app</bdi>.",
     "description": "Delete your SOUK-SCAN account in the app or request deletion by email. Learn which data is removed and the request timeframe.",
     "sections": [
@@ -84,13 +110,13 @@
       {
         "title": "What deletion removes",
         "paragraphs": [
-          "Deletion removes your active account and sign-in identity, submitted price reports, feedback and linked terms-acceptance records. Removed reports no longer contribute to estimates computed from the remaining reports. Individual reports and account identities were not displayed publicly."
+          "Deletion removes your active account and sign-in identity, submitted price reports, Calculator entries, feedback and linked terms-acceptance records. Removed reports no longer contribute to estimates computed from the remaining reports. Individual reports and account identities were not displayed publicly."
         ]
       },
       {
         "title": "What may remain",
         "paragraphs": [
-          "Service-provider technical logs and backups, if retained, follow the providers’ retention policies rather than immediate active-account deletion. Preferences saved only on your device may remain until you clear the app’s storage or browser data."
+          "Service-provider technical logs and backups, if retained, follow the providers’ retention policies rather than immediate active-account deletion. Preferences and Al-Qoffa basket choices saved only on your device may remain until you clear the app’s storage or browser data."
         ]
       },
       {

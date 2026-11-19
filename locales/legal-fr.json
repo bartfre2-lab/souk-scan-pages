@@ -1,15 +1,16 @@
 {
   "privacy": {
     "title": "Politique de confidentialité",
-    "updated": "Dernière mise à jour : 20 octobre 2026",
+    "updated": "Dernière mise à jour : 19 novembre 2026",
     "intro": "SOUK-SCAN est une application participative d’information sur les prix alimentaires au Maroc (identifiant Android <bdi>com.soukscan.app</bdi>). Cette politique décrit le traitement des informations dans l’application et sur ce site. Pour toute question ou demande relative à vos données, contactez <a href=\"mailto:sanamdev@soukscan.online\">sanamdev@soukscan.online</a>.",
-    "description": "Traitement des données de compte, des prix signalés, de la région, des autorisations de localisation et des demandes de suppression dans SOUK-SCAN.",
+    "description": "Traitement des données de compte, des prix signalés, des saisies de la Calculette, de la région, des autorisations de localisation et des demandes de suppression dans SOUK-SCAN.",
     "sections": [
       {
         "title": "Informations traitées par l’application",
         "paragraphs": [
-          "Les informations de compte comprennent votre adresse e-mail, votre identifiant de compte et les données nécessaires à l’authentification. La connexion Google peut aussi transmettre des informations de profil au prestataire d’authentification. Nous enregistrons l’acceptation des conditions de l’application.",
-          "Un prix signalé comprend le produit, le prix, la région, la date et l’identifiant de compte nécessaire à la gestion de vos contributions. Les commentaires comprennent la catégorie, le message et l’identifiant de compte que vous envoyez."
+          "Les informations de compte comprennent votre adresse e-mail, votre identifiant de compte et les données nécessaires à l’authentification. La connexion Google peut aussi transmettre des informations de profil au prestataire d’authentification. Nous enregistrons l’acceptation des conditions de l’application et la version acceptée.",
+          "Un prix signalé comprend le produit, le prix, la région, la date et l’identifiant de compte nécessaire à la gestion de vos contributions. Les commentaires comprennent la catégorie, le message et l’identifiant de compte que vous envoyez.",
+          "Si vous utilisez l’onglet Calculette, nous enregistrons aussi ce que vous y saisissez, rattaché à votre compte : voir « Vos saisies dans la Calculette » ci-dessous."
         ]
       },
       {
@@ -20,9 +21,34 @@
         ]
       },
       {
+        "title": "Vos saisies dans la Calculette",
+        "paragraphs": [
+          "L’onglet Calculette est une calculette de courses. Chaque jour où vous l’utilisez, vous pouvez saisir des commerçants (avec un nom facultatif de 40 caractères au plus que vous choisissez), les produits achetés, le prix au kilo (ou à l’œuf) et la quantité, en kilos ou en pièces pour les œufs. L’application calcule sur votre téléphone les totaux par ligne, par commerçant et le total général à partir de ces saisies ; ces totaux ne sont pas enregistrés séparément.",
+          "Ces saisies sont enregistrées sur nos serveurs et rattachées à votre compte. Le propriétaire de l’application peut les consulter, compte par compte, afin d’améliorer le service et de comprendre ce que les gens achètent. Elles ne sont pas affichées aux autres utilisateurs, ni vendues, ni utilisées à des fins publicitaires.",
+          "Lorsque vous ajoutez ou modifiez un prix dans la Calculette, l’application l’envoie aussi, avec le produit, votre région et la date, comme prix participatif, de la même façon que tout prix que vous signalez. La quantité, le total et le nom du commerçant ne sont pas envoyés avec lui. Les autres utilisateurs ne voient les prix participatifs que sous forme d’estimations agrégées. Vous ne pouvez pas retirer un prix participatif déjà envoyé, mais vous pouvez le corriger le jour même.",
+          "Vous pouvez modifier une liste de la Calculette le jour où vous l’avez faite ; ensuite elle est en lecture seule. La Calculette garde aussi une copie sur votre téléphone pour fonctionner sans connexion, et l’envoie dès que le téléphone est de nouveau en ligne. Une liste qui nous parvient en retard est encore acceptée pendant deux jours au plus. Utilisez-la sur un seul téléphone à la fois. Si vous désinstallez l’application ou effacez ses données, ce qui n’a pas encore été envoyé est perdu. La déconnexion supprime la copie de votre téléphone (l’application vous prévient d’abord si des éléments n’ont pas été envoyés).",
+          "Vos saisies de la Calculette sont supprimées lorsque vous supprimez votre compte."
+        ]
+      },
+      {
+        "title": "Panier Al-Qoffa",
+        "paragraphs": [
+          "L’onglet Al-Qoffa présente un panier de référence typique, chiffré avec des données que l’application possède déjà. Les produits, les quantités et vos choix de semaine, de mois et de foyer restent uniquement sur votre appareil et ne sont jamais envoyés à nos serveurs. Pour afficher le panier par défaut, l’application télécharge la liste et les facteurs que nous publions, comme toute information publique ; rien de votre propre panier n’est envoyé."
+        ]
+      },
+      {
         "title": "Informations visibles par les autres utilisateurs",
         "paragraphs": [
-          "Les prix participatifs publics sont des estimations agrégées. Votre adresse e-mail, votre identité et vos contributions individuelles ne sont pas affichées publiquement. Les commentaires restent réservés aux responsables du service. Les références de gros datées, lorsqu’elles sont disponibles, constituent une source distincte."
+          "Les prix participatifs publics sont des estimations agrégées. Votre adresse e-mail, votre identité et vos contributions individuelles ne sont pas affichées publiquement. Les commentaires restent réservés aux responsables du service. Vos saisies de la Calculette et votre panier Al-Qoffa ne sont pas affichés aux autres utilisateurs ; le propriétaire de l’application peut consulter les saisies de la Calculette, comme indiqué ci-dessous. Les références de gros datées, lorsqu’elles sont disponibles, constituent une source distincte."
+        ]
+      },
+      {
+        "title": "Actualités, vérification de version et fenêtre de notation",
+        "paragraphs": [
+          "L’onglet Infos affiche les actualités que nous publions. L’application les télécharge depuis notre serveur (Supabase) et les images sont chargées depuis notre propre site, <bdi>soukscan.online</bdi>, hébergé par GitHub Pages. Comme toute requête web, cela révèle l’adresse internet de votre appareil à ces services. L’application conserve sur votre appareil les dernières actualités, pour que l’onglet s’ouvre sans connexion, ainsi qu’un repère de la dernière actualité vue, pour signaler les nouvelles.",
+          "Au démarrage et quand vous revenez dans l’application, elle lit deux numéros publics sur notre serveur (la version la plus récente et la plus ancienne encore autorisée) pour vous indiquer si une mise à jour est disponible ou nécessaire. Elle mémorise sur l’appareil que vous avez fermé un avis de mise à jour. Le bouton de mise à jour ouvre la page de SOUK-SCAN sur Google Play, dont le traitement relève de Google.",
+          "Ces requêtes demandent uniquement des informations publiques et n’y ajoutent ni vos saisies ni données personnelles. Comme toute requête vers notre serveur, elles comportent les informations techniques de connexion décrites plus haut et, lorsque vous êtes connecté, le jeton de session que l’application utilise pour toutes ses requêtes.",
+          "De temps en temps, l’application peut vous proposer, dans une fenêtre, de la noter sur Google Play. Ce qu’elle retient pour cela (vos jours d’ouverture récents, la date du dernier affichage et votre réponse) reste uniquement sur votre appareil ; rien ne nous est envoyé. Si vous choisissez de la noter, Google Play s’ouvre et Google traite ce que vous y faites."
         ]
       },
       {
@@ -35,35 +61,35 @@
       {
         "title": "Stockage sur votre appareil",
         "paragraphs": [
-          "L’application conserve sur votre appareil des préférences telles que la langue, l’apparence, la région et les favoris, ainsi que les informations de session nécessaires à votre connexion. Ce site conserve les préférences de langue, d’apparence et de région et l’envoie à Supabase pour consulter les estimations régionales. Il ne demande pas votre position GPS et ne vous connecte pas à un compte. Vous pouvez les effacer dans les paramètres de stockage de l’appareil ou du navigateur."
+          "L’application conserve sur votre appareil des préférences telles que la langue, l’apparence, la région et les favoris, ainsi que les informations de session nécessaires à votre connexion. Elle y conserve aussi vos choix du panier Al-Qoffa, une copie de vos saisies récentes de la Calculette (y compris celles qui n’ont pas encore été envoyées), les dernières actualités publiées et un repère de la dernière actualité vue, l’avis de mise à jour que vous avez fermé et l’état de la fenêtre de notation. Ce site conserve les préférences de langue, d’apparence et de région et l’envoie à Supabase pour consulter les estimations régionales. Il ne demande pas votre position GPS et ne vous connecte pas à un compte. Vous pouvez les effacer dans les paramètres de stockage de l’appareil ou du navigateur."
         ]
       },
       {
         "title": "Conservation et suppression",
         "paragraphs": [
-          "Les informations du compte, les prix liés au compte, les commentaires et les acceptations des conditions sont conservés tant qu’ils sont nécessaires à la gestion du compte et du service, jusqu’à la suppression du compte ou à leur retrait anticipé. Une période limitée d’affichage des prix ne signifie pas que les contributions sources sont automatiquement effacées à son terme.",
-          "La suppression confirmée dans l’application retire le compte actif, les prix qui lui sont liés et ses commentaires. Les demandes valides envoyées par e-mail sont traitées dans les 30 jours calendaires suivant leur réception. Consultez la page <a href=\"@@account-deletion@@\">de suppression du compte</a> pour connaître la procédure.",
-          "Les journaux techniques et les copies de sauvegarde éventuellement conservés par les prestataires suivent leurs règles de conservation. La suppression du compte actif ne garantit pas l’effacement immédiat de chaque journal ou sauvegarde. Les préférences locales peuvent rester jusqu’à l’effacement du stockage de l’application ou du navigateur."
+          "Les informations du compte, les prix liés au compte, les saisies de la Calculette, les commentaires et les acceptations des conditions sont conservés tant qu’ils sont nécessaires à la gestion du compte et du service, jusqu’à la suppression du compte ou à leur retrait anticipé. Une période limitée d’affichage des prix ne signifie pas que les contributions sources sont automatiquement effacées à son terme.",
+          "La suppression confirmée dans l’application retire le compte actif, les prix qui lui sont liés, ses saisies de la Calculette et ses commentaires. Les demandes valides envoyées par e-mail sont traitées dans les 30 jours calendaires suivant leur réception. Consultez la page <a href=\"@@account-deletion@@\">de suppression du compte</a> pour connaître la procédure.",
+          "Les journaux techniques et les copies de sauvegarde éventuellement conservés par les prestataires suivent leurs règles de conservation. La suppression du compte actif ne garantit pas l’effacement immédiat de chaque journal ou sauvegarde. Les préférences locales (dont votre panier Al-Qoffa) peuvent rester jusqu’à l’effacement du stockage de l’application ou du navigateur."
         ]
       },
       {
         "title": "Sécurité et choix disponibles",
         "paragraphs": [
           "L’application communique avec son serveur par HTTPS et utilise des contrôles d’accès authentifiés pour les données privées. Aucun service en ligne ne peut garantir une sécurité absolue. L’application ne reçoit jamais votre mot de passe Google.",
-          "Vous pouvez refuser la localisation, choisir une région manuellement, modifier la langue ou l’apparence, vous déconnecter ou demander la suppression du compte. Pour une demande d’accès, de rectification ou toute autre question, écrivez à <a href=\"mailto:sanamdev@soukscan.online\">sanamdev@soukscan.online</a>."
+          "Vous pouvez refuser la localisation, choisir une région manuellement, modifier la langue ou l’apparence, ne pas utiliser la Calculette, vous déconnecter ou demander la suppression du compte. Pour une demande d’accès, de rectification ou toute autre question, écrivez à <a href=\"mailto:sanamdev@soukscan.online\">sanamdev@soukscan.online</a>."
         ]
       },
       {
         "title": "Modifications et contact",
         "paragraphs": [
-          "Nous mettons cette page à jour lorsque les pratiques du service évoluent. La date ci-dessus identifie cette révision de la politique du site. Vous pouvez joindre les responsables de SOUK-SCAN à <a href=\"mailto:sanamdev@soukscan.online\">sanamdev@soukscan.online</a>."
+          "Nous mettons cette page à jour lorsque les pratiques du service évoluent. La date ci-dessus identifie cette révision de la politique du site. Lorsque les conditions ou cette politique changent de façon importante, l’application vous demande d’examiner et d’accepter la nouvelle version avant de continuer ; la version 1.2.0 vous demande d’accepter la version mise à jour une fois. Vous pouvez joindre les responsables de SOUK-SCAN à <a href=\"mailto:sanamdev@soukscan.online\">sanamdev@soukscan.online</a>."
         ]
       }
     ]
   },
   "account-deletion": {
     "title": "Supprimer votre compte SOUK-SCAN",
-    "updated": "Dernière mise à jour : 20 octobre 2026",
+    "updated": "Dernière mise à jour : 19 novembre 2026",
     "intro": "Vous pouvez supprimer définitivement votre compte SOUK-SCAN et les données qui lui sont liées dans l’application ou en faire la demande par e-mail. Cette page concerne <bdi>com.soukscan.app</bdi>.",
     "description": "Supprimez votre compte SOUK-SCAN dans l’application ou par e-mail. Données supprimées, procédure et délai de traitement.",
     "sections": [
@@ -84,13 +110,13 @@
       {
         "title": "Données supprimées",
         "paragraphs": [
-          "La suppression retire le compte actif, l’identité de connexion, les prix que vous avez signalés, vos commentaires et les acceptations des conditions qui lui sont liées. Vos prix cessent de contribuer aux estimations calculées à partir des contributions restantes. Votre identité et vos contributions individuelles n’étaient pas affichées publiquement."
+          "La suppression retire le compte actif, l’identité de connexion, les prix que vous avez signalés, vos saisies de la Calculette, vos commentaires et les acceptations des conditions qui lui sont liées. Vos prix cessent de contribuer aux estimations calculées à partir des contributions restantes. Votre identité et vos contributions individuelles n’étaient pas affichées publiquement."
         ]
       },
       {
         "title": "Données pouvant subsister",
         "paragraphs": [
-          "Les éventuels journaux techniques et sauvegardes des prestataires suivent leurs politiques de conservation, distinctes de la suppression du compte actif. Les préférences locales peuvent subsister jusqu’à l’effacement du stockage de l’application ou des données du navigateur."
+          "Les éventuels journaux techniques et sauvegardes des prestataires suivent leurs politiques de conservation, distinctes de la suppression du compte actif. Les préférences locales et vos choix du panier Al-Qoffa peuvent subsister jusqu’à l’effacement du stockage de l’application ou des données du navigateur."
         ]
       },
       {
