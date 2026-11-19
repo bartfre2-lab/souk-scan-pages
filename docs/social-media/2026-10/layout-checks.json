@@ -1,0 +1,2195 @@
+[
+  {
+    "file": "posts/en/01-know-before-you-buy.jpg",
+    "language": "en",
+    "logo": {
+      "x": 64,
+      "y": 44,
+      "right": 136,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 64,
+      "y": 166,
+      "right": 519,
+      "bottom": 615.109375,
+      "width": 455
+    },
+    "headlineFont": 59,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "phone": {
+      "x": 623,
+      "y": 216,
+      "right": 1008.97998046875,
+      "bottom": 934.6199951171875,
+      "width": 385.97998046875
+    },
+    "cta": {
+      "x": 64,
+      "y": 800,
+      "right": 317.59375,
+      "bottom": 922,
+      "width": 253.59375
+    },
+    "collision": false,
+    "ctaCollision": false
+  },
+  {
+    "file": "posts/en/02-everyday-food.jpg",
+    "language": "en",
+    "logo": {
+      "x": 64,
+      "y": 44,
+      "right": 136,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 72,
+      "y": 139,
+      "right": 1008,
+      "bottom": 552.09375,
+      "width": 936
+    },
+    "headlineFont": 64,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "visual": {
+      "x": 72,
+      "y": 448.09375,
+      "right": 1008,
+      "bottom": 552.09375,
+      "width": 936
+    },
+    "collision": false
+  },
+  {
+    "file": "posts/en/03-choose-your-region.jpg",
+    "language": "en",
+    "logo": {
+      "x": 64,
+      "y": 44,
+      "right": 136,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 64,
+      "y": 166,
+      "right": 519,
+      "bottom": 600.8125,
+      "width": 455
+    },
+    "headlineFont": 72,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "phone": {
+      "x": 623,
+      "y": 216,
+      "right": 1008.97998046875,
+      "bottom": 934.6199951171875,
+      "width": 385.97998046875
+    },
+    "cta": {
+      "x": 64,
+      "y": 800,
+      "right": 317.59375,
+      "bottom": 922,
+      "width": 253.59375
+    },
+    "collision": false,
+    "ctaCollision": false
+  },
+  {
+    "file": "posts/en/04-two-price-sources.jpg",
+    "language": "en",
+    "logo": {
+      "x": 64,
+      "y": 44,
+      "right": 136,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 72,
+      "y": 139,
+      "right": 1008,
+      "bottom": 554.984375,
+      "width": 936
+    },
+    "headlineFont": 64,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "visual": {
+      "x": 72,
+      "y": 448.09375,
+      "right": 1008,
+      "bottom": 554.984375,
+      "width": 936
+    },
+    "collision": false
+  },
+  {
+    "file": "posts/en/05-share-a-price.jpg",
+    "language": "en",
+    "logo": {
+      "x": 64,
+      "y": 44,
+      "right": 136,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 64,
+      "y": 166,
+      "right": 519,
+      "bottom": 600.8125,
+      "width": 455
+    },
+    "headlineFont": 72,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "phone": {
+      "x": 623,
+      "y": 216,
+      "right": 1008.97998046875,
+      "bottom": 934.6199951171875,
+      "width": 385.97998046875
+    },
+    "cta": {
+      "x": 64,
+      "y": 800,
+      "right": 317.59375,
+      "bottom": 922,
+      "width": 253.59375
+    },
+    "collision": false,
+    "ctaCollision": false
+  },
+  {
+    "file": "posts/en/06-keep-your-favorites.jpg",
+    "language": "en",
+    "logo": {
+      "x": 64,
+      "y": 44,
+      "right": 136,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 64,
+      "y": 166,
+      "right": 519,
+      "bottom": 578.4375,
+      "width": 455
+    },
+    "headlineFont": 62,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "phone": {
+      "x": 623,
+      "y": 216,
+      "right": 1008.97998046875,
+      "bottom": 934.6199951171875,
+      "width": 385.97998046875
+    },
+    "cta": {
+      "x": 64,
+      "y": 800,
+      "right": 317.59375,
+      "bottom": 922,
+      "width": 253.59375
+    },
+    "collision": false,
+    "ctaCollision": false
+  },
+  {
+    "file": "carousels/en/01-why-souk-scan/01-purpose.jpg",
+    "language": "en",
+    "logo": {
+      "x": 64,
+      "y": 44,
+      "right": 136,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 64,
+      "y": 166,
+      "right": 519,
+      "bottom": 532.796875,
+      "width": 455
+    },
+    "headlineFont": 61,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "phone": {
+      "x": 623,
+      "y": 216,
+      "right": 1008.97998046875,
+      "bottom": 934.6199951171875,
+      "width": 385.97998046875
+    },
+    "cta": {
+      "x": 64,
+      "y": 800,
+      "right": 317.59375,
+      "bottom": 922,
+      "width": 253.59375
+    },
+    "collision": false,
+    "ctaCollision": false
+  },
+  {
+    "file": "carousels/en/01-why-souk-scan/02-people.jpg",
+    "language": "en",
+    "logo": {
+      "x": 64,
+      "y": 44,
+      "right": 136,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 72,
+      "y": 139,
+      "right": 1008,
+      "bottom": 552.09375,
+      "width": 936
+    },
+    "headlineFont": 64,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "visual": {
+      "x": 72,
+      "y": 448.09375,
+      "right": 1008,
+      "bottom": 552.09375,
+      "width": 936
+    },
+    "collision": false
+  },
+  {
+    "file": "carousels/en/01-why-souk-scan/03-region.jpg",
+    "language": "en",
+    "logo": {
+      "x": 64,
+      "y": 44,
+      "right": 136,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 64,
+      "y": 166,
+      "right": 519,
+      "bottom": 600.8125,
+      "width": 455
+    },
+    "headlineFont": 72,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "phone": {
+      "x": 623,
+      "y": 216,
+      "right": 1008.97998046875,
+      "bottom": 934.6199951171875,
+      "width": 385.97998046875
+    },
+    "cta": {
+      "x": 64,
+      "y": 800,
+      "right": 317.59375,
+      "bottom": 922,
+      "width": 253.59375
+    },
+    "collision": false,
+    "ctaCollision": false
+  },
+  {
+    "file": "carousels/en/01-why-souk-scan/04-categories.jpg",
+    "language": "en",
+    "logo": {
+      "x": 64,
+      "y": 44,
+      "right": 136,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 72,
+      "y": 139,
+      "right": 1008,
+      "bottom": 552.09375,
+      "width": 936
+    },
+    "headlineFont": 64,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "visual": {
+      "x": 72,
+      "y": 448.09375,
+      "right": 1008,
+      "bottom": 552.09375,
+      "width": 936
+    },
+    "collision": false
+  },
+  {
+    "file": "carousels/en/01-why-souk-scan/05-start.jpg",
+    "language": "en",
+    "logo": {
+      "x": 64,
+      "y": 44,
+      "right": 136,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 64,
+      "y": 166,
+      "right": 519,
+      "bottom": 708.046875,
+      "width": 455
+    },
+    "headlineFont": 67,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "phone": {
+      "x": 623,
+      "y": 216,
+      "right": 1008.97998046875,
+      "bottom": 934.6199951171875,
+      "width": 385.97998046875
+    },
+    "cta": {
+      "x": 64,
+      "y": 800,
+      "right": 317.59375,
+      "bottom": 922,
+      "width": 253.59375
+    },
+    "collision": false,
+    "ctaCollision": false
+  },
+  {
+    "file": "carousels/en/02-understand-the-prices/01-sources.jpg",
+    "language": "en",
+    "logo": {
+      "x": 64,
+      "y": 44,
+      "right": 136,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 72,
+      "y": 139,
+      "right": 1008,
+      "bottom": 554.984375,
+      "width": 936
+    },
+    "headlineFont": 64,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "visual": {
+      "x": 72,
+      "y": 448.09375,
+      "right": 1008,
+      "bottom": 554.984375,
+      "width": 936
+    },
+    "collision": false
+  },
+  {
+    "file": "carousels/en/02-understand-the-prices/02-community.jpg",
+    "language": "en",
+    "logo": {
+      "x": 64,
+      "y": 44,
+      "right": 136,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 72,
+      "y": 139,
+      "right": 1008,
+      "bottom": 594.25,
+      "width": 936
+    },
+    "headlineFont": 64,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "visual": {
+      "x": 72,
+      "y": 490.25,
+      "right": 1008,
+      "bottom": 594.25,
+      "width": 936
+    },
+    "collision": false
+  },
+  {
+    "file": "carousels/en/02-understand-the-prices/03-wholesale.jpg",
+    "language": "en",
+    "logo": {
+      "x": 64,
+      "y": 44,
+      "right": 136,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 72,
+      "y": 139,
+      "right": 1008,
+      "bottom": 601,
+      "width": 936
+    },
+    "headlineFont": 64,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "visual": {
+      "x": 72,
+      "y": 490.25,
+      "right": 1008,
+      "bottom": 601,
+      "width": 936
+    },
+    "collision": false
+  },
+  {
+    "file": "carousels/en/02-understand-the-prices/04-units.jpg",
+    "language": "en",
+    "logo": {
+      "x": 64,
+      "y": 44,
+      "right": 136,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 72,
+      "y": 139,
+      "right": 1008,
+      "bottom": 565.984375,
+      "width": 936
+    },
+    "headlineFont": 64,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "visual": {
+      "x": 72,
+      "y": 448.09375,
+      "right": 1008,
+      "bottom": 565.984375,
+      "width": 936
+    },
+    "collision": false
+  },
+  {
+    "file": "carousels/en/02-understand-the-prices/05-no-data.jpg",
+    "language": "en",
+    "logo": {
+      "x": 64,
+      "y": 44,
+      "right": 136,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 72,
+      "y": 139,
+      "right": 1008,
+      "bottom": 552.09375,
+      "width": 936
+    },
+    "headlineFont": 64,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "visual": {
+      "x": 72,
+      "y": 448.09375,
+      "right": 1008,
+      "bottom": 552.09375,
+      "width": 936
+    },
+    "collision": false
+  },
+  {
+    "file": "carousels/en/03-contribute-a-price/01-contribute.jpg",
+    "language": "en",
+    "logo": {
+      "x": 64,
+      "y": 44,
+      "right": 136,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 64,
+      "y": 166,
+      "right": 519,
+      "bottom": 569.46875,
+      "width": 455
+    },
+    "headlineFont": 58,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "phone": {
+      "x": 623,
+      "y": 216,
+      "right": 1008.97998046875,
+      "bottom": 934.6199951171875,
+      "width": 385.97998046875
+    },
+    "cta": {
+      "x": 64,
+      "y": 800,
+      "right": 317.59375,
+      "bottom": 922,
+      "width": 253.59375
+    },
+    "collision": false,
+    "ctaCollision": false
+  },
+  {
+    "file": "carousels/en/03-contribute-a-price/02-select.jpg",
+    "language": "en",
+    "logo": {
+      "x": 64,
+      "y": 44,
+      "right": 136,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 64,
+      "y": 166,
+      "right": 519,
+      "bottom": 556.03125,
+      "width": 455
+    },
+    "headlineFont": 52,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "phone": {
+      "x": 623,
+      "y": 216,
+      "right": 1008.97998046875,
+      "bottom": 934.6199951171875,
+      "width": 385.97998046875
+    },
+    "cta": {
+      "x": 64,
+      "y": 800,
+      "right": 317.59375,
+      "bottom": 922,
+      "width": 253.59375
+    },
+    "collision": false,
+    "ctaCollision": false
+  },
+  {
+    "file": "carousels/en/03-contribute-a-price/03-enter.jpg",
+    "language": "en",
+    "logo": {
+      "x": 64,
+      "y": 44,
+      "right": 136,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 72,
+      "y": 139,
+      "right": 1008,
+      "bottom": 565.984375,
+      "width": 936
+    },
+    "headlineFont": 64,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "visual": {
+      "x": 72,
+      "y": 448.09375,
+      "right": 1008,
+      "bottom": 565.984375,
+      "width": 936
+    },
+    "collision": false
+  },
+  {
+    "file": "carousels/en/03-contribute-a-price/04-edit.jpg",
+    "language": "en",
+    "logo": {
+      "x": 64,
+      "y": 44,
+      "right": 136,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 72,
+      "y": 139,
+      "right": 1008,
+      "bottom": 552.09375,
+      "width": 936
+    },
+    "headlineFont": 64,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "visual": {
+      "x": 72,
+      "y": 448.09375,
+      "right": 1008,
+      "bottom": 552.09375,
+      "width": 936
+    },
+    "collision": false
+  },
+  {
+    "file": "carousels/en/03-contribute-a-price/05-together.jpg",
+    "language": "en",
+    "logo": {
+      "x": 64,
+      "y": 44,
+      "right": 136,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 64,
+      "y": 166,
+      "right": 519,
+      "bottom": 674.15625,
+      "width": 455
+    },
+    "headlineFont": 66,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "phone": {
+      "x": 623,
+      "y": 216,
+      "right": 1008.97998046875,
+      "bottom": 934.6199951171875,
+      "width": 385.97998046875
+    },
+    "cta": {
+      "x": 64,
+      "y": 800,
+      "right": 317.59375,
+      "bottom": 922,
+      "width": 253.59375
+    },
+    "collision": false,
+    "ctaCollision": false
+  },
+  {
+    "file": "posts/fr/01-know-before-you-buy.jpg",
+    "language": "fr",
+    "logo": {
+      "x": 64,
+      "y": 44,
+      "right": 136,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 64,
+      "y": 166,
+      "right": 519,
+      "bottom": 651.78125,
+      "width": 455
+    },
+    "headlineFont": 56,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "phone": {
+      "x": 623,
+      "y": 216,
+      "right": 1008.97998046875,
+      "bottom": 934.6199951171875,
+      "width": 385.97998046875
+    },
+    "cta": {
+      "x": 64,
+      "y": 800,
+      "right": 398.75,
+      "bottom": 922,
+      "width": 334.75
+    },
+    "collision": false,
+    "ctaCollision": false
+  },
+  {
+    "file": "posts/fr/02-everyday-food.jpg",
+    "language": "fr",
+    "logo": {
+      "x": 64,
+      "y": 44,
+      "right": 136,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 72,
+      "y": 139,
+      "right": 1008,
+      "bottom": 552.09375,
+      "width": 936
+    },
+    "headlineFont": 64,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "visual": {
+      "x": 72,
+      "y": 448.09375,
+      "right": 1008,
+      "bottom": 552.09375,
+      "width": 936
+    },
+    "collision": false
+  },
+  {
+    "file": "posts/fr/03-choose-your-region.jpg",
+    "language": "fr",
+    "logo": {
+      "x": 64,
+      "y": 44,
+      "right": 136,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 64,
+      "y": 166,
+      "right": 519,
+      "bottom": 687.59375,
+      "width": 455
+    },
+    "headlineFont": 72,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "phone": {
+      "x": 623,
+      "y": 216,
+      "right": 1008.97998046875,
+      "bottom": 934.6199951171875,
+      "width": 385.97998046875
+    },
+    "cta": {
+      "x": 64,
+      "y": 800,
+      "right": 398.75,
+      "bottom": 922,
+      "width": 334.75
+    },
+    "collision": false,
+    "ctaCollision": false
+  },
+  {
+    "file": "posts/fr/04-two-price-sources.jpg",
+    "language": "fr",
+    "logo": {
+      "x": 64,
+      "y": 44,
+      "right": 136,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 72,
+      "y": 139,
+      "right": 1008,
+      "bottom": 597.140625,
+      "width": 936
+    },
+    "headlineFont": 64,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "visual": {
+      "x": 72,
+      "y": 490.25,
+      "right": 1008,
+      "bottom": 597.140625,
+      "width": 936
+    },
+    "collision": false
+  },
+  {
+    "file": "posts/fr/05-share-a-price.jpg",
+    "language": "fr",
+    "logo": {
+      "x": 64,
+      "y": 44,
+      "right": 136,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 64,
+      "y": 166,
+      "right": 519,
+      "bottom": 567.21875,
+      "width": 455
+    },
+    "headlineFont": 57,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "phone": {
+      "x": 623,
+      "y": 216,
+      "right": 1008.97998046875,
+      "bottom": 934.6199951171875,
+      "width": 385.97998046875
+    },
+    "cta": {
+      "x": 64,
+      "y": 800,
+      "right": 398.75,
+      "bottom": 922,
+      "width": 334.75
+    },
+    "collision": false,
+    "ctaCollision": false
+  },
+  {
+    "file": "posts/fr/06-keep-your-favorites.jpg",
+    "language": "fr",
+    "logo": {
+      "x": 64,
+      "y": 44,
+      "right": 136,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 64,
+      "y": 166,
+      "right": 519,
+      "bottom": 565,
+      "width": 455
+    },
+    "headlineFont": 56,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "phone": {
+      "x": 623,
+      "y": 216,
+      "right": 1008.97998046875,
+      "bottom": 934.6199951171875,
+      "width": 385.97998046875
+    },
+    "cta": {
+      "x": 64,
+      "y": 800,
+      "right": 398.75,
+      "bottom": 922,
+      "width": 334.75
+    },
+    "collision": false,
+    "ctaCollision": false
+  },
+  {
+    "file": "carousels/fr/01-why-souk-scan/01-purpose.jpg",
+    "language": "fr",
+    "logo": {
+      "x": 64,
+      "y": 44,
+      "right": 136,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 64,
+      "y": 166,
+      "right": 519,
+      "bottom": 510.390625,
+      "width": 455
+    },
+    "headlineFont": 51,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "phone": {
+      "x": 623,
+      "y": 216,
+      "right": 1008.97998046875,
+      "bottom": 934.6199951171875,
+      "width": 385.97998046875
+    },
+    "cta": {
+      "x": 64,
+      "y": 800,
+      "right": 398.75,
+      "bottom": 922,
+      "width": 334.75
+    },
+    "collision": false,
+    "ctaCollision": false
+  },
+  {
+    "file": "carousels/fr/01-why-souk-scan/02-people.jpg",
+    "language": "fr",
+    "logo": {
+      "x": 64,
+      "y": 44,
+      "right": 136,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 72,
+      "y": 139,
+      "right": 1008,
+      "bottom": 552.09375,
+      "width": 936
+    },
+    "headlineFont": 64,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "visual": {
+      "x": 72,
+      "y": 448.09375,
+      "right": 1008,
+      "bottom": 552.09375,
+      "width": 936
+    },
+    "collision": false
+  },
+  {
+    "file": "carousels/fr/01-why-souk-scan/03-region.jpg",
+    "language": "fr",
+    "logo": {
+      "x": 64,
+      "y": 44,
+      "right": 136,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 64,
+      "y": 166,
+      "right": 519,
+      "bottom": 660.71875,
+      "width": 455
+    },
+    "headlineFont": 60,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "phone": {
+      "x": 623,
+      "y": 216,
+      "right": 1008.97998046875,
+      "bottom": 934.6199951171875,
+      "width": 385.97998046875
+    },
+    "cta": {
+      "x": 64,
+      "y": 800,
+      "right": 398.75,
+      "bottom": 922,
+      "width": 334.75
+    },
+    "collision": false,
+    "ctaCollision": false
+  },
+  {
+    "file": "carousels/fr/01-why-souk-scan/04-categories.jpg",
+    "language": "fr",
+    "logo": {
+      "x": 64,
+      "y": 44,
+      "right": 136,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 72,
+      "y": 139,
+      "right": 1008,
+      "bottom": 552.09375,
+      "width": 936
+    },
+    "headlineFont": 64,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "visual": {
+      "x": 72,
+      "y": 448.09375,
+      "right": 1008,
+      "bottom": 552.09375,
+      "width": 936
+    },
+    "collision": false
+  },
+  {
+    "file": "carousels/fr/01-why-souk-scan/05-start.jpg",
+    "language": "fr",
+    "logo": {
+      "x": 64,
+      "y": 44,
+      "right": 136,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 64,
+      "y": 166,
+      "right": 519,
+      "bottom": 697.96875,
+      "width": 455
+    },
+    "headlineFont": 64,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "phone": {
+      "x": 623,
+      "y": 216,
+      "right": 1008.97998046875,
+      "bottom": 934.6199951171875,
+      "width": 385.97998046875
+    },
+    "cta": {
+      "x": 64,
+      "y": 800,
+      "right": 398.75,
+      "bottom": 922,
+      "width": 334.75
+    },
+    "collision": false,
+    "ctaCollision": false
+  },
+  {
+    "file": "carousels/fr/02-understand-the-prices/01-sources.jpg",
+    "language": "fr",
+    "logo": {
+      "x": 64,
+      "y": 44,
+      "right": 136,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 72,
+      "y": 139,
+      "right": 1008,
+      "bottom": 554.984375,
+      "width": 936
+    },
+    "headlineFont": 64,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "visual": {
+      "x": 72,
+      "y": 448.09375,
+      "right": 1008,
+      "bottom": 554.984375,
+      "width": 936
+    },
+    "collision": false
+  },
+  {
+    "file": "carousels/fr/02-understand-the-prices/02-community.jpg",
+    "language": "fr",
+    "logo": {
+      "x": 64,
+      "y": 44,
+      "right": 136,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 72,
+      "y": 139,
+      "right": 1008,
+      "bottom": 594.25,
+      "width": 936
+    },
+    "headlineFont": 64,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "visual": {
+      "x": 72,
+      "y": 490.25,
+      "right": 1008,
+      "bottom": 594.25,
+      "width": 936
+    },
+    "collision": false
+  },
+  {
+    "file": "carousels/fr/02-understand-the-prices/03-wholesale.jpg",
+    "language": "fr",
+    "logo": {
+      "x": 64,
+      "y": 44,
+      "right": 136,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 72,
+      "y": 139,
+      "right": 1008,
+      "bottom": 601,
+      "width": 936
+    },
+    "headlineFont": 64,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "visual": {
+      "x": 72,
+      "y": 490.25,
+      "right": 1008,
+      "bottom": 601,
+      "width": 936
+    },
+    "collision": false
+  },
+  {
+    "file": "carousels/fr/02-understand-the-prices/04-units.jpg",
+    "language": "fr",
+    "logo": {
+      "x": 64,
+      "y": 44,
+      "right": 136,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 72,
+      "y": 139,
+      "right": 1008,
+      "bottom": 565.984375,
+      "width": 936
+    },
+    "headlineFont": 64,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "visual": {
+      "x": 72,
+      "y": 448.09375,
+      "right": 1008,
+      "bottom": 565.984375,
+      "width": 936
+    },
+    "collision": false
+  },
+  {
+    "file": "carousels/fr/02-understand-the-prices/05-no-data.jpg",
+    "language": "fr",
+    "logo": {
+      "x": 64,
+      "y": 44,
+      "right": 136,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 72,
+      "y": 139,
+      "right": 1008,
+      "bottom": 594.25,
+      "width": 936
+    },
+    "headlineFont": 64,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "visual": {
+      "x": 72,
+      "y": 490.25,
+      "right": 1008,
+      "bottom": 594.25,
+      "width": 936
+    },
+    "collision": false
+  },
+  {
+    "file": "carousels/fr/03-contribute-a-price/01-contribute.jpg",
+    "language": "fr",
+    "logo": {
+      "x": 64,
+      "y": 44,
+      "right": 136,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 64,
+      "y": 166,
+      "right": 519,
+      "bottom": 606.140625,
+      "width": 455
+    },
+    "headlineFont": 55,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "phone": {
+      "x": 623,
+      "y": 216,
+      "right": 1008.97998046875,
+      "bottom": 934.6199951171875,
+      "width": 385.97998046875
+    },
+    "cta": {
+      "x": 64,
+      "y": 800,
+      "right": 398.75,
+      "bottom": 922,
+      "width": 334.75
+    },
+    "collision": false,
+    "ctaCollision": false
+  },
+  {
+    "file": "carousels/fr/03-contribute-a-price/02-select.jpg",
+    "language": "fr",
+    "logo": {
+      "x": 64,
+      "y": 44,
+      "right": 136,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 64,
+      "y": 166,
+      "right": 519,
+      "bottom": 571.71875,
+      "width": 455
+    },
+    "headlineFont": 59,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "phone": {
+      "x": 623,
+      "y": 216,
+      "right": 1008.97998046875,
+      "bottom": 934.6199951171875,
+      "width": 385.97998046875
+    },
+    "cta": {
+      "x": 64,
+      "y": 800,
+      "right": 398.75,
+      "bottom": 922,
+      "width": 334.75
+    },
+    "collision": false,
+    "ctaCollision": false
+  },
+  {
+    "file": "carousels/fr/03-contribute-a-price/03-enter.jpg",
+    "language": "fr",
+    "logo": {
+      "x": 64,
+      "y": 44,
+      "right": 136,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 72,
+      "y": 139,
+      "right": 1008,
+      "bottom": 565.984375,
+      "width": 936
+    },
+    "headlineFont": 64,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "visual": {
+      "x": 72,
+      "y": 448.09375,
+      "right": 1008,
+      "bottom": 565.984375,
+      "width": 936
+    },
+    "collision": false
+  },
+  {
+    "file": "carousels/fr/03-contribute-a-price/04-edit.jpg",
+    "language": "fr",
+    "logo": {
+      "x": 64,
+      "y": 44,
+      "right": 136,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 72,
+      "y": 139,
+      "right": 1008,
+      "bottom": 594.25,
+      "width": 936
+    },
+    "headlineFont": 64,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "visual": {
+      "x": 72,
+      "y": 490.25,
+      "right": 1008,
+      "bottom": 594.25,
+      "width": 936
+    },
+    "collision": false
+  },
+  {
+    "file": "carousels/fr/03-contribute-a-price/05-together.jpg",
+    "language": "fr",
+    "logo": {
+      "x": 64,
+      "y": 44,
+      "right": 136,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 64,
+      "y": 166,
+      "right": 519,
+      "bottom": 649.53125,
+      "width": 455
+    },
+    "headlineFont": 55,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "phone": {
+      "x": 623,
+      "y": 216,
+      "right": 1008.97998046875,
+      "bottom": 934.6199951171875,
+      "width": 385.97998046875
+    },
+    "cta": {
+      "x": 64,
+      "y": 800,
+      "right": 398.75,
+      "bottom": 922,
+      "width": 334.75
+    },
+    "collision": false,
+    "ctaCollision": false
+  },
+  {
+    "file": "posts/ar/01-know-before-you-buy.jpg",
+    "language": "ar",
+    "logo": {
+      "x": 944,
+      "y": 44,
+      "right": 1016,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 561,
+      "y": 166,
+      "right": 1016,
+      "bottom": 611.96875,
+      "width": 455
+    },
+    "headlineFont": 72,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "phone": {
+      "x": 44,
+      "y": 216,
+      "right": 429.97998046875,
+      "bottom": 934.6199951171875,
+      "width": 385.97998046875
+    },
+    "cta": {
+      "x": 791.03125,
+      "y": 800,
+      "right": 1016,
+      "bottom": 922,
+      "width": 224.96875
+    },
+    "collision": false,
+    "ctaCollision": false
+  },
+  {
+    "file": "posts/ar/02-everyday-food.jpg",
+    "language": "ar",
+    "logo": {
+      "x": 944,
+      "y": 44,
+      "right": 1016,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 72,
+      "y": 139,
+      "right": 1008,
+      "bottom": 522.046875,
+      "width": 936
+    },
+    "headlineFont": 64,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "visual": {
+      "x": 72,
+      "y": 418.046875,
+      "right": 1008,
+      "bottom": 522.046875,
+      "width": 936
+    },
+    "collision": false
+  },
+  {
+    "file": "posts/ar/03-choose-your-region.jpg",
+    "language": "ar",
+    "logo": {
+      "x": 944,
+      "y": 44,
+      "right": 1016,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 561,
+      "y": 166,
+      "right": 1016,
+      "bottom": 567.953125,
+      "width": 455
+    },
+    "headlineFont": 72,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "phone": {
+      "x": 44,
+      "y": 216,
+      "right": 429.97998046875,
+      "bottom": 934.6199951171875,
+      "width": 385.97998046875
+    },
+    "cta": {
+      "x": 791.03125,
+      "y": 800,
+      "right": 1016,
+      "bottom": 922,
+      "width": 224.96875
+    },
+    "collision": false,
+    "ctaCollision": false
+  },
+  {
+    "file": "posts/ar/04-two-price-sources.jpg",
+    "language": "ar",
+    "logo": {
+      "x": 944,
+      "y": 44,
+      "right": 1016,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 72,
+      "y": 139,
+      "right": 1008,
+      "bottom": 568.953125,
+      "width": 936
+    },
+    "headlineFont": 64,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "visual": {
+      "x": 72,
+      "y": 462.0625,
+      "right": 1008,
+      "bottom": 568.953125,
+      "width": 936
+    },
+    "collision": false
+  },
+  {
+    "file": "posts/ar/05-share-a-price.jpg",
+    "language": "ar",
+    "logo": {
+      "x": 944,
+      "y": 44,
+      "right": 1016,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 561,
+      "y": 166,
+      "right": 1016,
+      "bottom": 567.953125,
+      "width": 455
+    },
+    "headlineFont": 72,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "phone": {
+      "x": 44,
+      "y": 216,
+      "right": 429.97998046875,
+      "bottom": 934.6199951171875,
+      "width": 385.97998046875
+    },
+    "cta": {
+      "x": 791.03125,
+      "y": 800,
+      "right": 1016,
+      "bottom": 922,
+      "width": 224.96875
+    },
+    "collision": false,
+    "ctaCollision": false
+  },
+  {
+    "file": "posts/ar/06-keep-your-favorites.jpg",
+    "language": "ar",
+    "logo": {
+      "x": 944,
+      "y": 44,
+      "right": 1016,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 561,
+      "y": 166,
+      "right": 1016,
+      "bottom": 549.078125,
+      "width": 455
+    },
+    "headlineFont": 64,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "phone": {
+      "x": 44,
+      "y": 216,
+      "right": 429.97998046875,
+      "bottom": 934.6199951171875,
+      "width": 385.97998046875
+    },
+    "cta": {
+      "x": 791.03125,
+      "y": 800,
+      "right": 1016,
+      "bottom": 922,
+      "width": 224.96875
+    },
+    "collision": false,
+    "ctaCollision": false
+  },
+  {
+    "file": "carousels/ar/01-why-souk-scan/01-purpose.jpg",
+    "language": "ar",
+    "logo": {
+      "x": 944,
+      "y": 44,
+      "right": 1016,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 561,
+      "y": 166,
+      "right": 1016,
+      "bottom": 493.25,
+      "width": 455
+    },
+    "headlineFont": 59,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "phone": {
+      "x": 44,
+      "y": 216,
+      "right": 429.97998046875,
+      "bottom": 934.6199951171875,
+      "width": 385.97998046875
+    },
+    "cta": {
+      "x": 791.03125,
+      "y": 800,
+      "right": 1016,
+      "bottom": 922,
+      "width": 224.96875
+    },
+    "collision": false,
+    "ctaCollision": false
+  },
+  {
+    "file": "carousels/ar/01-why-souk-scan/02-people.jpg",
+    "language": "ar",
+    "logo": {
+      "x": 944,
+      "y": 44,
+      "right": 1016,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 72,
+      "y": 139,
+      "right": 1008,
+      "bottom": 566.0625,
+      "width": 936
+    },
+    "headlineFont": 64,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "visual": {
+      "x": 72,
+      "y": 462.0625,
+      "right": 1008,
+      "bottom": 566.0625,
+      "width": 936
+    },
+    "collision": false
+  },
+  {
+    "file": "carousels/ar/01-why-souk-scan/03-region.jpg",
+    "language": "ar",
+    "logo": {
+      "x": 944,
+      "y": 44,
+      "right": 1016,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 561,
+      "y": 166,
+      "right": 1016,
+      "bottom": 567.953125,
+      "width": 455
+    },
+    "headlineFont": 72,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "phone": {
+      "x": 44,
+      "y": 216,
+      "right": 429.97998046875,
+      "bottom": 934.6199951171875,
+      "width": 385.97998046875
+    },
+    "cta": {
+      "x": 791.03125,
+      "y": 800,
+      "right": 1016,
+      "bottom": 922,
+      "width": 224.96875
+    },
+    "collision": false,
+    "ctaCollision": false
+  },
+  {
+    "file": "carousels/ar/01-why-souk-scan/04-categories.jpg",
+    "language": "ar",
+    "logo": {
+      "x": 944,
+      "y": 44,
+      "right": 1016,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 72,
+      "y": 139,
+      "right": 1008,
+      "bottom": 566.0625,
+      "width": 936
+    },
+    "headlineFont": 64,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "visual": {
+      "x": 72,
+      "y": 462.0625,
+      "right": 1008,
+      "bottom": 566.0625,
+      "width": 936
+    },
+    "collision": false
+  },
+  {
+    "file": "carousels/ar/01-why-souk-scan/05-start.jpg",
+    "language": "ar",
+    "logo": {
+      "x": 944,
+      "y": 44,
+      "right": 1016,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 561,
+      "y": 166,
+      "right": 1016,
+      "bottom": 553.796875,
+      "width": 455
+    },
+    "headlineFont": 66,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "phone": {
+      "x": 44,
+      "y": 216,
+      "right": 429.97998046875,
+      "bottom": 934.6199951171875,
+      "width": 385.97998046875
+    },
+    "cta": {
+      "x": 791.03125,
+      "y": 800,
+      "right": 1016,
+      "bottom": 922,
+      "width": 224.96875
+    },
+    "collision": false,
+    "ctaCollision": false
+  },
+  {
+    "file": "carousels/ar/02-understand-the-prices/01-sources.jpg",
+    "language": "ar",
+    "logo": {
+      "x": 944,
+      "y": 44,
+      "right": 1016,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 72,
+      "y": 139,
+      "right": 1008,
+      "bottom": 524.9375,
+      "width": 936
+    },
+    "headlineFont": 64,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "visual": {
+      "x": 72,
+      "y": 418.046875,
+      "right": 1008,
+      "bottom": 524.9375,
+      "width": 936
+    },
+    "collision": false
+  },
+  {
+    "file": "carousels/ar/02-understand-the-prices/02-community.jpg",
+    "language": "ar",
+    "logo": {
+      "x": 944,
+      "y": 44,
+      "right": 1016,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 72,
+      "y": 139,
+      "right": 1008,
+      "bottom": 566.0625,
+      "width": 936
+    },
+    "headlineFont": 64,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "visual": {
+      "x": 72,
+      "y": 462.0625,
+      "right": 1008,
+      "bottom": 566.0625,
+      "width": 936
+    },
+    "collision": false
+  },
+  {
+    "file": "carousels/ar/02-understand-the-prices/03-wholesale.jpg",
+    "language": "ar",
+    "logo": {
+      "x": 944,
+      "y": 44,
+      "right": 1016,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 72,
+      "y": 139,
+      "right": 1008,
+      "bottom": 572.8125,
+      "width": 936
+    },
+    "headlineFont": 64,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "visual": {
+      "x": 72,
+      "y": 462.0625,
+      "right": 1008,
+      "bottom": 572.8125,
+      "width": 936
+    },
+    "collision": false
+  },
+  {
+    "file": "carousels/ar/02-understand-the-prices/04-units.jpg",
+    "language": "ar",
+    "logo": {
+      "x": 944,
+      "y": 44,
+      "right": 1016,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 72,
+      "y": 139,
+      "right": 1008,
+      "bottom": 590.953125,
+      "width": 936
+    },
+    "headlineFont": 64,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "visual": {
+      "x": 72,
+      "y": 462.0625,
+      "right": 1008,
+      "bottom": 590.953125,
+      "width": 936
+    },
+    "collision": false
+  },
+  {
+    "file": "carousels/ar/02-understand-the-prices/05-no-data.jpg",
+    "language": "ar",
+    "logo": {
+      "x": 944,
+      "y": 44,
+      "right": 1016,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 72,
+      "y": 139,
+      "right": 1008,
+      "bottom": 566.0625,
+      "width": 936
+    },
+    "headlineFont": 64,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "visual": {
+      "x": 72,
+      "y": 462.0625,
+      "right": 1008,
+      "bottom": 566.0625,
+      "width": 936
+    },
+    "collision": false
+  },
+  {
+    "file": "carousels/ar/03-contribute-a-price/01-contribute.jpg",
+    "language": "ar",
+    "logo": {
+      "x": 944,
+      "y": 44,
+      "right": 1016,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 561,
+      "y": 166,
+      "right": 1016,
+      "bottom": 567.953125,
+      "width": 455
+    },
+    "headlineFont": 72,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "phone": {
+      "x": 44,
+      "y": 216,
+      "right": 429.97998046875,
+      "bottom": 934.6199951171875,
+      "width": 385.97998046875
+    },
+    "cta": {
+      "x": 791.03125,
+      "y": 800,
+      "right": 1016,
+      "bottom": 922,
+      "width": 224.96875
+    },
+    "collision": false,
+    "ctaCollision": false
+  },
+  {
+    "file": "carousels/ar/03-contribute-a-price/02-select.jpg",
+    "language": "ar",
+    "logo": {
+      "x": 944,
+      "y": 44,
+      "right": 1016,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 561,
+      "y": 166,
+      "right": 1016,
+      "bottom": 523.9375,
+      "width": 455
+    },
+    "headlineFont": 72,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "phone": {
+      "x": 44,
+      "y": 216,
+      "right": 429.97998046875,
+      "bottom": 934.6199951171875,
+      "width": 385.97998046875
+    },
+    "cta": {
+      "x": 791.03125,
+      "y": 800,
+      "right": 1016,
+      "bottom": 922,
+      "width": 224.96875
+    },
+    "collision": false,
+    "ctaCollision": false
+  },
+  {
+    "file": "carousels/ar/03-contribute-a-price/03-enter.jpg",
+    "language": "ar",
+    "logo": {
+      "x": 944,
+      "y": 44,
+      "right": 1016,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 72,
+      "y": 139,
+      "right": 1008,
+      "bottom": 590.953125,
+      "width": 936
+    },
+    "headlineFont": 64,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "visual": {
+      "x": 72,
+      "y": 462.0625,
+      "right": 1008,
+      "bottom": 590.953125,
+      "width": 936
+    },
+    "collision": false
+  },
+  {
+    "file": "carousels/ar/03-contribute-a-price/04-edit.jpg",
+    "language": "ar",
+    "logo": {
+      "x": 944,
+      "y": 44,
+      "right": 1016,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 72,
+      "y": 139,
+      "right": 1008,
+      "bottom": 566.0625,
+      "width": 936
+    },
+    "headlineFont": 64,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "visual": {
+      "x": 72,
+      "y": 462.0625,
+      "right": 1008,
+      "bottom": 566.0625,
+      "width": 936
+    },
+    "collision": false
+  },
+  {
+    "file": "carousels/ar/03-contribute-a-price/05-together.jpg",
+    "language": "ar",
+    "logo": {
+      "x": 944,
+      "y": 44,
+      "right": 1016,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 561,
+      "y": 166,
+      "right": 1016,
+      "bottom": 641.828125,
+      "width": 455
+    },
+    "headlineFont": 66,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "phone": {
+      "x": 44,
+      "y": 216,
+      "right": 429.97998046875,
+      "bottom": 934.6199951171875,
+      "width": 385.97998046875
+    },
+    "cta": {
+      "x": 791.03125,
+      "y": 800,
+      "right": 1016,
+      "bottom": 922,
+      "width": 224.96875
+    },
+    "collision": false,
+    "ctaCollision": false
+  }
+]

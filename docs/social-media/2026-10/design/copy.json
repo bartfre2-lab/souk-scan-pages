@@ -1,0 +1,721 @@
+{
+  "posts": [
+    {
+      "slug": "01-know-before-you-buy",
+      "layout": "split",
+      "visual": "product-entry",
+      "title": {
+        "en": [
+          "Know the prices.",
+          "Before you buy."
+        ],
+        "fr": [
+          "Les prix en tête.",
+          "Avant vos achats."
+        ],
+        "ar": [
+          "اعرف الأسعار",
+          "قبل أن تشتري"
+        ]
+      },
+      "body": {
+        "en": "Explore food prices in Morocco. Community observations and dated wholesale references, clearly separated.",
+        "fr": "Explorez les prix alimentaires au Maroc. Observations de la communauté et références de gros datées, bien distinctes.",
+        "ar": "اكتشف أسعار المواد الغذائية في المغرب، مع فصل واضح بين ملاحظات المجتمع ومراجع الجملة المؤرخة."
+      },
+      "kicker": {
+        "en": "MORE CLARITY AT THE SOUK",
+        "fr": "PLUS DE CLARTÉ AU SOUK",
+        "ar": "وضوح أكثر في السوق"
+      }
+    },
+    {
+      "slug": "02-everyday-food",
+      "layout": "story",
+      "visual": "foods",
+      "title": {
+        "en": [
+          "Your everyday food.",
+          "One place."
+        ],
+        "fr": [
+          "Vos produits du quotidien.",
+          "Au même endroit."
+        ],
+        "ar": [
+          "منتجاتك اليومية",
+          "في مكان واحد"
+        ]
+      },
+      "body": {
+        "en": "Fruit, vegetables, meat, poultry and eggs. Browse the categories that matter to your shopping.",
+        "fr": "Fruits, légumes, viandes, volailles et œufs. Parcourez les catégories de vos courses.",
+        "ar": "فواكه وخضروات ولحوم ودواجن وبيض. تصفّح الفئات التي تحتاجها في مشترياتك."
+      },
+      "kicker": {
+        "en": "EXPLORE THE CATEGORIES",
+        "fr": "EXPLOREZ LES CATÉGORIES",
+        "ar": "تصفّح الفئات"
+      }
+    },
+    {
+      "slug": "03-choose-your-region",
+      "layout": "split",
+      "visual": "regions",
+      "title": {
+        "en": [
+          "12 regions.",
+          "Your choice."
+        ],
+        "fr": [
+          "12 régions.",
+          "Votre choix."
+        ],
+        "ar": [
+          "١٢ جهة",
+          "والاختيار لك"
+        ]
+      },
+      "body": {
+        "en": "Choose a Moroccan region to explore its community estimates. Manual selection is always available.",
+        "fr": "Choisissez une région du Maroc pour consulter ses estimations communautaires. La sélection manuelle reste disponible.",
+        "ar": "اختر جهة في المغرب للاطّلاع على تقديرات مجتمعها. يمكنك دائمًا اختيار الجهة يدويًا."
+      },
+      "kicker": {
+        "en": "A REGIONAL VIEW",
+        "fr": "UN REGARD RÉGIONAL",
+        "ar": "نظرة جهوية"
+      }
+    },
+    {
+      "slug": "04-two-price-sources",
+      "layout": "story",
+      "visual": "sources",
+      "title": {
+        "en": [
+          "Two sources.",
+          "A clearer picture."
+        ],
+        "fr": [
+          "Deux sources.",
+          "Pour mieux comprendre."
+        ],
+        "ar": [
+          "مصدران",
+          "لفهم أوضح"
+        ]
+      },
+      "body": {
+        "en": "Community estimates come from people’s reports. Wholesale references are separate, dated Casa Prestations bulletins.",
+        "fr": "Les estimations communautaires viennent des signalements. Les références de gros sont des bulletins Casa Prestations datés.",
+        "ar": "تقديرات المجتمع مبنية على المساهمات. ومراجع الجملة منفصلة، مصدرها نشرات Casa Prestations المؤرخة."
+      },
+      "kicker": {
+        "en": "READ THE PRICES",
+        "fr": "LISEZ LES PRIX",
+        "ar": "افهم الأسعار"
+      }
+    },
+    {
+      "slug": "05-share-a-price",
+      "layout": "split",
+      "visual": "product-entry",
+      "title": {
+        "en": [
+          "Saw a price?",
+          "Share it."
+        ],
+        "fr": [
+          "Un prix observé ?",
+          "Partagez-le."
+        ],
+        "ar": [
+          "رأيت سعرًا؟",
+          "شاركه"
+        ]
+      },
+      "body": {
+        "en": "Report a price you genuinely saw or paid. Your observation helps build a clearer view for everyone.",
+        "fr": "Signalez un prix que vous avez réellement vu ou payé. Votre observation aide à mieux comprendre les prix.",
+        "ar": "ساهم بسعر رأيته أو دفعته فعلًا. ملاحظتك تساعد الجميع على فهم الأسعار بصورة أوضح."
+      },
+      "kicker": {
+        "en": "BUILT WITH THE COMMUNITY",
+        "fr": "AVEC LA COMMUNAUTÉ",
+        "ar": "بمساهمة المجتمع"
+      }
+    },
+    {
+      "slug": "06-keep-your-favorites",
+      "layout": "split",
+      "visual": "favorites",
+      "title": {
+        "en": [
+          "Your essentials.",
+          "Close at hand."
+        ],
+        "fr": [
+          "Vos essentiels.",
+          "À portée de main."
+        ],
+        "ar": [
+          "منتجاتك المفضلة",
+          "في متناولك"
+        ]
+      },
+      "body": {
+        "en": "Keep your regular products in favorites. Use SOUK-SCAN in Arabic, French or English.",
+        "fr": "Gardez vos produits habituels en favoris. Utilisez SOUK-SCAN en arabe, français ou anglais.",
+        "ar": "احفظ منتجاتك المعتادة في المفضلة. استخدم SOUK-SCAN بالعربية أو الفرنسية أو الإنجليزية."
+      },
+      "kicker": {
+        "en": "MAKE IT YOUR SOUK",
+        "fr": "VOTRE SOUK, À VOTRE FAÇON",
+        "ar": "سوقك بطريقتك"
+      }
+    }
+  ],
+  "carousels": [
+    {
+      "slug": "01-why-souk-scan",
+      "name": {
+        "en": "Why SOUK-SCAN?",
+        "fr": "Pourquoi SOUK-SCAN ?",
+        "ar": "لماذا SOUK-SCAN؟"
+      },
+      "slides": [
+        {
+          "slug": "01-purpose",
+          "layout": "split",
+          "visual": "market",
+          "title": {
+            "en": [
+              "A clearer view.",
+              "Before the souk."
+            ],
+            "fr": [
+              "Mieux comprendre.",
+              "Avant le souk."
+            ],
+            "ar": [
+              "رؤية أوضح",
+              "قبل الذهاب للسوق"
+            ]
+          },
+          "body": {
+            "en": "What is SOUK-SCAN for? Discover the idea in five slides.",
+            "fr": "À quoi sert SOUK-SCAN ? Découvrez son idée en cinq images.",
+            "ar": "ما فائدة SOUK-SCAN؟ تعرّف على فكرته في خمس شرائح."
+          },
+          "kicker": {
+            "en": "SOUK-SCAN",
+            "fr": "SOUK-SCAN",
+            "ar": "SOUK-SCAN"
+          }
+        },
+        {
+          "slug": "02-people",
+          "layout": "story",
+          "visual": "community",
+          "title": {
+            "en": [
+              "Prices people see.",
+              "Shared knowledge."
+            ],
+            "fr": [
+              "Des prix observés.",
+              "Un savoir partagé."
+            ],
+            "ar": [
+              "أسعار يراها الناس",
+              "ومعرفة يتشاركونها"
+            ]
+          },
+          "body": {
+            "en": "The app helps people in Morocco explore food-price information. It does not sell food or set market prices.",
+            "fr": "L’application aide à explorer les prix alimentaires au Maroc. Elle ne vend pas de nourriture et ne fixe pas les prix.",
+            "ar": "يساعد التطبيق على استكشاف أسعار المواد الغذائية في المغرب. لا يبيع المنتجات ولا يحدد أسعار السوق."
+          },
+          "kicker": {
+            "en": "SOUK-SCAN",
+            "fr": "SOUK-SCAN",
+            "ar": "SOUK-SCAN"
+          }
+        },
+        {
+          "slug": "03-region",
+          "layout": "split",
+          "visual": "regions",
+          "title": {
+            "en": [
+              "Start with",
+              "your region."
+            ],
+            "fr": [
+              "Commencez par",
+              "votre région."
+            ],
+            "ar": [
+              "ابدأ",
+              "بجهتك"
+            ]
+          },
+          "body": {
+            "en": "Select one of Morocco’s 12 regions. Community estimates relate to the region you choose.",
+            "fr": "Sélectionnez l’une des 12 régions du Maroc. Les estimations communautaires concernent la région choisie.",
+            "ar": "اختر إحدى جهات المغرب الاثنتي عشرة. ترتبط تقديرات المجتمع بالجهة التي تختارها."
+          },
+          "kicker": {
+            "en": "SOUK-SCAN",
+            "fr": "SOUK-SCAN",
+            "ar": "SOUK-SCAN"
+          }
+        },
+        {
+          "slug": "04-categories",
+          "layout": "story",
+          "visual": "foods",
+          "title": {
+            "en": [
+              "Explore what’s",
+              "on your list."
+            ],
+            "fr": [
+              "Explorez les produits",
+              "de vos courses."
+            ],
+            "ar": [
+              "تصفّح منتجات",
+              "قائمة مشترياتك"
+            ]
+          },
+          "body": {
+            "en": "Fruit, vegetables, meat, poultry and eggs. Open a product to understand the available price information.",
+            "fr": "Fruits, légumes, viandes, volailles et œufs. Ouvrez un produit pour consulter les informations de prix disponibles.",
+            "ar": "فواكه وخضروات ولحوم ودواجن وبيض. افتح المنتج للاطّلاع على معلومات أسعاره المتاحة."
+          },
+          "kicker": {
+            "en": "SOUK-SCAN",
+            "fr": "SOUK-SCAN",
+            "ar": "SOUK-SCAN"
+          }
+        },
+        {
+          "slug": "05-start",
+          "layout": "split",
+          "visual": "product-entry",
+          "title": {
+            "en": [
+              "Explore.",
+              "Contribute.",
+              "Stay informed."
+            ],
+            "fr": [
+              "Explorez.",
+              "Contribuez.",
+              "Informez-vous."
+            ],
+            "ar": [
+              "استكشف وساهم",
+              "وابقَ على اطّلاع"
+            ]
+          },
+          "body": {
+            "en": "Explore the app, understand its sources and share a price you genuinely observed. Start at soukscan.online.",
+            "fr": "Découvrez l’application, comprenez ses sources et partagez un prix réellement observé. Rendez-vous sur soukscan.online.",
+            "ar": "اكتشف التطبيق وافهم مصادره وشارك سعرًا رأيته فعلًا. ابدأ من soukscan.online."
+          },
+          "kicker": {
+            "en": "SOUK-SCAN",
+            "fr": "SOUK-SCAN",
+            "ar": "SOUK-SCAN"
+          }
+        }
+      ]
+    },
+    {
+      "slug": "02-understand-the-prices",
+      "name": {
+        "en": "Understand the prices",
+        "fr": "Comprendre les prix",
+        "ar": "افهم الأسعار"
+      },
+      "slides": [
+        {
+          "slug": "01-sources",
+          "layout": "story",
+          "visual": "sources",
+          "title": {
+            "en": [
+              "Two sources.",
+              "Know the difference."
+            ],
+            "fr": [
+              "Deux sources.",
+              "Faites la différence."
+            ],
+            "ar": [
+              "مصدران للأسعار",
+              "اعرف الفرق بينهما"
+            ]
+          },
+          "body": {
+            "en": "Community estimates and wholesale references answer different questions. Here is how to read them.",
+            "fr": "Estimations communautaires et références de gros apportent des informations différentes. Voici comment les lire.",
+            "ar": "تقديرات المجتمع ومراجع الجملة تقدّم معلومات مختلفة. إليك طريقة فهمها."
+          },
+          "kicker": {
+            "en": "SOUK-SCAN",
+            "fr": "SOUK-SCAN",
+            "ar": "SOUK-SCAN"
+          }
+        },
+        {
+          "slug": "02-community",
+          "layout": "story",
+          "visual": "community",
+          "title": {
+            "en": [
+              "Community prices.",
+              "People’s observations."
+            ],
+            "fr": [
+              "Prix communautaires.",
+              "Des observations."
+            ],
+            "ar": [
+              "أسعار المجتمع",
+              "ملاحظات الناس"
+            ]
+          },
+          "body": {
+            "en": "Estimates use reports for the selected region, when enough valid information is available. They may vary by quality, place and contributions.",
+            "fr": "Les estimations utilisent les signalements de la région choisie, si les données sont suffisantes. Elles varient selon la qualité, le lieu et les contributions.",
+            "ar": "تستند التقديرات إلى مساهمات الجهة المختارة عند توفّر بيانات كافية. وقد تختلف حسب الجودة والمكان والمساهمات."
+          },
+          "kicker": {
+            "en": "SOUK-SCAN",
+            "fr": "SOUK-SCAN",
+            "ar": "SOUK-SCAN"
+          }
+        },
+        {
+          "slug": "03-wholesale",
+          "layout": "story",
+          "visual": "wholesale",
+          "title": {
+            "en": [
+              "Wholesale reference.",
+              "Check the date."
+            ],
+            "fr": [
+              "Référence de gros.",
+              "Vérifiez la date."
+            ],
+            "ar": [
+              "مرجع سعر الجملة",
+              "تحقّق من التاريخ"
+            ]
+          },
+          "body": {
+            "en": "Casa Prestations bulletins refer to Casablanca’s wholesale market. They are dated references, not guaranteed retail prices in your region.",
+            "fr": "Les bulletins Casa Prestations concernent le marché de gros de Casablanca. Ce ne sont pas des prix de détail garantis dans votre région.",
+            "ar": "تخصّ نشرات Casa Prestations سوق الجملة بالدار البيضاء. هي مراجع مؤرخة، وليست أسعار تجزئة مضمونة في جهتك."
+          },
+          "kicker": {
+            "en": "SOUK-SCAN",
+            "fr": "SOUK-SCAN",
+            "ar": "SOUK-SCAN"
+          }
+        },
+        {
+          "slug": "04-units",
+          "layout": "story",
+          "visual": "units",
+          "title": {
+            "en": [
+              "Same product?",
+              "Check the unit."
+            ],
+            "fr": [
+              "Même produit ?",
+              "Vérifiez l’unité."
+            ],
+            "ar": [
+              "نفس المنتج؟",
+              "تحقّق من الوحدة"
+            ]
+          },
+          "body": {
+            "en": "Look for DH/kg or DH per egg, depending on the product. Read the source and date alongside the amount.",
+            "fr": "Repérez les DH/kg ou les DH par œuf, selon le produit. Lisez aussi la source et la date à côté du montant.",
+            "ar": "انتبه إلى الدرهم لكل كيلوغرام أو لكل بيضة حسب المنتج. واقرأ المصدر والتاريخ إلى جانب السعر."
+          },
+          "kicker": {
+            "en": "SOUK-SCAN",
+            "fr": "SOUK-SCAN",
+            "ar": "SOUK-SCAN"
+          }
+        },
+        {
+          "slug": "05-no-data",
+          "layout": "story",
+          "visual": "honest",
+          "title": {
+            "en": [
+              "Not enough data?",
+              "The app tells you."
+            ],
+            "fr": [
+              "Pas assez de données ?",
+              "L’application le dit."
+            ],
+            "ar": [
+              "البيانات غير كافية؟",
+              "التطبيق يوضّح ذلك"
+            ]
+          },
+          "body": {
+            "en": "An honest empty state is more useful than a made-up price. Treat the information as context for your shopping.",
+            "fr": "Un manque de données clairement indiqué vaut mieux qu’un prix inventé. Utilisez ces informations pour éclairer vos courses.",
+            "ar": "الإشارة الواضحة إلى نقص البيانات أفضل من اختلاق سعر. استخدم المعلومات لتكوين فكرة قبل مشترياتك."
+          },
+          "kicker": {
+            "en": "SOUK-SCAN",
+            "fr": "SOUK-SCAN",
+            "ar": "SOUK-SCAN"
+          }
+        }
+      ]
+    },
+    {
+      "slug": "03-contribute-a-price",
+      "name": {
+        "en": "How to contribute",
+        "fr": "Comment contribuer",
+        "ar": "كيف تساهم؟"
+      },
+      "slides": [
+        {
+          "slug": "01-contribute",
+          "layout": "split",
+          "visual": "product-entry",
+          "title": {
+            "en": [
+              "Your observation",
+              "can help others."
+            ],
+            "fr": [
+              "Vos observations.",
+              "Pour s’entraider."
+            ],
+            "ar": [
+              "ملاحظتك",
+              "قد تفيد غيرك"
+            ]
+          },
+          "body": {
+            "en": "Saw or paid a food price? Share that real observation in SOUK-SCAN. Here is how.",
+            "fr": "Vous avez vu ou payé un prix alimentaire ? Partagez cette observation réelle dans SOUK-SCAN. Voici comment.",
+            "ar": "رأيت سعر منتج غذائي أو دفعته؟ شارك هذه الملاحظة الحقيقية في SOUK-SCAN. إليك الخطوات."
+          },
+          "kicker": {
+            "en": "SOUK-SCAN",
+            "fr": "SOUK-SCAN",
+            "ar": "SOUK-SCAN"
+          }
+        },
+        {
+          "slug": "02-select",
+          "layout": "split",
+          "visual": "regions",
+          "title": {
+            "en": [
+              "Pick the product.",
+              "Confirm the region."
+            ],
+            "fr": [
+              "Le bon produit.",
+              "La bonne région."
+            ],
+            "ar": [
+              "اختر المنتج",
+              "وأكّد الجهة"
+            ]
+          },
+          "body": {
+            "en": "Sign in, open the product page and confirm the region where you observed the price.",
+            "fr": "Connectez-vous, ouvrez la fiche produit et confirmez la région où vous avez observé le prix.",
+            "ar": "سجّل الدخول وافتح صفحة المنتج، ثم أكّد الجهة التي رأيت فيها السعر."
+          },
+          "kicker": {
+            "en": "SOUK-SCAN",
+            "fr": "SOUK-SCAN",
+            "ar": "SOUK-SCAN"
+          }
+        },
+        {
+          "slug": "03-enter",
+          "layout": "story",
+          "visual": "units",
+          "title": {
+            "en": [
+              "Enter a real price.",
+              "Use the right unit."
+            ],
+            "fr": [
+              "Un prix réel.",
+              "La bonne unité."
+            ],
+            "ar": [
+              "أدخل سعرًا حقيقيًا",
+              "بالوحدة الصحيحة"
+            ]
+          },
+          "body": {
+            "en": "Use the price you actually saw or paid today. Check whether the product is priced per kilogram or per egg, then submit.",
+            "fr": "Indiquez le prix réellement vu ou payé aujourd’hui. Vérifiez s’il s’agit d’un prix au kilogramme ou par œuf, puis envoyez.",
+            "ar": "أدخل السعر الذي رأيته أو دفعته اليوم فعلًا. تحقّق هل السعر للكيلوغرام أم للبيضة، ثم أرسل المساهمة."
+          },
+          "kicker": {
+            "en": "SOUK-SCAN",
+            "fr": "SOUK-SCAN",
+            "ar": "SOUK-SCAN"
+          }
+        },
+        {
+          "slug": "04-edit",
+          "layout": "story",
+          "visual": "daily",
+          "title": {
+            "en": [
+              "One product.",
+              "One report per day."
+            ],
+            "fr": [
+              "Un produit.",
+              "Un signalement par jour."
+            ],
+            "ar": [
+              "لكل منتج",
+              "مساهمة واحدة يوميًا"
+            ]
+          },
+          "body": {
+            "en": "Need to correct it? Edit your report on the same day. The app keeps one report per product per day for your account.",
+            "fr": "Une correction à faire ? Modifiez votre signalement le jour même. Votre compte conserve un signalement par produit et par jour.",
+            "ar": "تحتاج إلى تصحيح؟ عدّل مساهمتك في اليوم نفسه. يحتفظ حسابك بمساهمة واحدة لكل منتج في اليوم."
+          },
+          "kicker": {
+            "en": "SOUK-SCAN",
+            "fr": "SOUK-SCAN",
+            "ar": "SOUK-SCAN"
+          }
+        },
+        {
+          "slug": "05-together",
+          "layout": "split",
+          "visual": "favorites",
+          "title": {
+            "en": [
+              "A clearer souk.",
+              "Built together."
+            ],
+            "fr": [
+              "Un souk plus clair.",
+              "Ensemble."
+            ],
+            "ar": [
+              "سوق أوضح",
+              "بمساهمتنا جميعًا"
+            ]
+          },
+          "body": {
+            "en": "Keep your regular products in favorites and contribute real observations. Arabic, French or English: discover SOUK-SCAN at soukscan.online.",
+            "fr": "Gardez vos produits en favoris et partagez des observations réelles. Arabe, français ou anglais : découvrez SOUK-SCAN sur soukscan.online.",
+            "ar": "احفظ منتجاتك في المفضلة وشارك ملاحظات حقيقية. بالعربية أو الفرنسية أو الإنجليزية: اكتشف SOUK-SCAN على soukscan.online."
+          },
+          "kicker": {
+            "en": "SOUK-SCAN",
+            "fr": "SOUK-SCAN",
+            "ar": "SOUK-SCAN"
+          }
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "cta": {
+      "en": "Discover the app",
+      "fr": "Découvrez l’application",
+      "ar": "اكتشف التطبيق"
+    },
+    "swipe": {
+      "en": "Continue the carousel",
+      "fr": "Continuez le carrousel",
+      "ar": "تابع الشرائح"
+    },
+    "last": {
+      "en": "Save this guide",
+      "fr": "Gardez ce guide",
+      "ar": "احفظ هذا الدليل"
+    },
+    "labels": {
+      "community": {
+        "en": "Community",
+        "fr": "Communauté",
+        "ar": "المجتمع"
+      },
+      "wholesale": {
+        "en": "Wholesale",
+        "fr": "Gros",
+        "ar": "الجملة"
+      },
+      "reports": {
+        "en": "People’s reports",
+        "fr": "Signalements",
+        "ar": "مساهمات الناس"
+      },
+      "dated": {
+        "en": "Dated bulletins",
+        "fr": "Bulletins datés",
+        "ar": "نشرات مؤرخة"
+      },
+      "kg": {
+        "en": "Per kilogram",
+        "fr": "Par kilogramme",
+        "ar": "لكل كيلوغرام"
+      },
+      "egg": {
+        "en": "Per egg",
+        "fr": "Par œuf",
+        "ar": "لكل بيضة"
+      },
+      "real": {
+        "en": "Real observations",
+        "fr": "Observations réelles",
+        "ar": "ملاحظات حقيقية"
+      },
+      "day": {
+        "en": "Per product, per day",
+        "fr": "Par produit et par jour",
+        "ar": "لكل منتج في اليوم"
+      },
+      "none": {
+        "en": "Not enough data yet",
+        "fr": "Pas encore assez de données",
+        "ar": "لا توجد معلومات كافية بعد"
+      },
+      "dates": {
+        "en": "Read the source + date",
+        "fr": "Lisez la source + la date",
+        "ar": "اقرأ المصدر والتاريخ"
+      },
+      "lang": {
+        "en": "Arabic · French · English",
+        "fr": "Arabe · Français · Anglais",
+        "ar": "العربية · الفرنسية · الإنجليزية"
+      }
+    }
+  }
+}

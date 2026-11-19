@@ -135,3 +135,6 @@ from its Actions run. Do not switch back to publishing raw source from the branc
 are historical preparation documents; the published listing linked above is current.
 [The original visual audit](docs/FINAL-WEBSITE-AUDIT.md) records the earlier preview
 phase; current maintenance and publishing instructions are this README.
+
+[Social media campaign assets](docs/social-media/) include localized square posts,
+numbered carousels, captions and editable design sources.
