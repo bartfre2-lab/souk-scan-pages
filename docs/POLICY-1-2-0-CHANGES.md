@@ -1,3 +1,5 @@
+> **Update (second commit):** at the owner's request the privacy policy, the terms and the deletion-page intro were rewritten in a warmer, plainer tone in all three languages, the terms were updated (version date 19 November 2026, new "Sharing prices" and "Your Calculator" sections) and nothing is held back. The stated purpose now includes protecting users from bots, spam, misuse and price manipulation. **The locale files `locales/legal-{en,fr,ar}.json` are the source of truth. Section 7 below (before/after listing) and the "do not publish yet" wording in section 1 describe the first draft and are out of date.** The app must set `TERMS_VERSION` to `2026-11-19` (with the matching SQL function) so users are asked to accept this version.
+
 # Website policy for app release 1.2.0: what changed and what the owner must decide
 
 Branch `policy-1-2-0` (local only: not pushed, no PR, not deployed). Written 2026-11-19 (machine date).

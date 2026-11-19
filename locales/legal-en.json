@@ -2,87 +2,87 @@
   "privacy": {
     "title": "Privacy policy",
     "updated": "Last updated: 19 November 2026",
-    "intro": "SOUK-SCAN is a community food-price information app for Morocco (Android package <bdi>com.soukscan.app</bdi>). This policy explains how the app and this website handle information. For privacy questions or requests, contact <a href=\"mailto:sanamdev@soukscan.online\">sanamdev@soukscan.online</a>.",
-    "description": "How SOUK-SCAN handles account information, food-price reports, Calculator entries, region data, location permissions and account deletion.",
+    "intro": "SOUK-SCAN helps people across Morocco see what food really costs (Android app <bdi>com.soukscan.app</bdi>). This page explains, in plain words, what the app and this website do with your information and the choices you have. We only ask for what the app needs to work, and we never sell your data. If you have a question or a request, just write to <a href=\"mailto:sanamdev@soukscan.online\">sanamdev@soukscan.online</a>.",
+    "description": "How SOUK-SCAN uses your information: account, shared prices, the Calculator, region, location permission and account deletion, explained simply.",
     "sections": [
       {
-        "title": "Information the app processes",
+        "title": "What we collect and why",
         "paragraphs": [
-          "Account information includes your email address, account identifier and authentication records. Google sign-in may also provide account profile information to the authentication provider. We record your acceptance of the app’s terms and which version you accepted.",
-          "Price reports contain the product, price, region, date and the account identifier needed to manage your submissions. Feedback contains the category, message and account identifier you send.",
-          "If you use the Calculator tab, we also store what you enter there, linked to your account: see “Your Calculator entries” below."
+          "To create your account we need your email address. We also keep your account identifier and the sign-in records needed to keep your account secure. If you sign in with Google, Google may share basic profile information with our sign-in provider. We note which version of the terms you accepted.",
+          "When you share a price, we save the product, the price, your region, the date and your account identifier, so that you can find and manage your own prices. If you send us feedback, we save the category, your message and your account identifier. If you use the Calculator, we save what you enter there (more below).",
+          "We use this information to run your account, show community prices, keep SOUK-SCAN safe and fair for everyone (for example by spotting bots, spam, misuse and attempts to manipulate prices), and make the app better."
         ]
       },
       {
-        "title": "Location and region",
+        "title": "Your location",
         "paragraphs": [
-          "Automatic region detection is optional. With permission, the app reads a location on your device and matches it to one of Morocco’s 12 regions. The app does not transmit, persist or log the raw GPS coordinates. You can select a region manually instead.",
-          "The selected or detected region is saved on your device and sent to the backend when requesting regional prices or submitting a report. Reports retain that region alongside the account identifier. Keeping raw coordinates local does not mean that no region information leaves the device."
+          "Detecting your region automatically is optional. If you allow it, the app reads your location on your device only to work out which of Morocco’s 12 regions you are in. Your exact GPS coordinates are never sent, saved or logged. You can also simply choose your region yourself.",
+          "Your region (detected or chosen) is saved on your device and sent to our servers when you ask for prices in your region or share a price, so that the price is attached to the right region. Your exact location stays on your phone."
         ]
       },
       {
-        "title": "Your Calculator entries",
+        "title": "Your Calculator",
         "paragraphs": [
-          "The Calculator tab is a grocery calculator. For each day you use it, you can enter shops (with an optional name of up to 40 characters that you choose), the products you buy, the price per kilo (or per egg) and the quantity, in kilos or in pieces for eggs. The app works out the line, shop and grand totals on your phone from these entries; the totals are not stored separately.",
-          "These entries are stored on our servers and are linked to your account. The app owner can see them, account by account, so that we can improve the service and understand what people buy. They are not shown to other users, and they are not sold or used for advertising.",
-          "When you add or change a price in the Calculator, the app also sends that price, with the product, your region and the date, as a community price, in the same way as any price you submit. The quantity, the total and the shop name are not sent with it. Other users only see community prices as aggregated estimates. You cannot withdraw a community price that was sent, but you can correct it on the same day.",
-          "You can change a Calculator list on the day you make it; afterwards it is read-only. The Calculator also keeps a copy on your phone so that it works without a connection, and sends it when your phone is online again. A list that reaches us late is still accepted for up to two days. Use it on one phone at a time. If you uninstall the app or clear its data, what has not been sent yet is lost. Signing out removes the copy from your phone (the app asks first if something has not been sent).",
-          "Your Calculator entries are deleted when you delete your account."
+          "The Calculator helps you add up your shopping. For each day you can add shops (you can give a shop a short name, up to 40 characters), the products you buy, the price per kilo (or per egg) and the quantity, in kilos or in pieces for eggs. The app works out the totals on your phone.",
+          "We save what you enter on our servers, linked to your account, so you can find it again. The SOUK-SCAN owner can see it, account by account. We look at it to keep SOUK-SCAN fair and safe (for example to spot bots, spam, misuse or attempts to manipulate prices), to improve the app, and to understand what shoppers in Morocco buy. Nobody else can see it: it is never shown to other users, and we do not sell it or use it for advertising.",
+          "SOUK-SCAN is built on prices that people share, so a price you enter in the Calculator is also shared as a community price, just like a price you report yourself. Only the product, price, region and date are shared, never your quantities, totals or shop names. Other users see community prices only as combined estimates. If you make a mistake, you can correct the price on the same day.",
+          "No signal at the market? No problem. The Calculator keeps a copy on your phone so that it works without a connection, and sends your entries when you are back online. A list that reaches us a little late is still accepted for up to two days. You can edit a list on the day you make it; after that it is read-only. Please use one phone at a time. If you uninstall the app or clear its data before your entries have been sent, they will be lost. When you sign out, the copy is removed from your phone (the app checks with you first if something has not been sent yet).",
+          "You are in control: if you delete your account, your Calculator entries are deleted too."
         ]
       },
       {
         "title": "Al-Qoffa basket",
         "paragraphs": [
-          "The Al-Qoffa tab shows a typical reference basket priced with data the app already has. The products, quantities and week, month and household choices you set stay on your device only and are never sent to our servers. To show the default basket, the app downloads the list and factors that we publish, like other public information; nothing from your own basket is sent."
+          "Al-Qoffa shows a typical basket of everyday food and what it costs. The products, quantities and your choices for a week or a month and for your household stay on your phone only. We never receive them. To show the default basket, the app simply downloads the list we publish, like any other public information."
         ]
       },
       {
         "title": "What other users can see",
         "paragraphs": [
-          "Public community prices are aggregated estimates. Your email, account identity and individual reports are not displayed publicly. Feedback is private to the service’s maintainers. Your Calculator entries and your Al-Qoffa basket are not shown to other users; the app owner can see the Calculator entries, as described below. Dated wholesale reference figures, where available, are a separate source."
+          "Other users only see combined community estimates. Your email, your identity and your individual prices are not shown to anyone. Your Calculator entries and your Al-Qoffa basket are not shown to other users either. Feedback you send is read only by the people who run SOUK-SCAN. Dated wholesale reference figures, where available, come from a separate public source."
         ]
       },
       {
-        "title": "News, update checks and the rating pop-up",
+        "title": "News, updates and rating requests",
         "paragraphs": [
-          "The Info tab shows news that we publish. The app downloads it from our backend (Supabase), and the pictures are loaded from our own website, <bdi>soukscan.online</bdi>, which GitHub Pages hosts. Like any web request, this shows your device’s internet address to those services. The app keeps the latest news on your device so that the tab opens without a connection, and a marker of the last post you saw so that it can show a dot for new ones.",
-          "When it starts and when you return to it, the app reads two public numbers from our backend (the newest version and the oldest version still allowed) to tell you if an update is available or required. It remembers on your device that you dismissed an update notice. The update button opens the SOUK-SCAN page on Google Play, which Google handles.",
-          "These requests ask for public information only and add none of your entries or personal details. Like every request to our backend, they carry the technical connection information described above and, while you are signed in, the session token the app uses for all its requests.",
-          "Occasionally the app may ask, in a pop-up, whether you would rate it on Google Play. What it keeps for this (your recent open days, when the pop-up was last shown, and your answer) stays on your device only; nothing is sent to us. If you choose to rate, Google Play opens and Google handles what you do there."
+          "The Info tab shows news we publish. The app gets it from our servers (Supabase), and the pictures load from our own website, <bdi>soukscan.online</bdi>, which is hosted on GitHub Pages. As with any web page, those services can see your device’s internet address. The app keeps the latest news on your phone so that the tab opens without a connection, and remembers the last post you saw so it can show a small dot when there is something new.",
+          "When you open the app or come back to it, it checks two public numbers on our servers (the newest version and the oldest version that still works) so it can tell you when an update is available. It remembers on your phone if you dismissed an update message. The update button opens SOUK-SCAN on Google Play, where Google’s own policies apply.",
+          "These requests ask for public information only. They include none of your entries or personal details; like all requests to our servers, they carry normal technical information and, when you are signed in, the session token the app uses.",
+          "From time to time the app may ask whether you would like to rate it on Google Play. To pick a good moment, it remembers on your phone the days you recently opened the app, when it last asked and your answer. This stays on your phone and is never sent to us. If you choose to rate, Google Play opens and Google’s policies apply."
         ]
       },
       {
-        "title": "Service providers and technical information",
+        "title": "Services that help us run SOUK-SCAN",
         "paragraphs": [
-          "Supabase provides the app’s database and authentication services. Google handles Google sign-in when you choose it. GitHub Pages hosts this website. These services receive technical connection information, such as IP addresses and request information, needed to operate and secure their services.",
-          "We do not sell personal data, run ads, or include advertising or third-party analytics tools in the reviewed app or website. Processing by a hosting or authentication provider is different from publishing information to other users."
+          "We use trusted services to run SOUK-SCAN. Supabase provides our database and sign-in. Google handles Google sign-in when you choose it. GitHub Pages hosts this website. Like most online services, they receive technical connection information, such as your IP address, so that they can operate and protect their services.",
+          "We do not sell your personal data. SOUK-SCAN shows no ads and uses no advertising or third-party analytics tools, in the app or on this website."
         ]
       },
       {
-        "title": "Storage on your device",
+        "title": "What stays on your device",
         "paragraphs": [
-          "The app stores preferences such as language, appearance, selected region and favourites on your device, along with the session information needed to keep you signed in. It also stores on your device your Al-Qoffa basket choices, a copy of your recent Calculator entries (including any not sent yet), the latest news we published and a marker of the last post you saw, the update notice you dismissed, and the state of the rating pop-up. This website stores language, appearance and selected-region preferences on your device. It sends the selected region to Supabase when requesting community estimates; it does not ask for GPS access or sign you in. You can remove local preferences through your device or browser storage settings."
+          "The app saves on your phone your preferences (language, appearance, region, favourites) and the sign-in session that keeps you signed in. It also saves your Al-Qoffa basket choices, a copy of your recent Calculator entries (including any not sent yet), the latest news and the last post you saw, any update message you dismissed, and the state of the rating request. This website saves your language, appearance and region choices in your browser, and sends your region to Supabase to show community estimates. It never asks for your GPS location and never signs you in. You can clear all of this from your phone’s or browser’s storage settings."
         ]
       },
       {
-        "title": "Retention and deletion",
+        "title": "How long we keep information, and deleting it",
         "paragraphs": [
-          "Account information, linked reports, Calculator entries, feedback and terms-acceptance records are kept while needed to operate your account and the service, until account deletion or earlier removal. A limited display window for prices is not a promise that underlying reports are automatically erased after that window.",
-          "Confirmed in-app deletion removes the active account and its linked reports, Calculator entries and feedback. Email deletion requests are completed within 30 calendar days after a valid request is received. See <a href=\"@@account-deletion@@\">account deletion</a> for the steps and scope.",
-          "Operational logs or backup copies retained by service providers follow their retention policies. Active-account deletion does not promise immediate removal of every provider log or backup. Local device preferences (including your Al-Qoffa basket) can remain until you clear the app or browser storage."
+          "We keep your account information, your prices, your Calculator entries, your feedback and your terms-acceptance records for as long as you have an account, unless they are removed earlier. Prices count towards community estimates for a limited recent period; that does not mean the underlying prices are automatically erased afterwards.",
+          "You can delete your account whenever you like from Profile → Delete account. This removes your account together with your prices, Calculator entries and feedback. If you prefer, email us from your registered address and we will do it within 30 calendar days. The steps are on the <a href=\"@@account-deletion@@\">account deletion</a> page.",
+          "Our service providers may keep technical logs or backups for a while under their own policies, so deleting your account does not remove every log or backup immediately. Data stored only on your phone, including your Al-Qoffa basket, stays until you clear the app’s or browser’s storage."
         ]
       },
       {
-        "title": "Security and your choices",
+        "title": "Keeping your information safe, and your choices",
         "paragraphs": [
-          "The app communicates with its backend over HTTPS and uses authenticated access controls for private account data. No online service can guarantee absolute security. The app never receives your Google password.",
-          "You can deny location permission, choose a region manually, change language or appearance, choose not to use the Calculator, sign out, or request account deletion. For access, correction or other privacy questions, contact <a href=\"mailto:sanamdev@soukscan.online\">sanamdev@soukscan.online</a>."
+          "The app talks to our servers over HTTPS, and private account data is protected by access controls tied to your sign-in. No online service can promise perfect security, but we take it seriously. The app never receives your Google password.",
+          "You are in charge. You can say no to location access, choose your region yourself, change the language or appearance, choose not to use the Calculator, sign out, or delete your account. To ask about your data or have it corrected, write to <a href=\"mailto:sanamdev@soukscan.online\">sanamdev@soukscan.online</a>."
         ]
       },
       {
-        "title": "Changes and contact",
+        "title": "Changes to this policy",
         "paragraphs": [
-          "We update this page when the service’s data practices change. The date above identifies this website policy revision. When the terms or this policy change materially, the app asks you to review and accept the new version before you continue; release 1.2.0 asks you to accept the updated version once. Contact the SOUK-SCAN maintainers at <a href=\"mailto:sanamdev@soukscan.online\">sanamdev@soukscan.online</a>."
+          "If we change how SOUK-SCAN handles information, we update this page and the date at the top. For important changes to this policy or the terms, the app asks you to read and accept the new version before you continue. Release 1.2.0 asks you to accept the updated version once. Questions? Write to <a href=\"mailto:sanamdev@soukscan.online\">sanamdev@soukscan.online</a>."
         ]
       }
     ]
@@ -90,7 +90,7 @@
   "account-deletion": {
     "title": "Delete your SOUK-SCAN account",
     "updated": "Last updated: 19 November 2026",
-    "intro": "You can permanently delete your SOUK-SCAN account and its associated data in the app or request deletion by email. This page applies to <bdi>com.soukscan.app</bdi>.",
+    "intro": "It is your account and your data. You can permanently delete your SOUK-SCAN account, together with the data linked to it, in the app, or ask us to do it by email. This page applies to <bdi>com.soukscan.app</bdi>.",
     "description": "Delete your SOUK-SCAN account in the app or request deletion by email. Learn which data is removed and the request timeframe.",
     "sections": [
       {
@@ -129,56 +129,62 @@
   },
   "terms": {
     "title": "Terms of use",
-    "updated": "App terms version: 12 October 2026 · Website updated: 20 October 2026",
-    "intro": "<bdi>SOUK-SCAN</bdi> is an informational tool that makes food prices in Morocco easier to see and compare. It does not sell products, set or control market prices, guarantee the prices any seller offers, or act as a marketplace or a regulator. It is not a government service.",
-    "description": "Terms for using SOUK-SCAN, reporting prices responsibly and understanding community and wholesale reference data.",
+    "updated": "App terms version: 19 November 2026 · Website updated: 19 November 2026",
+    "intro": "Welcome to <bdi>SOUK-SCAN</bdi>! These terms explain how to use the app and what to expect from us. <bdi>SOUK-SCAN</bdi> is an information tool that makes food prices in Morocco easier to see and compare. We do not sell products, set or control market prices, guarantee what any seller charges, or run a marketplace, and we are not a government service.",
+    "description": "The terms for using SOUK-SCAN: sharing prices, using the Calculator, and understanding community and wholesale reference prices.",
     "sections": [
       {
         "title": "What the prices are",
         "paragraphs": [
-          "Prices shown as community prices are reports submitted by users. They can be inaccurate, incomplete, out of date or unrepresentative, and they do not necessarily reflect every shop or market. They are shown only when enough recent, valid reports exist."
+          "Community prices come from reports shared by people like you. They can be inaccurate, incomplete, out of date or not representative of every shop or market, so they are a helpful guide, not a guarantee. We show a community price only when there are enough recent, valid reports."
         ]
       },
       {
         "title": "Reference prices",
         "paragraphs": [
-          "Where available, wholesale reference prices come from the published bulletins of <bdi>Casa Prestations</bdi> (<bdi>casaprestations.ma</bdi>). Each reference shows its source and the date of the bulletin it comes from. These are wholesale prices, which are not necessarily retail prices. When a product is missing from the latest bulletin, the app may show its most recent earlier reference, clearly labelled with its date. <bdi>SOUK-SCAN</bdi> is not endorsed by, affiliated with or partnered with <bdi>Casa Prestations</bdi>."
+          "Where available, wholesale reference prices come from the published bulletins of <bdi>Casa Prestations</bdi> (<bdi>casaprestations.ma</bdi>). Each one shows its source and the date of its bulletin. These are wholesale prices, which are not always the same as retail prices. If a product is missing from the latest bulletin, the app may show its most recent earlier reference, clearly labelled with its date. <bdi>SOUK-SCAN</bdi> is independent: it is not endorsed by, affiliated with or partnered with <bdi>Casa Prestations</bdi>."
         ]
       },
       {
-        "title": "Using SOUK-SCAN responsibly",
+        "title": "Sharing prices",
         "paragraphs": [
-          "When you submit a price, please report what you genuinely saw or paid. Do not submit false or deliberately misleading prices, try to manipulate averages, abuse or overload the service, send spam, or submit unlawful or harmful content."
+          "When you share a price, please tell us what you really saw or paid. Please do not submit false or misleading prices, try to manipulate averages, overload the service, send spam, or submit anything unlawful or harmful. By sharing a price you agree that it becomes part of the community estimates, which other people see without your name."
         ]
       },
       {
-        "title": "Moderation",
+        "title": "Your Calculator",
         "paragraphs": [
-          "We may review, flag, reject, hide or remove submissions that appear unreliable or abusive, and may restrict or close accounts that misuse the service. An unusual price is not automatically treated as a wrong one."
+          "The Calculator is there to help you add up your shopping. When you use it, you agree that we store what you enter (products, prices, quantities and any shop names you choose) in your account, that the SOUK-SCAN owner can see it, and that the prices you enter are also shared as community prices. We use it to keep SOUK-SCAN fair and safe, for example against bots, spam and price manipulation, and to improve the app. Our <a href=\"@@privacy@@\">privacy policy</a> explains this in detail."
+        ]
+      },
+      {
+        "title": "Keeping prices trustworthy",
+        "paragraphs": [
+          "To keep community prices reliable, we may review, hide or remove submissions that look unreliable or abusive, and we may limit or close accounts that misuse the service. An unusual price is not automatically treated as a wrong one."
         ]
       },
       {
         "title": "Limits of the information",
         "paragraphs": [
-          "Prices vary by location, market, product quality, unit and date. Please check current prices locally before relying on any figure for an important decision."
+          "Prices change with the place, the market, the quality of the product, the unit and the date. Before an important purchase or decision, please check current prices locally."
         ]
       },
       {
         "title": "Availability of the service",
         "paragraphs": [
-          "We aim to keep <bdi>SOUK-SCAN</bdi> available and useful, but we do not promise uninterrupted service, perfect accuracy, or fresh data for every product at all times. Features and data may change or be unavailable from time to time."
+          "We work hard to keep <bdi>SOUK-SCAN</bdi> available and useful, but we cannot promise that it will always run without interruption, be perfectly accurate, or have fresh data for every product. Features and data may change or be unavailable from time to time."
         ]
       },
       {
         "title": "Responsibility",
         "paragraphs": [
-          "To the extent permitted by applicable law, <bdi>SOUK-SCAN</bdi> is not responsible for losses that result from relying on incomplete, inaccurate, delayed or unavailable price information. Nothing in these terms excludes or limits any right or liability that cannot lawfully be excluded or limited."
+          "To the extent the law allows, <bdi>SOUK-SCAN</bdi> is not responsible for losses that result from relying on incomplete, inaccurate, delayed or unavailable price information. Nothing in these terms limits any right or liability that cannot lawfully be limited."
         ]
       },
       {
         "title": "Your account and changes",
         "paragraphs": [
-          "You can stop using <bdi>SOUK-SCAN</bdi> at any time, and you can delete your account and the data linked to it from Profile (Delete account). We may restrict accounts as described above, update the service, and update these terms. When the terms change materially, we will ask you to review and accept the new version before you continue."
+          "You can stop using <bdi>SOUK-SCAN</bdi> at any time, and you can delete your account and the data linked to it from Profile (Delete account). We may update the service and these terms. When the terms change in an important way, we will ask you to read and accept the new version before you continue."
         ]
       },
       {

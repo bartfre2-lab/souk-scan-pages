@@ -2,87 +2,87 @@
   "privacy": {
     "title": "Politique de confidentialité",
     "updated": "Dernière mise à jour : 19 novembre 2026",
-    "intro": "SOUK-SCAN est une application participative d’information sur les prix alimentaires au Maroc (identifiant Android <bdi>com.soukscan.app</bdi>). Cette politique décrit le traitement des informations dans l’application et sur ce site. Pour toute question ou demande relative à vos données, contactez <a href=\"mailto:sanamdev@soukscan.online\">sanamdev@soukscan.online</a>.",
-    "description": "Traitement des données de compte, des prix signalés, des saisies de la Calculette, de la région, des autorisations de localisation et des demandes de suppression dans SOUK-SCAN.",
+    "intro": "SOUK-SCAN aide les habitants du Maroc à voir ce que coûtent vraiment les produits alimentaires (application Android <bdi>com.soukscan.app</bdi>). Cette page explique simplement ce que l’application et ce site font de vos informations, et les choix qui vous appartiennent. Nous ne demandons que ce dont l’application a besoin pour fonctionner, et nous ne vendons jamais vos données. Une question ou une demande ? Écrivez-nous à <a href=\"mailto:sanamdev@soukscan.online\">sanamdev@soukscan.online</a>.",
+    "description": "Comment SOUK-SCAN utilise vos informations : compte, prix partagés, Calculette, région, autorisation de localisation et suppression du compte, expliqués simplement.",
     "sections": [
       {
-        "title": "Informations traitées par l’application",
+        "title": "Ce que nous collectons et pourquoi",
         "paragraphs": [
-          "Les informations de compte comprennent votre adresse e-mail, votre identifiant de compte et les données nécessaires à l’authentification. La connexion Google peut aussi transmettre des informations de profil au prestataire d’authentification. Nous enregistrons l’acceptation des conditions de l’application et la version acceptée.",
-          "Un prix signalé comprend le produit, le prix, la région, la date et l’identifiant de compte nécessaire à la gestion de vos contributions. Les commentaires comprennent la catégorie, le message et l’identifiant de compte que vous envoyez.",
-          "Si vous utilisez l’onglet Calculette, nous enregistrons aussi ce que vous y saisissez, rattaché à votre compte : voir « Vos saisies dans la Calculette » ci-dessous."
+          "Pour créer votre compte, nous avons besoin de votre adresse e-mail. Nous conservons aussi votre identifiant de compte et les données de connexion nécessaires à la sécurité de votre compte. Si vous vous connectez avec Google, Google peut transmettre des informations de profil de base à notre prestataire de connexion. Nous notons la version des conditions que vous avez acceptée.",
+          "Lorsque vous partagez un prix, nous enregistrons le produit, le prix, votre région, la date et votre identifiant de compte, afin que vous puissiez retrouver et gérer vos propres prix. Si vous nous envoyez un commentaire, nous enregistrons la catégorie, votre message et votre identifiant de compte. Si vous utilisez la Calculette, nous enregistrons ce que vous y saisissez (voir plus bas).",
+          "Nous utilisons ces informations pour faire fonctionner votre compte, afficher les prix de la communauté, garder SOUK-SCAN sûr et équitable pour tous (par exemple en repérant les robots, le spam, les abus et les tentatives de manipulation des prix) et améliorer l’application."
         ]
       },
       {
-        "title": "Localisation et région",
+        "title": "Votre position",
         "paragraphs": [
-          "La détection automatique de la région est facultative. Avec votre autorisation, l’application lit une position sur votre appareil et la rapproche de l’une des 12 régions du Maroc. Elle ne transmet, ne conserve ni ne journalise les coordonnées GPS brutes. Vous pouvez choisir une région manuellement.",
-          "La région choisie ou détectée est enregistrée sur votre appareil et envoyée au serveur lors des demandes de prix régionaux ou de l’envoi d’un prix. Les contributions conservent cette région avec l’identifiant du compte. Le traitement local des coordonnées brutes ne signifie donc pas qu’aucune information de région n’est transmise."
+          "La détection automatique de votre région est facultative. Si vous l’autorisez, l’application lit votre position sur votre appareil uniquement pour déterminer dans laquelle des 12 régions du Maroc vous vous trouvez. Vos coordonnées GPS exactes ne sont jamais envoyées, enregistrées ni journalisées. Vous pouvez aussi simplement choisir votre région vous-même.",
+          "Votre région (détectée ou choisie) est enregistrée sur votre appareil et envoyée à nos serveurs lorsque vous demandez les prix de votre région ou partagez un prix, afin que le prix soit rattaché à la bonne région. Votre position exacte reste sur votre téléphone."
         ]
       },
       {
-        "title": "Vos saisies dans la Calculette",
+        "title": "Votre Calculette",
         "paragraphs": [
-          "L’onglet Calculette est une calculette de courses. Chaque jour où vous l’utilisez, vous pouvez saisir des commerçants (avec un nom facultatif de 40 caractères au plus que vous choisissez), les produits achetés, le prix au kilo (ou à l’œuf) et la quantité, en kilos ou en pièces pour les œufs. L’application calcule sur votre téléphone les totaux par ligne, par commerçant et le total général à partir de ces saisies ; ces totaux ne sont pas enregistrés séparément.",
-          "Ces saisies sont enregistrées sur nos serveurs et rattachées à votre compte. Le propriétaire de l’application peut les consulter, compte par compte, afin d’améliorer le service et de comprendre ce que les gens achètent. Elles ne sont pas affichées aux autres utilisateurs, ni vendues, ni utilisées à des fins publicitaires.",
-          "Lorsque vous ajoutez ou modifiez un prix dans la Calculette, l’application l’envoie aussi, avec le produit, votre région et la date, comme prix participatif, de la même façon que tout prix que vous signalez. La quantité, le total et le nom du commerçant ne sont pas envoyés avec lui. Les autres utilisateurs ne voient les prix participatifs que sous forme d’estimations agrégées. Vous ne pouvez pas retirer un prix participatif déjà envoyé, mais vous pouvez le corriger le jour même.",
-          "Vous pouvez modifier une liste de la Calculette le jour où vous l’avez faite ; ensuite elle est en lecture seule. La Calculette garde aussi une copie sur votre téléphone pour fonctionner sans connexion, et l’envoie dès que le téléphone est de nouveau en ligne. Une liste qui nous parvient en retard est encore acceptée pendant deux jours au plus. Utilisez-la sur un seul téléphone à la fois. Si vous désinstallez l’application ou effacez ses données, ce qui n’a pas encore été envoyé est perdu. La déconnexion supprime la copie de votre téléphone (l’application vous prévient d’abord si des éléments n’ont pas été envoyés).",
-          "Vos saisies de la Calculette sont supprimées lorsque vous supprimez votre compte."
+          "La Calculette vous aide à faire le total de vos courses. Pour chaque jour, vous pouvez ajouter des commerçants (vous pouvez leur donner un nom court, de 40 caractères au plus), les produits achetés, le prix au kilo (ou à l’œuf) et la quantité, en kilos ou en pièces pour les œufs. L’application calcule les totaux sur votre téléphone.",
+          "Nous enregistrons ce que vous saisissez sur nos serveurs, rattaché à votre compte, pour que vous puissiez le retrouver. Le propriétaire de SOUK-SCAN peut le consulter, compte par compte. Nous le regardons pour garder SOUK-SCAN équitable et sûr (par exemple pour repérer les robots, le spam, les abus ou les tentatives de manipulation des prix), pour améliorer l’application et pour comprendre ce que les gens achètent au Maroc. Personne d’autre ne peut le voir : cela n’est jamais montré aux autres utilisateurs, et nous ne le vendons pas et ne l’utilisons pas pour de la publicité.",
+          "SOUK-SCAN repose sur les prix que les gens partagent : un prix saisi dans la Calculette est donc aussi partagé comme prix de la communauté, comme un prix que vous signalez vous-même. Seuls le produit, le prix, la région et la date sont partagés, jamais vos quantités, vos totaux ni le nom des commerçants. Les autres utilisateurs ne voient les prix de la communauté que sous forme d’estimations regroupées. Si vous vous trompez, vous pouvez corriger le prix le jour même.",
+          "Pas de réseau au marché ? Ce n’est pas un problème. La Calculette garde une copie sur votre téléphone pour fonctionner sans connexion, et envoie vos saisies dès que vous êtes de nouveau en ligne. Une liste qui nous parvient avec un peu de retard est encore acceptée jusqu’à deux jours. Vous pouvez modifier une liste le jour où vous l’avez faite ; ensuite, elle est en lecture seule. Merci de n’utiliser qu’un téléphone à la fois. Si vous désinstallez l’application ou effacez ses données avant l’envoi de vos saisies, elles seront perdues. Lorsque vous vous déconnectez, la copie est supprimée de votre téléphone (l’application vous prévient d’abord si des éléments n’ont pas encore été envoyés).",
+          "Vous gardez la main : si vous supprimez votre compte, vos saisies de la Calculette sont supprimées aussi."
         ]
       },
       {
-        "title": "Panier Al-Qoffa",
+        "title": "Le panier Al-Qoffa",
         "paragraphs": [
-          "L’onglet Al-Qoffa présente un panier de référence typique, chiffré avec des données que l’application possède déjà. Les produits, les quantités et vos choix de semaine, de mois et de foyer restent uniquement sur votre appareil et ne sont jamais envoyés à nos serveurs. Pour afficher le panier par défaut, l’application télécharge la liste et les facteurs que nous publions, comme toute information publique ; rien de votre propre panier n’est envoyé."
+          "Al-Qoffa présente un panier type de produits du quotidien et son coût. Les produits, les quantités et vos choix pour une semaine ou un mois et pour votre foyer restent uniquement sur votre téléphone. Nous ne les recevons jamais. Pour afficher le panier par défaut, l’application télécharge simplement la liste que nous publions, comme n’importe quelle information publique."
         ]
       },
       {
-        "title": "Informations visibles par les autres utilisateurs",
+        "title": "Ce que voient les autres utilisateurs",
         "paragraphs": [
-          "Les prix participatifs publics sont des estimations agrégées. Votre adresse e-mail, votre identité et vos contributions individuelles ne sont pas affichées publiquement. Les commentaires restent réservés aux responsables du service. Vos saisies de la Calculette et votre panier Al-Qoffa ne sont pas affichés aux autres utilisateurs ; le propriétaire de l’application peut consulter les saisies de la Calculette, comme indiqué ci-dessous. Les références de gros datées, lorsqu’elles sont disponibles, constituent une source distincte."
+          "Les autres utilisateurs ne voient que des estimations regroupées de la communauté. Votre e-mail, votre identité et vos prix individuels ne sont montrés à personne. Vos saisies de la Calculette et votre panier Al-Qoffa ne sont pas non plus montrés aux autres utilisateurs. Les commentaires que vous envoyez ne sont lus que par les personnes qui font fonctionner SOUK-SCAN. Les références de gros datées, lorsqu’elles existent, proviennent d’une autre source publique."
         ]
       },
       {
-        "title": "Actualités, vérification de version et fenêtre de notation",
+        "title": "Actualités, mises à jour et demandes de note",
         "paragraphs": [
-          "L’onglet Infos affiche les actualités que nous publions. L’application les télécharge depuis notre serveur (Supabase) et les images sont chargées depuis notre propre site, <bdi>soukscan.online</bdi>, hébergé par GitHub Pages. Comme toute requête web, cela révèle l’adresse internet de votre appareil à ces services. L’application conserve sur votre appareil les dernières actualités, pour que l’onglet s’ouvre sans connexion, ainsi qu’un repère de la dernière actualité vue, pour signaler les nouvelles.",
-          "Au démarrage et quand vous revenez dans l’application, elle lit deux numéros publics sur notre serveur (la version la plus récente et la plus ancienne encore autorisée) pour vous indiquer si une mise à jour est disponible ou nécessaire. Elle mémorise sur l’appareil que vous avez fermé un avis de mise à jour. Le bouton de mise à jour ouvre la page de SOUK-SCAN sur Google Play, dont le traitement relève de Google.",
-          "Ces requêtes demandent uniquement des informations publiques et n’y ajoutent ni vos saisies ni données personnelles. Comme toute requête vers notre serveur, elles comportent les informations techniques de connexion décrites plus haut et, lorsque vous êtes connecté, le jeton de session que l’application utilise pour toutes ses requêtes.",
-          "De temps en temps, l’application peut vous proposer, dans une fenêtre, de la noter sur Google Play. Ce qu’elle retient pour cela (vos jours d’ouverture récents, la date du dernier affichage et votre réponse) reste uniquement sur votre appareil ; rien ne nous est envoyé. Si vous choisissez de la noter, Google Play s’ouvre et Google traite ce que vous y faites."
+          "L’onglet Infos affiche les actualités que nous publions. L’application les récupère sur nos serveurs (Supabase) et les images se chargent depuis notre propre site, <bdi>soukscan.online</bdi>, hébergé par GitHub Pages. Comme pour toute page web, ces services peuvent voir l’adresse internet de votre appareil. L’application garde les dernières actualités sur votre téléphone pour que l’onglet s’ouvre sans connexion, et se souvient de la dernière actualité vue pour afficher un petit point lorsqu’il y a du nouveau.",
+          "Quand vous ouvrez l’application ou y revenez, elle consulte deux numéros publics sur nos serveurs (la version la plus récente et la plus ancienne encore compatible) pour vous prévenir qu’une mise à jour est disponible. Elle retient sur votre téléphone si vous avez fermé un message de mise à jour. Le bouton de mise à jour ouvre SOUK-SCAN sur Google Play, où s’appliquent les règles de Google.",
+          "Ces requêtes ne demandent que des informations publiques. Elles n’incluent aucune de vos saisies ni aucune donnée personnelle ; comme toutes les requêtes vers nos serveurs, elles comportent des informations techniques normales et, lorsque vous êtes connecté, le jeton de session que l’application utilise.",
+          "De temps en temps, l’application peut vous proposer de la noter sur Google Play. Pour choisir un bon moment, elle retient sur votre téléphone les jours où vous l’avez ouverte récemment, la date de la dernière proposition et votre réponse. Cela reste sur votre téléphone et ne nous est jamais envoyé. Si vous choisissez de la noter, Google Play s’ouvre et les règles de Google s’appliquent."
         ]
       },
       {
-        "title": "Prestataires et informations techniques",
+        "title": "Les services qui nous aident à faire fonctionner SOUK-SCAN",
         "paragraphs": [
-          "Supabase fournit la base de données et l’authentification. Google gère la connexion Google lorsque vous la choisissez. GitHub Pages héberge ce site. Ces prestataires reçoivent les informations techniques de connexion, notamment l’adresse IP et les informations de requête, nécessaires au fonctionnement et à la sécurité de leurs services.",
-          "Nous ne vendons pas de données personnelles et ne diffusons pas de publicité. L’application et le site examinés n’intègrent pas d’outils publicitaires ni d’analyse tiers. Le traitement par un prestataire d’hébergement ou d’authentification se distingue de la publication d’informations aux autres utilisateurs."
+          "Nous nous appuyons sur des services de confiance. Supabase fournit notre base de données et la connexion. Google gère la connexion Google lorsque vous la choisissez. GitHub Pages héberge ce site. Comme la plupart des services en ligne, ils reçoivent des informations techniques de connexion, comme votre adresse IP, pour faire fonctionner et protéger leurs services.",
+          "Nous ne vendons pas vos données personnelles. SOUK-SCAN n’affiche aucune publicité et n’utilise aucun outil publicitaire ni d’analyse tiers, dans l’application comme sur ce site."
         ]
       },
       {
-        "title": "Stockage sur votre appareil",
+        "title": "Ce qui reste sur votre appareil",
         "paragraphs": [
-          "L’application conserve sur votre appareil des préférences telles que la langue, l’apparence, la région et les favoris, ainsi que les informations de session nécessaires à votre connexion. Elle y conserve aussi vos choix du panier Al-Qoffa, une copie de vos saisies récentes de la Calculette (y compris celles qui n’ont pas encore été envoyées), les dernières actualités publiées et un repère de la dernière actualité vue, l’avis de mise à jour que vous avez fermé et l’état de la fenêtre de notation. Ce site conserve les préférences de langue, d’apparence et de région et l’envoie à Supabase pour consulter les estimations régionales. Il ne demande pas votre position GPS et ne vous connecte pas à un compte. Vous pouvez les effacer dans les paramètres de stockage de l’appareil ou du navigateur."
+          "L’application enregistre sur votre téléphone vos préférences (langue, apparence, région, favoris) et la session qui vous garde connecté. Elle y enregistre aussi vos choix du panier Al-Qoffa, une copie de vos saisies récentes de la Calculette (y compris celles qui n’ont pas encore été envoyées), les dernières actualités et la dernière vue, le message de mise à jour que vous avez fermé et l’état de la demande de note. Ce site enregistre dans votre navigateur vos choix de langue, d’apparence et de région, et envoie votre région à Supabase pour afficher les estimations de la communauté. Il ne demande jamais votre position GPS et ne vous connecte jamais à un compte. Vous pouvez tout effacer depuis les paramètres de stockage de votre téléphone ou de votre navigateur."
         ]
       },
       {
-        "title": "Conservation et suppression",
+        "title": "Combien de temps nous conservons les informations, et comment les supprimer",
         "paragraphs": [
-          "Les informations du compte, les prix liés au compte, les saisies de la Calculette, les commentaires et les acceptations des conditions sont conservés tant qu’ils sont nécessaires à la gestion du compte et du service, jusqu’à la suppression du compte ou à leur retrait anticipé. Une période limitée d’affichage des prix ne signifie pas que les contributions sources sont automatiquement effacées à son terme.",
-          "La suppression confirmée dans l’application retire le compte actif, les prix qui lui sont liés, ses saisies de la Calculette et ses commentaires. Les demandes valides envoyées par e-mail sont traitées dans les 30 jours calendaires suivant leur réception. Consultez la page <a href=\"@@account-deletion@@\">de suppression du compte</a> pour connaître la procédure.",
-          "Les journaux techniques et les copies de sauvegarde éventuellement conservés par les prestataires suivent leurs règles de conservation. La suppression du compte actif ne garantit pas l’effacement immédiat de chaque journal ou sauvegarde. Les préférences locales (dont votre panier Al-Qoffa) peuvent rester jusqu’à l’effacement du stockage de l’application ou du navigateur."
+          "Nous conservons les informations de votre compte, vos prix, vos saisies de la Calculette, vos commentaires et les acceptations des conditions tant que vous avez un compte, sauf retrait plus tôt. Les prix comptent dans les estimations pendant une période récente limitée ; cela ne veut pas dire que les prix d’origine sont effacés automatiquement ensuite.",
+          "Vous pouvez supprimer votre compte quand vous le souhaitez depuis Profil → Supprimer le compte. Cela supprime votre compte ainsi que vos prix, vos saisies de la Calculette et vos commentaires. Si vous préférez, écrivez-nous depuis l’adresse de votre compte et nous nous en occupons dans les 30 jours calendaires. Les étapes figurent sur la page <a href=\"@@account-deletion@@\">de suppression du compte</a>.",
+          "Nos prestataires peuvent conserver un certain temps des journaux techniques ou des sauvegardes selon leurs propres règles ; la suppression de votre compte n’efface donc pas immédiatement chaque journal ou sauvegarde. Les données conservées uniquement sur votre téléphone, dont votre panier Al-Qoffa, restent jusqu’à ce que vous effaciez le stockage de l’application ou du navigateur."
         ]
       },
       {
-        "title": "Sécurité et choix disponibles",
+        "title": "Votre sécurité et vos choix",
         "paragraphs": [
-          "L’application communique avec son serveur par HTTPS et utilise des contrôles d’accès authentifiés pour les données privées. Aucun service en ligne ne peut garantir une sécurité absolue. L’application ne reçoit jamais votre mot de passe Google.",
-          "Vous pouvez refuser la localisation, choisir une région manuellement, modifier la langue ou l’apparence, ne pas utiliser la Calculette, vous déconnecter ou demander la suppression du compte. Pour une demande d’accès, de rectification ou toute autre question, écrivez à <a href=\"mailto:sanamdev@soukscan.online\">sanamdev@soukscan.online</a>."
+          "L’application communique avec nos serveurs en HTTPS, et les données privées de votre compte sont protégées par des contrôles d’accès liés à votre connexion. Aucun service en ligne ne peut promettre une sécurité parfaite, mais nous la prenons au sérieux. L’application ne reçoit jamais votre mot de passe Google.",
+          "Vous décidez. Vous pouvez refuser la localisation, choisir votre région vous-même, changer la langue ou l’apparence, ne pas utiliser la Calculette, vous déconnecter ou supprimer votre compte. Pour poser une question sur vos données ou en demander la correction, écrivez à <a href=\"mailto:sanamdev@soukscan.online\">sanamdev@soukscan.online</a>."
         ]
       },
       {
-        "title": "Modifications et contact",
+        "title": "Évolutions de cette politique",
         "paragraphs": [
-          "Nous mettons cette page à jour lorsque les pratiques du service évoluent. La date ci-dessus identifie cette révision de la politique du site. Lorsque les conditions ou cette politique changent de façon importante, l’application vous demande d’examiner et d’accepter la nouvelle version avant de continuer ; la version 1.2.0 vous demande d’accepter la version mise à jour une fois. Vous pouvez joindre les responsables de SOUK-SCAN à <a href=\"mailto:sanamdev@soukscan.online\">sanamdev@soukscan.online</a>."
+          "Si nous changeons la façon dont SOUK-SCAN traite les informations, nous mettons à jour cette page et la date en haut. Pour les changements importants de cette politique ou des conditions, l’application vous demande de lire et d’accepter la nouvelle version avant de continuer. La version 1.2.0 vous demande d’accepter la version mise à jour une fois. Une question ? Écrivez à <a href=\"mailto:sanamdev@soukscan.online\">sanamdev@soukscan.online</a>."
         ]
       }
     ]
@@ -90,7 +90,7 @@
   "account-deletion": {
     "title": "Supprimer votre compte SOUK-SCAN",
     "updated": "Dernière mise à jour : 19 novembre 2026",
-    "intro": "Vous pouvez supprimer définitivement votre compte SOUK-SCAN et les données qui lui sont liées dans l’application ou en faire la demande par e-mail. Cette page concerne <bdi>com.soukscan.app</bdi>.",
+    "intro": "C’est votre compte et ce sont vos données. Vous pouvez supprimer définitivement votre compte SOUK-SCAN, avec les données qui lui sont liées, dans l’application, ou nous demander de le faire par e-mail. Cette page concerne <bdi>com.soukscan.app</bdi>.",
     "description": "Supprimez votre compte SOUK-SCAN dans l’application ou par e-mail. Données supprimées, procédure et délai de traitement.",
     "sections": [
       {
@@ -129,56 +129,62 @@
   },
   "terms": {
     "title": "Conditions d’utilisation",
-    "updated": "Version des conditions de l’application : 12 octobre 2026 · Site mis à jour le 20 octobre 2026",
-    "intro": "<bdi>SOUK-SCAN</bdi> est un outil d'information qui rend les prix alimentaires au Maroc plus faciles à consulter et à comparer. L'application ne vend aucun produit, ne fixe ni ne contrôle les prix du marché, ne garantit pas les prix pratiqués par les vendeurs et n'est ni une place de marché ni un organisme de régulation. Ce n'est pas un service public.",
-    "description": "Conditions d’utilisation de SOUK-SCAN, contributions responsables et portée des prix participatifs et références de gros.",
+    "updated": "Version des conditions de l’application : 19 novembre 2026 · Site mis à jour le 19 novembre 2026",
+    "intro": "Bienvenue sur <bdi>SOUK-SCAN</bdi> ! Ces conditions expliquent comment utiliser l’application et ce que vous pouvez attendre de nous. <bdi>SOUK-SCAN</bdi> est un outil d’information qui rend les prix alimentaires au Maroc plus faciles à consulter et à comparer. Nous ne vendons aucun produit, ne fixons ni ne contrôlons les prix du marché, ne garantissons pas ce que facture un vendeur et ne tenons pas de place de marché ; nous ne sommes pas un service public.",
+    "description": "Les conditions d’utilisation de SOUK-SCAN : partager des prix, utiliser la Calculette et comprendre les prix de la communauté et les références de gros.",
     "sections": [
       {
-        "title": "Nature des prix",
+        "title": "Ce que sont les prix",
         "paragraphs": [
-          "Les prix présentés comme prix de la communauté sont des signalements envoyés par des utilisateurs. Ils peuvent être inexacts, incomplets, dépassés ou non représentatifs, et ne reflètent pas forcément tous les commerces ni tous les marchés. Ils ne sont affichés que lorsqu'il existe assez de signalements récents et valides."
+          "Les prix de la communauté proviennent de signalements partagés par des personnes comme vous. Ils peuvent être inexacts, incomplets, dépassés ou peu représentatifs de tous les commerces et marchés : ils servent de repère, pas de garantie. Nous n’affichons un prix de la communauté que lorsqu’il y a assez de signalements récents et valides."
         ]
       },
       {
         "title": "Prix de référence",
         "paragraphs": [
-          "Lorsqu'ils sont disponibles, les prix de référence de gros proviennent des bulletins publiés par <bdi>Casa Prestations</bdi> (<bdi>casaprestations.ma</bdi>). Chaque référence indique sa source et la date du bulletin dont elle est issue. Ce sont des prix de gros, qui ne sont pas nécessairement des prix de détail. Si un produit ne figure pas dans le dernier bulletin, l'application peut afficher sa référence antérieure la plus récente, clairement signalée avec sa date. <bdi>SOUK-SCAN</bdi> n'est ni approuvé par <bdi>Casa Prestations</bdi>, ni affilié ou associé à elle."
+          "Lorsqu’ils sont disponibles, les prix de référence de gros proviennent des bulletins publiés par <bdi>Casa Prestations</bdi> (<bdi>casaprestations.ma</bdi>). Chacun indique sa source et la date de son bulletin. Ce sont des prix de gros, qui ne sont pas toujours les mêmes que les prix de détail. Si un produit ne figure pas dans le dernier bulletin, l’application peut afficher sa référence antérieure la plus récente, clairement signalée avec sa date. <bdi>SOUK-SCAN</bdi> est indépendant : il n’est ni approuvé par <bdi>Casa Prestations</bdi>, ni affilié ou associé à elle."
         ]
       },
       {
-        "title": "Utilisation responsable",
+        "title": "Partager des prix",
         "paragraphs": [
-          "Lorsque vous envoyez un prix, indiquez ce que vous avez réellement vu ou payé. N'envoyez pas de prix faux ou volontairement trompeurs, ne cherchez pas à fausser les moyennes, n'abusez pas du service et ne le surchargez pas, n'envoyez pas de spam et ne publiez aucun contenu illicite ou nuisible."
+          "Lorsque vous partagez un prix, dites-nous ce que vous avez réellement vu ou payé. Merci de ne pas envoyer de prix faux ou trompeurs, de ne pas chercher à fausser les moyennes, de ne pas surcharger le service, de ne pas envoyer de spam et de ne rien envoyer d’illicite ou de nuisible. En partageant un prix, vous acceptez qu’il entre dans les estimations de la communauté, que les autres voient sans votre nom."
         ]
       },
       {
-        "title": "Modération",
+        "title": "Votre Calculette",
         "paragraphs": [
-          "Nous pouvons examiner, signaler, rejeter, masquer ou supprimer les envois qui semblent peu fiables ou abusifs, et restreindre ou fermer les comptes qui détournent le service. Un prix inhabituel n'est pas automatiquement considéré comme faux."
+          "La Calculette est là pour vous aider à faire le total de vos courses. En l’utilisant, vous acceptez que nous enregistrions ce que vous saisissez (produits, prix, quantités et noms de commerçants que vous choisissez) dans votre compte, que le propriétaire de SOUK-SCAN puisse le consulter, et que les prix saisis soient aussi partagés comme prix de la communauté. Nous l’utilisons pour garder SOUK-SCAN équitable et sûr, par exemple contre les robots, le spam et la manipulation des prix, et pour améliorer l’application. Notre <a href=\"@@privacy@@\">politique de confidentialité</a> l’explique en détail."
         ]
       },
       {
-        "title": "Limites de l'information",
+        "title": "Garder des prix fiables",
         "paragraphs": [
-          "Les prix varient selon le lieu, le marché, la qualité du produit, l'unité et la date. Vérifiez les prix actuels sur place avant de vous appuyer sur un chiffre pour une décision importante."
+          "Pour que les prix de la communauté restent fiables, nous pouvons examiner, masquer ou supprimer les envois qui semblent peu fiables ou abusifs, et limiter ou fermer les comptes qui détournent le service. Un prix inhabituel n’est pas automatiquement considéré comme faux."
+        ]
+      },
+      {
+        "title": "Limites de l’information",
+        "paragraphs": [
+          "Les prix varient selon le lieu, le marché, la qualité du produit, l’unité et la date. Avant un achat ou une décision importante, vérifiez les prix actuels sur place."
         ]
       },
       {
         "title": "Disponibilité du service",
         "paragraphs": [
-          "Nous nous efforçons de maintenir <bdi>SOUK-SCAN</bdi> disponible et utile, mais nous ne promettons ni un service ininterrompu, ni une exactitude parfaite, ni des données récentes pour chaque produit en permanence. Des fonctionnalités et des données peuvent changer ou être indisponibles de temps à autre."
+          "Nous faisons de notre mieux pour que <bdi>SOUK-SCAN</bdi> reste disponible et utile, mais nous ne pouvons pas promettre un service sans interruption, une exactitude parfaite ni des données récentes pour chaque produit. Des fonctionnalités et des données peuvent changer ou être indisponibles de temps à autre."
         ]
       },
       {
         "title": "Responsabilité",
         "paragraphs": [
-          "Dans la mesure permise par la loi applicable, <bdi>SOUK-SCAN</bdi> n'est pas responsable des pertes résultant de la confiance accordée à des informations de prix incomplètes, inexactes, tardives ou indisponibles. Rien dans ces conditions n'exclut ni ne limite un droit ou une responsabilité qui ne peut légalement être exclu ou limité."
+          "Dans la mesure permise par la loi, <bdi>SOUK-SCAN</bdi> n’est pas responsable des pertes résultant de la confiance accordée à des informations de prix incomplètes, inexactes, tardives ou indisponibles. Rien dans ces conditions ne limite un droit ou une responsabilité qui ne peut légalement être limité."
         ]
       },
       {
         "title": "Votre compte et les évolutions",
         "paragraphs": [
-          "Vous pouvez cesser d'utiliser <bdi>SOUK-SCAN</bdi> à tout moment et supprimer votre compte ainsi que les données qui y sont liées depuis le Profil (« Supprimer le compte »). Nous pouvons restreindre des comptes comme indiqué ci-dessus, faire évoluer le service et modifier ces conditions. En cas de modification importante, nous vous demanderons de lire et d'accepter la nouvelle version avant de continuer."
+          "Vous pouvez cesser d’utiliser <bdi>SOUK-SCAN</bdi> à tout moment et supprimer votre compte ainsi que les données qui y sont liées depuis le Profil (« Supprimer le compte »). Nous pouvons faire évoluer le service et ces conditions. Lorsque les conditions changent de façon importante, nous vous demanderons de lire et d’accepter la nouvelle version avant de continuer."
         ]
       },
       {
