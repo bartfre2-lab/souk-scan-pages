@@ -68,7 +68,7 @@ const foodFrames = {
   egg: [30, 955, 285, 260],
   white_egg: [350, 960, 280, 255],
 };
-const foodSheet = new URL("./souk-food-rubber-hose.png", import.meta.url).href;
+const foodSheet = new URL("./souk-food-rubber-hose.webp", import.meta.url).href;
 let selected = null;
 
 function stopMotion() {

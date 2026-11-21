@@ -36,6 +36,7 @@ before(async () => {
             ".css": "text/css",
             ".js": "text/javascript",
             ".png": "image/png",
+            ".webp": "image/webp",
             ".woff2": "font/woff2",
             ".svg": "image/svg+xml",
             ".xml": "application/xml",

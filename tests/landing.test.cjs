@@ -15,6 +15,7 @@ const mime = {
   ".js": "text/javascript",
   ".svg": "image/svg+xml",
   ".png": "image/png",
+  ".webp": "image/webp",
   ".woff2": "font/woff2",
   ".apk": "application/vnd.android.package-archive",
 };
@@ -109,7 +110,7 @@ for (const width of [320, 390, 768, 1440]) {
     );
     assert.equal(
       await page.locator(".courtyard-logo img").getAttribute("src"),
-      "/assets/brand/logo.png",
+      "/assets/brand/logo.webp",
     );
     const idle = await geometry(page);
     // Two fixed stalls on each side, separated from each other.
