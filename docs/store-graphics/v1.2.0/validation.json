@@ -1,0 +1,200 @@
+[
+  {
+    "file": "ar/01-prices.png",
+    "size": [
+      1080,
+      1920
+    ],
+    "mode": "RGB",
+    "bytes": 1981083
+  },
+  {
+    "file": "ar/02-alqoffa.png",
+    "size": [
+      1080,
+      1920
+    ],
+    "mode": "RGB",
+    "bytes": 2000856
+  },
+  {
+    "file": "ar/03-calculator.png",
+    "size": [
+      1080,
+      1920
+    ],
+    "mode": "RGB",
+    "bytes": 1781513
+  },
+  {
+    "file": "ar/04-line-price.png",
+    "size": [
+      1080,
+      1920
+    ],
+    "mode": "RGB",
+    "bytes": 1753609
+  },
+  {
+    "file": "ar/05-news.png",
+    "size": [
+      1080,
+      1920
+    ],
+    "mode": "RGB",
+    "bytes": 1743148
+  },
+  {
+    "file": "ar/06-guide.png",
+    "size": [
+      1080,
+      1920
+    ],
+    "mode": "RGB",
+    "bytes": 1838332
+  },
+  {
+    "file": "ar/feature-1024x500.png",
+    "size": [
+      1024,
+      500
+    ],
+    "mode": "RGB",
+    "bytes": 756425
+  },
+  {
+    "file": "en/01-prices.png",
+    "size": [
+      1080,
+      1920
+    ],
+    "mode": "RGB",
+    "bytes": 1999970
+  },
+  {
+    "file": "en/02-alqoffa.png",
+    "size": [
+      1080,
+      1920
+    ],
+    "mode": "RGB",
+    "bytes": 2010942
+  },
+  {
+    "file": "en/03-calculator.png",
+    "size": [
+      1080,
+      1920
+    ],
+    "mode": "RGB",
+    "bytes": 1803279
+  },
+  {
+    "file": "en/04-line-price.png",
+    "size": [
+      1080,
+      1920
+    ],
+    "mode": "RGB",
+    "bytes": 1754878
+  },
+  {
+    "file": "en/05-news.png",
+    "size": [
+      1080,
+      1920
+    ],
+    "mode": "RGB",
+    "bytes": 1768567
+  },
+  {
+    "file": "en/06-guide.png",
+    "size": [
+      1080,
+      1920
+    ],
+    "mode": "RGB",
+    "bytes": 1845998
+  },
+  {
+    "file": "en/feature-1024x500.png",
+    "size": [
+      1024,
+      500
+    ],
+    "mode": "RGB",
+    "bytes": 759138
+  },
+  {
+    "file": "fr/01-prices.png",
+    "size": [
+      1080,
+      1920
+    ],
+    "mode": "RGB",
+    "bytes": 1995023
+  },
+  {
+    "file": "fr/02-alqoffa.png",
+    "size": [
+      1080,
+      1920
+    ],
+    "mode": "RGB",
+    "bytes": 2012708
+  },
+  {
+    "file": "fr/03-calculator.png",
+    "size": [
+      1080,
+      1920
+    ],
+    "mode": "RGB",
+    "bytes": 1809360
+  },
+  {
+    "file": "fr/04-line-price.png",
+    "size": [
+      1080,
+      1920
+    ],
+    "mode": "RGB",
+    "bytes": 1760688
+  },
+  {
+    "file": "fr/05-news.png",
+    "size": [
+      1080,
+      1920
+    ],
+    "mode": "RGB",
+    "bytes": 1773406
+  },
+  {
+    "file": "fr/06-guide.png",
+    "size": [
+      1080,
+      1920
+    ],
+    "mode": "RGB",
+    "bytes": 1843381
+  },
+  {
+    "file": "fr/feature-1024x500.png",
+    "size": [
+      1024,
+      500
+    ],
+    "mode": "RGB",
+    "bytes": 760857
+  },
+  {
+    "file": "icon-512.png",
+    "size": [
+      512,
+      512
+    ],
+    "mode": "RGB",
+    "bytes": 189412
+  }
+]

@@ -1,0 +1,140 @@
+{
+  "en": {
+    "country": "MOROCCO",
+    "feature": [
+      "Know the prices.",
+      "Before you buy."
+    ],
+    "featureSub": "Food prices, clearer.",
+    "slides": [
+      [
+        "Know the prices.",
+        "Before you buy.",
+        "Wholesale references and community estimates.",
+        "01-prices"
+      ],
+      [
+        "Plan your basket.",
+        "Before the souk.",
+        "An indicative range for your weekly basket.",
+        "02-alqoffa"
+      ],
+      [
+        "Add up your shopping.",
+        "Shop by shop.",
+        "Keep track of what you spend, shop by shop.",
+        "03-calculator"
+      ],
+      [
+        "Quick to fill.",
+        "Easy to add up.",
+        "Tap a price and a quantity, see the total.",
+        "04-line-price"
+      ],
+      [
+        "Stay in the loop.",
+        "News from SOUK-SCAN.",
+        "Read the latest news inside the app.",
+        "05-news"
+      ],
+      [
+        "A quick tour.",
+        "For a good start.",
+        "A short guide shows you around the app.",
+        "06-guide"
+      ]
+    ]
+  },
+  "fr": {
+    "country": "MAROC",
+    "feature": [
+      "Les prix en tête.",
+      "Avant vos achats."
+    ],
+    "featureSub": "Les prix alimentaires, en clair.",
+    "slides": [
+      [
+        "Les prix en tête.",
+        "Avant vos achats.",
+        "Références de gros et estimations de la communauté.",
+        "01-prices"
+      ],
+      [
+        "Préparez votre panier.",
+        "Avant le souk.",
+        "Une fourchette indicative pour votre panier de la semaine.",
+        "02-alqoffa"
+      ],
+      [
+        "Additionnez vos courses.",
+        "Commerçant par commerçant.",
+        "Gardez le fil de vos dépenses, commerçant par commerçant.",
+        "03-calculator"
+      ],
+      [
+        "Rapide à remplir.",
+        "Simple à additionner.",
+        "Touchez un prix et une quantité, le total suit.",
+        "04-line-price"
+      ],
+      [
+        "Restez informé.",
+        "Les actualités SOUK-SCAN.",
+        "Lisez les dernières actualités dans l’application.",
+        "05-news"
+      ],
+      [
+        "Une visite guidée.",
+        "Pour bien commencer.",
+        "Un court guide vous présente l’application.",
+        "06-guide"
+      ]
+    ]
+  },
+  "ar": {
+    "country": "المغرب",
+    "feature": [
+      "اعرف الأسعار",
+      "قبل أن تشتري"
+    ],
+    "featureSub": "أسعار المواد الغذائية بوضوح.",
+    "slides": [
+      [
+        "اعرف الأسعار",
+        "قبل أن تشتري",
+        "مراجع الجملة وتقديرات المجتمع.",
+        "01-prices"
+      ],
+      [
+        "جهّز قفّتك",
+        "قبل الذهاب إلى السوق",
+        "نطاق تقريبي لسلة أسبوعك.",
+        "02-alqoffa"
+      ],
+      [
+        "اجمع مشترياتك",
+        "متجرًا بعد متجر",
+        "تابع ما تنفقه، متجرًا بعد متجر.",
+        "03-calculator"
+      ],
+      [
+        "سريع في الإدخال",
+        "سهل في الجمع",
+        "اختر سعرًا وكمية ويظهر المجموع.",
+        "04-line-price"
+      ],
+      [
+        "ابقَ على اطلاع",
+        "أخبار SOUK-SCAN",
+        "اقرأ آخر الأخبار داخل التطبيق.",
+        "05-news"
+      ],
+      [
+        "جولة سريعة",
+        "لبداية موفّقة",
+        "دليل قصير يعرّفك بالتطبيق.",
+        "06-guide"
+      ]
+    ]
+  }
+}

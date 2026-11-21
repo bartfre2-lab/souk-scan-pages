@@ -1,5 +1,7 @@
 # Google Play store graphics
 
+[Version 1.2.0 promotional assets](v1.2.0/) (six screenshots per language of the five-tab app) supersede the 1.1.0 set below.
+
 [Version 1.1.0 promotional assets](v1.1.0/) contain the final Arabic, French and
 English graphics, raw captures, editable layouts and validation reports.
 
