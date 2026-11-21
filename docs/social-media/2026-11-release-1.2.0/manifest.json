@@ -1,0 +1,167 @@
+[
+  {
+    "file": "posts\\01-news\\01-cover.jpg",
+    "language": "ar",
+    "post": "01-news",
+    "slide": 1,
+    "of": 5,
+    "width": 1080,
+    "height": 1080,
+    "bytes": 489260,
+    "alt": "الأخبار الآن داخل التطبيق يُبقيك تبويب «معلومات» على اطلاع."
+  },
+  {
+    "file": "posts\\01-news\\02-ar-1.jpg",
+    "language": "ar",
+    "post": "01-news",
+    "slide": 2,
+    "of": 5,
+    "width": 1080,
+    "height": 1080,
+    "bytes": 424761,
+    "alt": "الأخبار داخل التطبيق أحدث خبر في «معلومات»، ونقطة صغيرة تنبّهك عند كل جديد."
+  },
+  {
+    "file": "posts\\01-news\\03-ar-2.jpg",
+    "language": "ar",
+    "post": "01-news",
+    "slide": 3,
+    "of": 5,
+    "width": 1080,
+    "height": 1080,
+    "bytes": 422263,
+    "alt": "كل الأخبار بلمسة واحدة اضغط على «كل الأخبار» لترى كل المنشورات، من الأحدث إلى الأقدم."
+  },
+  {
+    "file": "posts\\01-news\\04-en-fr-1.jpg",
+    "language": "en+fr",
+    "post": "01-news",
+    "slide": 4,
+    "of": 5,
+    "width": 1080,
+    "height": 1080,
+    "bytes": 471776,
+    "alt": "News, in the app. The newest post in Info, and a small dot when there is something new. / Les actualités, dans l’appli. La dernière actualité dans Infos, et un petit point à chaque nouveauté."
+  },
+  {
+    "file": "posts\\01-news\\05-en-fr-2.jpg",
+    "language": "en+fr",
+    "post": "01-news",
+    "slide": 5,
+    "of": 5,
+    "width": 1080,
+    "height": 1080,
+    "bytes": 453627,
+    "alt": "Every post, one tap away. Tap “All news”: every post, newest first. / Tout lire, en un geste. « Toutes les actualités » : de la plus récente à la plus ancienne."
+  },
+  {
+    "file": "posts\\02-alqoffa\\01-cover.jpg",
+    "language": "ar",
+    "post": "02-alqoffa",
+    "slide": 1,
+    "of": 5,
+    "width": 1080,
+    "height": 1080,
+    "bytes": 489684,
+    "alt": "تعرّف على «القفة» جهّز سلة منتجاتك اليومية واطّلع على نطاق تقريبي لها."
+  },
+  {
+    "file": "posts\\02-alqoffa\\02-ar-1.jpg",
+    "language": "ar",
+    "post": "02-alqoffa",
+    "slide": 2,
+    "of": 5,
+    "width": 1080,
+    "height": 1080,
+    "bytes": 459990,
+    "alt": "سلتك قبل الذهاب إلى السوق نطاق تقريبي لسلة من المنتجات اليومية، لأسبوع أو لشهر، لشخص أو لأسرة."
+  },
+  {
+    "file": "posts\\02-alqoffa\\03-ar-2.jpg",
+    "language": "ar",
+    "post": "02-alqoffa",
+    "slide": 3,
+    "of": 5,
+    "width": 1080,
+    "height": 1080,
+    "bytes": 445938,
+    "alt": "نطاقات تقريبية لا وعود تبقى مراجع الجملة وتقديرات المجتمع منفصلة، والمجاميع تقريبية."
+  },
+  {
+    "file": "posts\\02-alqoffa\\04-en-fr-1.jpg",
+    "language": "en+fr",
+    "post": "02-alqoffa",
+    "slide": 4,
+    "of": 5,
+    "width": 1080,
+    "height": 1080,
+    "bytes": 512236,
+    "alt": "Your basket, before the souk. An indicative range for an everyday basket: week or month, one person or four. / Votre panier, avant le souk. Une fourchette indicative pour un panier du quotidien : semaine ou mois, 1 ou 4 personnes."
+  },
+  {
+    "file": "posts\\02-alqoffa\\05-en-fr-2.jpg",
+    "language": "en+fr",
+    "post": "02-alqoffa",
+    "slide": 5,
+    "of": 5,
+    "width": 1080,
+    "height": 1080,
+    "bytes": 492502,
+    "alt": "Ranges, not promises. Wholesale and community figures stay separate. Totals are indicative. / Des fourchettes, pas des promesses. Gros et communauté restent séparés. Les totaux sont indicatifs."
+  },
+  {
+    "file": "posts\\03-calculator\\01-cover.jpg",
+    "language": "ar",
+    "post": "03-calculator",
+    "slide": 1,
+    "of": 5,
+    "width": 1080,
+    "height": 1080,
+    "bytes": 477747,
+    "alt": "الحاسبة الجديدة اجمع مشترياتك متجرًا بعد متجر."
+  },
+  {
+    "file": "posts\\03-calculator\\02-ar-1.jpg",
+    "language": "ar",
+    "post": "03-calculator",
+    "slide": 2,
+    "of": 5,
+    "width": 1080,
+    "height": 1080,
+    "bytes": 437477,
+    "alt": "اجمع مشترياتك أضف المتاجر والمنتجات، وشاهد مجموع كل متجر والمجموع الكلي."
+  },
+  {
+    "file": "posts\\03-calculator\\03-ar-2.jpg",
+    "language": "ar",
+    "post": "03-calculator",
+    "slide": 3,
+    "of": 5,
+    "width": 1080,
+    "height": 1080,
+    "bytes": 438285,
+    "alt": "سعر وكمية بلمسة واحدة اضغط على سعر وكمية، وشاهد المجموع قبل الإضافة."
+  },
+  {
+    "file": "posts\\03-calculator\\04-en-fr-1.jpg",
+    "language": "en+fr",
+    "post": "03-calculator",
+    "slide": 4,
+    "of": 5,
+    "width": 1080,
+    "height": 1080,
+    "bytes": 486747,
+    "alt": "Add up your shopping. Add shops and products, see each subtotal and the total. / Additionnez vos courses. Ajoutez commerçants et produits, voyez chaque sous-total et le total."
+  },
+  {
+    "file": "posts\\03-calculator\\05-en-fr-2.jpg",
+    "language": "en+fr",
+    "post": "03-calculator",
+    "slide": 5,
+    "of": 5,
+    "width": 1080,
+    "height": 1080,
+    "bytes": 479710,
+    "alt": "Price and quantity, one tap. Tap a price and a quantity, see the total before you add it. / Prix et quantité, en un geste. Touchez un prix et une quantité, voyez le total avant d’ajouter."
+  }
+]

@@ -1,0 +1,581 @@
+[
+  {
+    "file": "posts\\01-news\\01-cover.jpg",
+    "layout": "cover",
+    "logo": {
+      "x": 613.5625,
+      "y": 46,
+      "right": 705.5625,
+      "bottom": 138,
+      "width": 92
+    },
+    "brand": {
+      "x": 374.421875,
+      "y": 46,
+      "right": 705.5625,
+      "bottom": 138,
+      "width": 331.140625
+    },
+    "text": {
+      "x": 160,
+      "y": 196,
+      "right": 920,
+      "bottom": 537.265625,
+      "width": 760
+    },
+    "headlineFont": 92,
+    "swipe": {
+      "x": 320.765625,
+      "y": 962.8125,
+      "right": 759.25,
+      "bottom": 1024,
+      "width": 438.484375
+    },
+    "gridSafe": true,
+    "withinGreen": true,
+    "logoSafe": true,
+    "overflow": false,
+    "collision": false,
+    "ctaCollision": false
+  },
+  {
+    "file": "posts\\01-news\\02-ar-1.jpg",
+    "layout": "split",
+    "logo": {
+      "x": 944,
+      "y": 44,
+      "right": 1016,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 561,
+      "y": 166,
+      "right": 1016,
+      "bottom": 523.9375,
+      "width": 455
+    },
+    "headlineFont": 72,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "phone": {
+      "x": 44,
+      "y": 216,
+      "right": 429.97998046875,
+      "bottom": 934.6199951171875,
+      "width": 385.97998046875
+    },
+    "cta": {
+      "x": 791.03125,
+      "y": 800,
+      "right": 1016,
+      "bottom": 922,
+      "width": 224.96875
+    },
+    "collision": false,
+    "ctaCollision": false
+  },
+  {
+    "file": "posts\\01-news\\03-ar-2.jpg",
+    "layout": "split",
+    "logo": {
+      "x": 944,
+      "y": 44,
+      "right": 1016,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 561,
+      "y": 166,
+      "right": 1016,
+      "bottom": 523.9375,
+      "width": 455
+    },
+    "headlineFont": 72,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "phone": {
+      "x": 44,
+      "y": 216,
+      "right": 429.97998046875,
+      "bottom": 934.6199951171875,
+      "width": 385.97998046875
+    },
+    "cta": {
+      "x": 791.03125,
+      "y": 800,
+      "right": 1016,
+      "bottom": 922,
+      "width": 224.96875
+    },
+    "collision": false,
+    "ctaCollision": false
+  },
+  {
+    "file": "posts\\01-news\\04-en-fr-1.jpg",
+    "layout": "bi",
+    "logo": {
+      "x": 64,
+      "y": 44,
+      "right": 136,
+      "bottom": 116,
+      "width": 72
+    },
+    "text": {
+      "x": 64,
+      "y": 150,
+      "right": 474,
+      "bottom": 685.09375,
+      "width": 410
+    },
+    "phone": {
+      "x": 623,
+      "y": 216,
+      "right": 1008.97998046875,
+      "bottom": 934.6199951171875,
+      "width": 385.97998046875
+    },
+    "cta": {
+      "x": 64,
+      "y": 800,
+      "right": 372.046875,
+      "bottom": 922,
+      "width": 308.046875
+    },
+    "scale": 1,
+    "logoSafe": true,
+    "overflow": false,
+    "collision": false,
+    "ctaCollision": false,
+    "withinGreen": true
+  },
+  {
+    "file": "posts\\01-news\\05-en-fr-2.jpg",
+    "layout": "bi",
+    "logo": {
+      "x": 64,
+      "y": 44,
+      "right": 136,
+      "bottom": 116,
+      "width": 72
+    },
+    "text": {
+      "x": 64,
+      "y": 150,
+      "right": 474,
+      "bottom": 665.125,
+      "width": 410
+    },
+    "phone": {
+      "x": 623,
+      "y": 216,
+      "right": 1008.97998046875,
+      "bottom": 934.6199951171875,
+      "width": 385.97998046875
+    },
+    "cta": {
+      "x": 64,
+      "y": 800,
+      "right": 372.046875,
+      "bottom": 922,
+      "width": 308.046875
+    },
+    "scale": 1,
+    "logoSafe": true,
+    "overflow": false,
+    "collision": false,
+    "ctaCollision": false,
+    "withinGreen": true
+  },
+  {
+    "file": "posts\\02-alqoffa\\01-cover.jpg",
+    "layout": "cover",
+    "logo": {
+      "x": 613.5625,
+      "y": 46,
+      "right": 705.5625,
+      "bottom": 138,
+      "width": 92
+    },
+    "brand": {
+      "x": 374.421875,
+      "y": 46,
+      "right": 705.5625,
+      "bottom": 138,
+      "width": 331.140625
+    },
+    "text": {
+      "x": 160,
+      "y": 196,
+      "right": 920,
+      "bottom": 537.265625,
+      "width": 760
+    },
+    "headlineFont": 92,
+    "swipe": {
+      "x": 320.765625,
+      "y": 962.8125,
+      "right": 759.25,
+      "bottom": 1024,
+      "width": 438.484375
+    },
+    "gridSafe": true,
+    "withinGreen": true,
+    "logoSafe": true,
+    "overflow": false,
+    "collision": false,
+    "ctaCollision": false
+  },
+  {
+    "file": "posts\\02-alqoffa\\02-ar-1.jpg",
+    "layout": "split",
+    "logo": {
+      "x": 944,
+      "y": 44,
+      "right": 1016,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 561,
+      "y": 166,
+      "right": 1016,
+      "bottom": 518.390625,
+      "width": 455
+    },
+    "headlineFont": 51,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "phone": {
+      "x": 44,
+      "y": 216,
+      "right": 429.97998046875,
+      "bottom": 934.6199951171875,
+      "width": 385.97998046875
+    },
+    "cta": {
+      "x": 791.03125,
+      "y": 800,
+      "right": 1016,
+      "bottom": 922,
+      "width": 224.96875
+    },
+    "collision": false,
+    "ctaCollision": false
+  },
+  {
+    "file": "posts\\02-alqoffa\\03-ar-2.jpg",
+    "layout": "split",
+    "logo": {
+      "x": 944,
+      "y": 44,
+      "right": 1016,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 561,
+      "y": 166,
+      "right": 1016,
+      "bottom": 567.953125,
+      "width": 455
+    },
+    "headlineFont": 72,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "phone": {
+      "x": 44,
+      "y": 216,
+      "right": 429.97998046875,
+      "bottom": 934.6199951171875,
+      "width": 385.97998046875
+    },
+    "cta": {
+      "x": 791.03125,
+      "y": 800,
+      "right": 1016,
+      "bottom": 922,
+      "width": 224.96875
+    },
+    "collision": false,
+    "ctaCollision": false
+  },
+  {
+    "file": "posts\\02-alqoffa\\04-en-fr-1.jpg",
+    "layout": "bi",
+    "logo": {
+      "x": 64,
+      "y": 44,
+      "right": 136,
+      "bottom": 116,
+      "width": 72
+    },
+    "text": {
+      "x": 64,
+      "y": 150,
+      "right": 474,
+      "bottom": 732.125,
+      "width": 410
+    },
+    "phone": {
+      "x": 623,
+      "y": 216,
+      "right": 1008.97998046875,
+      "bottom": 934.6199951171875,
+      "width": 385.97998046875
+    },
+    "cta": {
+      "x": 64,
+      "y": 800,
+      "right": 372.046875,
+      "bottom": 922,
+      "width": 308.046875
+    },
+    "scale": 1,
+    "logoSafe": true,
+    "overflow": false,
+    "collision": false,
+    "ctaCollision": false,
+    "withinGreen": true
+  },
+  {
+    "file": "posts\\02-alqoffa\\05-en-fr-2.jpg",
+    "layout": "bi",
+    "logo": {
+      "x": 64,
+      "y": 44,
+      "right": 136,
+      "bottom": 116,
+      "width": 72
+    },
+    "text": {
+      "x": 64,
+      "y": 150,
+      "right": 474,
+      "bottom": 732.125,
+      "width": 410
+    },
+    "phone": {
+      "x": 623,
+      "y": 216,
+      "right": 1008.97998046875,
+      "bottom": 934.6199951171875,
+      "width": 385.97998046875
+    },
+    "cta": {
+      "x": 64,
+      "y": 800,
+      "right": 372.046875,
+      "bottom": 922,
+      "width": 308.046875
+    },
+    "scale": 1,
+    "logoSafe": true,
+    "overflow": false,
+    "collision": false,
+    "ctaCollision": false,
+    "withinGreen": true
+  },
+  {
+    "file": "posts\\03-calculator\\01-cover.jpg",
+    "layout": "cover",
+    "logo": {
+      "x": 613.5625,
+      "y": 46,
+      "right": 705.5625,
+      "bottom": 138,
+      "width": 92
+    },
+    "brand": {
+      "x": 374.421875,
+      "y": 46,
+      "right": 705.5625,
+      "bottom": 138,
+      "width": 331.140625
+    },
+    "text": {
+      "x": 160,
+      "y": 196,
+      "right": 920,
+      "bottom": 537.265625,
+      "width": 760
+    },
+    "headlineFont": 92,
+    "swipe": {
+      "x": 320.765625,
+      "y": 962.8125,
+      "right": 759.25,
+      "bottom": 1024,
+      "width": 438.484375
+    },
+    "gridSafe": true,
+    "withinGreen": true,
+    "logoSafe": true,
+    "overflow": false,
+    "collision": false,
+    "ctaCollision": false
+  },
+  {
+    "file": "posts\\03-calculator\\02-ar-1.jpg",
+    "layout": "split",
+    "logo": {
+      "x": 944,
+      "y": 44,
+      "right": 1016,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 561,
+      "y": 166,
+      "right": 1016,
+      "bottom": 523.9375,
+      "width": 455
+    },
+    "headlineFont": 72,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "phone": {
+      "x": 44,
+      "y": 216,
+      "right": 429.97998046875,
+      "bottom": 934.6199951171875,
+      "width": 385.97998046875
+    },
+    "cta": {
+      "x": 791.03125,
+      "y": 800,
+      "right": 1016,
+      "bottom": 922,
+      "width": 224.96875
+    },
+    "collision": false,
+    "ctaCollision": false
+  },
+  {
+    "file": "posts\\03-calculator\\03-ar-2.jpg",
+    "layout": "split",
+    "logo": {
+      "x": 944,
+      "y": 44,
+      "right": 1016,
+      "bottom": 116,
+      "width": 72
+    },
+    "logoSafe": true,
+    "text": {
+      "x": 561,
+      "y": 166,
+      "right": 1016,
+      "bottom": 523.9375,
+      "width": 455
+    },
+    "headlineFont": 72,
+    "bodyFont": 31,
+    "overflow": false,
+    "withinGreen": true,
+    "phone": {
+      "x": 44,
+      "y": 216,
+      "right": 429.97998046875,
+      "bottom": 934.6199951171875,
+      "width": 385.97998046875
+    },
+    "cta": {
+      "x": 791.03125,
+      "y": 800,
+      "right": 1016,
+      "bottom": 922,
+      "width": 224.96875
+    },
+    "collision": false,
+    "ctaCollision": false
+  },
+  {
+    "file": "posts\\03-calculator\\04-en-fr-1.jpg",
+    "layout": "bi",
+    "logo": {
+      "x": 64,
+      "y": 44,
+      "right": 136,
+      "bottom": 116,
+      "width": 72
+    },
+    "text": {
+      "x": 64,
+      "y": 150,
+      "right": 474,
+      "bottom": 698.625,
+      "width": 410
+    },
+    "phone": {
+      "x": 623,
+      "y": 216,
+      "right": 1008.97998046875,
+      "bottom": 934.6199951171875,
+      "width": 385.97998046875
+    },
+    "cta": {
+      "x": 64,
+      "y": 800,
+      "right": 372.046875,
+      "bottom": 922,
+      "width": 308.046875
+    },
+    "scale": 1,
+    "logoSafe": true,
+    "overflow": false,
+    "collision": false,
+    "ctaCollision": false,
+    "withinGreen": true
+  },
+  {
+    "file": "posts\\03-calculator\\05-en-fr-2.jpg",
+    "layout": "bi",
+    "logo": {
+      "x": 64,
+      "y": 44,
+      "right": 136,
+      "bottom": 116,
+      "width": 72
+    },
+    "text": {
+      "x": 64,
+      "y": 150,
+      "right": 474,
+      "bottom": 665.125,
+      "width": 410
+    },
+    "phone": {
+      "x": 623,
+      "y": 216,
+      "right": 1008.97998046875,
+      "bottom": 934.6199951171875,
+      "width": 385.97998046875
+    },
+    "cta": {
+      "x": 64,
+      "y": 800,
+      "right": 372.046875,
+      "bottom": 922,
+      "width": 308.046875
+    },
+    "scale": 1,
+    "logoSafe": true,
+    "overflow": false,
+    "collision": false,
+    "ctaCollision": false,
+    "withinGreen": true
+  }
+]

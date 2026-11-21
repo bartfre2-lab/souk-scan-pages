@@ -1,0 +1,375 @@
+{
+ "meta": {
+  "cta": {
+   "en": "Discover the app",
+   "fr": "Découvrez l’application",
+   "ar": "اكتشف التطبيق"
+  },
+  "swipe": {
+   "en": "Continue the carousel",
+   "fr": "Continuez le carrousel",
+   "ar": "تابع الشرائح"
+  },
+  "last": {
+   "en": "Save this guide",
+   "fr": "Gardez ce guide",
+   "ar": "احفظ هذا الدليل"
+  },
+  "labels": {
+   "community": {
+    "en": "Community",
+    "fr": "Communauté",
+    "ar": "المجتمع"
+   },
+   "wholesale": {
+    "en": "Wholesale",
+    "fr": "Gros",
+    "ar": "الجملة"
+   },
+   "reports": {
+    "en": "People’s reports",
+    "fr": "Signalements",
+    "ar": "مساهمات الناس"
+   },
+   "dated": {
+    "en": "Dated bulletins",
+    "fr": "Bulletins datés",
+    "ar": "نشرات مؤرخة"
+   },
+   "kg": {
+    "en": "Per kilogram",
+    "fr": "Par kilogramme",
+    "ar": "لكل كيلوغرام"
+   },
+   "egg": {
+    "en": "Per egg",
+    "fr": "Par œuf",
+    "ar": "لكل بيضة"
+   },
+   "real": {
+    "en": "Real observations",
+    "fr": "Observations réelles",
+    "ar": "ملاحظات حقيقية"
+   },
+   "day": {
+    "en": "Per product, per day",
+    "fr": "Par produit et par jour",
+    "ar": "لكل منتج في اليوم"
+   },
+   "none": {
+    "en": "Not enough data yet",
+    "fr": "Pas encore assez de données",
+    "ar": "لا توجد معلومات كافية بعد"
+   },
+   "dates": {
+    "en": "Read the source + date",
+    "fr": "Lisez la source + la date",
+    "ar": "اقرأ المصدر والتاريخ"
+   },
+   "lang": {
+    "en": "Arabic · French · English",
+    "fr": "Arabe · Français · Anglais",
+    "ar": "العربية · الفرنسية · الإنجليزية"
+   }
+  }
+ },
+ "posts": [
+  {
+   "slug": "01-news",
+   "caption": {
+    "ar": "أصبحت الأخبار داخل SOUK-SCAN. يعرض تبويب «معلومات» أحدث خبر والخبرين السابقين له، وتخبرك نقطة صغيرة عند وجود خبر جديد، وتعرض «كل الأخبار» كل المنشورات.",
+    "fr": "Les actualités arrivent dans SOUK-SCAN. L’onglet Infos affiche la dernière actualité et les deux précédentes, un petit point vous prévient d’une nouveauté, et « Toutes les actualités » les liste toutes.",
+    "en": "News is now inside SOUK-SCAN. The Info tab shows the newest post and the two before it, a small dot tells you when there is something new, and “All news” lists every post."
+   },
+   "slides": [
+    {
+     "slug": "01-cover",
+     "lang": "ar",
+     "layout": "cover",
+     "visual": "",
+     "kicker": "جديد التطبيق",
+     "title": [
+      "الأخبار الآن",
+      "داخل التطبيق"
+     ],
+     "body": "يُبقيك تبويب «معلومات» على اطلاع.",
+     "vis": null,
+     "follow": null,
+     "pill": "اسحب · عربي · Français · English"
+    },
+    {
+     "slug": "02-ar-1",
+     "lang": "ar",
+     "layout": "split",
+     "visual": "info",
+     "kicker": "جديد التطبيق",
+     "title": [
+      "الأخبار",
+      "داخل التطبيق"
+     ],
+     "body": "أحدث خبر في «معلومات»، ونقطة صغيرة تنبّهك عند كل جديد.",
+     "vis": null,
+     "follow": null
+    },
+    {
+     "slug": "03-ar-2",
+     "lang": "ar",
+     "layout": "split",
+     "visual": "news-all",
+     "kicker": "جديد التطبيق",
+     "title": [
+      "كل الأخبار",
+      "بلمسة واحدة"
+     ],
+     "body": "اضغط على «كل الأخبار» لترى كل المنشورات، من الأحدث إلى الأقدم.",
+     "vis": null,
+     "follow": "التالي: English · Français"
+    },
+    {
+     "slug": "04-en-fr-1",
+     "lang": "en",
+     "layout": "bi",
+     "visual": "info",
+     "kicker": "What’s new · Quoi de neuf",
+     "blocks": [
+      {
+       "lang": "en",
+       "tag": "English",
+       "title": "News, in the app.",
+       "body": "The newest post in Info, and a small dot when there is something new."
+      },
+      {
+       "lang": "fr",
+       "tag": "Français",
+       "title": "Les actualités, dans l’appli.",
+       "body": "La dernière actualité dans Infos, et un petit point à chaque nouveauté."
+      }
+     ],
+     "cta": "Discover · Découvrez",
+     "follow": "Swipe · Faites défiler"
+    },
+    {
+     "slug": "05-en-fr-2",
+     "lang": "en",
+     "layout": "bi",
+     "visual": "news-all",
+     "kicker": "What’s new · Quoi de neuf",
+     "blocks": [
+      {
+       "lang": "en",
+       "tag": "English",
+       "title": "Every post, one tap away.",
+       "body": "Tap “All news”: every post, newest first."
+      },
+      {
+       "lang": "fr",
+       "tag": "Français",
+       "title": "Tout lire, en un geste.",
+       "body": "« Toutes les actualités » : de la plus récente à la plus ancienne."
+      }
+     ],
+     "cta": "Discover · Découvrez",
+     "follow": "Save this post · Gardez ce post"
+    }
+   ]
+  },
+  {
+   "slug": "02-alqoffa",
+   "caption": {
+    "ar": "تعرّف على «القفة»: اختر منتجات يومية واطّلع على نطاق تقريبي لسلتك، لأسبوع أو لشهر، لشخص واحد أو لأسرة من 4 أفراد. تبقى مراجع الجملة وتقديرات المجتمع منفصلة، والمجاميع تقريبية وليست أسعارًا دقيقة.",
+    "fr": "Découvrez Al-Qoffa : choisissez des produits du quotidien et consultez une fourchette indicative pour votre panier, par semaine ou par mois, pour une personne ou une famille de 4. Gros et communauté restent séparés, et les totaux sont indicatifs, pas des prix exacts.",
+    "en": "Meet Al-Qoffa: pick everyday products and see an indicative range for your basket, by week or month, for one person or a family of four. Wholesale and community figures stay separate, and totals are indicative, not exact prices."
+   },
+   "slides": [
+    {
+     "slug": "01-cover",
+     "lang": "ar",
+     "layout": "cover",
+     "visual": "",
+     "kicker": "جديد في التطبيق",
+     "title": [
+      "تعرّف على",
+      "«القفة»"
+     ],
+     "body": "جهّز سلة منتجاتك اليومية واطّلع على نطاق تقريبي لها.",
+     "vis": null,
+     "follow": null,
+     "pill": "اسحب · عربي · Français · English"
+    },
+    {
+     "slug": "02-ar-1",
+     "lang": "ar",
+     "layout": "split",
+     "visual": "alqoffa",
+     "kicker": "القفة",
+     "title": [
+      "سلتك",
+      "قبل الذهاب إلى السوق"
+     ],
+     "body": "نطاق تقريبي لسلة من المنتجات اليومية، لأسبوع أو لشهر، لشخص أو لأسرة.",
+     "vis": null,
+     "follow": null
+    },
+    {
+     "slug": "03-ar-2",
+     "lang": "ar",
+     "layout": "split",
+     "visual": "alqoffa-list",
+     "kicker": "القفة",
+     "title": [
+      "نطاقات تقريبية",
+      "لا وعود"
+     ],
+     "body": "تبقى مراجع الجملة وتقديرات المجتمع منفصلة، والمجاميع تقريبية.",
+     "vis": null,
+     "follow": "التالي: English · Français"
+    },
+    {
+     "slug": "04-en-fr-1",
+     "lang": "en",
+     "layout": "bi",
+     "visual": "alqoffa",
+     "kicker": "Al-Qoffa",
+     "blocks": [
+      {
+       "lang": "en",
+       "tag": "English",
+       "title": "Your basket, before the souk.",
+       "body": "An indicative range for an everyday basket: week or month, one person or four."
+      },
+      {
+       "lang": "fr",
+       "tag": "Français",
+       "title": "Votre panier, avant le souk.",
+       "body": "Une fourchette indicative pour un panier du quotidien : semaine ou mois, 1 ou 4 personnes."
+      }
+     ],
+     "cta": "Discover · Découvrez",
+     "follow": "Swipe · Faites défiler"
+    },
+    {
+     "slug": "05-en-fr-2",
+     "lang": "en",
+     "layout": "bi",
+     "visual": "alqoffa-list",
+     "kicker": "Al-Qoffa",
+     "blocks": [
+      {
+       "lang": "en",
+       "tag": "English",
+       "title": "Ranges, not promises.",
+       "body": "Wholesale and community figures stay separate. Totals are indicative."
+      },
+      {
+       "lang": "fr",
+       "tag": "Français",
+       "title": "Des fourchettes, pas des promesses.",
+       "body": "Gros et communauté restent séparés. Les totaux sont indicatifs."
+      }
+     ],
+     "cta": "Discover · Découvrez",
+     "follow": "Save this post · Gardez ce post"
+    }
+   ]
+  },
+  {
+   "slug": "03-calculator",
+   "caption": {
+    "ar": "تجمع «الحاسبة» الجديدة مشترياتك متجرًا بعد متجر. اضغط على سعر وكمية (أو اكتب قيمة دقيقة)، وشاهد مجموع السطر قبل إضافته، وتابع مجموع كل متجر والمجموع الكلي.",
+    "fr": "La nouvelle Calculette additionne vos courses, commerçant par commerçant. Touchez un prix et une quantité (ou saisissez une valeur exacte), voyez le total avant d’ajouter, et suivez les totaux par commerçant et le total général.",
+    "en": "The new Calculator adds up your shopping, shop by shop. Tap a price and a quantity (or type an exact value), see the total before you add it, and watch the shop totals and the grand total update."
+   },
+   "slides": [
+    {
+     "slug": "01-cover",
+     "lang": "ar",
+     "layout": "cover",
+     "visual": "",
+     "kicker": "جديد في التطبيق",
+     "title": [
+      "الحاسبة",
+      "الجديدة"
+     ],
+     "body": "اجمع مشترياتك متجرًا بعد متجر.",
+     "vis": null,
+     "follow": null,
+     "pill": "اسحب · عربي · Français · English"
+    },
+    {
+     "slug": "02-ar-1",
+     "lang": "ar",
+     "layout": "split",
+     "visual": "calculator",
+     "kicker": "الحاسبة",
+     "title": [
+      "اجمع",
+      "مشترياتك"
+     ],
+     "body": "أضف المتاجر والمنتجات، وشاهد مجموع كل متجر والمجموع الكلي.",
+     "vis": null,
+     "follow": null
+    },
+    {
+     "slug": "03-ar-2",
+     "lang": "ar",
+     "layout": "split",
+     "visual": "line-price",
+     "kicker": "الحاسبة",
+     "title": [
+      "سعر وكمية",
+      "بلمسة واحدة"
+     ],
+     "body": "اضغط على سعر وكمية، وشاهد المجموع قبل الإضافة.",
+     "vis": null,
+     "follow": "التالي: English · Français"
+    },
+    {
+     "slug": "04-en-fr-1",
+     "lang": "en",
+     "layout": "bi",
+     "visual": "calculator",
+     "kicker": "Calculator · Calculette",
+     "blocks": [
+      {
+       "lang": "en",
+       "tag": "English",
+       "title": "Add up your shopping.",
+       "body": "Add shops and products, see each subtotal and the total."
+      },
+      {
+       "lang": "fr",
+       "tag": "Français",
+       "title": "Additionnez vos courses.",
+       "body": "Ajoutez commerçants et produits, voyez chaque sous-total et le total."
+      }
+     ],
+     "cta": "Discover · Découvrez",
+     "follow": "Swipe · Faites défiler"
+    },
+    {
+     "slug": "05-en-fr-2",
+     "lang": "en",
+     "layout": "bi",
+     "visual": "line-price",
+     "kicker": "Calculator · Calculette",
+     "blocks": [
+      {
+       "lang": "en",
+       "tag": "English",
+       "title": "Price and quantity, one tap.",
+       "body": "Tap a price and a quantity, see the total before you add it."
+      },
+      {
+       "lang": "fr",
+       "tag": "Français",
+       "title": "Prix et quantité, en un geste.",
+       "body": "Touchez un prix et une quantité, voyez le total avant d’ajouter."
+      }
+     ],
+     "cta": "Discover · Découvrez",
+     "follow": "Save this post · Gardez ce post"
+    }
+   ]
+  }
+ ]
+}
