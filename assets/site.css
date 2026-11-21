@@ -445,7 +445,7 @@ html[data-theme="dark"] .stock-crate__front {
     content: "";
     position: absolute;
     inset: 0;
-    background: url("./souk-medina-panorama.png") center bottom/auto 200%
+    background: url("./souk-medina-panorama.webp") center bottom/auto 200%
       no-repeat;
     z-index: -4;
   }

@@ -12,7 +12,7 @@
   display: block;
   width: 100%;
   aspect-ratio: 656/599.5;
-  background-image: url("./souk-vendors-rubber-hose.png");
+  background-image: url("./souk-vendors-rubber-hose.webp");
   background-size: 200% 200%;
   background-repeat: no-repeat;
   background-position: 0 0;
@@ -84,7 +84,7 @@
   aspect-ratio: 1;
   bottom: -7%;
   left: 13%;
-  background-image: url("./souk-food-rubber-hose.png");
+  background-image: url("./souk-food-rubber-hose.webp");
   background-size: 400% 400%;
   background-position: var(--food-x) var(--food-y);
   background-repeat: no-repeat;
