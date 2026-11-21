@@ -1,7 +1,7 @@
 {
   "privacy": {
     "title": "Privacy policy",
-    "updated": "Last updated: 19 November 2026",
+    "updated": "Last updated: 20 November 2026",
     "intro": "SOUK-SCAN helps people across Morocco see what food really costs (Android app <bdi>com.soukscan.app</bdi>). This page explains, in plain words, what the app and this website do with your information and the choices you have. We only ask for what the app needs to work, and we never sell your data. If you have a question or a request, just write to <a href=\"mailto:sanamdev@soukscan.online\">sanamdev@soukscan.online</a>.",
     "description": "How SOUK-SCAN uses your information: account, shared prices, the Calculator, region, location permission and account deletion, explained simply.",
     "sections": [
@@ -23,11 +23,11 @@
       {
         "title": "Your Calculator",
         "paragraphs": [
-          "The Calculator helps you add up your shopping. For each day you can add shops (you can give a shop a short name, up to 40 characters), the products you buy, the price per kilo (or per egg) and the quantity, in kilos or in pieces for eggs. The app works out the totals on your phone.",
-          "We save what you enter on our servers, linked to your account, so you can find it again. The SOUK-SCAN owner can see it, account by account. We look at it to keep SOUK-SCAN fair and safe (for example to spot bots, spam, misuse or attempts to manipulate prices), to improve the app, and to understand what shoppers in Morocco buy. Nobody else can see it: it is never shown to other users, and we do not sell it or use it for advertising.",
+          "The Calculator is a convenience tool that helps you add up your shopping. It is there to help you, not to judge you. For each day you can add shops (you can give a shop a short name, up to 40 characters), the products you buy, the price per kilo (or per egg) and the quantity, in kilos or in pieces for eggs. The app works out the totals on your phone.",
+          "We save what you enter on our servers, linked to your account, so you can find it again: the products, prices and quantities you enter, the totals worked out from them, and any shop names you choose (our reports never include shop names). The people who run SOUK-SCAN can see it for each account, only through restricted, logged reports. We look at it to keep SOUK-SCAN fair and safe (for example to spot bots, spam, misuse or attempts to manipulate prices), to improve the app, and to understand what people buy. Other users never see your list. We do not sell it, we do not share it with advertisers or other companies, and we do not use it to judge you. We may also use it in combined, anonymous form (for example, average quantities) to improve the app and to produce statistics.",
           "SOUK-SCAN is built on prices that people share, so a price you enter in the Calculator is also shared as a community price, just like a price you report yourself. Only the product, price, region and date are shared, never your quantities, totals or shop names. Other users see community prices only as combined estimates. If you make a mistake, you can correct the price on the same day.",
           "No signal at the market? No problem. The Calculator keeps a copy on your phone so that it works without a connection, and sends your entries when you are back online. A list that reaches us a little late is still accepted for up to two days. You can edit a list on the day you make it; after that it is read-only. Please use one phone at a time. If you uninstall the app or clear its data before your entries have been sent, they will be lost. When you sign out, the copy is removed from your phone (the app checks with you first if something has not been sent yet).",
-          "You are in control: if you delete your account, your Calculator entries are deleted too."
+          "You are in control: you decide whether to use the Calculator, and you must accept the current terms before it stores anything. If you delete your account, your Calculator lists are deleted too."
         ]
       },
       {
@@ -89,7 +89,7 @@
   },
   "account-deletion": {
     "title": "Delete your SOUK-SCAN account",
-    "updated": "Last updated: 19 November 2026",
+    "updated": "Last updated: 20 November 2026",
     "intro": "It is your account and your data. You can permanently delete your SOUK-SCAN account, together with the data linked to it, in the app, or ask us to do it by email. This page applies to <bdi>com.soukscan.app</bdi>.",
     "description": "Delete your SOUK-SCAN account in the app or request deletion by email. Learn which data is removed and the request timeframe.",
     "sections": [
@@ -129,7 +129,7 @@
   },
   "terms": {
     "title": "Terms of use",
-    "updated": "App terms version: 19 November 2026 · Website updated: 19 November 2026",
+    "updated": "App terms version: 20 November 2026 · Website updated: 20 November 2026",
     "intro": "Welcome to <bdi>SOUK-SCAN</bdi>! These terms explain how to use the app and what to expect from us. <bdi>SOUK-SCAN</bdi> is an information tool that makes food prices in Morocco easier to see and compare. We do not sell products, set or control market prices, guarantee what any seller charges, or run a marketplace, and we are not a government service.",
     "description": "The terms for using SOUK-SCAN: sharing prices, using the Calculator, and understanding community and wholesale reference prices.",
     "sections": [
@@ -154,7 +154,7 @@
       {
         "title": "Your Calculator",
         "paragraphs": [
-          "The Calculator is there to help you add up your shopping. When you use it, you agree that we store what you enter (products, prices, quantities and any shop names you choose) in your account, that the SOUK-SCAN owner can see it, and that the prices you enter are also shared as community prices. We use it to keep SOUK-SCAN fair and safe, for example against bots, spam and price manipulation, and to improve the app. Our <a href=\"@@privacy@@\">privacy policy</a> explains this in detail."
+          "The Calculator is a convenience tool: you note the shops you visit (with an optional name), the products you buy, the prices and the quantities, and it adds everything up for you. It is there to help you, not to judge you. To make <bdi>SOUK-SCAN</bdi> more useful for everyone, we also learn from how it is used: by using the Calculator you agree that <bdi>SOUK-SCAN</bdi> stores the products, prices, quantities and totals you enter, linked to your account, and that the people who run <bdi>SOUK-SCAN</bdi> can look at them to keep the service fair and safe (for example against bots, spam and price manipulation), to improve the service and to understand what people buy. You also agree that the prices you enter are shared as community prices. Our reports never include your shop names, we never sell this information or share it with advertisers or other companies, and other users never see your list. We may also use it in combined, anonymous form (for example, average quantities) to improve the app and to produce statistics. The totals are only a convenience: please check the amounts yourself, as <bdi>SOUK-SCAN</bdi> is not responsible for errors in them or for decisions based on them. You decide whether to use the Calculator, and deleting your account deletes your lists. Our <a href=\"@@privacy@@\">privacy policy</a> explains this in detail."
         ]
       },
       {

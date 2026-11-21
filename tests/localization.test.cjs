@@ -445,7 +445,7 @@ test("15 static localized pages have canonical/hreflang metadata and matching le
         assert.match(await p.locator("main").textContent(), /30/);
       }
       if (section === "terms")
-        assert.match(await p.locator(".legal-updated").textContent(), /19/);
+        assert.match(await p.locator(".legal-updated").textContent(), /20 /);
       if (!section) {
         const schema = JSON.parse(
           await p.locator('script[type="application/ld+json"]').textContent(),

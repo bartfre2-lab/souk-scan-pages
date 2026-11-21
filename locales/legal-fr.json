@@ -1,7 +1,7 @@
 {
   "privacy": {
     "title": "Politique de confidentialité",
-    "updated": "Dernière mise à jour : 19 novembre 2026",
+    "updated": "Dernière mise à jour : 20 novembre 2026",
     "intro": "SOUK-SCAN aide les habitants du Maroc à voir ce que coûtent vraiment les produits alimentaires (application Android <bdi>com.soukscan.app</bdi>). Cette page explique simplement ce que l’application et ce site font de vos informations, et les choix qui vous appartiennent. Nous ne demandons que ce dont l’application a besoin pour fonctionner, et nous ne vendons jamais vos données. Une question ou une demande ? Écrivez-nous à <a href=\"mailto:sanamdev@soukscan.online\">sanamdev@soukscan.online</a>.",
     "description": "Comment SOUK-SCAN utilise vos informations : compte, prix partagés, Calculette, région, autorisation de localisation et suppression du compte, expliqués simplement.",
     "sections": [
@@ -23,11 +23,11 @@
       {
         "title": "Votre Calculette",
         "paragraphs": [
-          "La Calculette vous aide à faire le total de vos courses. Pour chaque jour, vous pouvez ajouter des commerçants (vous pouvez leur donner un nom court, de 40 caractères au plus), les produits achetés, le prix au kilo (ou à l’œuf) et la quantité, en kilos ou en pièces pour les œufs. L’application calcule les totaux sur votre téléphone.",
-          "Nous enregistrons ce que vous saisissez sur nos serveurs, rattaché à votre compte, pour que vous puissiez le retrouver. Le propriétaire de SOUK-SCAN peut le consulter, compte par compte. Nous le regardons pour garder SOUK-SCAN équitable et sûr (par exemple pour repérer les robots, le spam, les abus ou les tentatives de manipulation des prix), pour améliorer l’application et pour comprendre ce que les gens achètent au Maroc. Personne d’autre ne peut le voir : cela n’est jamais montré aux autres utilisateurs, et nous ne le vendons pas et ne l’utilisons pas pour de la publicité.",
+          "La Calculette est un outil pratique qui vous aide à faire le total de vos courses. Elle est là pour vous aider, pas pour vous juger. Pour chaque jour, vous pouvez ajouter des commerçants (vous pouvez leur donner un nom court, de 40 caractères au plus), les produits achetés, le prix au kilo (ou à l’œuf) et la quantité, en kilos ou en pièces pour les œufs. L’application calcule les totaux sur votre téléphone.",
+          "Nous enregistrons ce que vous saisissez sur nos serveurs, rattaché à votre compte, pour que vous puissiez le retrouver : les produits, les prix et les quantités saisis, les totaux calculés à partir d’eux, et les noms de commerçants que vous choisissez (nos rapports n’incluent jamais les noms de commerçants). Les personnes qui gèrent SOUK-SCAN peuvent le consulter, compte par compte, uniquement par des rapports restreints et journalisés. Nous le regardons pour garder SOUK-SCAN équitable et sûr (par exemple pour repérer les robots, le spam, les abus ou les tentatives de manipulation des prix), pour améliorer l’application et pour comprendre ce que les gens achètent. Les autres utilisateurs ne voient jamais votre liste. Nous ne la vendons pas, nous ne la partageons pas avec des annonceurs ou d’autres entreprises, et nous ne l’utilisons pas pour vous juger. Nous pouvons aussi l’utiliser sous forme regroupée et anonyme (par exemple, des quantités moyennes) pour améliorer l’application et produire des statistiques.",
           "SOUK-SCAN repose sur les prix que les gens partagent : un prix saisi dans la Calculette est donc aussi partagé comme prix de la communauté, comme un prix que vous signalez vous-même. Seuls le produit, le prix, la région et la date sont partagés, jamais vos quantités, vos totaux ni le nom des commerçants. Les autres utilisateurs ne voient les prix de la communauté que sous forme d’estimations regroupées. Si vous vous trompez, vous pouvez corriger le prix le jour même.",
           "Pas de réseau au marché ? Ce n’est pas un problème. La Calculette garde une copie sur votre téléphone pour fonctionner sans connexion, et envoie vos saisies dès que vous êtes de nouveau en ligne. Une liste qui nous parvient avec un peu de retard est encore acceptée jusqu’à deux jours. Vous pouvez modifier une liste le jour où vous l’avez faite ; ensuite, elle est en lecture seule. Merci de n’utiliser qu’un téléphone à la fois. Si vous désinstallez l’application ou effacez ses données avant l’envoi de vos saisies, elles seront perdues. Lorsque vous vous déconnectez, la copie est supprimée de votre téléphone (l’application vous prévient d’abord si des éléments n’ont pas encore été envoyés).",
-          "Vous gardez la main : si vous supprimez votre compte, vos saisies de la Calculette sont supprimées aussi."
+          "Vous gardez la main : vous décidez d’utiliser ou non la Calculette, et vous devez accepter les conditions actuelles avant qu’elle n’enregistre quoi que ce soit. Si vous supprimez votre compte, vos listes de la Calculette sont supprimées aussi."
         ]
       },
       {
@@ -89,7 +89,7 @@
   },
   "account-deletion": {
     "title": "Supprimer votre compte SOUK-SCAN",
-    "updated": "Dernière mise à jour : 19 novembre 2026",
+    "updated": "Dernière mise à jour : 20 novembre 2026",
     "intro": "C’est votre compte et ce sont vos données. Vous pouvez supprimer définitivement votre compte SOUK-SCAN, avec les données qui lui sont liées, dans l’application, ou nous demander de le faire par e-mail. Cette page concerne <bdi>com.soukscan.app</bdi>.",
     "description": "Supprimez votre compte SOUK-SCAN dans l’application ou par e-mail. Données supprimées, procédure et délai de traitement.",
     "sections": [
@@ -129,7 +129,7 @@
   },
   "terms": {
     "title": "Conditions d’utilisation",
-    "updated": "Version des conditions de l’application : 19 novembre 2026 · Site mis à jour le 19 novembre 2026",
+    "updated": "Version des conditions de l’application : 20 novembre 2026 · Site mis à jour le 20 novembre 2026",
     "intro": "Bienvenue sur <bdi>SOUK-SCAN</bdi> ! Ces conditions expliquent comment utiliser l’application et ce que vous pouvez attendre de nous. <bdi>SOUK-SCAN</bdi> est un outil d’information qui rend les prix alimentaires au Maroc plus faciles à consulter et à comparer. Nous ne vendons aucun produit, ne fixons ni ne contrôlons les prix du marché, ne garantissons pas ce que facture un vendeur et ne tenons pas de place de marché ; nous ne sommes pas un service public.",
     "description": "Les conditions d’utilisation de SOUK-SCAN : partager des prix, utiliser la Calculette et comprendre les prix de la communauté et les références de gros.",
     "sections": [
@@ -154,7 +154,7 @@
       {
         "title": "Votre Calculette",
         "paragraphs": [
-          "La Calculette est là pour vous aider à faire le total de vos courses. En l’utilisant, vous acceptez que nous enregistrions ce que vous saisissez (produits, prix, quantités et noms de commerçants que vous choisissez) dans votre compte, que le propriétaire de SOUK-SCAN puisse le consulter, et que les prix saisis soient aussi partagés comme prix de la communauté. Nous l’utilisons pour garder SOUK-SCAN équitable et sûr, par exemple contre les robots, le spam et la manipulation des prix, et pour améliorer l’application. Notre <a href=\"@@privacy@@\">politique de confidentialité</a> l’explique en détail."
+          "La Calculette est un outil pratique : vous notez les commerçants que vous visitez (avec un nom facultatif), les produits que vous achetez, les prix et les quantités, et elle fait l’addition pour vous. Elle est là pour vous aider, pas pour vous juger. Pour rendre <bdi>SOUK-SCAN</bdi> plus utile à tous, nous apprenons aussi de la façon dont il est utilisé : en utilisant la Calculette, vous acceptez que <bdi>SOUK-SCAN</bdi> conserve les produits, prix, quantités et totaux que vous saisissez, liés à votre compte, et que les personnes qui gèrent <bdi>SOUK-SCAN</bdi> puissent les consulter afin de garder le service équitable et sûr (par exemple contre les robots, le spam et la manipulation des prix), d’améliorer le service et de comprendre ce que les gens achètent. Vous acceptez aussi que les prix saisis soient partagés comme prix de la communauté. Nos rapports n’incluent jamais vos noms de commerçants, nous ne vendons jamais ces informations et ne les partageons pas avec des annonceurs ou d’autres entreprises, et les autres utilisateurs ne voient jamais votre liste. Nous pouvons aussi les utiliser sous forme regroupée et anonyme (par exemple, des quantités moyennes) pour améliorer l’application et produire des statistiques. Les totaux ne sont qu’une aide : vérifiez les montants vous-même, car <bdi>SOUK-SCAN</bdi> n’est pas responsable des erreurs qu’ils pourraient contenir ni des décisions prises à partir d’eux. Vous décidez d’utiliser ou non la Calculette, et supprimer votre compte supprime vos listes. Notre <a href=\"@@privacy@@\">politique de confidentialité</a> l’explique en détail."
         ]
       },
       {
