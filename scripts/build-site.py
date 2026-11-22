@@ -2,7 +2,9 @@
 from pathlib import Path
 from html.parser import HTMLParser
 from html import escape
-import argparse, json, re, shutil, base64
+import argparse, json, re, shutil, base64, sys
+sys.path.insert(0,str(Path(__file__).resolve().parent))
+import articles as article_source
 
 ROOT = Path(__file__).resolve().parent.parent
 LANGUAGES = ('en', 'fr', 'ar')
@@ -49,6 +51,8 @@ def main():
     parser.add_argument('--base',default='/')
     parser.add_argument('--preview',action='store_true')
     parser.add_argument('--asset-version',default='')
+    parser.add_argument('--drafts',action='store_true',help='Include articles marked draft (local review only; never for production)')
+    parser.add_argument('--articles-dir',default='articles')
     args=parser.parse_args()
     base='/'+args.base.strip('/')+'/' if args.base.strip('/') else '/'
     out=ROOT/args.out_dir
@@ -58,6 +62,10 @@ def main():
         raise ValueError('Unsafe output directory')
     if args.asset_version and not re.fullmatch(r'[A-Za-z0-9_-]+',args.asset_version):
         raise ValueError('Invalid asset version')
+    if args.drafts and out.name=='dist-production':
+        raise ValueError('Draft articles must never be built into dist-production')
+    articles_dir=Path(args.articles_dir) if Path(args.articles_dir).is_absolute() else ROOT/args.articles_dir
+    articles=article_source.load_articles(articles_dir,include_drafts=args.drafts)
     out.mkdir(parents=True,exist_ok=True)
     # Only generated output is cleaned. Local review sources and Git history
     # remain intact; stale review builds must never survive a production rebuild.
@@ -84,6 +92,9 @@ def main():
                 for original,versioned in versions.items():content=content.replace('./'+original,'./'+versioned)
                 destination.write_text(content)
             else:shutil.copy2(entry,destination)
+    for item in articles:
+        (out/'assets/articles').mkdir(parents=True,exist_ok=True)
+        shutil.copy2(item['image_path'],out/'assets/articles'/item['image'])
     catalogs={lang:json.loads((ROOT/'locales'/f'{lang}.json').read_text()) for lang in LANGUAGES}
     legal={lang:json.loads((ROOT/'locales'/f'legal-{lang}.json').read_text()) for lang in LANGUAGES}
     origin='https://soukscan.online'
@@ -100,32 +111,35 @@ def main():
         common=catalogs[lang]['common']
         return f'<div class="site-controls"><details class="language-menu"><summary aria-label="{escape(common["languageLabel"])}"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c5 5 5 13 0 18-5-5-5-13 0-18"/></svg><span>{dict(en="EN",fr="FR",ar="ع")[lang]}</span><svg class="chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg></summary><nav aria-label="{escape(common["languageLabel"])}">{links}</nav></details><button class="theme-toggle" hidden type="button" aria-label="{escape(common["darkMode"])}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14A8 8 0 0 1 10 4a8 8 0 1 0 10 10Z"/></svg><span>{escape(common["darkMode"])}</span></button></div>'
     boot="""(()=>{try{let t=localStorage.getItem('soukscan.website.theme');document.documentElement.dataset.theme=t==='dark'||t==='light'?t:matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}catch{document.documentElement.dataset.theme=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}})();"""
-    def head(lang,section,title,description):
+    def head(lang,section,title,description,og_type='website',image='',noindex=False):
         url=origin+route(lang,section)
         alternates=''.join(f'<link rel="alternate" hreflang="{code}" href="{origin+route(code,section)}">' for code in LANGUAGES)
-        return f'''<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f7f4ee"><title>{escape(title)}</title><meta name="description" content="{escape(description,quote=True)}"><meta name="robots" content="{'noindex, nofollow' if args.preview else 'index, follow'}"><link rel="canonical" href="{url}">{alternates}<link rel="alternate" hreflang="x-default" href="{origin+route('en',section)}"><meta property="og:type" content="website"><meta property="og:title" content="{escape(title,quote=True)}"><meta property="og:description" content="{escape(description,quote=True)}"><meta property="og:url" content="{url}"><meta property="og:locale" content="{dict(en='en_GB',fr='fr_MA',ar='ar_MA')[lang]}"><meta property="og:image" content="{origin+base}assets/brand/logo.png"><meta name="twitter:card" content="summary"><link rel="icon" href="{base}assets/brand/favicon-128.png"><script>{boot}</script><link rel="preload" href="{base}assets/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="{base}assets/landing.css"><link rel="stylesheet" href="{base}assets/courtyard.css"><link rel="stylesheet" href="{base}assets/souk-world.css"><link rel="stylesheet" href="{base}assets/site.css"><script defer src="{base}assets/site.js"></script></head>'''
+        return f'''<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f7f4ee"><title>{escape(title)}</title><meta name="description" content="{escape(description,quote=True)}"><meta name="robots" content="{'noindex, nofollow' if args.preview or noindex else 'index, follow'}"><link rel="canonical" href="{url}">{alternates}<link rel="alternate" hreflang="x-default" href="{origin+route('en',section)}"><meta property="og:type" content="{og_type}"><meta property="og:title" content="{escape(title,quote=True)}"><meta property="og:description" content="{escape(description,quote=True)}"><meta property="og:url" content="{url}"><meta property="og:locale" content="{dict(en='en_GB',fr='fr_MA',ar='ar_MA')[lang]}"><meta property="og:image" content="{image or origin+base+'assets/brand/logo.png'}"><meta name="twitter:card" content="{'summary_large_image' if image else 'summary'}"><link rel="icon" href="{base}assets/brand/favicon-128.png"><script>{boot}</script><link rel="preload" href="{base}assets/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="{base}assets/landing.css"><link rel="stylesheet" href="{base}assets/courtyard.css"><link rel="stylesheet" href="{base}assets/souk-world.css"><link rel="stylesheet" href="{base}assets/site.css"><script defer src="{base}assets/site.js"></script></head>'''
     def payload(lang,section):
         data={'language':lang,'common':catalogs[lang]['common'],'market':catalogs[lang]['market'],'prices':catalogs[lang]['prices'],'priceConfig':market_data['config'],'regions':market_data['regions']}
         return '<script id="site-copy" type="application/json">'+json.dumps(data,ensure_ascii=False).replace('<','\\u003c')+'</script>'
     def footer(lang):
         common=catalogs[lang]['common']
-        return '<footer class="legal-footer"><a href="'+route(lang)+'">SOUK-SCAN</a>'+''.join(f'<a href="{route(lang,key)}">{escape(common[key])}</a>' for key in ('privacy','terms','account-deletion','support'))+'</footer>'
-    def save(lang,section,body,title,description,home=False):
+        return '<footer class="legal-footer"><a href="'+route(lang)+'">SOUK-SCAN</a>'+(f'<a href="{route(lang,"articles")}">{escape(catalogs[lang]["articles"]["navLabel"])}</a>' if articles else '')+''.join(f'<a href="{route(lang,key)}">{escape(common[key])}</a>' for key in ('privacy','terms','account-deletion','support'))+'</footer>'
+    def save(lang,section,body,title,description,home=False,**head_options):
         # Keep the Latin brand readable inside both RTL and LTR headings.
         body=re.sub(r'(<h[1-6]\b[^>]*>)(.*?)(</h[1-6]>)',lambda m:m[1]+m[2].replace('SOUK-SCAN','<bdi class="brand-inline">SOUK-SCAN</bdi>')+m[3],body,flags=re.S)
-        document=f'<!doctype html><html lang="{lang}" dir="{"rtl" if lang=="ar" else "ltr"}">'+head(lang,section,title,description)+body+payload(lang,section)+('</body></html>')
+        document=f'<!doctype html><html lang="{lang}" dir="{"rtl" if lang=="ar" else "ltr"}">'+head(lang,section,title,description,**head_options)+body+payload(lang,section)+('</body></html>')
         for original,versioned in versions.items():document=document.replace(base+'assets/'+original,base+'assets/'+versioned)
         path=out/('' if lang=='en' else lang)/(section if section else '')/'index.html'
         path.parent.mkdir(parents=True,exist_ok=True);path.write_text(document)
-    template=(ROOT/'index.html').read_text()
+    template=re.sub(r'<!--articles-start-->(.*?)<!--articles-end-->',(lambda m:m[1]) if articles else '',(ROOT/'index.html').read_text(),flags=re.S)
     for lang in LANGUAGES:
         catalog=catalogs[lang]
         translated=LocalizedHTML(catalog);translated.feed(template)
         body=''.join(translated.parts).split('<body>',1)[1].rsplit('</body>',1)[0]
         body=body.replace('href="./"','href="'+route(lang)+'"')
-        for section in ('privacy','terms','account-deletion','support'):
+        for section in ('privacy','terms','account-deletion','support','articles'):
             body=body.replace(f'href="./{section}/"',f'href="{route(lang,section)}"')
         body=body.replace('./assets/',base+'assets/').replace('./downloads/',base+'downloads/')
+        # The article pages reuse the home page's translated header and footer.
+        home_header=re.search(r'<header class="site-header wrap">.*?</header>',body,re.S)[0].replace('href="#','href="'+route(lang)+'#')
+        home_footer=re.search(r'<footer class="site-footer wrap">.*?</footer>',body,re.S)[0]
         body=body.replace('<!--header-controls-->',controls(lang,''),1)
         body=body.replace('assets/app-welcome-en.webp',f'assets/app-welcome-{lang}.webp')
         body='<body>'+body+f'<script type="module" src="{base}assets/landing.js"></script>'
@@ -137,9 +151,42 @@ def main():
             body=f'<body class="legal-page"><a class="skip-link" href="#main-content">{escape(catalog["common"]["skipContent"])}</a><header class="site-header wrap"><a class="brand" href="{route(lang)}"><img src="{base}assets/brand/logo.webp" alt="" width="44" height="44"><span class="scanner-wordmark">[SOUK-SCAN]</span></a>{controls(lang,section)}<a class="text-link" href="{route(lang)}">{escape(catalog["common"]["backHome"])}</a></header>'+f'<main class="legal-content" id="main-content" tabindex="-1"><p class="eyebrow">SOUK-SCAN</p><h1>{escape(page["title"])}</h1><p class="legal-updated">{escape(page["updated"])}</p><p class="legal-summary">{page["intro"]}</p>{content}'+footer(lang)+'</main>'
             for key in ('privacy','terms','account-deletion','support'):body=body.replace('@@'+key+'@@',route(lang,key))
             save(lang,section,body,page['title']+' — SOUK-SCAN',page['description'])
-    sitemap='<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+''.join('<url><loc>'+escape(origin+route(lang,section))+'</loc><lastmod>'+('2026-11-20' if section in ('privacy','terms','account-deletion') else '2026-11-15' if section in ('','support') else '2026-10-20')+'</lastmod></url>' for lang in LANGUAGES for section in ('','privacy','terms','account-deletion','support'))+'</urlset>'
+        if articles:
+            copy=catalog['articles']
+            chevron='<svg class="icon-arrow icon-back" viewBox="0 0 24 24" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg>'
+            def article_page(section,title,description,main,schema=None,**options):
+                header=home_header.replace('<!--header-controls-->',controls(lang,section)).replace(f'<a href="{route(lang,"articles")}">',f'<a href="{route(lang,"articles")}" aria-current="page">',1)
+                page=f'<body class="articles-page"><a class="skip-link" href="#main-content">{escape(catalog["common"]["skipContent"])}</a>{header}<main class="articles-main wrap" id="main-content" tabindex="-1">{main}</main>{home_footer}'
+                if schema:page+='<script type="application/ld+json">'+json.dumps(schema,ensure_ascii=False).replace('<','\\u003c')+'</script>'
+                save(lang,section,page,title,description,**options)
+            def meta_line(version):
+                return f'<p class="article-meta"><time datetime="{version.date}">{escape(article_source.format_date(version.date,copy["months"]))}</time><span aria-hidden="true">·</span><span>{escape(article_source.reading_label(copy,lang,version.minutes))}</span></p>'
+            def image_url(item):return origin+base+'assets/articles/'+item['image']
+            rows=''
+            for item in articles:
+                version=item['langs'][lang]
+                badge=f'<p class="article-draft" data-article-draft>{escape(copy["draftNote"])}</p>' if item['draft'] else ''
+                rows+=(f'<li class="article-item"><a class="article-thumb" href="{route(lang,"articles/"+item["slug"])}" tabindex="-1" aria-hidden="true"><img src="{base}assets/articles/{item["image"]}" alt="" width="{item["width"]}" height="{item["height"]}" loading="lazy" decoding="async"></a>'
+                       f'<div class="article-item-body">{meta_line(version)}<h2><a href="{route(lang,"articles/"+item["slug"])}">{escape(version.title)}</a></h2><p>{escape(version.summary)}</p>{badge}</div></li>')
+            intro=f'<div class="articles-intro"><p class="eyebrow">{escape(copy["eyebrow"])}</p><h1>{escape(copy["heading"])}</h1><p class="articles-lede">{escape(copy["intro"])}</p></div><ol class="article-list" aria-label="{escape(copy["listLabel"],quote=True)}">{rows}</ol>'
+            article_page('articles',copy['title'],copy['description'],intro,noindex=all(item['draft'] for item in articles))
+            for item in articles:
+                version=item['langs'][lang]
+                section='articles/'+item['slug']
+                url=origin+route(lang,section)
+                back=f'<a class="text-link article-back" href="{route(lang,"articles")}">{chevron}{escape(copy["allArticles"])}</a>'
+                draft=f'<p class="article-draft" data-article-draft>{escape(copy["draftNote"])}</p>' if item['draft'] else ''
+                main=(f'<article class="article"><nav class="article-nav" aria-label="{escape(copy["navLabel"],quote=True)}">{back}</nav>{draft}<header class="article-header"><p class="eyebrow">{escape(copy["eyebrow"])}</p><h1>{escape(version.title)}</h1><p class="article-summary">{escape(version.summary)}</p>{meta_line(version)}</header>'
+                      f'<figure class="article-figure"><img src="{base}assets/articles/{item["image"]}" alt="{escape(version.image_alt,quote=True)}" width="{item["width"]}" height="{item["height"]}" fetchpriority="high" decoding="async"></figure>'
+                      f'<div class="article-body">{version.html}</div><div class="article-end">{back}</div></article>')
+                schema={'@context':'https://schema.org','@type':'Article','headline':version.title,'description':version.summary,'inLanguage':lang,'datePublished':version.date,'dateModified':version.date,'image':[image_url(item)],'mainEntityOfPage':url,'author':{'@type':'Organization','name':'SOUK-SCAN'},'publisher':{'@type':'Organization','name':'SOUK-SCAN','logo':{'@type':'ImageObject','url':origin+'/assets/brand/logo.png'}}}
+                article_page(section,version.title+' — SOUK-SCAN',version.summary,main,schema,og_type='article',image=image_url(item),noindex=item['draft'])
+    pages=[(lang,section,'2026-11-20' if section in ('privacy','terms','account-deletion') else '2026-11-15' if section in ('','support') else '2026-10-20') for lang in LANGUAGES for section in ('','privacy','terms','account-deletion','support')]
+    live=[item for item in articles if not item['draft']]
+    if live:pages+=[(lang,'articles',live[0]['date']) for lang in LANGUAGES]+[(lang,'articles/'+item['slug'],item['date']) for lang in LANGUAGES for item in live]
+    sitemap='<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+''.join('<url><loc>'+escape(origin+route(lang,section))+'</loc><lastmod>'+lastmod+'</lastmod></url>' for lang,section,lastmod in pages)+'</urlset>'
     (out/'sitemap.xml').write_text(sitemap)
     (out/'robots.txt').write_text('User-agent: *\nDisallow: '+base+'\n' if args.preview else 'User-agent: *\nAllow: /\nSitemap: '+origin+base+'sitemap.xml\n')
-    print(f'Built 15 localized pages in {out}, base {base}, preview={args.preview}')
+    print(f'Built {len(pages)} localized pages in {out}, base {base}, preview={args.preview}')
 
 if __name__=='__main__':main()

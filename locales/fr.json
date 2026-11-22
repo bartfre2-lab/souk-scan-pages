@@ -14,6 +14,34 @@
     "support": "Aide et assistance",
     "skipContent": "Aller au contenu"
   },
+  "articles": {
+    "navLabel": "Articles",
+    "eyebrow": "ARTICLES",
+    "title": "Articles — SOUK-SCAN",
+    "heading": "Comprendre les prix alimentaires",
+    "description": "Des articles courts et clairs sur les prix alimentaires : la transparence, ce qui fait bouger un prix et les leçons d’autres pays.",
+    "intro": "Des lectures courtes et claires sur le fonctionnement des prix alimentaires, au Maroc et ailleurs.",
+    "listLabel": "Liste des articles",
+    "allArticles": "Tous les articles",
+    "published": "Publié le",
+    "draftNote": "Brouillon avec texte provisoire. Non publié.",
+    "readingOne": "{count} min de lecture",
+    "readingOther": "{count} min de lecture",
+    "months": [
+      "janvier",
+      "février",
+      "mars",
+      "avril",
+      "mai",
+      "juin",
+      "juillet",
+      "août",
+      "septembre",
+      "octobre",
+      "novembre",
+      "décembre"
+    ]
+  },
   "market": {
     "titles": {
       "fruit": "Prix des fruits",
@@ -82,6 +110,7 @@
     "Privacy": "Confidentialité",
     "Terms": "Conditions d’utilisation",
     "Delete account": "Supprimer le compte",
+    "Articles": "Articles",
     "Help & support": "Aide et assistance",
     "FOOD PRICES IN MOROCCO": "LES PRIX ALIMENTAIRES AU MAROC",
     "Know the recent local price": "Connaître le prix local récent",

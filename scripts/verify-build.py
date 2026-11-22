@@ -8,6 +8,9 @@ import re
 import sys
 import xml.etree.ElementTree as ET
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import articles as article_source
+
 ROOT = Path(__file__).resolve().parent.parent
 PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.soukscan.app'
 UNPUBLISHED_ROUTES = {'app', 'downloads', 'preview', 'test', 'tests', 'demo', 'demos', 'archive', 'archives'}
@@ -23,9 +26,16 @@ class Page(HTMLParser):
         self.tags.append((tag, dict(attrs)))
 
 
-def verify(out, version=''):
+def verify(out, version='', articles_dir=None):
     out = Path(out).resolve()
     errors = []
+    articles_dir = Path(articles_dir) if articles_dir else ROOT / 'articles'
+    # Production never contains drafts, so expectations come from the source
+    # articles: published ones must be present, drafts must be absent.
+    published = article_source.load_articles(articles_dir)
+    published_slugs = {item['slug'] for item in published}
+    draft_slugs = {item['slug'] for item in article_source.load_articles(articles_dir, include_drafts=True)} - published_slugs
+    article_sections = (['articles'] + ['articles/' + item['slug'] for item in published]) if published else []
 
     def require(condition, message):
         if not condition:
@@ -39,7 +49,7 @@ def verify(out, version=''):
         require(not (out / name).exists(), 'Source/private file in artifact: ' + name)
     allowed_html = {Path('404.html'), Path('google7e57ca047c540b15.html')}
     for language in ('', 'fr', 'ar'):
-        for section in ('', 'privacy', 'terms', 'account-deletion', 'support'):
+        for section in ('', 'privacy', 'terms', 'account-deletion', 'support', *article_sections):
             allowed_html.add(Path(language) / section / 'index.html')
     for path in out.rglob('*'):
         require(not path.is_symlink(), 'Symlink in deployment artifact: ' + str(path))
@@ -56,7 +66,7 @@ def verify(out, version=''):
     expected_urls = set()
     for language in ('en', 'fr', 'ar'):
         prefix = '' if language == 'en' else language + '/'
-        for section in ('', 'privacy/', 'terms/', 'account-deletion/', 'support/'):
+        for section in ('', 'privacy/', 'terms/', 'account-deletion/', 'support/', *(name + '/' for name in article_sections)):
             route = '/' + prefix + section
             expected_urls.add('https://soukscan.online' + route)
             path = out / prefix / section / 'index.html'
@@ -92,12 +102,16 @@ def verify(out, version=''):
                     require(not any(part.lower() in UNPUBLISHED_ROUTES for part in Path(url.path).parts),
                             'Production link points to an unpublished page: ' + value)
             require('<!--header-controls-->' not in text, 'Unbuilt template: ' + route)
+            require('data-article-draft' not in text, 'Draft article marker in production page: ' + route)
+            require('<!--articles-' not in text, 'Unbuilt articles marker: ' + route)
+            if section.startswith('articles/') and section != 'articles/':
+                require(f'"@type":"Article"' in text.replace(' ', ''), 'Missing article structured data: ' + route)
             if version:
                 require(f'/assets/site-{version}.js' in text, 'Wrong asset version: ' + route)
 
     try:
         urls = {e.text for e in ET.parse(out / 'sitemap.xml').findall('{*}url/{*}loc')}
-        require(urls == expected_urls, 'Sitemap must contain exactly the 15 production routes')
+        require(urls == expected_urls, f'Sitemap must contain exactly the {len(expected_urls)} production routes')
         robots = (out / 'robots.txt').read_text()
         require('Disallow: /' not in robots and 'Sitemap: https://soukscan.online/sitemap.xml' in robots,
                 'Incorrect production robots.txt')
@@ -133,18 +147,37 @@ def verify(out, version=''):
         require(not any(tag == 'a' and 'download' in attrs for tag, attrs in tags),
                 'Direct download link is forbidden: /' + prefix)
 
+    for item in published:
+        require((out / 'assets/articles' / item['image']).is_file(), 'Missing article image: ' + item['image'])
+        for language in ('', 'fr', 'ar'):
+            home = (out / language / 'index.html')
+            require(home.is_file() and f'href="/{language + "/" if language else ""}articles/"' in home.read_text(),
+                    'Home page does not link to the Articles section: /' + language)
+    for slug in draft_slugs:
+        for language in ('', 'fr', 'ar'):
+            require(not (out / language / 'articles' / slug).exists(), 'Draft article in artifact: ' + slug)
+    if not published:
+        require(not any((out / language / 'articles').exists() for language in ('', 'fr', 'ar')),
+                'Articles section published without any published article')
+
     for script in (out / 'assets').glob('*.js'):
         for name in re.findall(r'from\s+["\'](\./[^"\']+)["\']', script.read_text()):
             require((script.parent / name).is_file(), 'Missing JavaScript import: ' + name)
     if errors:
         raise ValueError('\n'.join(errors))
-    return 'Verified 15 production pages, SEO, assets/imports, cached assets and store-only app distribution'
+    return f'Verified {len(expected_urls)} production pages, SEO, assets/imports, cached assets and store-only app distribution'
 
 
 if __name__ == '__main__':
     try:
-        print(verify(sys.argv[1] if len(sys.argv) > 1 else ROOT / 'dist-production',
-                     sys.argv[2] if len(sys.argv) > 2 else ''))
+        arguments = sys.argv[1:]
+        articles_dir = None
+        if '--articles-dir' in arguments:
+            position = arguments.index('--articles-dir')
+            articles_dir = arguments[position + 1]
+            del arguments[position:position + 2]
+        print(verify(arguments[0] if arguments else ROOT / 'dist-production',
+                     arguments[1] if len(arguments) > 1 else '', articles_dir))
     except (ValueError, OSError) as error:
         print('Build verification failed:\n' + str(error), file=sys.stderr)
         sys.exit(1)
