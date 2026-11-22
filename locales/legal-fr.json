@@ -1,14 +1,14 @@
 {
   "privacy": {
     "title": "Politique de confidentialité",
-    "updated": "Dernière mise à jour : 20 novembre 2026",
+    "updated": "Dernière mise à jour : 22 novembre 2026",
     "intro": "SOUK-SCAN aide les habitants du Maroc à voir ce que coûtent vraiment les produits alimentaires (application Android <bdi>com.soukscan.app</bdi>). Cette page explique simplement ce que l’application et ce site font de vos informations, et les choix qui vous appartiennent. Nous ne demandons que ce dont l’application a besoin pour fonctionner, et nous ne vendons jamais vos données. Une question ou une demande ? Écrivez-nous à <a href=\"mailto:sanamdev@soukscan.online\">sanamdev@soukscan.online</a>.",
     "description": "Comment SOUK-SCAN utilise vos informations : compte, prix partagés, Calculette, région, autorisation de localisation et suppression du compte, expliqués simplement.",
     "sections": [
       {
         "title": "Ce que nous collectons et pourquoi",
         "paragraphs": [
-          "Pour créer votre compte, nous avons besoin de votre adresse e-mail. Nous conservons aussi votre identifiant de compte et les données de connexion nécessaires à la sécurité de votre compte. Si vous vous connectez avec Google, Google peut transmettre des informations de profil de base à notre prestataire de connexion. Nous notons la version des conditions que vous avez acceptée.",
+          "Pour créer votre compte, nous avons besoin de votre adresse e-mail. Nous conservons aussi votre identifiant de compte et les données de connexion nécessaires à la sécurité de votre compte. Si vous vous connectez avec Google, l’adresse e-mail de votre compte Google nous est transmise. Notre service de connexion enregistre aussi, avec votre compte, le nom et le lien de la photo de profil de ce compte Google. SOUK-SCAN ne les utilise pas et ne les affiche pas, les autres utilisateurs ne les voient jamais, et ils sont supprimés avec votre compte. Nous notons la version des conditions que vous avez acceptée.",
           "Lorsque vous partagez un prix, nous enregistrons le produit, le prix, votre région, la date et votre identifiant de compte, afin que vous puissiez retrouver et gérer vos propres prix. Si vous nous envoyez un commentaire, nous enregistrons la catégorie, votre message et votre identifiant de compte. Si vous utilisez la Calculette, nous enregistrons ce que vous y saisissez (voir plus bas).",
           "Nous utilisons ces informations pour faire fonctionner votre compte, afficher les prix de la communauté, garder SOUK-SCAN sûr et équitable pour tous (par exemple en repérant les robots, le spam, les abus et les tentatives de manipulation des prix) et améliorer l’application."
         ]
@@ -89,7 +89,7 @@
   },
   "account-deletion": {
     "title": "Supprimer votre compte SOUK-SCAN",
-    "updated": "Dernière mise à jour : 20 novembre 2026",
+    "updated": "Dernière mise à jour : 22 novembre 2026",
     "intro": "C’est votre compte et ce sont vos données. Vous pouvez supprimer définitivement votre compte SOUK-SCAN, avec les données qui lui sont liées, dans l’application, ou nous demander de le faire par e-mail. Cette page concerne <bdi>com.soukscan.app</bdi>.",
     "description": "Supprimez votre compte SOUK-SCAN dans l’application ou par e-mail. Données supprimées, procédure et délai de traitement.",
     "sections": [
@@ -110,7 +110,7 @@
       {
         "title": "Données supprimées",
         "paragraphs": [
-          "La suppression retire le compte actif, l’identité de connexion, les prix que vous avez signalés, vos saisies de la Calculette, vos commentaires et les acceptations des conditions qui lui sont liées. Vos prix cessent de contribuer aux estimations calculées à partir des contributions restantes. Votre identité et vos contributions individuelles n’étaient pas affichées publiquement."
+          "La suppression retire le compte actif, l’identité de connexion (y compris le nom et le lien de la photo de profil qu’enregistre notre service de connexion à partir d’un compte Google), les prix que vous avez signalés, vos saisies de la Calculette, vos commentaires et les acceptations des conditions qui lui sont liées. Vos prix cessent de contribuer aux estimations calculées à partir des contributions restantes. Votre identité et vos contributions individuelles n’étaient pas affichées publiquement."
         ]
       },
       {
