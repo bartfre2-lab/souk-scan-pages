@@ -211,7 +211,7 @@ def image_size(path):
     raise ValueError(f'{path}: not a readable WebP, PNG or JPEG image')
 
 
-def check_image(directory, filename, slug):
+def check_image(directory, filename, slug, minimum=640):
     path = (Path(directory) / 'images' / filename)
     if Path(filename).name != filename or Path(filename).suffix.lower() not in IMAGE_EXTENSIONS:
         raise ValueError(f'{slug}: image must be a plain file name in articles/images/ ending in .webp, .jpg or .png: {filename!r}')
@@ -221,9 +221,29 @@ def check_image(directory, filename, slug):
     if size > MAX_IMAGE_BYTES:
         raise ValueError(f'{slug}: image is {size // 1024} KB; compress it below {MAX_IMAGE_BYTES // 1024} KB')
     width, height = image_size(path)
-    if not 1.7 <= width / height <= 1.85 or width < 640:
-        raise ValueError(f'{slug}: image must be about 16:9 and at least 640 px wide (found {width}x{height})')
+    if not 1.7 <= width / height <= 1.85 or width < minimum:
+        raise ValueError(f'{slug}: image must be about 16:9 and at least {minimum} px wide (found {width}x{height})')
     return path, width, height
+
+
+def find_image(directory, slug, version):
+    """The header image of one language version, or None. An explicit `image`
+    must exist; otherwise images/<slug>.<lang>.<ext> is used, then the shared
+    images/<slug>.<ext>. An optional <name>-small.<ext> next to it is used for
+    the list thumbnails."""
+    images = Path(directory) / 'images'
+    name = version.image or next((f'{slug}{suffix}{ext}' for suffix in (f'.{version.lang}', '') for ext in IMAGE_EXTENSIONS
+                                  if (images / f'{slug}{suffix}{ext}').is_file()), '')
+    if not name:
+        return None
+    path, width, height = check_image(directory, name, f'{slug} ({version.lang})')
+    stem = Path(name).stem
+    thumb = next((f'{stem}-small{ext}' for ext in IMAGE_EXTENSIONS if (images / f'{stem}-small{ext}').is_file()), '')
+    small = None
+    if thumb:
+        small_path, small_width, small_height = check_image(directory, thumb, f'{slug} ({version.lang}) small', minimum=320)
+        small = {'name': thumb, 'path': small_path, 'width': small_width, 'height': small_height}
+    return {'name': name, 'path': path, 'width': width, 'height': height, 'small': small}
 
 
 # ---------------------------------------------------------------- loading
@@ -275,7 +295,7 @@ def parse_file(path):
 
 def load_articles(directory, include_drafts=False, warn=True):
     """Return a list of articles, newest first. Each is a dict:
-    slug, order, date, draft, image, width, height, source and langs{lang: Article}.
+    slug, order, date, draft, images{lang: image info or None} and langs{lang: Article}.
     Every article must exist in all three languages."""
     directory = Path(directory)
     if not directory.is_dir():
@@ -295,19 +315,13 @@ def load_articles(directory, include_drafts=False, warn=True):
         if missing:
             raise ValueError(f'{slug}: missing language version(s): {", ".join(missing)}')
         english = versions['en']
-        # The header image is optional: an explicit `image` must exist; otherwise
-        # images/<slug>.(webp|jpg|jpeg|png) is used automatically once it is added.
-        image_name = english.image or next((f'{slug}{ext}' for ext in IMAGE_EXTENSIONS if (directory / 'images' / f'{slug}{ext}').is_file()), '')
-        path, width, height = check_image(directory, image_name, slug) if image_name else (None, None, None)
+        images = {lang: find_image(directory, slug, version) for lang, version in versions.items()}
         for version in versions.values():
-            if version.image != english.image:
-                raise ValueError(f'{slug}: the image must be the same in every language')
             if warn and (len(version.title) > NEWS_TITLE_LIMIT or len(version.text) > NEWS_TEXT_LIMIT):
                 print(f'warning: {version.file}: {len(version.title)}-character title / {len(version.text)}-character text; '
                       f'the app News tab allows {NEWS_TITLE_LIMIT} / {NEWS_TEXT_LIMIT}', file=sys.stderr)
         result.append({'slug': slug, 'order': english.order, 'date': max(v.date for v in versions.values()),
-                       'draft': draft, 'image': image_name or None, 'image_path': path, 'width': width, 'height': height,
-                       'langs': versions})
+                       'draft': draft, 'images': images, 'langs': versions})
     # Newest first; articles with the same date: the higher NN prefix counts as newer.
     result.sort(key=lambda item: (item['date'], item['order']), reverse=True)
     return result

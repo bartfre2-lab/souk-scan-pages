@@ -9,6 +9,7 @@ const {
   rmSync,
   existsSync,
   mkdirSync,
+  statSync,
   cpSync,
 } = require("node:fs");
 const { readFile, stat } = require("node:fs/promises");
@@ -115,6 +116,17 @@ test("the repository's own articles build cleanly; the draft sample stays out of
   for (const lang of LANGS)
     for (const slug of slugs) assert(existsSync(join(out, prefix(lang), "articles", slug, "index.html")), lang + slug);
   assert.equal(existsSync(join(out, "articles/sample-draft")), false);
+  // Every language has its own header image: full size on the article, small in the list.
+  for (const lang of LANGS)
+    for (const slug of slugs) {
+      const article = readFileSync(join(out, prefix(lang), "articles", slug, "index.html"), "utf8");
+      assert(article.includes(`/assets/articles/${slug}.${lang}.webp"`), `${lang} ${slug} header image`);
+      assert(existsSync(join(out, `assets/articles/${slug}.${lang}.webp`)));
+      assert(existsSync(join(out, `assets/articles/${slug}.${lang}-small.webp`)));
+      assert(readFileSync(join(out, prefix(lang), "articles/index.html"), "utf8").includes(`/assets/articles/${slug}.${lang}-small.webp"`));
+      assert(statSync(join(out, `assets/articles/${slug}.${lang}.webp`)).size < 150 * 1024);
+      assert(statSync(join(out, `assets/articles/${slug}.${lang}-small.webp`)).size < 60 * 1024);
+    }
   assert.doesNotMatch(readFileSync(join(out, "sitemap.xml"), "utf8"), /sample-draft/);
   result = python("verify-build.py", out, "x");
   assert.equal(result.status, 0, result.stderr);
@@ -387,4 +399,29 @@ test("search and topic filters work on the paged list in every language, and the
   assert.match(page.url(), /\/articles\/page\/2\/$/);
   assert.equal(await page.locator(".article-list li").count(), 1);
   await bare.close();
+});
+
+test("each language can have its own header image, with an optional small thumbnail for the list", () => {
+  const dir = join(temporary, "per-language");
+  cpSync(fixtures, dir, { recursive: true });
+  for (const lang of LANGS)
+    edit(join(dir, `01-first-fixture.${lang}.md`), (t) => t.replace(/^image: .*\r?\n/m, ""));
+  const images = join(dir, "images");
+  cpSync(join(images, "fixture-image.webp"), join(images, "first-fixture.en.webp"));
+  cpSync(join(images, "fixture-image.webp"), join(images, "first-fixture.en-small.webp"));
+  cpSync(join(images, "fixture-wide.webp"), join(images, "first-fixture.fr.webp"));
+  const out = join(temporary, "per-language-out");
+  const result = python("build-site.py", "--out-dir", out, "--articles-dir", dir);
+  assert.equal(result.status, 0, result.stderr);
+  const page = (lang) => readFileSync(join(out, prefix(lang), "articles/first-fixture/index.html"), "utf8");
+  assert(page("en").includes("assets/articles/first-fixture.en.webp"));
+  assert(page("fr").includes("assets/articles/first-fixture.fr.webp"));
+  assert(!page("ar").includes("article-figure"), "Arabic has no image of its own, so none is shown");
+  assert(readFileSync(join(out, "articles/index.html"), "utf8").includes("first-fixture.en-small.webp"));
+  assert(readFileSync(join(out, "fr/articles/index.html"), "utf8").includes("first-fixture.fr.webp"));
+  assert(JSON.parse(readFileSync(join(out, "articles/search-index.json"), "utf8")).some((e) => e.image?.endsWith("first-fixture.en-small.webp")));
+  assert.equal(python("verify-build.py", out, "", "--articles-dir", dir).status, 0);
+  const bad = scratch("bad-thumb", (d) => writeFileSync(join(d, "images/fixture-image-small.webp"), "not an image"));
+  assert.notEqual(bad.status, 0);
+  assert.match(bad.stderr, /not a readable/);
 });

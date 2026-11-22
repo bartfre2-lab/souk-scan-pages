@@ -150,8 +150,10 @@ def verify(out, version='', articles_dir=None, page_size=article_source.PAGE_SIZ
                 'Direct download link is forbidden: /' + prefix)
 
     for item in published:
-        if item['image']:
-            require((out / 'assets/articles' / item['image']).is_file(), 'Missing article image: ' + item['image'])
+        for image in item['images'].values():
+            for file in (image, image and image['small']):
+                if file:
+                    require((out / 'assets/articles' / file['name']).is_file(), 'Missing article image: ' + file['name'])
         for language in ('', 'fr', 'ar'):
             home = (out / language / 'index.html')
             require(home.is_file() and f'href="/{language + "/" if language else ""}articles/"' in home.read_text(),

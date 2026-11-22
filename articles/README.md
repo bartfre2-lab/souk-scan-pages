@@ -29,13 +29,19 @@ Python).
 
    - `reading time` may be `5`, `5 min` or `5 min read`; only the number is
      used, and the page shows it in the reader's language.
-   - The header image is optional. Add `articles/images/<slug>.webp` (for
-     example `price-transparency.webp`) and the build uses it automatically on
-     the list and article pages; until then the pages simply show no image.
-     Expected: **WebP, 1280 x 720 (16:9), under 150 KB**, one file shared by all
-     three languages (JPG or PNG with the same name also work; the build rejects
-     anything under 640 px wide, not about 16:9, or over 150 KB). Put a different
-     file name in `image:` only if you do not want to use the slug.
+   - The header image is optional and **each language has its own**. Add
+     `articles/images/<slug>.<lang>.webp` (for example
+     `price-transparency.ar.webp`) and the build uses it automatically on that
+     language's article page, social preview and structured data; a language
+     without a file simply shows no image. A single `<slug>.webp` is used by any
+     language that has no file of its own. Expected: **WebP, 1280 x 720 (16:9),
+     under 150 KB** (JPG or PNG also work; the build rejects anything under
+     640 px wide, not about 16:9, or over 150 KB). Use `image:` only to point at
+     a file with a different name.
+   - Small list thumbnails: `<name>-small.webp` (640 x 360, about 25 KB) next
+     to a full image is used by the Articles list and the search results, so a
+     page of articles loads quickly. After adding or changing an image run
+     `npm run articles:thumbs` (needs Python with Pillow) to make them.
    - `topics` (optional, up to 5, comma-separated, written in that file's own
      language) become the filter buttons on the list page. Reuse the same label
      for articles on the same subject.
@@ -83,7 +89,8 @@ once real articles exist.
 ## Copying an article into the app's News tab
 
 Each article's header image is published at
-`https://soukscan.online/assets/articles/<image file name>`, which is the image
-link the admin dashboard needs. The News tab limits titles to 120 characters and
-text to 4,000 characters per language; the build prints a warning for any
+`https://soukscan.online/assets/articles/<image file name>` (for example
+`.../price-transparency.fr.webp`), which is the image link the admin dashboard
+needs; use the file of the language you are entering. The News tab limits
+titles to 120 characters and text to 4,000 characters per language; the build prints a warning for any
 article that is longer, because an article of about 1,000 words usually is.

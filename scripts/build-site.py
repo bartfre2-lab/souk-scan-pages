@@ -96,9 +96,11 @@ def main():
                 destination.write_text(content)
             else:shutil.copy2(entry,destination)
     for item in articles:
-        if item['image']:
-            (out/'assets/articles').mkdir(parents=True,exist_ok=True)
-            shutil.copy2(item['image_path'],out/'assets/articles'/item['image'])
+        for image in item['images'].values():
+            if image:
+                (out/'assets/articles').mkdir(parents=True,exist_ok=True)
+                for file in (image,image['small']):
+                    if file:shutil.copy2(file['path'],out/'assets/articles'/file['name'])
     catalogs={lang:json.loads((ROOT/'locales'/f'{lang}.json').read_text()) for lang in LANGUAGES}
     legal={lang:json.loads((ROOT/'locales'/f'legal-{lang}.json').read_text()) for lang in LANGUAGES}
     origin='https://soukscan.online'
@@ -165,13 +167,15 @@ def main():
                 save(lang,section,page,title,description,**options)
             def meta_line(version):
                 return f'<p class="article-meta"><time datetime="{version.date}">{escape(article_source.format_date(version.date,copy["months"]))}</time><span aria-hidden="true">·</span><span>{escape(article_source.reading_label(copy,lang,version.minutes))}</span></p>'
-            def image_url(item):return origin+base+'assets/articles/'+item['image'] if item['image'] else ''
+            def image_url(item):return origin+base+'assets/articles/'+item['images'][lang]['name'] if item['images'][lang] else ''
             def row(item):
                 version=item['langs'][lang]
                 href=route(lang,'articles/'+item['slug'])
                 badge=f'<p class="article-draft" data-article-draft>{escape(copy["draftNote"])}</p>' if item['draft'] else ''
-                thumb=f'<a class="article-thumb" href="{href}" tabindex="-1" aria-hidden="true"><img src="{base}assets/articles/{item["image"]}" alt="" width="{item["width"]}" height="{item["height"]}" loading="lazy" decoding="async"></a>' if item['image'] else ''
-                return f'<li class="article-item{"" if item["image"] else " article-item--text"}">{thumb}<div class="article-item-body">{meta_line(version)}<h2><a href="{href}">{escape(version.title)}</a></h2><p>{escape(version.summary)}</p>{badge}</div></li>'
+                image=item['images'][lang]
+                small=(image['small'] or image) if image else None
+                thumb=f'<a class="article-thumb" href="{href}" tabindex="-1" aria-hidden="true"><img src="{base}assets/articles/{small["name"]}" alt="" width="{small["width"]}" height="{small["height"]}" loading="lazy" decoding="async"></a>' if image else ''
+                return f'<li class="article-item{"" if image else " article-item--text"}">{thumb}<div class="article-item-body">{meta_line(version)}<h2><a href="{href}">{escape(version.title)}</a></h2><p>{escape(version.summary)}</p>{badge}</div></li>'
             size=args.articles_page_size
             total_pages=article_source.page_count(len(articles),size)
             def page_href(number):return route(lang,'articles' if number==1 else f'articles/page/{number}')
@@ -196,9 +200,11 @@ def main():
             search_index=[]
             for item in articles:
                 version=item['langs'][lang]
+                image=item['images'][lang]
+                small=(image['small'] or image) if image else None
                 search_index.append({'url':route(lang,'articles/'+item['slug']),'title':version.title,'summary':version.summary,'topics':version.topics,
                     'date':article_source.format_date(version.date,copy['months']),'iso':version.date,'reading':article_source.reading_label(copy,lang,version.minutes),
-                    'image':(base+'assets/articles/'+item['image']) if item['image'] else None,'width':item['width'],'height':item['height']})
+                    'image':(base+'assets/articles/'+small['name']) if image else None,'width':small['width'] if image else None,'height':small['height'] if image else None})
             (out/('' if lang=='en' else lang)/'articles').mkdir(parents=True,exist_ok=True)
             (out/('' if lang=='en' else lang)/'articles/search-index.json').write_text(json.dumps(search_index,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
             js_copy={key:copy[key] for key in copy if key.startswith('results') or key=='noResults'}
@@ -221,10 +227,11 @@ def main():
                 url=origin+route(lang,section)
                 back=f'<a class="text-link article-back" href="{route(lang,"articles")}">{chevron}{escape(copy["allArticles"])}</a>'
                 draft=f'<p class="article-draft" data-article-draft>{escape(copy["draftNote"])}</p>' if item['draft'] else ''
-                figure=(f'<figure class="article-figure"><img src="{base}assets/articles/{item["image"]}" alt="{escape(version.image_alt,quote=True)}" width="{item["width"]}" height="{item["height"]}" fetchpriority="high" decoding="async"></figure>' if item['image'] else '')
+                image=item['images'][lang]
+                figure=(f'<figure class="article-figure"><img src="{base}assets/articles/{image["name"]}" alt="{escape(version.image_alt,quote=True)}" width="{image["width"]}" height="{image["height"]}" fetchpriority="high" decoding="async"></figure>' if image else '')
                 main=(f'<article class="article"><nav class="article-nav" aria-label="{escape(copy["navLabel"],quote=True)}">{back}</nav>{draft}<header class="article-header"><p class="eyebrow">{escape(copy["eyebrow"])}</p><h1>{escape(version.title)}</h1><p class="article-summary">{escape(version.summary)}</p>{meta_line(version)}</header>'
                       f'{figure}<div class="article-body">{version.html}</div><div class="article-end">{back}</div></article>')
-                schema={'@context':'https://schema.org','@type':'Article','headline':version.title,'description':version.summary,'inLanguage':lang,'datePublished':version.date,'dateModified':version.date,**({'image':[image_url(item)]} if item['image'] else {}),'mainEntityOfPage':url,'author':{'@type':'Organization','name':'SOUK-SCAN'},'publisher':{'@type':'Organization','name':'SOUK-SCAN','logo':{'@type':'ImageObject','url':origin+'/assets/brand/logo.png'}}}
+                schema={'@context':'https://schema.org','@type':'Article','headline':version.title,'description':version.summary,'inLanguage':lang,'datePublished':version.date,'dateModified':version.date,**({'image':[image_url(item)]} if image else {}),'mainEntityOfPage':url,'author':{'@type':'Organization','name':'SOUK-SCAN'},'publisher':{'@type':'Organization','name':'SOUK-SCAN','logo':{'@type':'ImageObject','url':origin+'/assets/brand/logo.png'}}}
                 article_page(section,version.title+' — SOUK-SCAN',version.summary,main,schema,og_type='article',image=image_url(item),noindex=item['draft'])
     pages=[(lang,section,'2026-11-20' if section in ('privacy','terms','account-deletion') else '2026-11-15' if section in ('','support') else '2026-10-20') for lang in LANGUAGES for section in ('','privacy','terms','account-deletion','support')]
     live=[item for item in articles if not item['draft']]
