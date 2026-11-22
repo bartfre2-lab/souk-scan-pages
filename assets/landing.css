@@ -1309,6 +1309,9 @@ html[lang="ar"] .article-header h1 {
   padding-block: 28px;
   border-bottom: 1px solid var(--line);
 }
+.article-item--text {
+  grid-template-columns: minmax(0, 1fr);
+}
 .article-thumb img,
 .article-figure img {
   width: 100%;

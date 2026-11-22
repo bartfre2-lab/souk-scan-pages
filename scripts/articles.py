@@ -14,7 +14,7 @@ LANGUAGES = ('en', 'fr', 'ar')
 FILENAME = re.compile(r'^(?:(\d+)-)?([a-z0-9]+(?:-[a-z0-9]+)*)\.(en|fr|ar)\.md$')
 DATE = re.compile(r'^\d{4}-\d{2}-\d{2}$')
 IMAGE_EXTENSIONS = ('.webp', '.jpg', '.jpeg', '.png')
-MAX_IMAGE_BYTES = 200 * 1024
+MAX_IMAGE_BYTES = 150 * 1024
 # The News tab stores titles/text with these limits (SOUK-SCAN app, SPEC 20a).
 NEWS_TITLE_LIMIT, NEWS_TEXT_LIMIT = 120, 4000
 
@@ -254,11 +254,11 @@ def parse_file(path):
         raise ValueError(f'{path.name}: the article has no text')
     return Article(slug=slug, lang=lang, order=int(order) if order else 9999, title=fields['title'],
                    summary=fields['summary'], date=fields['date'], minutes=int(minutes[0]),
-                   image=fields.get('image', '') or f'{slug}.webp', image_alt=fields.get('image_alt', ''),
+                   image=fields.get('image', ''), image_alt=fields.get('image_alt', ''),
                    draft=draft, html=html, text=plain_text(html), file=path.name)
 
 
-def load_articles(directory, include_drafts=False):
+def load_articles(directory, include_drafts=False, warn=True):
     """Return a list of articles, newest first. Each is a dict:
     slug, order, date, draft, image, width, height, source and langs{lang: Article}.
     Every article must exist in all three languages."""
@@ -280,16 +280,18 @@ def load_articles(directory, include_drafts=False):
         if missing:
             raise ValueError(f'{slug}: missing language version(s): {", ".join(missing)}')
         english = versions['en']
-        image_name = english.image
-        path, width, height = check_image(directory, image_name, slug)
+        # The header image is optional: an explicit `image` must exist; otherwise
+        # images/<slug>.(webp|jpg|jpeg|png) is used automatically once it is added.
+        image_name = english.image or next((f'{slug}{ext}' for ext in IMAGE_EXTENSIONS if (directory / 'images' / f'{slug}{ext}').is_file()), '')
+        path, width, height = check_image(directory, image_name, slug) if image_name else (None, None, None)
         for version in versions.values():
-            if version.image != image_name:
+            if version.image != english.image:
                 raise ValueError(f'{slug}: the image must be the same in every language')
-            if len(version.title) > NEWS_TITLE_LIMIT or len(version.text) > NEWS_TEXT_LIMIT:
+            if warn and (len(version.title) > NEWS_TITLE_LIMIT or len(version.text) > NEWS_TEXT_LIMIT):
                 print(f'warning: {version.file}: {len(version.title)}-character title / {len(version.text)}-character text; '
                       f'the app News tab allows {NEWS_TITLE_LIMIT} / {NEWS_TEXT_LIMIT}', file=sys.stderr)
         result.append({'slug': slug, 'order': english.order, 'date': max(v.date for v in versions.values()),
-                       'draft': draft, 'image': image_name, 'image_path': path, 'width': width, 'height': height,
+                       'draft': draft, 'image': image_name or None, 'image_path': path, 'width': width, 'height': height,
                        'langs': versions})
     result.sort(key=lambda item: (item['date'], -item['order']), reverse=True)
     return result

@@ -105,16 +105,57 @@ after(async () => {
   rmSync(temporary, { recursive: true, force: true });
 });
 
-test("the repository's own articles build cleanly and its draft sample stays out of production", () => {
+test("the repository's own articles build cleanly; the draft sample stays out of production", () => {
   const out = join(temporary, "repo-production");
   let result = python("build-site.py", "--out-dir", out, "--asset-version", "x");
   assert.equal(result.status, 0, result.stderr);
-  // Only a draft exists in articles/, so no Articles section is published.
-  assert.equal(existsSync(join(out, "articles")), false);
-  assert.doesNotMatch(readFileSync(join(out, "sitemap.xml"), "utf8"), /articles/);
-  assert.doesNotMatch(readFileSync(join(out, "index.html"), "utf8"), /\/articles\//);
+  const slugs = ["price-transparency", "what-decides-a-price", "what-other-countries-learned", "tomato-prices-in-morocco"];
+  for (const lang of LANGS)
+    for (const slug of slugs) assert(existsSync(join(out, prefix(lang), "articles", slug, "index.html")), lang + slug);
+  assert.equal(existsSync(join(out, "articles/sample-draft")), false);
+  assert.doesNotMatch(readFileSync(join(out, "sitemap.xml"), "utf8"), /sample-draft/);
   result = python("verify-build.py", out, "x");
   assert.equal(result.status, 0, result.stderr);
+  assert.match(result.stdout, /Verified 30 production pages/);
+});
+
+test("without any published article the Articles section and its links are not built", () => {
+  const empty = join(temporary, "no-articles");
+  mkdirSync(empty);
+  const out = join(temporary, "no-articles-out");
+  let result = python("build-site.py", "--out-dir", out, "--articles-dir", empty);
+  assert.equal(result.status, 0, result.stderr);
+  assert.equal(existsSync(join(out, "articles")), false);
+  assert.doesNotMatch(readFileSync(join(out, "index.html"), "utf8"), /\/articles\//);
+  assert.doesNotMatch(readFileSync(join(out, "sitemap.xml"), "utf8"), /articles/);
+  result = python("verify-build.py", out, "", "--articles-dir", empty);
+  assert.equal(result.status, 0, result.stderr);
+});
+
+test("the header image is optional and is used automatically when images/<slug>.webp is added", () => {
+  const dir = join(temporary, "optional-image");
+  cpSync(fixtures, dir, { recursive: true });
+  for (const lang of LANGS)
+    edit(join(dir, `01-first-fixture.${lang}.md`), (t) => t.replace(/^image: .*\r?\n/m, ""));
+  const out = join(temporary, "optional-image-out");
+  const build = () => python("build-site.py", "--out-dir", out, "--articles-dir", dir);
+  let result = build();
+  assert.equal(result.status, 0, result.stderr);
+  let article = readFileSync(join(out, "articles/first-fixture/index.html"), "utf8");
+  assert(!article.includes("<img src=\"/assets/articles"), "no image on the article page");
+  assert(!article.includes("article-figure"));
+  assert(article.includes('content="https://soukscan.online/assets/brand/logo.png"'));
+  assert(!article.includes('"image"'));
+  const list = readFileSync(join(out, "articles/index.html"), "utf8");
+  assert(list.includes("article-item--text"));
+  assert.equal(existsSync(join(out, "assets/articles/first-fixture.webp")), false);
+  cpSync(join(dir, "images/fixture-image.webp"), join(dir, "images/first-fixture.webp"));
+  result = build();
+  assert.equal(result.status, 0, result.stderr);
+  article = readFileSync(join(out, "articles/first-fixture/index.html"), "utf8");
+  assert(article.includes("assets/articles/first-fixture.webp"));
+  assert(existsSync(join(out, "assets/articles/first-fixture.webp")));
+  assert.equal(python("verify-build.py", out, "", "--articles-dir", dir).status, 0);
 });
 
 test("published articles build into list and article pages in every language, drafts excluded", () => {
@@ -214,6 +255,11 @@ test("Markdown is escaped, links are restricted and bad articles fail the build 
   result = scratch("missing-image", (dir) => rmSync(join(dir, "images/fixture-image.webp")));
   assert.notEqual(result.status, 0);
   assert.match(result.stderr, /image file not found/);
+  result = scratch("big-image", (dir) =>
+    writeFileSync(join(dir, "images/fixture-image.webp"), Buffer.concat([readFileSync(join(dir, "images/fixture-image.webp")), Buffer.alloc(160 * 1024)])),
+  );
+  assert.notEqual(result.status, 0);
+  assert.match(result.stderr, /compress it below 150 KB/);
   result = scratch("bad-name", (dir) => writeFileSync(join(dir, "Notes.md"), "---\ntitle: x\n---\n"));
   assert.notEqual(result.status, 0);
   assert.match(result.stderr, /must be named/);

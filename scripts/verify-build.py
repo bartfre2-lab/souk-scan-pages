@@ -32,9 +32,9 @@ def verify(out, version='', articles_dir=None):
     articles_dir = Path(articles_dir) if articles_dir else ROOT / 'articles'
     # Production never contains drafts, so expectations come from the source
     # articles: published ones must be present, drafts must be absent.
-    published = article_source.load_articles(articles_dir)
+    published = article_source.load_articles(articles_dir, warn=False)
     published_slugs = {item['slug'] for item in published}
-    draft_slugs = {item['slug'] for item in article_source.load_articles(articles_dir, include_drafts=True)} - published_slugs
+    draft_slugs = {item['slug'] for item in article_source.load_articles(articles_dir, include_drafts=True, warn=False)} - published_slugs
     article_sections = (['articles'] + ['articles/' + item['slug'] for item in published]) if published else []
 
     def require(condition, message):
@@ -148,7 +148,8 @@ def verify(out, version='', articles_dir=None):
                 'Direct download link is forbidden: /' + prefix)
 
     for item in published:
-        require((out / 'assets/articles' / item['image']).is_file(), 'Missing article image: ' + item['image'])
+        if item['image']:
+            require((out / 'assets/articles' / item['image']).is_file(), 'Missing article image: ' + item['image'])
         for language in ('', 'fr', 'ar'):
             home = (out / language / 'index.html')
             require(home.is_file() and f'href="/{language + "/" if language else ""}articles/"' in home.read_text(),

@@ -22,17 +22,19 @@ Python).
    summary: One sentence shown on the list page and in search results.
    date: 2026-11-30
    reading time: 5 min
-   image: price-transparency.webp
    image_alt: Optional description (leave out if the picture is decorative)
    ---
    ```
 
    - `reading time` may be `5`, `5 min` or `5 min read`; only the number is
      used, and the page shows it in the reader's language.
-   - `image` is optional: by default the build looks for `<slug>.webp`. The
-     file lives in `articles/images/`, is about 16:9, at least 640 px wide and
-     under 200 KB (the build checks this). Use the same image for all three
-     languages.
+   - The header image is optional. Add `articles/images/<slug>.webp` (for
+     example `price-transparency.webp`) and the build uses it automatically on
+     the list and article pages; until then the pages simply show no image.
+     Expected: **WebP, 1280 x 720 (16:9), under 150 KB**, one file shared by all
+     three languages (JPG or PNG with the same name also work; the build rejects
+     anything under 640 px wide, not about 16:9, or over 150 KB). Put a different
+     file name in `image:` only if you do not want to use the slug.
    - `draft: true` keeps the article out of the production build (see below).
    - The files written in the drafts folder (`title`, `summary`, `date`,
      `reading time`, with or without the `---` fences) are accepted as they are;
