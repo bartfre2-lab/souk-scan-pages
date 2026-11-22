@@ -1,0 +1,38 @@
+NOM DE L’APPLICATION (9/30 caractères)
+SOUK-SCAN
+
+DESCRIPTION COURTE
+Voyez des prix clairs et justes au Maroc, partagés par de vraies personnes.
+
+DESCRIPTION COMPLÈTE
+Ce prix est-il juste ? Vous pouvez maintenant le vérifier avant de payer.
+
+SOUK-SCAN vous aide à voir des prix clairs et honnêtes pour l’alimentation de tous les jours au Maroc : fruits, légumes, viande, volaille et œufs. Les prix changent d’un marché à l’autre, et il est difficile de savoir ce qui est juste. SOUK-SCAN existe pour une raison simple : rendre les prix faciles à voir, pour que personne n’ait à deviner.
+
+D’OÙ VIENNENT LES PRIX
+• De vraies personnes. Des utilisateurs comme vous partagent ce qu’ils ont vu ou payé. Nous réunissons de nombreux signalements en une seule fourchette de prix pour votre région.
+• Des prix de gros publiés. Des références de gros datées de Casa Prestations, affichées à côté des prix de la communauté pour que vous puissiez comparer.
+Quand il n’y a pas assez de signalements, l’application vous le dit. Elle n’invente jamais un prix.
+
+CE QUE VOUS POUVEZ FAIRE
+• Le souk : voyez la fourchette de prix du jour pour chaque produit dans votre région.
+• Al-Qoffa : composez un panier hebdomadaire de produits du quotidien et voyez une fourchette indicative de ce qu’il peut coûter.
+• Calculette : additionnez vos courses, commerçant par commerçant. Touchez un prix et une quantité, le total suit.
+• Infos : lisez les actualités de l’équipe SOUK-SCAN.
+• Profil et Mon journal : retrouvez les prix que vous avez ajoutés, jour après jour. Vous seul les voyez.
+• Partagez un prix que vous avez vraiment vu ou payé : un prix par produit et par jour, que vous pouvez corriger le jour même.
+• Un court guide vous présente l’application à la première ouverture.
+• Utilisez le français, l’arabe ou l’anglais. L’arabe s’affiche vraiment de droite à gauche. Modes clair et sombre disponibles.
+
+VOTRE VIE PRIVÉE COMPTE
+• Votre position exacte n’est pas envoyée à SOUK-SCAN. Seule votre région est utilisée.
+• Les autres utilisateurs ne voient jamais votre nom, vos prix individuels ni votre liste de courses.
+• Vous pouvez supprimer votre compte à tout moment dans l’application.
+
+Politique de confidentialité : https://soukscan.online/privacy/
+Conditions d’utilisation : https://soukscan.online/terms/
+Supprimer votre compte : https://soukscan.online/account-deletion/
+Questions : sanamdev@soukscan.online
+
+NOUVEAUTÉS (notes de version)
+Nouveau dans la 1.2.0 : cinq onglets. Le souk, Al-Qoffa (préparez un panier hebdomadaire et voyez une fourchette indicative), une Calculette (additionnez vos courses commerçant par commerçant), les actualités de SOUK-SCAN et votre journal. Un court guide vous aide à démarrer. Arabe de droite à gauche, français et anglais. Mettez l’application à jour : les anciennes versions ne peuvent plus envoyer de prix. On vous demandera d’accepter les Conditions d’utilisation mises à jour.

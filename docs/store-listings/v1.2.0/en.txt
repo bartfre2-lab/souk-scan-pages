@@ -1,0 +1,38 @@
+APP NAME (9/30 characters)
+SOUK-SCAN
+
+SHORT DESCRIPTION
+See fair, clear food prices in Morocco, shared by real people.
+
+FULL DESCRIPTION
+Is this price fair? Now you can check before you pay.
+
+SOUK-SCAN helps you see clear, honest prices for everyday food in Morocco: fruit, vegetables, meat, poultry and eggs. Prices can change from one market to the next, and it is hard to know what is fair. SOUK-SCAN exists for one simple reason: to make prices easy to see, so nobody has to guess.
+
+WHERE THE PRICES COME FROM
+• Real people. Users like you share what they saw or paid. We combine many reports into one price range for your region.
+• Published wholesale prices. Dated wholesale references from Casa Prestations, shown next to the community prices so you can compare.
+When there are not enough reports, the app tells you. It never invents a price.
+
+WHAT YOU CAN DO
+• The souk: see today's price range for each product in your region.
+• Al-Qoffa: build a weekly basket of everyday products and see an indicative range for what it may cost.
+• Calculator: add up your shopping, shop by shop. Tap a price and a quantity, and the total follows.
+• Info: read news from the SOUK-SCAN team.
+• Profile and My journal: see the prices you added, day by day. Only you can see them.
+• Share a price you really saw or paid: one price per product per day, and you can correct it the same day.
+• A short guide shows you around the first time you open the app.
+• Use English, French or Arabic. Arabic is a true right-to-left app. Light and dark modes are available.
+
+YOUR PRIVACY MATTERS
+• Your exact location is not sent to SOUK-SCAN. Only your region is used.
+• Other users never see your name, your individual prices or your shopping list.
+• You can delete your account at any time in the app.
+
+Privacy policy: https://soukscan.online/privacy/
+Terms of use: https://soukscan.online/terms/
+Delete your account: https://soukscan.online/account-deletion/
+Questions: sanamdev@soukscan.online
+
+WHAT'S NEW (release notes)
+New in 1.2.0: five tabs. The souk, Al-Qoffa (plan a weekly basket and see an indicative range), a Calculator (add up your shopping shop by shop), news from SOUK-SCAN, and your journal. A short guide helps you get started. Full right-to-left Arabic, plus French and English. Please update: older versions can no longer send prices. You will be asked to accept the updated Terms of Use.
