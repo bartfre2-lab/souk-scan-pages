@@ -3,6 +3,7 @@ title: "What decides a price? Why potatoes never cost the same all year"
 summary: "A kilo of potatoes does not cost the same all year. Quality, origin, season, weather, transport, storage, demand and trade all play a part."
 date: 2026-11-23
 reading_time: "5 min"
+topics: Understanding prices, Morocco
 ---
 
 # What decides a price? Why potatoes never cost the same all year

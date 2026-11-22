@@ -26,7 +26,7 @@ class Page(HTMLParser):
         self.tags.append((tag, dict(attrs)))
 
 
-def verify(out, version='', articles_dir=None):
+def verify(out, version='', articles_dir=None, page_size=article_source.PAGE_SIZE):
     out = Path(out).resolve()
     errors = []
     articles_dir = Path(articles_dir) if articles_dir else ROOT / 'articles'
@@ -35,7 +35,9 @@ def verify(out, version='', articles_dir=None):
     published = article_source.load_articles(articles_dir, warn=False)
     published_slugs = {item['slug'] for item in published}
     draft_slugs = {item['slug'] for item in article_source.load_articles(articles_dir, include_drafts=True, warn=False)} - published_slugs
-    article_sections = (['articles'] + ['articles/' + item['slug'] for item in published]) if published else []
+    list_pages = article_source.page_count(len(published), page_size)
+    article_sections = (['articles'] + [f'articles/page/{n}' for n in range(2, list_pages + 1)]
+                        + ['articles/' + item['slug'] for item in published]) if published else []
 
     def require(condition, message):
         if not condition:
@@ -104,7 +106,7 @@ def verify(out, version='', articles_dir=None):
             require('<!--header-controls-->' not in text, 'Unbuilt template: ' + route)
             require('data-article-draft' not in text, 'Draft article marker in production page: ' + route)
             require('<!--articles-' not in text, 'Unbuilt articles marker: ' + route)
-            if section.startswith('articles/') and section != 'articles/':
+            if section.startswith('articles/') and section != 'articles/' and not section.startswith('articles/page/'):
                 require(f'"@type":"Article"' in text.replace(' ', ''), 'Missing article structured data: ' + route)
             if version:
                 require(f'/assets/site-{version}.js' in text, 'Wrong asset version: ' + route)
@@ -172,13 +174,17 @@ def verify(out, version='', articles_dir=None):
 if __name__ == '__main__':
     try:
         arguments = sys.argv[1:]
-        articles_dir = None
+        articles_dir, page_size = None, article_source.PAGE_SIZE
         if '--articles-dir' in arguments:
             position = arguments.index('--articles-dir')
             articles_dir = arguments[position + 1]
             del arguments[position:position + 2]
+        if '--articles-page-size' in arguments:
+            position = arguments.index('--articles-page-size')
+            page_size = int(arguments[position + 1])
+            del arguments[position:position + 2]
         print(verify(arguments[0] if arguments else ROOT / 'dist-production',
-                     arguments[1] if len(arguments) > 1 else '', articles_dir))
+                     arguments[1] if len(arguments) > 1 else '', articles_dir, page_size))
     except (ValueError, OSError) as error:
         print('Build verification failed:\n' + str(error), file=sys.stderr)
         sys.exit(1)

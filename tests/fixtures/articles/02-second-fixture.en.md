@@ -3,6 +3,7 @@ title: Second fixture article
 summary: The newer published fixture.
 date: 2026-11-10
 reading time: 1
+topics: Beta, Shared
 image: fixture-wide.webp
 ---
 

@@ -3,6 +3,7 @@ title: First fixture article
 summary: The older published fixture.
 date: 2026-11-01
 reading time: 4 min read
+topics: Alpha, Shared
 image: fixture-image.webp
 ---
 

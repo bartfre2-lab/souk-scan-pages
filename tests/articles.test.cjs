@@ -55,6 +55,8 @@ before(async () => {
     production,
     "--articles-dir",
     fixtures,
+    "--articles-page-size",
+    "1",
     "--asset-version",
     "test-release",
   );
@@ -159,9 +161,9 @@ test("the header image is optional and is used automatically when images/<slug>.
 });
 
 test("published articles build into list and article pages in every language, drafts excluded", () => {
-  const result = python("verify-build.py", production, "test-release", "--articles-dir", fixtures);
+  const result = python("verify-build.py", production, "test-release", "--articles-dir", fixtures, "--articles-page-size", "1");
   assert.equal(result.status, 0, result.stderr);
-  assert.match(result.stdout, /Verified 24 production pages/);
+  assert.match(result.stdout, /Verified 27 production pages/);
   for (const lang of LANGS) {
     for (const path of ["/articles/", "/articles/first-fixture/", "/articles/second-fixture/"])
       assert(existsSync(join(production, prefix(lang), path, "index.html")), lang + path);
@@ -169,7 +171,8 @@ test("published articles build into list and article pages in every language, dr
   }
   assert(existsSync(join(production, "assets/articles/fixture-image.webp")));
   const sitemap = readFileSync(join(production, "sitemap.xml"), "utf8");
-  assert.equal((sitemap.match(/<loc>/g) || []).length, 24);
+  assert.equal((sitemap.match(/<loc>/g) || []).length, 27);
+  assert(sitemap.includes("https://soukscan.online/fr/articles/page/2/"));
   assert(sitemap.includes("https://soukscan.online/ar/articles/first-fixture/"));
   assert(!sitemap.includes("draft-fixture"));
   assert(!readFileSync(join(production, "articles/index.html"), "utf8").includes("Draft fixture"));
@@ -190,7 +193,7 @@ test("artifact verification rejects a draft that leaked into production", () => 
   mkdirSync(join(leaked, ".."), { recursive: true });
   writeFileSync(leaked, "<h1>Leak</h1>");
   try {
-    const result = python("verify-build.py", production, "test-release", "--articles-dir", fixtures);
+    const result = python("verify-build.py", production, "test-release", "--articles-dir", fixtures, "--articles-page-size", "1");
     assert.notEqual(result.status, 0);
     assert.match(result.stderr, /Unapproved HTML page|Draft article in artifact/);
   } finally {
@@ -222,11 +225,21 @@ test("article pages have correct metadata, language alternates, structured data 
     const privacy = readFileSync(join(production, prefix(lang), "privacy/index.html"), "utf8");
     assert(privacy.includes(`href="${prefix(lang)}/articles/"`));
   }
-  const list = readFileSync(join(production, "articles/index.html"), "utf8");
-  assert(list.indexOf("Second fixture article") < list.indexOf("First fixture article"), "newest first");
-  assert(list.includes("1 min read") && list.includes("4 min read"));
+  const first = readFileSync(join(production, "articles/index.html"), "utf8");
+  const second = readFileSync(join(production, "articles/page/2/index.html"), "utf8");
+  assert(first.includes("Second fixture article") && !first.includes("First fixture article"), "newest article first");
+  assert(second.includes("First fixture article") && !second.includes("Second fixture article"));
+  assert(first.includes("1 min read") && second.includes("4 min read"));
+  assert(first.includes('rel="next" href="/articles/page/2/"') && !first.includes('rel="prev"'));
+  assert(second.includes('rel="prev" href="/articles/"') && second.includes('aria-current="page">2<'));
+  assert(second.includes('<link rel="canonical" href="https://soukscan.online/articles/page/2/">'));
+  assert(second.includes("Articles, page 2 of 2"));
+  assert(readFileSync(join(production, "fr/articles/page/2/index.html"), "utf8").includes("Page 2 sur 2"));
   assert(readFileSync(join(production, "ar/articles/index.html"), "utf8").includes("دقيقة واحدة للقراءة"));
   assert(readFileSync(join(production, "fr/articles/index.html"), "utf8").includes("10 novembre 2026"));
+  const index = JSON.parse(readFileSync(join(production, "articles/search-index.json"), "utf8"));
+  assert.deepEqual(index.map((entry) => entry.url), ["/articles/second-fixture/", "/articles/first-fixture/"]);
+  assert.deepEqual(index[0].topics, ["Beta", "Shared"]);
 });
 
 test("Markdown is escaped, links are restricted and bad articles fail the build clearly", () => {
@@ -292,7 +305,7 @@ test("article and list pages: no sideways scrolling and no accessibility violati
           locale: lang,
         });
         const page = await context.newPage();
-        for (const path of ["/articles/", "/articles/first-fixture/"]) {
+        for (const path of ["/articles/", "/articles/page/2/", "/articles/first-fixture/"]) {
           await page.goto(base + prefix(lang) + path);
           const label = `${lang} ${theme} ${width} ${path}`;
           const overflow = await page.evaluate(
@@ -318,4 +331,60 @@ test("article and list pages: no sideways scrolling and no accessibility violati
       }
     }
   }
+});
+
+test("articles with the same date are listed with the higher NN prefix first", () => {
+  const dir = join(temporary, "same-date");
+  cpSync(fixtures, dir, { recursive: true });
+  for (const lang of LANGS) edit(join(dir, `01-first-fixture.${lang}.md`), (t) => t.replace("2026-11-01", "2026-11-10"));
+  const out = join(temporary, "same-date-out");
+  const result = python("build-site.py", "--out-dir", out, "--articles-dir", dir);
+  assert.equal(result.status, 0, result.stderr);
+  const list = readFileSync(join(out, "articles/index.html"), "utf8");
+  assert(list.indexOf("Second fixture article") < list.indexOf("First fixture article"));
+});
+
+test("search and topic filters work on the paged list in every language, and the list works without JavaScript", async () => {
+  for (const lang of LANGS) {
+    const context = await browser.newContext({ viewport: { width: 1000, height: 800 }, locale: lang });
+    const page = await context.newPage();
+    await page.goto(base + prefix(lang) + "/articles/");
+    await page.locator(".articles-tools").waitFor({ state: "visible" });
+    assert.equal(await page.locator(".article-list:not(.article-results) li").count(), 1, "page 1 holds one article");
+    assert.equal(await page.locator(".article-topics button").count(), 3);
+    // Search reaches articles on other pages and replaces the paged list.
+    const word = { en: "older", fr: "ancien", ar: "أقدم" }[lang];
+    await page.fill("#article-search", word);
+    await page.locator(".article-results li").first().waitFor();
+    assert.equal(await page.locator(".article-results li").count(), 1);
+    assert.match(page.url(), /\?q=/);
+    assert(await page.locator(".pager").isHidden());
+    assert(await page.locator(".article-list:not(.article-results)").isHidden());
+    assert.match(await page.locator(".articles-status").textContent(), lang === "ar" ? /مقال واحد/ : /1 article/);
+    assert((await page.locator(".article-results a").first().getAttribute("href")).includes("/articles/first-fixture/"));
+    // A topic shared by both articles finds both.
+    await page.fill("#article-search", "");
+    await page.locator(".article-topics button", { hasText: { en: "Shared", fr: "Partagé", ar: "مشترك" }[lang] }).click();
+    await page.waitForFunction(() => document.querySelectorAll(".article-results li").length === 2);
+    // No result, then clear returns to the paged list.
+    await page.fill("#article-search", "zzzzqq");
+    await page.waitForFunction(() => document.querySelector(".article-results").hidden && document.querySelector(".articles-status").textContent.length > 0);
+    await page.locator(".articles-clear").click();
+    assert(await page.locator(".article-results").isHidden());
+    assert(await page.locator(".pager").isVisible());
+    assert(await page.locator(".article-list:not(.article-results)").isVisible());
+    assert.equal(page.url().includes("?"), false);
+    // A shared link restores the search.
+    await page.goto(base + prefix(lang) + "/articles/?q=" + encodeURIComponent(word));
+    await page.locator(".article-results li").first().waitFor();
+    await context.close();
+  }
+  const bare = await browser.newContext({ javaScriptEnabled: false });
+  const page = await bare.newPage();
+  await page.goto(base + "/articles/");
+  assert(await page.locator(".articles-tools").isHidden());
+  await page.locator('a[rel="next"]').click();
+  assert.match(page.url(), /\/articles\/page\/2\/$/);
+  assert.equal(await page.locator(".article-list li").count(), 1);
+  await bare.close();
 });

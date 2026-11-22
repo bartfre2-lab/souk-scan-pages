@@ -53,6 +53,7 @@ def main():
     parser.add_argument('--asset-version',default='')
     parser.add_argument('--drafts',action='store_true',help='Include articles marked draft (local review only; never for production)')
     parser.add_argument('--articles-dir',default='articles')
+    parser.add_argument('--articles-page-size',type=int,default=article_source.PAGE_SIZE,help='Articles per list page')
     args=parser.parse_args()
     base='/'+args.base.strip('/')+'/' if args.base.strip('/') else '/'
     out=ROOT/args.out_dir
@@ -62,6 +63,8 @@ def main():
         raise ValueError('Unsafe output directory')
     if args.asset_version and not re.fullmatch(r'[A-Za-z0-9_-]+',args.asset_version):
         raise ValueError('Invalid asset version')
+    if args.articles_page_size<1:
+        raise ValueError('Articles per page must be at least 1')
     if args.drafts and out.name=='dist-production':
         raise ValueError('Draft articles must never be built into dist-production')
     articles_dir=Path(args.articles_dir) if Path(args.articles_dir).is_absolute() else ROOT/args.articles_dir
@@ -81,7 +84,7 @@ def main():
         for name in ('CNAME','google7e57ca047c540b15.html','404.html'):
             if (ROOT/name).is_file():shutil.copy2(ROOT/name,out/name)
         (out/'.nojekyll').write_text('')
-    versions={name:name.rsplit('.',1)[0]+'-'+args.asset_version+'.'+name.rsplit('.',1)[1] for name in ('landing.js','site.js','landing.css','courtyard.css','souk-world.css','site.css','market-prices.js')} if args.asset_version else {}
+    versions={name:name.rsplit('.',1)[0]+'-'+args.asset_version+'.'+name.rsplit('.',1)[1] for name in ('landing.js','site.js','articles.js','landing.css','courtyard.css','souk-world.css','site.css','market-prices.js')} if args.asset_version else {}
     for directory in ('assets',):
         (out/directory).mkdir(parents=True,exist_ok=True)
         for entry in (ROOT/directory).iterdir():
@@ -163,15 +166,55 @@ def main():
             def meta_line(version):
                 return f'<p class="article-meta"><time datetime="{version.date}">{escape(article_source.format_date(version.date,copy["months"]))}</time><span aria-hidden="true">·</span><span>{escape(article_source.reading_label(copy,lang,version.minutes))}</span></p>'
             def image_url(item):return origin+base+'assets/articles/'+item['image'] if item['image'] else ''
-            rows=''
+            def row(item):
+                version=item['langs'][lang]
+                href=route(lang,'articles/'+item['slug'])
+                badge=f'<p class="article-draft" data-article-draft>{escape(copy["draftNote"])}</p>' if item['draft'] else ''
+                thumb=f'<a class="article-thumb" href="{href}" tabindex="-1" aria-hidden="true"><img src="{base}assets/articles/{item["image"]}" alt="" width="{item["width"]}" height="{item["height"]}" loading="lazy" decoding="async"></a>' if item['image'] else ''
+                return f'<li class="article-item{"" if item["image"] else " article-item--text"}">{thumb}<div class="article-item-body">{meta_line(version)}<h2><a href="{href}">{escape(version.title)}</a></h2><p>{escape(version.summary)}</p>{badge}</div></li>'
+            size=args.articles_page_size
+            total_pages=article_source.page_count(len(articles),size)
+            def page_href(number):return route(lang,'articles' if number==1 else f'articles/page/{number}')
+            def fill(template,**values):
+                for key,value in values.items():template=template.replace('{'+key+'}',str(value))
+                return template
+            def pager(number):
+                if total_pages==1:return ''
+                arrow_back='<svg class="icon-arrow icon-back" viewBox="0 0 24 24" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg>'
+                arrow_next='<svg class="icon-arrow icon-forward" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>'
+                parts=[f'<a class="pager-step" rel="prev" href="{page_href(number-1)}">{arrow_back}{escape(copy["previous"])}</a>' if number>1 else '<span class="pager-step" aria-hidden="true"></span>']
+                numbers=''
+                for n in article_source.page_window(number,total_pages):
+                    if n is None:numbers+='<li aria-hidden="true"><span class="pager-gap">…</span></li>'
+                    elif n==number:numbers+=f'<li><span class="pager-page" aria-current="page">{n}</span></li>'
+                    else:numbers+=f'<li><a class="pager-page" href="{page_href(n)}" aria-label="{escape(fill(copy["pageLink"],page=n),quote=True)}">{n}</a></li>'
+                parts.append(f'<ol class="pager-pages">{numbers}</ol>')
+                parts.append(f'<a class="pager-step" rel="next" href="{page_href(number+1)}">{escape(copy["next"])}{arrow_next}</a>' if number<total_pages else '<span class="pager-step" aria-hidden="true"></span>')
+                return f'<nav class="pager" aria-label="{escape(copy["pagesLabel"],quote=True)}">{"".join(parts)}<p class="pager-status">{escape(fill(copy["pageOf"],page=number,pages=total_pages))}</p></nav>'
+            topics=sorted({topic for item in articles for topic in item['langs'][lang].topics},key=str.casefold)
+            index_url=route(lang,'articles')+'search-index.json'
+            search_index=[]
             for item in articles:
                 version=item['langs'][lang]
-                badge=f'<p class="article-draft" data-article-draft>{escape(copy["draftNote"])}</p>' if item['draft'] else ''
-                thumb=f'<a class="article-thumb" href="{route(lang,"articles/"+item["slug"])}" tabindex="-1" aria-hidden="true"><img src="{base}assets/articles/{item["image"]}" alt="" width="{item["width"]}" height="{item["height"]}" loading="lazy" decoding="async"></a>' if item['image'] else ''
-                rows+=(f'<li class="article-item{"" if item["image"] else " article-item--text"}">{thumb}'
-                       f'<div class="article-item-body">{meta_line(version)}<h2><a href="{route(lang,"articles/"+item["slug"])}">{escape(version.title)}</a></h2><p>{escape(version.summary)}</p>{badge}</div></li>')
-            intro=f'<div class="articles-intro"><p class="eyebrow">{escape(copy["eyebrow"])}</p><h1>{escape(copy["heading"])}</h1><p class="articles-lede">{escape(copy["intro"])}</p></div><ol class="article-list" aria-label="{escape(copy["listLabel"],quote=True)}">{rows}</ol>'
-            article_page('articles',copy['title'],copy['description'],intro,noindex=all(item['draft'] for item in articles))
+                search_index.append({'url':route(lang,'articles/'+item['slug']),'title':version.title,'summary':version.summary,'topics':version.topics,
+                    'date':article_source.format_date(version.date,copy['months']),'iso':version.date,'reading':article_source.reading_label(copy,lang,version.minutes),
+                    'image':(base+'assets/articles/'+item['image']) if item['image'] else None,'width':item['width'],'height':item['height']})
+            (out/('' if lang=='en' else lang)/'articles').mkdir(parents=True,exist_ok=True)
+            (out/('' if lang=='en' else lang)/'articles/search-index.json').write_text(json.dumps(search_index,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
+            js_copy={key:copy[key] for key in copy if key.startswith('results') or key=='noResults'}
+            js_copy['lang']=lang
+            chips=''.join(f'<button type="button" aria-pressed="false" data-topic="{escape(topic,quote=True)}">{escape(topic)}</button>' for topic in topics)
+            tools=(f'<div class="articles-tools" hidden data-index="{index_url}"><form class="articles-search" role="search"><label class="sr-only" for="article-search">{escape(copy["searchLabel"])}</label>'
+                   f'<input id="article-search" type="search" placeholder="{escape(copy["searchPlaceholder"],quote=True)}" autocomplete="off" enterkeyhint="search"><button class="articles-clear" type="button" hidden>{escape(copy["clear"])}</button></form>'
+                   +(f'<div class="article-topics" role="group" aria-label="{escape(copy["topicsLabel"],quote=True)}">{chips}</div>' if topics else '')
+                   +'<p class="articles-status" role="status" aria-live="polite"></p></div>')
+            script='<script id="articles-copy" type="application/json">'+json.dumps(js_copy,ensure_ascii=False).replace('<','\\u003c')+f'</script><script defer src="{base}assets/articles.js"></script>'
+            for number in range(1,total_pages+1):
+                chunk=articles[(number-1)*size:number*size]
+                list_label=escape(copy["listLabel"],quote=True)
+                listing=f'<div class="articles-intro"><p class="eyebrow">{escape(copy["eyebrow"])}</p><h1>{escape(copy["heading"])}</h1><p class="articles-lede">{escape(copy["intro"])}</p></div>{tools}<ol class="article-list" aria-label="{list_label}">{"".join(row(item) for item in chunk)}</ol><ol class="article-list article-results" aria-label="{list_label}" hidden></ol>{pager(number)}{script}'
+                title=copy['title'] if number==1 else fill(copy['pageTitle'],page=number,pages=total_pages)
+                article_page('articles' if number==1 else f'articles/page/{number}',title,copy['description'],listing,noindex=all(item['draft'] for item in chunk))
             for item in articles:
                 version=item['langs'][lang]
                 section='articles/'+item['slug']
@@ -185,7 +228,7 @@ def main():
                 article_page(section,version.title+' — SOUK-SCAN',version.summary,main,schema,og_type='article',image=image_url(item),noindex=item['draft'])
     pages=[(lang,section,'2026-11-20' if section in ('privacy','terms','account-deletion') else '2026-11-15' if section in ('','support') else '2026-10-20') for lang in LANGUAGES for section in ('','privacy','terms','account-deletion','support')]
     live=[item for item in articles if not item['draft']]
-    if live:pages+=[(lang,'articles',live[0]['date']) for lang in LANGUAGES]+[(lang,'articles/'+item['slug'],item['date']) for lang in LANGUAGES for item in live]
+    if live:pages+=[(lang,'articles' if n==1 else f'articles/page/{n}',live[(n-1)*args.articles_page_size]['date']) for lang in LANGUAGES for n in range(1,article_source.page_count(len(live),args.articles_page_size)+1)]+[(lang,'articles/'+item['slug'],item['date']) for lang in LANGUAGES for item in live]
     sitemap='<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+''.join('<url><loc>'+escape(origin+route(lang,section))+'</loc><lastmod>'+lastmod+'</lastmod></url>' for lang,section,lastmod in pages)+'</urlset>'
     (out/'sitemap.xml').write_text(sitemap)
     (out/'robots.txt').write_text('User-agent: *\nDisallow: '+base+'\n' if args.preview else 'User-agent: *\nAllow: /\nSitemap: '+origin+base+'sitemap.xml\n')

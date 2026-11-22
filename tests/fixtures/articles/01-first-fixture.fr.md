@@ -3,6 +3,7 @@ title: Premier article d’essai
 summary: Le plus ancien article d’essai publié.
 date: 2026-11-01
 reading time: 4 min de lecture
+topics: Alpha, Partagé
 image: fixture-image.webp
 ---
 

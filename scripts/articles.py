@@ -17,6 +17,8 @@ IMAGE_EXTENSIONS = ('.webp', '.jpg', '.jpeg', '.png')
 MAX_IMAGE_BYTES = 150 * 1024
 # The News tab stores titles/text with these limits (SOUK-SCAN app, SPEC 20a).
 NEWS_TITLE_LIMIT, NEWS_TEXT_LIMIT = 120, 4000
+PAGE_SIZE = 10  # articles per list page
+MAX_TOPICS = 5
 
 # Front-matter spellings accepted for each field (compared lower-case, with
 # spaces, hyphens and underscores removed).
@@ -25,6 +27,7 @@ FIELD_ALIASES = {
     'readingtime': 'reading_time', 'readtime': 'reading_time', 'minutes': 'reading_time',
     'image': 'image', 'imagealt': 'image_alt', 'alt': 'image_alt',
     'draft': 'draft', 'status': 'status',
+    'topics': 'topics', 'topic': 'topics', 'tags': 'topics', 'tag': 'topics', 'category': 'topics', 'categories': 'topics',
 }
 
 
@@ -225,6 +228,18 @@ def check_image(directory, filename, slug):
 
 # ---------------------------------------------------------------- loading
 
+def parse_topics(value, name='article'):
+    """Comma-separated topic labels, written in the article's own language."""
+    topics = []
+    for topic in re.split(r'[,،;]', value):
+        topic = topic.strip()
+        if topic and topic.lower() not in (t.lower() for t in topics):
+            topics.append(topic)
+    if len(topics) > MAX_TOPICS:
+        raise ValueError(f'{name}: use at most {MAX_TOPICS} topics')
+    return topics
+
+
 def parse_file(path):
     match = FILENAME.match(path.name)
     if not match:
@@ -254,7 +269,7 @@ def parse_file(path):
         raise ValueError(f'{path.name}: the article has no text')
     return Article(slug=slug, lang=lang, order=int(order) if order else 9999, title=fields['title'],
                    summary=fields['summary'], date=fields['date'], minutes=int(minutes[0]),
-                   image=fields.get('image', ''), image_alt=fields.get('image_alt', ''),
+                   image=fields.get('image', ''), image_alt=fields.get('image_alt', ''), topics=parse_topics(fields.get('topics', ''), path.name),
                    draft=draft, html=html, text=plain_text(html), file=path.name)
 
 
@@ -293,7 +308,8 @@ def load_articles(directory, include_drafts=False, warn=True):
         result.append({'slug': slug, 'order': english.order, 'date': max(v.date for v in versions.values()),
                        'draft': draft, 'image': image_name or None, 'image_path': path, 'width': width, 'height': height,
                        'langs': versions})
-    result.sort(key=lambda item: (item['date'], -item['order']), reverse=True)
+    # Newest first; articles with the same date: the higher NN prefix counts as newer.
+    result.sort(key=lambda item: (item['date'], item['order']), reverse=True)
     return result
 
 
@@ -311,3 +327,22 @@ def reading_label(copy, lang, minutes):
     else:
         form = "readingOne" if minutes == 1 else "readingOther"
     return copy[form].replace("{count}", str(minutes))
+
+
+# ---------------------------------------------------------------- list pages
+
+def page_count(total, size=PAGE_SIZE):
+    return max(1, -(-total // size))
+
+
+def page_window(current, total):
+    """Page numbers to link: first, last, and the pages around the current one
+    (None marks a gap)."""
+    wanted = sorted({1, total, *range(max(1, current - 1), min(total, current + 1) + 1)})
+    result, previous = [], 0
+    for number in wanted:
+        if number - previous > 1:
+            result.append(None)
+        result.append(number)
+        previous = number
+    return result

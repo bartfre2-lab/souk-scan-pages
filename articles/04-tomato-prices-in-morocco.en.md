@@ -3,6 +3,7 @@ title: Why did tomato prices rise in Morocco in autumn 2026?
 summary: What sources say about the autumn 2026 rise in tomato prices in Morocco: what is well supported, what is still debated, and what nobody knows yet.
 date: 2026-11-23
 reading_time: 5 min
+topics: Morocco
 ---
 
 # Why did tomato prices rise in Morocco in autumn 2026?

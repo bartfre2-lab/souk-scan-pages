@@ -1,8 +1,9 @@
 ---
 title: Deuxième article d’essai
-summary: Le plus ancien article d’essai publié.
+summary: Le plus récent article d’essai publié.
 date: 2026-11-10
 reading time: 1
+topics: Beta, Partagé
 image: fixture-wide.webp
 ---
 

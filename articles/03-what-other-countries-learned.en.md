@@ -3,6 +3,7 @@ title: What other countries learned about sharing prices
 summary: Fishermen in India and farmers in Sri Lanka show that price information can help when it is timely, trusted and reaches both sides. It is not magic.
 date: 2026-11-23
 reading_time: 5 min
+topics: Lessons from abroad
 ---
 
 # What other countries learned about sharing prices

@@ -3,6 +3,7 @@ title: المقال التجريبي الأول
 summary: أقدم مقال تجريبي منشور.
 date: 2026-11-01
 reading time: 4 دقائق
+topics: ألف، مشترك
 image: fixture-image.webp
 ---
 

@@ -3,6 +3,7 @@ title: "Qu'est-ce qui fait le prix ? Pourquoi la pomme de terre ne coûte jamais
 summary: "Un kilo de pommes de terre ne coûte pas pareil toute l'année : qualité, origine, saison, météo, transport, stockage, demande et commerce jouent chacun un rôle."
 date: 2026-11-23
 reading_time: "5 min"
+topics: Comprendre les prix, Maroc
 ---
 
 # Qu'est-ce qui fait le prix ? Pourquoi la pomme de terre ne coûte jamais pareil toute l'année

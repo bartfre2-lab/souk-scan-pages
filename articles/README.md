@@ -12,8 +12,8 @@ Python).
    `01-price-transparency.en.md`, `01-price-transparency.fr.md`,
    `01-price-transparency.ar.md`. The slug becomes the URL
    (`/articles/price-transparency/`) and must be identical in all three
-   languages. `NN` is only a sort tie-breaker (articles are listed newest
-   first, then by `NN`) and is not part of the URL.
+   languages. `NN` is not part of the URL; it only orders articles with the
+   same date (the higher `NN` counts as newer).
 2. Start each file with front matter:
 
    ```markdown
@@ -22,6 +22,7 @@ Python).
    summary: One sentence shown on the list page and in search results.
    date: 2026-11-30
    reading time: 5 min
+   topics: Understanding prices, Morocco
    image_alt: Optional description (leave out if the picture is decorative)
    ---
    ```
@@ -35,6 +36,9 @@ Python).
      three languages (JPG or PNG with the same name also work; the build rejects
      anything under 640 px wide, not about 16:9, or over 150 KB). Put a different
      file name in `image:` only if you do not want to use the slug.
+   - `topics` (optional, up to 5, comma-separated, written in that file's own
+     language) become the filter buttons on the list page. Reuse the same label
+     for articles on the same subject.
    - `draft: true` keeps the article out of the production build (see below).
    - The files written in the drafts folder (`title`, `summary`, `date`,
      `reading time`, with or without the `---` fences) are accepted as they are;
@@ -47,6 +51,16 @@ Python).
 4. Run `npm test`. A published article must exist in English, French and
    Arabic; the build stops with a clear message if a language, image or
    front-matter field is missing.
+
+## The list page
+
+Articles are listed newest first (by `date`, then `NN`). The list is split into
+static pages of 10 (`/articles/`, `/articles/page/2/`, ...) with Previous/Next
+and numbered links, so it keeps working with hundreds of articles and without
+JavaScript. For readers with JavaScript, a search box and the topic buttons
+search all pages at once through a small per-language index
+(`/articles/search-index.json`: title, summary and topics only). The page size is
+`PAGE_SIZE` in `scripts/articles.py` (tests use `--articles-page-size`).
 
 The Articles link appears in the header and footer only while at least one
 non-draft article exists, so an empty section can never go live.

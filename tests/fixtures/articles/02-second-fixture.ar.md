@@ -1,8 +1,9 @@
 ---
 title: المقال التجريبي الثاني
-summary: أقدم مقال تجريبي منشور.
+summary: أحدث مقال تجريبي منشور.
 date: 2026-11-10
 reading time: 1
+topics: باء، مشترك
 image: fixture-wide.webp
 ---
 

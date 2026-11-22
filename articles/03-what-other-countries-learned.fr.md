@@ -3,6 +3,7 @@ title: Ce que d'autres pays ont appris en rendant les prix visibles
 summary: Pêcheurs en Inde, agriculteurs au Sri Lanka : l'information sur les prix aide quand elle est rapide, fiable et accessible aux deux côtés. Ce n'est pas magique.
 date: 2026-11-23
 reading_time: 5 min
+topics: Leçons d'ailleurs
 ---
 
 # Ce que d'autres pays ont appris en rendant les prix visibles

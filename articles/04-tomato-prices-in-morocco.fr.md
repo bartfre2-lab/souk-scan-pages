@@ -3,6 +3,7 @@ title: Pourquoi le prix de la tomate a-t-il augmenté au Maroc à l'automne 2026
 summary: Ce que disent les sources sur la hausse du prix de la tomate à l'automne 2026 au Maroc : ce qui est établi, ce qui est débattu et ce qu'on ignore encore.
 date: 2026-11-23
 reading_time: 5 min
+topics: Maroc
 ---
 
 # Pourquoi le prix de la tomate a-t-il augmenté au Maroc à l'automne 2026 ?

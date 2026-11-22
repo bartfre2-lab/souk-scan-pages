@@ -3,6 +3,7 @@ title: "Price transparency: what it means and why it matters"
 summary: "Price transparency means prices are open and easy to compare. Here is how it can help buyers, farmers and sellers, and where it falls short."
 date: 2026-11-23
 reading_time: "5 min"
+topics: Understanding prices
 ---
 
 # Price transparency: what it means and why it matters

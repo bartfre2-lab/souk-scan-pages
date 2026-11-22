@@ -1,6 +1,6 @@
 ---
 title: Article d’essai brouillon
-summary: Le plus ancien article d’essai publié.
+summary: Le plus récent article d’essai publié.
 draft: true
 date: 2026-11-20
 reading time: 1

@@ -3,6 +3,7 @@ title: "La transparence des prix : de quoi s'agit-il et pourquoi c'est utile"
 summary: "La transparence des prix, c'est des prix ouverts et faciles à comparer. Ce qu'elle apporte aux ménages, aux agriculteurs et aux vendeurs, et ses limites."
 date: 2026-11-23
 reading_time: "5 min"
+topics: Comprendre les prix
 ---
 
 # La transparence des prix : de quoi s'agit-il et pourquoi c'est utile

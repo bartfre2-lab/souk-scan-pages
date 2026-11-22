@@ -1,6 +1,6 @@
 ---
 title: المقال التجريبي المسودة
-summary: أقدم مقال تجريبي منشور.
+summary: أحدث مقال تجريبي منشور.
 draft: true
 date: 2026-11-20
 reading time: 1
