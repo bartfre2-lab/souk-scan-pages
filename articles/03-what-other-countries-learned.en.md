@@ -65,5 +65,3 @@ SOUK-SCAN is a small app that tries to put these lessons to use in Morocco. It c
 - de Silva, H. and Ratnadiwakara, D., "Using ICT to reduce transaction costs in agriculture through better communication: a case study from Sri Lanka", LIRNEasia; Lokanathan, S. and Kapugama, N. (2012), LIRNEasia.
 - Mahto, R. K. and Patil, C. (2025), Mysore Journal of Agricultural Sciences 59(4), 305-318.
 - Agmarknet, via the Indian Economic Service's Arthapedia entry; e-NAM portal, enam.gov.in.
-
-Full links and what each source supports are in the file 03-sources.md.

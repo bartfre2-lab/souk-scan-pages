@@ -121,6 +121,8 @@ test("the repository's own articles build cleanly; the draft sample stays out of
     for (const slug of slugs) {
       const article = readFileSync(join(out, prefix(lang), "articles", slug, "index.html"), "utf8");
       assert(article.includes(`/assets/articles/${slug}.${lang}.webp"`), `${lang} ${slug} header image`);
+      assert.doesNotMatch(article, /sources\.md/, `${lang} ${slug} must not point to internal notes`);
+      assert(article.includes(`property="og:image" content="https://soukscan.online/assets/articles/${slug}.${lang}.webp"`), `${lang} ${slug} social image`);
       assert(existsSync(join(out, `assets/articles/${slug}.${lang}.webp`)));
       assert(existsSync(join(out, `assets/articles/${slug}.${lang}-small.webp`)));
       assert(readFileSync(join(out, prefix(lang), "articles/index.html"), "utf8").includes(`/assets/articles/${slug}.${lang}-small.webp"`));

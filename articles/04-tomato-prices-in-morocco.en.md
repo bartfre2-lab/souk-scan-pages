@@ -65,5 +65,3 @@ SOUK-SCAN shows price ranges built from community reports, along with the weekly
 - EPPO Global Database: ToBRFV in Morocco, and EPPO Reporting Service 2023/235.
 - Libération via AllAfrica, 9 November 2026; MADAR, 7 November 2026; AgriMaroc, 5 November 2026.
 - EastFruit, 12 November 2026; LeSiteinfo, 13 November 2026; Le Brief, 20 November 2026.
-
-Full links and what each source supports are in the file 04-sources.md.

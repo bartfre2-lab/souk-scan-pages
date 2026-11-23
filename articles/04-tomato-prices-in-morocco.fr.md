@@ -65,5 +65,3 @@ SOUK-SCAN affiche des fourchettes issues des signalements de la communauté et l
 - Base de données mondiale de l'EPPO : ToBRFV au Maroc, et EPPO Reporting Service 2023/235.
 - Libération via AllAfrica, 9 novembre 2026 ; MADAR, 7 novembre 2026 ; AgriMaroc, 5 novembre 2026.
 - EastFruit, 12 novembre 2026 ; LeSiteinfo, 13 novembre 2026 ; Le Brief, 20 novembre 2026.
-
-Les liens complets et ce que chaque source établit figurent dans le fichier 04-sources.md.

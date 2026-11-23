@@ -65,5 +65,3 @@ SOUK-SCAN تطبيق صغير يحاول تطبيق هذه الدروس في ا�
 - de Silva, H. و Ratnadiwakara, D., "Using ICT to reduce transaction costs in agriculture through better communication: a case study from Sri Lanka"، LIRNEasia؛ Lokanathan, S. و Kapugama, N. (2012), LIRNEasia.
 - Mahto, R. K. و Patil, C. (2025), Mysore Journal of Agricultural Sciences 59(4), 305-318.
 - Agmarknet، استنادًا إلى مدخل Arthapedia التابع للخدمة الاقتصادية الهندية؛ بوابة e-NAM، enam.gov.in.
-
-الروابط الكاملة وما تدعمه كل جهة موجودة في الملف 03-sources.md.

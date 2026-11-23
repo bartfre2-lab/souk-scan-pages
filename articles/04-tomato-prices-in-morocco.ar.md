@@ -65,5 +65,3 @@ topics: المغرب
 - قاعدة بيانات EPPO العالمية: ToBRFV في المغرب، وEPPO Reporting Service 2023/235.
 - ليبراسيون عبر AllAfrica، 9 نونبر 2026؛ MADAR، 7 نونبر 2026؛ AgriMaroc، 5 نونبر 2026.
 - EastFruit، 12 نونبر 2026؛ LeSiteinfo، 13 نونبر 2026؛ Le Brief، 20 نونبر 2026.
-
-الروابط الكاملة وما تدعمه كل جهة موجودة في الملف 04-sources.md.
