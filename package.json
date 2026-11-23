@@ -6,8 +6,10 @@
   "scripts": {
     "build": "python3 scripts/build-site.py",
     "dev": "npm run build && python3 -m http.server 4173 --bind 0.0.0.0 --directory dist",
+    "dev:drafts": "python3 scripts/build-site.py --out-dir dist-drafts --drafts && python3 -m http.server 4173 --bind 0.0.0.0 --directory dist-drafts",
     "test": "npm run build && node --test tests/*.test.cjs",
     "verify:build": "python3 scripts/verify-build.py",
+    "articles:thumbs": "python3 scripts/make-article-thumbnails.py",
     "art": "python3 scripts/generate-art.py"
   },
   "devDependencies": {
