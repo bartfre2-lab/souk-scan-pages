@@ -133,7 +133,7 @@ reverting the relevant source change on `main` and let the
 workflow redeploy; an existing successful Pages deployment can also be restored
 from its Actions run. Do not switch back to publishing raw source from the branch.
 
-[Google Play review](docs/GOOGLE-PLAY-REVIEW.md) and [listing drafts](docs/store-listings/)
+[Listing drafts](docs/store-listings/)
 are historical preparation documents; the published listing linked above is current.
 [The original visual audit](docs/FINAL-WEBSITE-AUDIT.md) records the earlier preview
 phase; current maintenance and publishing instructions are this README.
