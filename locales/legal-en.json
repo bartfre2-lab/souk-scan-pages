@@ -1,14 +1,14 @@
 {
   "privacy": {
     "title": "Privacy policy",
-    "updated": "Last updated: 20 November 2026",
+    "updated": "Last updated: 22 November 2026",
     "intro": "SOUK-SCAN helps people across Morocco see what food really costs (Android app <bdi>com.soukscan.app</bdi>). This page explains, in plain words, what the app and this website do with your information and the choices you have. We only ask for what the app needs to work, and we never sell your data. If you have a question or a request, just write to <a href=\"mailto:sanamdev@soukscan.online\">sanamdev@soukscan.online</a>.",
     "description": "How SOUK-SCAN uses your information: account, shared prices, the Calculator, region, location permission and account deletion, explained simply.",
     "sections": [
       {
         "title": "What we collect and why",
         "paragraphs": [
-          "To create your account we need your email address. We also keep your account identifier and the sign-in records needed to keep your account secure. If you sign in with Google, Google may share basic profile information with our sign-in provider. We note which version of the terms you accepted.",
+          "To create your account we need your email address. We also keep your account identifier and the sign-in records needed to keep your account secure. If you sign in with Google, the email address of your Google account is shared with us. Our sign-in service also stores the name and profile-picture link from that Google account with your account. SOUK-SCAN does not use or show them, other users never see them, and they are deleted with your account. We note which version of the terms you accepted.",
           "When you share a price, we save the product, the price, your region, the date and your account identifier, so that you can find and manage your own prices. If you send us feedback, we save the category, your message and your account identifier. If you use the Calculator, we save what you enter there (more below).",
           "We use this information to run your account, show community prices, keep SOUK-SCAN safe and fair for everyone (for example by spotting bots, spam, misuse and attempts to manipulate prices), and make the app better."
         ]
@@ -89,7 +89,7 @@
   },
   "account-deletion": {
     "title": "Delete your SOUK-SCAN account",
-    "updated": "Last updated: 20 November 2026",
+    "updated": "Last updated: 22 November 2026",
     "intro": "It is your account and your data. You can permanently delete your SOUK-SCAN account, together with the data linked to it, in the app, or ask us to do it by email. This page applies to <bdi>com.soukscan.app</bdi>.",
     "description": "Delete your SOUK-SCAN account in the app or request deletion by email. Learn which data is removed and the request timeframe.",
     "sections": [
@@ -110,7 +110,7 @@
       {
         "title": "What deletion removes",
         "paragraphs": [
-          "Deletion removes your active account and sign-in identity, submitted price reports, Calculator entries, feedback and linked terms-acceptance records. Removed reports no longer contribute to estimates computed from the remaining reports. Individual reports and account identities were not displayed publicly."
+          "Deletion removes your active account and sign-in identity (including the name and profile-picture link that our sign-in service stores from a Google account), submitted price reports, Calculator entries, feedback and linked terms-acceptance records. Removed reports no longer contribute to estimates computed from the remaining reports. Individual reports and account identities were not displayed publicly."
         ]
       },
       {

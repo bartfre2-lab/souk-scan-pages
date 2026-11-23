@@ -157,6 +157,7 @@ def main():
             body=f'<body class="legal-page"><a class="skip-link" href="#main-content">{escape(catalog["common"]["skipContent"])}</a><header class="site-header wrap"><a class="brand" href="{route(lang)}"><img src="{base}assets/brand/logo.webp" alt="" width="44" height="44"><span class="scanner-wordmark">[SOUK-SCAN]</span></a>{controls(lang,section)}<a class="text-link" href="{route(lang)}">{escape(catalog["common"]["backHome"])}</a></header>'+f'<main class="legal-content" id="main-content" tabindex="-1"><p class="eyebrow">SOUK-SCAN</p><h1>{escape(page["title"])}</h1><p class="legal-updated">{escape(page["updated"])}</p><p class="legal-summary">{page["intro"]}</p>{content}'+footer(lang)+'</main>'
             for key in ('privacy','terms','account-deletion','support'):body=body.replace('@@'+key+'@@',route(lang,key))
             save(lang,section,body,page['title']+' — SOUK-SCAN',page['description'])
+
         if articles:
             copy=catalog['articles']
             chevron='<svg class="icon-arrow icon-back" viewBox="0 0 24 24" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg>'
@@ -233,7 +234,7 @@ def main():
                       f'{figure}<div class="article-body">{version.html}</div><div class="article-end">{back}</div></article>')
                 schema={'@context':'https://schema.org','@type':'Article','headline':version.title,'description':version.summary,'inLanguage':lang,'datePublished':version.date,'dateModified':version.date,**({'image':[image_url(item)]} if image else {}),'mainEntityOfPage':url,'author':{'@type':'Organization','name':'SOUK-SCAN'},'publisher':{'@type':'Organization','name':'SOUK-SCAN','logo':{'@type':'ImageObject','url':origin+'/assets/brand/logo.png'}}}
                 article_page(section,version.title+' — SOUK-SCAN',version.summary,main,schema,og_type='article',image=image_url(item),noindex=item['draft'])
-    pages=[(lang,section,'2026-11-20' if section in ('privacy','terms','account-deletion') else '2026-11-15' if section in ('','support') else '2026-10-20') for lang in LANGUAGES for section in ('','privacy','terms','account-deletion','support')]
+    pages=[(lang,section,'2026-11-22' if section in ('privacy','account-deletion') else '2026-11-20' if section=='terms' else '2026-11-15' if section in ('','support') else '2026-10-20') for lang in LANGUAGES for section in ('','privacy','terms','account-deletion','support')]
     live=[item for item in articles if not item['draft']]
     if live:pages+=[(lang,'articles' if n==1 else f'articles/page/{n}',live[(n-1)*args.articles_page_size]['date']) for lang in LANGUAGES for n in range(1,article_source.page_count(len(live),args.articles_page_size)+1)]+[(lang,'articles/'+item['slug'],item['date']) for lang in LANGUAGES for item in live]
     sitemap='<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+''.join('<url><loc>'+escape(origin+route(lang,section))+'</loc><lastmod>'+lastmod+'</lastmod></url>' for lang,section,lastmod in pages)+'</urlset>'
