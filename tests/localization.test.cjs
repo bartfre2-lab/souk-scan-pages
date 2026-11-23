@@ -458,7 +458,8 @@ test("15 static localized pages have canonical/hreflang metadata and matching le
   const sitemap = await (
     await context.request.get(base + "/sitemap.xml")
   ).text();
-  assert.equal((sitemap.match(/<loc>/g) || []).length, 15);
+  // The 15 core pages plus, per language, the Articles list and the four published articles.
+  assert.equal((sitemap.match(/<loc>/g) || []).length, 15 + 3 * (1 + 4));
   await context.close();
 });
 test("theme follows the system until explicitly changed, persists across pages, and works without storage", async () => {

@@ -22,7 +22,8 @@ npm run dev
 Open `http://localhost:4173/`. Edit `index.html`, `assets/`, `locales/` and
 `data/market.json`, then rebuild. `npm run dev` serves a build; it does not watch
 files. English is `/`, French `/fr/` and Arabic `/ar/`. Each language includes
-privacy, terms, account deletion and support pages. Translations, canonical and
+privacy, terms, account deletion and support pages, plus an Articles section once
+an article is published (see [articles/README.md](articles/README.md)). Translations, canonical and
 hreflang links, sitemap and structured data are generated statically.
 
 ## Verify and deploy
@@ -36,7 +37,7 @@ npm run verify:build -- dist-production local-check
 Tests cover region/cache races, failed refreshes, localized navigation, source
 separation, accessibility, crate containment, keyboard/touch interaction, motion
 cancellation and store-only distribution. Artifact checks additionally verify production
-SEO, imports, retained cached assets, the approved HTML page allowlist and absence of
+SEO, published articles (drafts must be absent), imports, retained cached assets, the approved HTML page allowlist and absence of
 source/environment files. The build refuses to overwrite source/release folders.
 
 Open a short-lived branch and pull request for future changes. The **Website
@@ -58,6 +59,7 @@ publish the raw repository root or merge unbuilt HTML through legacy Jekyll.
 | --- | --- |
 | `index.html`, `assets/` | Editable home template, styling, interactions, illustrations and fonts |
 | `locales/` | English, French and Arabic website/legal copy |
+| `articles/` | Markdown articles per language, their images and the authoring guide ([articles/README.md](articles/README.md)) |
 | `data/market.json` | Existing public client configuration and canonical regions |
 | `scripts/` | Static builder, deployment verification and read-only browser audit |
 | `tests/` | Browser, data/cache and build regression checks |
@@ -89,7 +91,7 @@ Retired `/preview/`, `/test/` and `/demo/` pages are not published. Keep histori
 versions in Git; local preview generation remains available for development.
 Production builds remove stale app/download/review routes from generated output and copy only
 the retained `public/assets/` cache subtree. Artifact verification permits only
-the 15 official website pages, the unavailable-page response and Search Console verification
+the official website pages (15, plus three per published article and the three Articles list pages), the unavailable-page response and Search Console verification
 HTML, and rejects test/review routes even when they are hidden among assets.
 
 This repository and its Git history are public. Excluding a page from deployment
